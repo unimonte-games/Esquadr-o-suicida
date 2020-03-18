@@ -9,7 +9,6 @@ using UnityEditor;
 public class Porta_Color : MonoBehaviour
 {
 
-    Porta_Color C;
     RoomController RoomControl;
 
     public GameObject Door;
@@ -24,8 +23,7 @@ public class Porta_Color : MonoBehaviour
     
     void Start()
     {
-
-        C = GetComponent<Porta_Color>();
+   
         RoomControl = GetComponent<RoomController>();
 
         UI_Door.SetActive(false);
