@@ -177,26 +177,32 @@ public class Porta_Default : MonoBehaviour
         ReWave = true;
         ReWave_Door = TypeDoor;
 
-        if (Type == 0)//Perder Ouro
+        if (Type >= 0 && Type <= 4)//Nada
+        {
+            Debug.Log("Nada Acontece");
+            RoomControl.ReWaveContest(ReWave_Door);
+        }
+
+        if (Type >= 5 && Type <= 7)//Perder Ouro
         {
             Debug.Log("Perderam Vida");
             RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        if (Type == 1)//Perder Defesa
+        if (Type >= 8 && Type <= 10)//Perder Defesa
         {
             Debug.Log("Perderam Defesa");
             RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        if (Type == 2)//Perder Vida
+        if (Type >= 11 && Type <= 13)//Perder Vida
         {
 
             Debug.Log("Perderam Ouro");
             RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        if (Type >= 3) //Wave Surpresa
+        if (Type >= 14 && Type <= 18) //Wave Surpresa
         {
            
             Debug.Log("Suprise Wave");

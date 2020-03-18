@@ -50,7 +50,7 @@ public class RoomController : MonoBehaviour
         }
         else if(Complete == 1 && Default)
         {
-            int Type = Random.Range(0, 6); //chance mediana de sair "surprise wave"
+            int Type = Random.Range(0, 18); //chance mediana de sair "surprise wave"
             Default.PlayerPunition(Type, 1);
             return;
                 
@@ -65,7 +65,7 @@ public class RoomController : MonoBehaviour
         }
         else if (Complete == 2 && Default)
         {
-            int Type = Random.Range(0, 4); //chance pequena de sair "Surprise wave"
+            int Type = Random.Range(0, 18); //chance pequena de sair "Surprise wave"
             Default.PlayerPunition(Type, 2);
             return;
         }
@@ -79,7 +79,7 @@ public class RoomController : MonoBehaviour
         }
         else if (Complete == 3 && Default)
         {
-            int Type = Random.Range(0, 8); //chance maior de sair "surprise wave"
+            int Type = Random.Range(0, 18); //chance maior de sair "surprise wave"
             Default.PlayerPunition(Type, 3);
             return;
         }
