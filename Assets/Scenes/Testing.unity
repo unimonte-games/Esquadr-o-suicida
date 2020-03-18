@@ -1206,6 +1206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddb755a9772c4a4ab3e27f5af923410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReWave_Door: 0
+  ReWave: 0
   Normal_Wave: 1
   Normal_MonstersNumbers: 3
   Multiple_Wave: 0
@@ -1276,6 +1278,11 @@ MonoBehaviour:
   DoubleInTheRoom: 0
   FixedInTheRoom: 0
   TimerInTheRoom: 0
+  DefaultComplete: 0
+  ColorComplete: 0
+  DoubleComplete: 0
+  TimerComplete: 0
+  FixedComplete: 0
   MissionInTheRoom: 0
   CompleteMissions: 0
 --- !u!114 &1285163623
@@ -1293,7 +1300,7 @@ MonoBehaviour:
   Door: {fileID: 501836132}
   UI_Door: {fileID: 1501785681}
   Ui_Open: {fileID: 439314404}
-  DoorMax: 25
+  DoorMax: 3
   P1_ColorA: 0
   P2_ColorB: 0
   LastChance: 0

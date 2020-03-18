@@ -35,39 +35,44 @@ public class Porta_Color : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (P1_ColorA && P2_ColorB && IsOpen == false)
+
+        if (RoomControl.ColorComplete == false)
         {
-            UI_Door.SetActive(true);
-            LastChance = false;
-
-             timeToAdd+= 0.1f;
-            if (timeToAdd >= 2f)
+            if (P1_ColorA && P2_ColorB && IsOpen == false)
             {
-                timeToAdd = 0;
-                DoorBar++;
-                Ui_Open.fillAmount = DoorBar / DoorMax;
+                UI_Door.SetActive(true);
+                LastChance = false;
 
-                if(DoorBar >= DoorMax)
+                timeToAdd += 0.1f;
+                if (timeToAdd >= 2f)
                 {
-                    IsOpen = true;
-                    Door.SetActive(false);
-                    Debug.Log("Portao Liberado!");
+                    timeToAdd = 0;
+                    DoorBar++;
+                    Ui_Open.fillAmount = DoorBar / DoorMax;
 
-                    RoomControl.CompleteRoom(1);
+                    if (DoorBar >= DoorMax)
+                    {
+                        IsOpen = true;
+                        Door.SetActive(false);
+                        Debug.Log("Portao Liberado!");
+
+                        RoomControl.CompleteRoom(1);
+                    }
+
                 }
 
             }
 
-        }
-       
-        if (LastChance)
-        {
-            timeToCancel += 0.1f;
-            if (timeToCancel >= 5f)
+            if (LastChance)
             {
-                timeToCancel = 0;
-                UI_Door.SetActive(false);
+                timeToCancel += 0.1f;
+                if (timeToCancel >= 5f)
+                {
+                    timeToCancel = 0;
+                    UI_Door.SetActive(false);
+                }
             }
+
         }
         
     }

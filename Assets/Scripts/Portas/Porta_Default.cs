@@ -54,12 +54,13 @@ public class Porta_Default : MonoBehaviour
         RoomControl = GetComponent<RoomController>();
         triggerPlayers = GetComponent<BoxCollider>(); //Pegar o Box desse Portao
 
+        StartingWave = false;
     }
 
     void GoToSpawn()
     {
         Debug.Log("Iniciando Wave");
-        StartingWave = false;
+        
         
         if (Orda_Wave == false)
         {
@@ -135,7 +136,7 @@ public class Porta_Default : MonoBehaviour
         {
             if (AtualWave == WaveNumbers)
             {
-                
+
                 AtualWave = 0;
                 WaveNumbers = 0;
                 AtualMonsters = 0;
@@ -148,12 +149,10 @@ public class Porta_Default : MonoBehaviour
                 if (ReWave)
                 {
                     RoomControl.ReWaveContest(ReWave_Door);
+                    return;
                 }
-                else
-                {
-                    RoomControl.CompleteRoom(0);
-                }
-                
+
+                RoomControl.CompleteRoom(0);
                 return;
             }
 
@@ -180,21 +179,24 @@ public class Porta_Default : MonoBehaviour
 
         if (Type == 0)//Perder Ouro
         {
-            Debug.Log("Perderam Ouro");
+            Debug.Log("Perderam Vida");
+            RoomControl.ReWaveContest(ReWave_Door);
         }
 
         if (Type == 1)//Perder Defesa
         {
             Debug.Log("Perderam Defesa");
+            RoomControl.ReWaveContest(ReWave_Door);
         }
 
         if (Type == 2)//Perder Vida
         {
 
-            Debug.Log("Perderam Vida");
+            Debug.Log("Perderam Ouro");
+            RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        if (Type == 3) //Wave Surpresa
+        if (Type >= 3) //Wave Surpresa
         {
            
             Debug.Log("Suprise Wave");
@@ -232,10 +234,13 @@ public class Porta_Default : MonoBehaviour
                 if (Orda_Wave)
                 {
                     InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
+                    
                 }
                 else
                 {
+                   
                     Invoke("GoToSpawn", TimerToSpawn);
+                    
                 }
                
                 

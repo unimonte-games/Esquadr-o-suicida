@@ -37,46 +37,54 @@ public class RoomController : MonoBehaviour
         {
             DefaultComplete = true;
             CompleteMissions++;
+            RoomClean();
+            return;
         }
 
         if (Complete == 1 && DefaultComplete == false)
         {
            ColorComplete = true;
            CompleteMissions++;
+            RoomClean();
+           return;
         }
-        else
+        else if(Complete == 1 && Default)
         {
-            int Type = Random.Range(0, 3);
+            int Type = Random.Range(0, 6); //chance mediana de sair "surprise wave"
             Default.PlayerPunition(Type, 1);
+            return;
+                
         }
 
         if (Complete == 2 && DefaultComplete == false)
         {
            DoubleComplete = true;
            CompleteMissions++;
+           RoomClean();
+           return;
         }
-        else
+        else if (Complete == 2 && Default)
         {
-            int Type = Random.Range(0, 3);
+            int Type = Random.Range(0, 4); //chance pequena de sair "Surprise wave"
             Default.PlayerPunition(Type, 2);
+            return;
         }
 
         if (Complete == 3 && DefaultComplete == false)
         {
             TimerComplete = true;
             CompleteMissions++;
+            RoomClean();
+            return;
         }
-        else
+        else if (Complete == 3 && Default)
         {
-            int Type = Random.Range(0, 3);
+            int Type = Random.Range(0, 8); //chance maior de sair "surprise wave"
             Default.PlayerPunition(Type, 3);
+            return;
         }
 
 
-        if (CompleteMissions == MissionInTheRoom)
-        {
-            Debug.Log("Room Clean!");
-        }
 
     }
 
@@ -104,7 +112,18 @@ public class RoomController : MonoBehaviour
             CompleteMissions++;
         }
 
-        
+        RoomClean();
+
+    }
+
+
+    void RoomClean()
+    {
+
+        if (CompleteMissions == MissionInTheRoom)
+        {
+            Debug.Log("Room Clean!");
+        }
     }
 
     
