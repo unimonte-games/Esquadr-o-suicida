@@ -4,16 +4,70 @@ using UnityEngine;
 
 public class FpsWalk : MonoBehaviour
 {
-    public float moveSpeed = 6f;
-    // Use this for initialization
- 
 
-    // Update is called once per frame
+    public float speed = 20f;
+    Player P;
+
+    bool PlayerController;
+
+    private void Start()
+    {
+        P = GetComponent<Player>();
+        PlayerController = P.PlayerType;
+    }
+   
     void Update()
     {
-        //Moves Forward and back along z axis                           //Up/Down
-        transform.Translate(Vector3.forward * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
-        //Moves Left and right along x Axis                               //Left/Right
-        transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
+
+        if (PlayerController) //Player1
+        {
+
+            Vector3 pos = transform.position;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                pos.z += speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                pos.z -= speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                pos.x += speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                pos.x -= speed * Time.deltaTime;
+            }
+
+            transform.position = pos;
+
+        }
+        else //Player2
+        {
+            Vector3 pos = transform.position;
+
+            if (Input.GetKey("w"))
+            {
+                pos.z += speed * Time.deltaTime;
+            }
+            if (Input.GetKey("s"))
+            {
+                pos.z -= speed * Time.deltaTime;
+            }
+            if (Input.GetKey("d"))
+            {
+                pos.x += speed * Time.deltaTime;
+            }
+            if (Input.GetKey("a"))
+            {
+                pos.x -= speed * Time.deltaTime;
+            }
+
+
+            transform.position = pos;
+        }
+        
     }
 }
