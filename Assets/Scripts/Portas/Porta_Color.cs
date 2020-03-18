@@ -22,7 +22,6 @@ public class Porta_Color : MonoBehaviour
     float timeToAdd, timeToCancel;
 
     
-
     void Start()
     {
 
@@ -54,7 +53,7 @@ public class Porta_Color : MonoBehaviour
                     Door.SetActive(false);
                     Debug.Log("Portao Liberado!");
 
-                    RoomControl.CompleteRoom();
+                    RoomControl.CompleteRoom(1);
                 }
 
             }

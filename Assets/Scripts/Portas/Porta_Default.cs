@@ -11,7 +11,13 @@ public class Porta_Default : MonoBehaviour
     RoomController RoomControl; //referencia de missao
     BoxCollider triggerPlayers; //BoxCollider do Puzzle
     bool StartingWave; //Colidir pra iniciar a wave
+    bool CountPlayerTrigger1, CountPlayerTrigger2;
+    Player player1;
+    Player player2;
+    public int ReWave_Door;
+    public bool ReWave;
 
+    
     public bool Normal_Wave; //Selecionar a wave NORMAL
     [Range(1, 10)]
     public int Normal_MonstersNumbers; //Inimigos que vao spawnar
@@ -33,7 +39,6 @@ public class Porta_Default : MonoBehaviour
     public float Orda_RepeatWave; //Quantas vezes os blocos vao ser spanwnados 
     public float Orda_TimeToSpawn = 3; //Tempo do proximo bloco de inimigos
 
-
     public float TimerToSpawn = 2; //Tempo para iniciar a waves
     public float WaveNumbers; //Quantidade de Waves
     public int AtualWave; //WaveAtual do jogador
@@ -51,12 +56,12 @@ public class Porta_Default : MonoBehaviour
 
     }
 
-
     void GoToSpawn()
     {
         Debug.Log("Iniciando Wave");
-
-        if(Orda_Wave == false)
+        StartingWave = false;
+        
+        if (Orda_Wave == false)
         {
             AtualMonsters = 0;
             MonstersDestroy = 0;
@@ -124,8 +129,6 @@ public class Porta_Default : MonoBehaviour
   
     }
 
- 
-
     public void WaveUpdate()
     {
         if (AtualMonsters == MonstersDestroy)
@@ -142,7 +145,15 @@ public class Porta_Default : MonoBehaviour
                 Debug.Log("Complete Waves");
                 CancelInvoke();
 
-                RoomControl.CompleteRoom();
+                if (ReWave)
+                {
+                    RoomControl.ReWaveContest(ReWave_Door);
+                }
+                else
+                {
+                    RoomControl.CompleteRoom(0);
+                }
+                
                 return;
             }
 
@@ -162,15 +173,61 @@ public class Porta_Default : MonoBehaviour
         GoToSpawn();
     }
 
+    public void PlayerPunition(int Type, int TypeDoor)
+    {
+        ReWave = true;
+        ReWave_Door = TypeDoor;
+
+        if (Type == 0)//Perder Ouro
+        {
+            Debug.Log("Perderam Ouro");
+        }
+
+        if (Type == 1)//Perder Defesa
+        {
+            Debug.Log("Perderam Defesa");
+        }
+
+        if (Type == 2)//Perder Vida
+        {
+
+            Debug.Log("Perderam Vida");
+        }
+
+        if (Type == 3) //Wave Surpresa
+        {
+           
+            Debug.Log("Suprise Wave");
+            AtualMonsters = 0;
+            MonstersDestroy = 0;
+            WaveNumbers = 1;
+
+            int RandomReWaveMonsters = Random.Range(3, 7);
+            MonstersNumbers = RandomReWaveMonsters;
+
+            for (int i = 0; i < MonstersNumbers; i++)
+            {
+                int randomLocal = Random.Range(0, 9);
+                int randomMonster = Random.Range(0, 9);
+
+                GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], LocalSpawn[randomLocal].transform.position, LocalSpawn[randomLocal].transform.rotation);
+                Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
+
+                AtualMonsters++;
+
+            }
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            StartingWave = true;
-            if (StartingWave)
+            
+            if (StartingWave == false)
             {
-                StartingWave = false;
-                triggerPlayers.enabled = false;
+                StartingWave = true;
 
                 if (Orda_Wave)
                 {
@@ -182,6 +239,32 @@ public class Porta_Default : MonoBehaviour
                 }
                
                 
+            }
+        }
+
+        if(other.gameObject.name == "Player1")
+        {
+            CountPlayerTrigger1 = true;
+            player1 = other.GetComponent<Player>();
+
+            if (CountPlayerTrigger1 && CountPlayerTrigger2)
+            {
+                triggerPlayers.enabled = false;
+
+            }
+
+        }
+
+
+        if (other.gameObject.name == "Player2")
+        {
+            CountPlayerTrigger2 = true;
+            player2 = other.GetComponent<Player>();
+
+            if (CountPlayerTrigger1 && CountPlayerTrigger2)
+            {
+                triggerPlayers.enabled = false;
+
             }
 
         }

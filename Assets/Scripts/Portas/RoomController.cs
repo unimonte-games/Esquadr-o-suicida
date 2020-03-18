@@ -14,6 +14,8 @@ public class RoomController : MonoBehaviour
     Porta_Timer Timer;
 
     public bool ColorInTheRoom, DoubleInTheRoom, FixedInTheRoom, TimerInTheRoom;
+    public bool DefaultComplete, ColorComplete, DoubleComplete, TimerComplete;
+    public int FixedComplete;
 
     public int MissionInTheRoom;
     public int CompleteMissions;
@@ -24,19 +26,85 @@ public class RoomController : MonoBehaviour
 
         if (ColorInTheRoom){Color = GetComponent<Porta_Color>(); MissionInTheRoom++; }
         if (DoubleInTheRoom){Double = GetComponent<Porta_Double>(); MissionInTheRoom++; }
-        if (FixedInTheRoom){Fixed = GetComponent<Porta_Fixed>(); MissionInTheRoom++; }
+        if (FixedInTheRoom){Fixed = GetComponent<Porta_Fixed>(); }
         if (TimerInTheRoom){Timer = GetComponent<Porta_Timer>(); MissionInTheRoom++; }
 
     }
 
-    public void CompleteRoom()
+    public void CompleteRoom(int Complete)
     {
-        CompleteMissions++;
-        if(CompleteMissions == MissionInTheRoom)
+        if(Complete == 0)
+        {
+            DefaultComplete = true;
+            CompleteMissions++;
+        }
+
+        if (Complete == 1 && DefaultComplete == false)
+        {
+           ColorComplete = true;
+           CompleteMissions++;
+        }
+        else
+        {
+            int Type = Random.Range(0, 3);
+            Default.PlayerPunition(Type, 1);
+        }
+
+        if (Complete == 2 && DefaultComplete == false)
+        {
+           DoubleComplete = true;
+           CompleteMissions++;
+        }
+        else
+        {
+            int Type = Random.Range(0, 3);
+            Default.PlayerPunition(Type, 2);
+        }
+
+        if (Complete == 3 && DefaultComplete == false)
+        {
+            TimerComplete = true;
+            CompleteMissions++;
+        }
+        else
+        {
+            int Type = Random.Range(0, 3);
+            Default.PlayerPunition(Type, 3);
+        }
+
+
+        if (CompleteMissions == MissionInTheRoom)
         {
             Debug.Log("Room Clean!");
         }
 
+    }
+
+    public void ReWaveContest(int complete)
+    {
+        Default.ReWave = false;
+
+        if (complete == 1)
+        {
+            ColorComplete = true;
+            CompleteMissions++;
+        }
+
+
+        if (complete == 2)
+        {
+            DoubleComplete = true;
+            CompleteMissions++;
+        }
+
+
+        if (complete == 3)
+        {
+            TimerComplete = true;
+            CompleteMissions++;
+        }
+
+        
     }
 
     
