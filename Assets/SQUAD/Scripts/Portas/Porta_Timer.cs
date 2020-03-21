@@ -36,7 +36,7 @@ public class Porta_Timer : MonoBehaviour
                 UI_Door.SetActive(true);
                 LastChance = false;
 
-                timeToAdd += 0.1f;
+                timeToAdd += 0.01f;
                 if (timeToAdd >= 2f)
                 {
                     timeToAdd = 0;
@@ -58,8 +58,8 @@ public class Porta_Timer : MonoBehaviour
 
             if (LastChance)
             {
-                timeToCancel += 0.1f;
-                if (timeToCancel >= 1f)
+                timeToCancel += 0.01f;
+                if (timeToCancel >= 2f)
                 {
                     DoorBar = 0;
                     UI_Door.SetActive(false);

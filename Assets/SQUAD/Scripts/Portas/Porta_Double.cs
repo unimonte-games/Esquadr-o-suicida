@@ -38,7 +38,7 @@ public class Porta_Double : MonoBehaviour
                 UI_Door.SetActive(true);
                 LastChance = false;
 
-                timeToAdd += 0.1f;
+                timeToAdd += 0.01f;
                 if (timeToAdd >= 2f)
                 {
                     timeToAdd = 0;
@@ -60,8 +60,8 @@ public class Porta_Double : MonoBehaviour
 
             if (LastChance)
             {
-                timeToCancel += 0.1f;
-                if (timeToCancel >= 5f)
+                timeToCancel += 0.01f;
+                if (timeToCancel >= 2f)
                 {
                     timeToCancel = 0;
                     UI_Door.SetActive(false);
