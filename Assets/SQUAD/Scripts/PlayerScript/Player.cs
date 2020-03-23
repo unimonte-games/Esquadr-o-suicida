@@ -12,11 +12,16 @@ public class Player : MonoBehaviour
     public float ManaBar = 100f; //Energia do jogador para usar as armas
     public float DefeseBar = 100f; //Defesa do jogador
    
-    public int Keys_Quantidade; //Maximo 3
+    public int Keys_Quantidade; //Maximo 2
 
+    //Nao somem com o tempo. 
+    //A Boss Final ficará pra smp na cena.
+    //A key Door depois de um tempo, cria raizes para voce ativar e passar por uma wave para obter novamente.
+    
     public bool KeyFinal; //Serve para abrir a porta do BOSS 
     public int KeysDoor; //Serve para desbloquear Portas 
 
+    //Todos que forem discartados sumiram depois de um tempo.
     public int KeyTheasure; //Serve para abrir qualquer Báu [Qualquer Coisa pode vir] [Apenas 1]
     public int KeyMedicKit; //Serve para Abrir Kits de Medico [Kits Medicos - Vida, defesa, mana ou coracao]
     public int KeyWeaponTech; //Serve para abrir as Caixas Tecnologicas especiais [Weapons Especiais]
