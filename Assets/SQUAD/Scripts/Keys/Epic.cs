@@ -12,13 +12,10 @@ public class Epic : MonoBehaviour
     public bool Key;
 
     public int MaxListDrop;
-    public int NumberItems;
     public int ListNumberToDrop;
-
     public GameObject[] ListToDrop1;
     public GameObject[] ListToDrop2;
     public Transform[] SpawnToDrop;
- 
 
 
     private void FixedUpdate()
@@ -28,10 +25,13 @@ public class Epic : MonoBehaviour
         {
             if (Key)
             {
-                if (P.Keys_Quantidade >= KeysToOpen)
+                if (P.Keys_Quantidade >= KeysToOpen && P.KeyEpic >= KeysToOpen)
                 {
                     P.Keys_Quantidade -= KeysToOpen;
+                    P.KeyEpic -= KeysToOpen;
                     Atived = true;
+
+
                     Debug.Log("Abriu com Key.");
 
                     DropItem();
@@ -56,9 +56,10 @@ public class Epic : MonoBehaviour
         {
             if (Key)
             {
-                if (P.Keys_Quantidade >= KeysToOpen)
+                if (P.Keys_Quantidade >= KeysToOpen && P.KeyEpic >= KeysToOpen)
                 {
                     P.Keys_Quantidade -= KeysToOpen;
+                    P.KeyEpic -= KeysToOpen;
                     Atived = true;
                     Debug.Log("Abriu com Key.");
 
@@ -83,12 +84,9 @@ public class Epic : MonoBehaviour
 
     void DropItem()
     {
-
         ListNumberToDrop = Random.Range(0, MaxListDrop);
         Instantiate(ListToDrop1[ListNumberToDrop], SpawnToDrop[0].position, SpawnToDrop[0].rotation);
-        ListNumberToDrop = Random.Range(0, MaxListDrop);
         Instantiate(ListToDrop2[ListNumberToDrop], SpawnToDrop[1].position, SpawnToDrop[1].rotation);
-
     }
 
 
@@ -126,6 +124,7 @@ public class Epic : MonoBehaviour
             Player2 = false;
         }
     }
+
 
 }
 

@@ -11,9 +11,10 @@ public class KeyFinal : MonoBehaviour
             Player P;
             P = other.GetComponent<Player>();
 
-            if (!P.KeyFinal)
+            if (!P.KeyFinal && P.Keys_Quantidade < 3)
             {
                 P.KeyFinal = true;
+                P.Keys_Quantidade++;
                 Destroy(gameObject);
             }
         }
@@ -23,9 +24,10 @@ public class KeyFinal : MonoBehaviour
             Player P;
             P = other.GetComponent<Player>();
 
-            if (!P.KeyFinal)
+            if (!P.KeyFinal && P.Keys_Quantidade < 3)
             {
                 P.KeyFinal = true;
+                P.Keys_Quantidade++;
                 Destroy(gameObject);
             }
 
