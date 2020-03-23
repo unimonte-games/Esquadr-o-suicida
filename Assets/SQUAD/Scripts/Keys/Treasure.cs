@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Theasure : MonoBehaviour
+public class Treasure : MonoBehaviour
 {
     Player P;
     bool Player1, Player2, Atived;
@@ -24,10 +24,10 @@ public class Theasure : MonoBehaviour
         {
             if (Key)
             {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTheasure >= KeysToOpen)
+                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTreasure >= KeysToOpen)
                 {
                     P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyTheasure -= KeysToOpen;
+                    P.KeyTreasure -= KeysToOpen;
                     Atived = true;
 
                    
@@ -55,10 +55,10 @@ public class Theasure : MonoBehaviour
         {
             if (Key)
             {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTheasure >= KeysToOpen)
+                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTreasure >= KeysToOpen)
                 {
                     P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyTheasure -= KeysToOpen;
+                    P.KeyTreasure -= KeysToOpen;
                     Atived = true;
                     Debug.Log("Abriu com Key.");
 

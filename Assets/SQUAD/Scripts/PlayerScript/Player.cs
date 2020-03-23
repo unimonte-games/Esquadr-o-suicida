@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public int KeysDoor; //Serve para desbloquear Portas 
 
     //Todos que forem discartados sumiram depois de um tempo.
-    public int KeyTheasure; //Serve para abrir qualquer Báu [Qualquer Coisa pode vir] [Apenas 1]
+    public int KeyTreasure; //Serve para abrir qualquer Báu [Qualquer Coisa pode vir] [Apenas 1]
     public int KeyMedicKit; //Serve para Abrir Kits de Medico [Kits Medicos - Vida, defesa, mana ou coracao]
     public int KeyWeaponTech; //Serve para abrir as Caixas Tecnologicas especiais [Weapons Especiais]
     public int KeyEpic; //Serve para para abrir Bau Lendario (ROXO) [Baus Especial - 2 Items]
