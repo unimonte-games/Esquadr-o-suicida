@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class CardWeapon : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        if (other.gameObject.name == "Player1")
+        {
+            Player P;
+            P = other.GetComponent<Player>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (P.Keys_Quantidade < 3)
+            {
+                P.Keys_Quantidade++;
+                P.KeyWeaponTech++;
+                Destroy(gameObject);
+            }
+        }
+
+        if (other.gameObject.name == "Player2")
+        {
+            Player P;
+            P = other.GetComponent<Player>();
+
+            if (P.Keys_Quantidade < 3)
+            {
+                P.Keys_Quantidade++;
+                P.KeyWeaponTech++;
+                Destroy(gameObject);
+            }
+
+        }
     }
 }

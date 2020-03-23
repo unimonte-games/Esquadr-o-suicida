@@ -28,7 +28,7 @@ public class WeaponKit : MonoBehaviour
                 Atived = true;
 
 
-                Debug.Log("Abriu Medic Kit.");
+                Debug.Log("Abriu Weapon Kit.");
 
                 DropItem();
 
@@ -44,7 +44,7 @@ public class WeaponKit : MonoBehaviour
                 P.Keys_Quantidade -= KeysToOpen;
                 P.KeyWeaponTech -= KeysToOpen;
                 Atived = true;
-                Debug.Log("Abriu Medic Kit.");
+                Debug.Log("Abriu Weapon Kit.");
 
                 DropItem();
 
