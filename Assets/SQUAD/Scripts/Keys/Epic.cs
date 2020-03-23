@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Theasure : MonoBehaviour
+public class Epic : MonoBehaviour
 {
     Player P;
     bool Player1, Player2, Atived;
@@ -12,9 +12,13 @@ public class Theasure : MonoBehaviour
     public bool Key;
 
     public int MaxListDrop;
+    public int NumberItems;
     public int ListNumberToDrop;
-    public GameObject[] ListToDrop;
-    public Transform SpawnToDrop;
+
+    public GameObject[] ListToDrop1;
+    public GameObject[] ListToDrop2;
+    public Transform[] SpawnToDrop;
+ 
 
 
     private void FixedUpdate()
@@ -24,17 +28,14 @@ public class Theasure : MonoBehaviour
         {
             if (Key)
             {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTheasure >= KeysToOpen)
+                if (P.Keys_Quantidade >= KeysToOpen)
                 {
                     P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyTheasure -= KeysToOpen;
                     Atived = true;
-
-                   
                     Debug.Log("Abriu com Key.");
 
                     DropItem();
-                   
+
                 }
                 return;
             }
@@ -55,15 +56,14 @@ public class Theasure : MonoBehaviour
         {
             if (Key)
             {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTheasure >= KeysToOpen)
+                if (P.Keys_Quantidade >= KeysToOpen)
                 {
                     P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyTheasure -= KeysToOpen;
                     Atived = true;
                     Debug.Log("Abriu com Key.");
 
                     DropItem();
-                   
+
                 }
                 return;
             }
@@ -71,7 +71,7 @@ public class Theasure : MonoBehaviour
 
             if (P.Gold >= GoldToOpen)
             {
-                P.Gold -= GoldToOpen;                
+                P.Gold -= GoldToOpen;
                 Atived = true;
                 Debug.Log("Abriu com Ouro.");
 
@@ -83,8 +83,12 @@ public class Theasure : MonoBehaviour
 
     void DropItem()
     {
+
         ListNumberToDrop = Random.Range(0, MaxListDrop);
-        Instantiate(ListToDrop[ListNumberToDrop], SpawnToDrop.position, SpawnToDrop.rotation);
+        Instantiate(ListToDrop1[ListNumberToDrop], SpawnToDrop[0].position, SpawnToDrop[0].rotation);
+        ListNumberToDrop = Random.Range(0, MaxListDrop);
+        Instantiate(ListToDrop2[ListNumberToDrop], SpawnToDrop[1].position, SpawnToDrop[1].rotation);
+
     }
 
 
@@ -92,7 +96,7 @@ public class Theasure : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player1" && !Player2)
-        {  
+        {
             P = other.GetComponent<Player>();
 
             Player1 = true;
@@ -114,14 +118,14 @@ public class Theasure : MonoBehaviour
         if (other.gameObject.name == "Player1")
         {
             Player1 = false;
-            
+
         }
 
         if (other.gameObject.name == "Player2")
         {
-            Player2 = false;        
+            Player2 = false;
         }
     }
 
 }
-    
+

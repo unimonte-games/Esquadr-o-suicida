@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float ManaBar = 100f; //Energia do jogador para usar as armas
     public float DefeseBar = 100f; //Defesa do jogador
    
-    public int Keys_Quantidade; //Maximo 2
+    public int Keys_Quantidade; //Maximo 3
 
     //Nao somem com o tempo. 
     //A Boss Final ficará pra smp na cena.

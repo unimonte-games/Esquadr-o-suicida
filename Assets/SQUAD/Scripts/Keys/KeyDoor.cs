@@ -12,9 +12,10 @@ public class KeyDoor : MonoBehaviour
             Player P;
             P = other.GetComponent<Player>();
 
-            if (P.Keys_Quantidade < 2)
+            if (P.Keys_Quantidade < 3)
             {
                 P.Keys_Quantidade++;
+                P.KeysDoor++;
                 Destroy(gameObject);
             }
         }
@@ -24,9 +25,10 @@ public class KeyDoor : MonoBehaviour
             Player P;
             P = other.GetComponent<Player>();
 
-            if (P.Keys_Quantidade < 2)
+            if (P.Keys_Quantidade < 3)
             {
                 P.Keys_Quantidade++;
+                P.KeysDoor++;
                 Destroy(gameObject);
             }
 
