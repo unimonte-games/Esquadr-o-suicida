@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
    
     public int Keys_Quantidade; //Maximo 3
 
-    public int KeyFinal; //Serve para abrir a porta do BOSS 
+    public bool KeyFinal; //Serve para abrir a porta do BOSS 
     public int KeysDoor; //Serve para desbloquear Portas 
 
     public int KeyTheasure; //Serve para abrir qualquer Báu [Qualquer Coisa pode vir] [Apenas 1]
