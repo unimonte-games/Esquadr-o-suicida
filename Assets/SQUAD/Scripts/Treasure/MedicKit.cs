@@ -57,7 +57,7 @@ public class MedicKit : MonoBehaviour
     void DropItem()
     {
         QtdNumbersDrop = Random.Range(1, 3);
-        for (int i = 1; i < QtdNumbersDrop; i++)
+        for (int i = 1; i == QtdNumbersDrop; i++)
         {
             ListNumberToDrop = Random.Range(0, MaxListDrop);
             Instantiate(ListToDrop[ListNumberToDrop], SpawnToDrop[i].position, SpawnToDrop[i].rotation);
