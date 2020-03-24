@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GroundController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GroundController G;
+    public TypeGroundList TypeGroundList;
+    
+    public int TypeRoom;
+    public GameObject GroundPrefab;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        TypeGroundList = FindObjectOfType<TypeGroundList>();
+        TypeGroundList.GroundRandom(G, TypeRoom);
     }
 }
