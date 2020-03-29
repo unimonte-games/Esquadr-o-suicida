@@ -24,14 +24,14 @@ pessoas continuam vivendo por lá normalmente, tudo fica mais insano depois de d
 - Fase 1
 - [x]  Sprint 1 : Ideias Gerais e Gerenciamento de Funçoes.
 - [x]  Sprint 2 : Fluxograma dos Conceitos Principais.
-- [x]  Sprint 3 : Concepts, Roteiro, Programãçao de Gameplay.
+- [x]  Sprint 3 : Concepts V1, Roteiro, Programãçao de Gameplay.
 - [x]  Sprint 4 : Modelagem de Ambiente I e Programação de Gameplay II.
-- [x]  Sprint 5 : Concepts Finais, Modelagem de Ambiente II e Programação de Gameplay III
+- [x]  Sprint 5 : Concepts V2, Modelagem de Ambiente II e Programação de Gameplay III
 - [x] Reuniao Geral 
 
 - Fase 2
-- [x] Sprint 6 : Game Design (Ambiente, Programação e Organização), Ilustração 1 e 2 e Enemy 1
-- [ ] Sprint 7 : Game Design, Software de Som, Level Editor, Itens Concept e Enemy 2 e 3
+- [x] Sprint 6 : Game Design (Ambiente, Programação e Organização), Ilustração, Itens concept, Level Concept e Lista Extra.
+- [ ] Sprint 7 : Game Design, Itens Concept 2, Soundtrack, Enemy Model, Animation, Concepts V3 e Pesquisa.
 - [ ] Sprint 8 : Level Editor, Som, Itens List 1, Wiki, Interface, Texturização e Enemy 4 e 5
 - [ ] Sprint 9 : Level Create, Character 1 e 2, Som, Itens List 2, Testes de Controle, Enemy Animação 1 e 2
 - [ ] Sprint 10 : Game Testing, Balanceamento, Menu e Transições, Character Animation.
