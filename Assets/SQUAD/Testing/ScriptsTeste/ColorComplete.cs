@@ -22,7 +22,7 @@ public class ColorComplete : MonoBehaviour
     public void Update()
     {
         EnemyDestroy.text = ""+PD.MonstersDestroy;
-        EnemyInRoom.text = ""+PD.MonstersNumbers;
+        EnemyInRoom.text = ""+PD.AtualMonsters;
         AtualWave.text = "" + PD.AtualWave;
         MaxWave.text = "" + PD.WaveNumbers;
 
