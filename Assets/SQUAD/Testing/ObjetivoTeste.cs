@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjetivoTeste : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class ObjetivoTeste : MonoBehaviour
         {
             if(Player1 && Player2)
             {
+                SceneManager.LoadScene(0);
                 Debug.Log("Complete");
             }
         }

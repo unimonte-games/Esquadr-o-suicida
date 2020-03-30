@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FpsWalk : MonoBehaviour
 {
@@ -18,8 +19,12 @@ public class FpsWalk : MonoBehaviour
    
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
 
-        if (PlayerController) //Player1
+        if (!PlayerController) //Player2
         {
 
             Vector3 pos = transform.position;
@@ -44,7 +49,7 @@ public class FpsWalk : MonoBehaviour
             transform.position = pos;
 
         }
-        else //Player2
+        else //Player1
         {
             Vector3 pos = transform.position;
 
