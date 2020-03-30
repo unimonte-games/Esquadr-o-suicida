@@ -2298,6 +2298,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -9.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3580474706642048810, guid: 8852d5b2c125d0e4e99894279021a0c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580963652830634779, guid: 8852d5b2c125d0e4e99894279021a0c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581430710430754114, guid: 8852d5b2c125d0e4e99894279021a0c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3581806619147649536, guid: 8852d5b2c125d0e4e99894279021a0c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2373,7 +2388,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapaTeste
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3581806619147649537, guid: 8852d5b2c125d0e4e99894279021a0c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581806619897838558, guid: 8852d5b2c125d0e4e99894279021a0c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1921896129520399179, guid: 8852d5b2c125d0e4e99894279021a0c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8852d5b2c125d0e4e99894279021a0c0, type: 3}
 --- !u!1001 &590699355
 PrefabInstance:
@@ -5382,6 +5408,7 @@ GameObject:
   - component: {fileID: 1390149117}
   - component: {fileID: 1390149116}
   - component: {fileID: 1390149120}
+  - component: {fileID: 1390149121}
   m_Layer: 0
   m_Name: GroundController
   m_TagString: Untagged
@@ -5480,6 +5507,22 @@ MonoBehaviour:
   TypeGroundList: {fileID: 0}
   TypeRoom: 1
   GroundPrefab: {fileID: 0}
+--- !u!54 &1390149121
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390149115}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1410828042
 GameObject:
   m_ObjectHideFlags: 0
@@ -6008,6 +6051,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517662257}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1523904709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1523904710}
+  m_Layer: 0
+  m_Name: SceneTransformList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1523904710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523904709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1881137189}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1538910392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6079,8 +6152,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545293139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.46, y: 4.3, z: 0.32}
-  m_LocalScale: {x: 55.798115, y: 2.6248927, z: 35.136448}
+  m_LocalPosition: {x: 0.02, y: 4.3, z: -0.48}
+  m_LocalScale: {x: 18.068443, y: 2.6248927, z: 29.969536}
   m_Children: []
   m_Father: {fileID: 1881137189}
   m_RootOrder: 0
@@ -6092,9 +6165,9 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545293139}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -6863,6 +6936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1545293140}
+  - {fileID: 1523904710}
   m_Father: {fileID: 1410828043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6881,7 +6955,110 @@ MonoBehaviour:
   SpawnPrefab: {fileID: 2067175085787203941, guid: 4afa1d39d8ec05d4ebe857151799b47b,
     type: 3}
   RoomSize: {fileID: 1545293140}
-  Qtd: 5
+  ListSpawn:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SceneTransformList: {fileID: 1523904710}
+  Qtd: 100
+  Acionados: 0
 --- !u!1 &1881328137
 GameObject:
   m_ObjectHideFlags: 0

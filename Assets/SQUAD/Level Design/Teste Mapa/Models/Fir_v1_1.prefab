@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 4388997623891732}
   - component: {fileID: 33534431136202524}
   - component: {fileID: 23134709894866198}
-  m_Layer: 0
+  - component: {fileID: 8712334465159906170}
+  - component: {fileID: 6572602684628827186}
+  - component: {fileID: 4533610697969345142}
+  m_Layer: 8
   m_Name: Fir_v1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,3 +81,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8712334465159906170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483114160548464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5456505, y: 5.20688, z: 3.5506442}
+  m_Center: {x: -0.00000011920929, y: 2.5841138, z: -0.00000023841858}
+--- !u!65 &6572602684628827186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483114160548464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 5.20688, z: 1.5}
+  m_Center: {x: -0.00000011920929, y: 2.5841138, z: -0.00000023841858}
+--- !u!54 &4533610697969345142
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483114160548464}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

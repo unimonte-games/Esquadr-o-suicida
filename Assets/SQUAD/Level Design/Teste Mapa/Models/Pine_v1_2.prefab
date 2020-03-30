@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 4934219150772252}
   - component: {fileID: 33762945485787438}
   - component: {fileID: 23386149888012990}
-  m_Layer: 0
+  - component: {fileID: 4913188872135263163}
+  - component: {fileID: 7881970239902604306}
+  - component: {fileID: 2883641654886116177}
+  m_Layer: 8
   m_Name: Pine_v1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,3 +81,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4913188872135263163
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323533898846632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.0825267, y: 8.42719, z: 5.1245313}
+  m_Center: {x: 0, y: 4.1942697, z: 0}
+--- !u!65 &7881970239902604306
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323533898846632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 8.42719, z: 2}
+  m_Center: {x: 0, y: 4.1942697, z: 0}
+--- !u!54 &2883641654886116177
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323533898846632}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
