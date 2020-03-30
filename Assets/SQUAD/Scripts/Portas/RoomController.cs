@@ -12,6 +12,7 @@ public class RoomController : MonoBehaviour
     Porta_Double Double;
     Porta_Fixed Fixed;
     Porta_Timer Timer;
+    
 
     public bool ColorInTheRoom, DoubleInTheRoom, FixedInTheRoom, TimerInTheRoom;
     public bool DefaultComplete, ColorComplete, DoubleComplete, TimerComplete;
@@ -122,6 +123,7 @@ public class RoomController : MonoBehaviour
 
         if (CompleteMissions == MissionInTheRoom)
         {
+           
             Debug.Log("Room Clean!");
         }
     }
