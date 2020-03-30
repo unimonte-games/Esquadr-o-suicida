@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Complete : MonoBehaviour
 {
     
-   
     public Porta_Default PD;
+    public RoomController RC;
+    public GameObject RoomClean;
     
 
     public Text Count;
@@ -22,5 +23,10 @@ public class Complete : MonoBehaviour
         Defeat.text = "" + PD.MonstersDestroy;
         AtualWave.text = "" + PD.AtualWave;
         WaveNumbers.text = "" + PD.WaveNumbers;
+
+        if (RC.DefaultComplete)
+        {
+            RoomClean.SetActive(true);
+        }
     }
 }

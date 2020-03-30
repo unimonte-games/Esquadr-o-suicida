@@ -13,6 +13,8 @@ public class ObjetivoTeste : MonoBehaviour
     public bool Player1;
     public bool Player2;
 
+    public GameObject RoomClean;
+
     
     
     void Update()
@@ -21,7 +23,7 @@ public class ObjetivoTeste : MonoBehaviour
         {
             if(Player1 && Player2)
             {
-                SceneManager.LoadScene(0);
+                RoomClean.SetActive(true);
                 Debug.Log("Complete");
             }
         }
