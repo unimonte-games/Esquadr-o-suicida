@@ -19,10 +19,6 @@ public class FpsWalk : MonoBehaviour
    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
 
         if (!PlayerController) //Player2
         {
