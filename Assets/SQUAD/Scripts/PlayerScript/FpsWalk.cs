@@ -11,64 +11,58 @@ public class FpsWalk : MonoBehaviour
 
     bool PlayerController;
 
+    KeyCode Up;
+    KeyCode Down;
+    KeyCode Right;
+    KeyCode Left;
+
     private void Start()
     {
         P = GetComponent<Player>();
         PlayerController = P.PlayerType;
+
+        if (PlayerController)
+        {
+            Up = KeyCode.W;
+            Down = KeyCode.S;
+            Right = KeyCode.D;
+            Left = KeyCode.A;
+        }
+        else
+        {
+            Up = KeyCode.UpArrow;
+            Down = KeyCode.DownArrow;
+            Right = KeyCode.RightArrow;
+            Left = KeyCode.LeftArrow;
+        }
     }
-   
+
     void Update()
     {
+        Vector3 pos = transform.position;
 
-        if (!PlayerController) //Player2
+        if (Input.GetKey(Up))
         {
-
-            Vector3 pos = transform.position;
-
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                pos.z += speed * Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                pos.z -= speed * Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                pos.x += speed * Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                pos.x -= speed * Time.deltaTime;
-            }
-
-            transform.position = pos;
-
+            pos.z += speed * Time.deltaTime;
         }
-        else //Player1
+        if (Input.GetKey(Down))
         {
-            Vector3 pos = transform.position;
-
-            if (Input.GetKey("w"))
-            {
-                pos.z += speed * Time.deltaTime;
-            }
-            if (Input.GetKey("s"))
-            {
-                pos.z -= speed * Time.deltaTime;
-            }
-            if (Input.GetKey("d"))
-            {
-                pos.x += speed * Time.deltaTime;
-            }
-            if (Input.GetKey("a"))
-            {
-                pos.x -= speed * Time.deltaTime;
-            }
-
-
-            transform.position = pos;
+            pos.z -= speed * Time.deltaTime;
         }
-        
+        if (Input.GetKey(Right))
+        {
+            pos.x += speed * Time.deltaTime;
+        }
+        if (Input.GetKey(Left))
+        {
+            pos.x -= speed * Time.deltaTime;
+        }
+
+        transform.position = pos;
+
     }
+       
+        
+        
+    
 }

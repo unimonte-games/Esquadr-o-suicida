@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeyDoor : MonoBehaviour
 {
+    public int KeyID;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,8 +15,10 @@ public class KeyDoor : MonoBehaviour
 
             if (P.Keys_Quantidade < 3)
             {
+                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
                 P.Keys_Quantidade++;
                 P.KeysDoor++;
+                
                 Destroy(gameObject);
             }
         }
@@ -27,8 +30,10 @@ public class KeyDoor : MonoBehaviour
 
             if (P.Keys_Quantidade < 3)
             {
+                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
                 P.Keys_Quantidade++;
                 P.KeysDoor++;
+
                 Destroy(gameObject);
             }
 

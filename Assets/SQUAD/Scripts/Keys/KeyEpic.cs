@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KeyEpic : MonoBehaviour
 {
+    public int KeyID;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player1")
@@ -13,6 +15,7 @@ public class KeyEpic : MonoBehaviour
 
             if (P.Keys_Quantidade < 3)
             {
+                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
                 P.Keys_Quantidade++;
                 P.KeyEpic++;
                 Destroy(gameObject);
@@ -26,6 +29,7 @@ public class KeyEpic : MonoBehaviour
 
             if (P.Keys_Quantidade < 3)
             {
+                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
                 P.Keys_Quantidade++;
                 P.KeyEpic++;
                 Destroy(gameObject);
