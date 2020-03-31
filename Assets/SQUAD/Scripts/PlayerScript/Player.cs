@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
     public GameObject[] KeyList;
     public GameObject[] Key;
-    public GameObject[] KeyInterface;
+    public GameObject KeyInterface;
     public GameObject[] KeyInterface_Selection;
 
     public int SelectCount = 0;
@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
 
     KeyCode Selecionar_set;
     KeyCode Dropar_set;
+
+    float CountToDisable;
+    bool Disabled;
 
     private void Start()
     {
@@ -61,37 +64,60 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-
-            if (Input.GetKeyDown(Selecionar_set)) //Passar pro lado
+        if (Disabled)
+        {
+            CountToDisable += 0.1f;
+            if(CountToDisable >= 2f)
             {
+                
+                KeyInterface.SetActive(false);
                 KeyInterface_Selection[BeforeNumber].SetActive(false);
+                KeyInterface_Selection[SelectCount].SetActive(false);
 
-                if (!SelectKey)
-                {
-                   
-                    BeforeNumber = SelectCount;
-                    SelectCount++;
-                    SelectKey = true;
-                    return;
-                }
+                SelectCount = 0;
+                BeforeNumber = Keys_Quantidade;
 
-                if (SelectKey)
-                {
-                    KeyInterface_Selection[SelectCount].SetActive(true);
-                    BeforeNumber = SelectCount;
-                    SelectCount++;
-                   
-                    if (SelectCount > Keys_Quantidade)
-                    {
-                        BeforeNumber = Keys_Quantidade;
-                        SelectCount = 0;
-                        
-                        SelectKey = false; 
-                    }
-                    return;
-                }
-               
+                CountToDisable = 0;
+                Disabled = false;
             }
+            
+        }
+
+        if (Input.GetKeyDown(Selecionar_set)) //Passar pro lado
+        {
+            CountToDisable = 0;
+            Disabled = true;
+
+            KeyInterface_Selection[BeforeNumber].SetActive(false);
+            KeyInterface.SetActive(true);
+
+            if (!SelectKey)
+            {
+
+                BeforeNumber = SelectCount;
+                SelectCount++;
+                SelectKey = true;
+                return;
+            }
+
+            if (SelectKey)
+            {
+
+                KeyInterface_Selection[SelectCount].SetActive(true);
+                BeforeNumber = SelectCount;
+                SelectCount++;
+
+                if (SelectCount > Keys_Quantidade)
+                {
+                    BeforeNumber = Keys_Quantidade;
+                    SelectCount = 0;
+
+                    SelectKey = false;
+                }
+                return;
+            }
+
+        }
 
         
     }
