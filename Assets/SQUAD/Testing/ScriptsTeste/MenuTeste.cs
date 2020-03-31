@@ -5,25 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuTeste : MonoBehaviour
 {
-   public void Moviment()
+
+   public void GoToScene (int valueToScene)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(valueToScene);
     }
 
-    public void Normal()
-    {
-        SceneManager.LoadScene(2);
-    }
-
-    public void Multiple()
-    {
-        SceneManager.LoadScene(3);
-    }
-
-    public void Orda()
-    {
-        SceneManager.LoadScene(4);
-    }
+    
 
 
 }
