@@ -37,15 +37,17 @@ public class Player : MonoBehaviour
     public SpriteRenderer[] KeyUI;
     public Sprite[] KeyUIList;
     
-
     public int SelectCount = 0;
     public int BeforeNumber = 3;
     public bool SelectKey;
     public bool DropKey;
-
+    public GameObject DKC_Prefab;
+    public DropKey DKController;
+    public Transform DropKeySpawn;
 
     KeyCode Selecionar_set;
     KeyCode Dropar_set;
+    public int AtualKey;
 
     float CountToDisable;
     bool Disabled;
@@ -70,64 +72,70 @@ public class Player : MonoBehaviour
         if (Disabled)
         {
             CountToDisable += 0.1f;
-            if(CountToDisable >= 2f)
+            if (CountToDisable >= 2f)
             {
-                
+
                 KeyInterface.SetActive(false);
-                KeyInterface_Selection[BeforeNumber].SetActive(false);
-                KeyInterface_Selection[SelectCount].SetActive(false);
                 
+                KeyInterface_Selection[SelectCount].SetActive(false);
+
                 SelectCount = 0;
                 BeforeNumber = Keys_Quantidade;
 
                 CountToDisable = 0;
                 Disabled = false;
+                DKC_Prefab.SetActive(false);
             }
-            
         }
 
-        if (Input.GetKeyDown(Selecionar_set)&& Keys_Quantidade >= 1) //Passar pro lado
+        if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1) //Passar pro lado
         {
+            DKC_Prefab.SetActive(true);
+
             CountToDisable = 0;
             Disabled = true;
 
-            KeyInterface_Selection[BeforeNumber].SetActive(false);
             KeyInterface.SetActive(true);
+            BeforeNumber = SelectCount;
 
-            if (!SelectKey)
+            if (SelectCount >= Keys_Quantidade)
             {
-
-                BeforeNumber = SelectCount;
-                SelectCount++;
-                SelectKey = true;
+                SelectCount = 0;
+                KeyInterface_Selection[BeforeNumber].SetActive(false);
                 return;
+                
             }
 
-            if (SelectKey)
-            {
+            SelectCount++;
+            KeyInterface_Selection[SelectCount].SetActive(true);
+            KeyInterface_Selection[BeforeNumber].SetActive(false);
 
-                KeyInterface_Selection[SelectCount].SetActive(true);
-                BeforeNumber = SelectCount;
-               
-                SelectCount++;
+            AtualKey = SelectCount - 1;
 
-                if (SelectCount > Keys_Quantidade)
-                {
-                    BeforeNumber = Keys_Quantidade;
-                    SelectCount = 0;
 
-                    SelectKey = false;
-                }
-                return;
-            }
 
         }
 
-        
+        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && SelectCount > 0) //Passar pro lado
+        {
+            
+            for (int i = 0; i <= 3; i++)
+            {
+                if(DKController.C_check[i] != null)
+                {
+                    DropKeySpawn = DKController.C_check[i].transform;
+                    i = 4;
+ 
+                    Instantiate(Key[AtualKey], DropKeySpawn.position, DropKeySpawn.rotation);
+
+                }
+            }
+        }
+
+
     }
 
-  
-  
+
 }
    
 
