@@ -5,36 +5,34 @@ using UnityEngine;
 public class KeyFinal : MonoBehaviour
 {
     public int KeyID;
+    Player P;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Player1")
-        {
-            Player P;
+        {  
             P = other.GetComponent<Player>();
-
-            if (!P.KeyFinal && P.Keys_Quantidade < 3)
-            {
-                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
-                P.KeyFinal = true;
-                P.Keys_Quantidade++;
-                Destroy(gameObject);
-            }
+            SetKey();
         }
 
         if (other.gameObject.name == "Player2")
         {
-            Player P;
             P = other.GetComponent<Player>();
+            SetKey();
+        }
+    }
 
-            if (!P.KeyFinal && P.Keys_Quantidade < 3)
-            {
-                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
-                P.KeyFinal = true;
-                P.Keys_Quantidade++;
-                Destroy(gameObject);
-            }
+    void SetKey()
+    {
+        if (!P.KeyFinal && P.Keys_Quantidade < 3)
+        {
+            P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
 
+            P.KeyFinal = true;
+            P.Keys_Quantidade++;
+
+            P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
+            this.gameObject.SetActive(false);
         }
     }
 }

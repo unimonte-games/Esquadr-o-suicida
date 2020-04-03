@@ -5,36 +5,34 @@ using UnityEngine;
 public class CardWeapon : MonoBehaviour
 {
     public int KeyID;
+    Player P;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player1")
         {
-            Player P;
             P = other.GetComponent<Player>();
-
-            if (P.Keys_Quantidade < 3)
-            {
-                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
-                P.Keys_Quantidade++;
-                P.KeyWeaponTech++;
-                Destroy(gameObject);
-            }
+            SetKey(); 
         }
 
         if (other.gameObject.name == "Player2")
         {
-            Player P;
             P = other.GetComponent<Player>();
+            SetKey();
+        }
+    }
 
-            if (P.Keys_Quantidade < 3)
-            {
-                P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
-                P.Keys_Quantidade++;
-                P.KeyWeaponTech++;
-                Destroy(gameObject);
-            }
+    void SetKey()
+    {
+        if (P.Keys_Quantidade < 3)
+        {
+            P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
 
+            P.Keys_Quantidade++;
+            P.KeyWeaponTech++;
+
+            P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
+            this.gameObject.SetActive(false);
         }
     }
 }

@@ -30,15 +30,19 @@ public class Player : MonoBehaviour
     public int KeyEpic; //Serve para para abrir Bau Lendario (ROXO) [Baus Especial - 2 Items]
     public int KeyLegendary; //Serve para o Bau Lendário (DOURADO) [Bau Especial - 3 Items]
 
-    public GameObject[] KeyList;
-    public GameObject[] Key;
+    public GameObject[] KeyList; //Prefab
+    public GameObject[] Key; //Atual Keys
     public GameObject KeyInterface;
     public GameObject[] KeyInterface_Selection;
+    public SpriteRenderer[] KeyUI;
+    public Sprite[] KeyUIList;
+    
 
     public int SelectCount = 0;
     public int BeforeNumber = 3;
     public bool SelectKey;
     public bool DropKey;
+
 
     KeyCode Selecionar_set;
     KeyCode Dropar_set;
@@ -58,7 +62,6 @@ public class Player : MonoBehaviour
             Selecionar_set = KeyCode.Alpha1;
             Dropar_set = KeyCode.Alpha2;
         }
-        
     }
 
 
@@ -73,7 +76,7 @@ public class Player : MonoBehaviour
                 KeyInterface.SetActive(false);
                 KeyInterface_Selection[BeforeNumber].SetActive(false);
                 KeyInterface_Selection[SelectCount].SetActive(false);
-
+                
                 SelectCount = 0;
                 BeforeNumber = Keys_Quantidade;
 
@@ -83,7 +86,7 @@ public class Player : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(Selecionar_set)) //Passar pro lado
+        if (Input.GetKeyDown(Selecionar_set)&& Keys_Quantidade >= 1) //Passar pro lado
         {
             CountToDisable = 0;
             Disabled = true;
@@ -105,6 +108,7 @@ public class Player : MonoBehaviour
 
                 KeyInterface_Selection[SelectCount].SetActive(true);
                 BeforeNumber = SelectCount;
+               
                 SelectCount++;
 
                 if (SelectCount > Keys_Quantidade)
@@ -122,6 +126,7 @@ public class Player : MonoBehaviour
         
     }
 
+  
   
 }
    
