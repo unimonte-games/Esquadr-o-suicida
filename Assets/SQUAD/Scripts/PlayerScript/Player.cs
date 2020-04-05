@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
     public GameObject[] KeyInterface_Selection;
     public SpriteRenderer[] KeyUI;
     public Sprite[] KeyUIList;
-    
-    public int SelectCount = 0;
-    public int BeforeNumber = 3;
+
+    public int SelectCount;
+    public int BeforeNumber;
     public bool SelectKey;
     public bool DropKey;
     public Transform DropKeySpawn;
@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     public GameObject[] ListReOrganize;
     public Sprite[] ListReOrganizeUI;
     int CountRe = 0;
+    int QtdUI;
 
 
 
@@ -74,12 +75,14 @@ public class Player : MonoBehaviour
             {
 
                 KeyInterface.SetActive(false);
-                
-                KeyInterface_Selection[SelectCount].SetActive(false);
 
+                for (int i = 0; i <= QtdUI; i++)
+                {
+                    KeyInterface_Selection[i].SetActive(false);
+                }
 
                 SelectCount = 0;
-                BeforeNumber = Keys_Quantidade;
+                BeforeNumber = QtdUI;
 
                 CountToDisable = 0;
                 Disabled = false;
@@ -89,31 +92,48 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop) //Passar pro lado
         {
-           
+            if (Keys_Quantidade == 1)
+            {
+                QtdUI = 0;
+            }
 
+            if (Keys_Quantidade == 2)
+            {
+                QtdUI = 1;
+            }
+
+            if (Keys_Quantidade == 3)
+            {
+                QtdUI = 2;
+            }
+
+            
             CountToDisable = 0;
             Disabled = true;
 
             KeyInterface.SetActive(true);
-            BeforeNumber = SelectCount;
-
-            if (SelectCount >= Keys_Quantidade)
-            {
-                SelectCount = 0;
-                KeyInterface_Selection[BeforeNumber].SetActive(false);
-                return;
-                
-            }
 
             KeyInterface_Selection[BeforeNumber].SetActive(false);
             KeyInterface_Selection[SelectCount].SetActive(true);
-            
+            AtualKey = SelectCount;
+
+            BeforeNumber = SelectCount;
+
+            if (SelectCount == QtdUI)
+            {
+                BeforeNumber = QtdUI;
+                SelectCount = 0;
+                return;
+            }
+
             SelectCount++;
-            
+
+
+
 
         }
 
-        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && SelectCount > 0 && !isDrop) //Passar pro lado
+        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && !isDrop) //Passar pro lado
         {
             isDrop = true;
 
@@ -126,19 +146,14 @@ public class Player : MonoBehaviour
             KeyID[DKScript.ID]--;
             
             Key[AtualKey] = null;
-            KeyUI[SelectCount].sprite = null;
+            KeyUI[AtualKey].sprite = null;
 
             Keys_Quantidade--;
 
             for (int i = 0; i <= Keys_Quantidade; i++)
             {
                 ListReOrganize[i] = null;
-            }
-
-            for (int i = 1; i < Keys_Quantidade; i++)
-            {
                 ListReOrganizeUI[i] = null;
-
             }
 
             SetDropKey();
@@ -149,17 +164,18 @@ public class Player : MonoBehaviour
 
     void SetDropKey()
     {
-        
-        KeyInterface.SetActive(false);
-
-        KeyInterface_Selection[SelectCount].SetActive(false);
-        KeyInterface_Selection[BeforeNumber].SetActive(false);
-
-        SelectCount = 0;
-        BeforeNumber = Keys_Quantidade;
-
         CountToDisable = 0;
         Disabled = false;
+
+        KeyInterface.SetActive(false);
+
+
+        for (int i = 0; i <= QtdUI; i++)
+        {
+            KeyInterface_Selection[i].SetActive(false);      
+        }
+
+        SelectCount = 0;
         
 
         for (int i = 0; i <= Keys_Quantidade; i++)
@@ -167,24 +183,22 @@ public class Player : MonoBehaviour
             if (Key[i] != null)
             {
                 ListReOrganize[CountRe] = Key[i];
+                ListReOrganizeUI[CountRe] = KeyUI[i].sprite;
                 CountRe++;     
-            }   
+            }
+
+           
         }
        
         CountRe = 0;
 
         for (int i = 0; i <= Keys_Quantidade; i++)
         {
-            Key[i] = ListReOrganize[i];    
-        }
-
-        for (int i = 1; i < Keys_Quantidade; i++)
-        {
+            Key[i] = ListReOrganize[i];
             KeyUI[i].sprite = ListReOrganizeUI[i];
-
         }
 
-
+        
         Invoke("CancelDrop", 1f);
     }
 
