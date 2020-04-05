@@ -23,34 +23,29 @@ public class WeaponKit : MonoBehaviour
         if (Player1 && Input.GetKeyDown(KeyCode.Q) && !Atived)
         {
 
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
-            {
-                P.Keys_Quantidade -= KeysToOpen;
-                P.KeyID[ID] -= KeysToOpen;
-                Atived = true;
-
-
-                Debug.Log("Abriu Weapon Kit.");
-
-                DropItem();
-
-            }
+            UsingItem();
         }
 
 
         if (Player2 && Input.GetKeyDown(KeyCode.E) && !Atived)
         {
+            UsingItem();
 
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
-            {
-                P.Keys_Quantidade -= KeysToOpen;
-                P.KeyID[ID] -= KeysToOpen;
-                Atived = true;
-                Debug.Log("Abriu Weapon Kit.");
+        }
+    }
 
-                DropItem();
 
-            }
+    void UsingItem()
+    {
+
+        if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
+        {
+            P.Keys_Quantidade -= KeysToOpen;
+            P.KeyID[ID] -= KeysToOpen;
+            Atived = true;
+            Debug.Log("Abriu Medic Kit.");
+
+            DropItem();
 
         }
     }
