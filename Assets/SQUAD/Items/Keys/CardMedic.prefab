@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 9132594228919149707}
   - component: {fileID: 9132594228919149706}
   - component: {fileID: 9132594228919149749}
-  m_Layer: 0
+  - component: {fileID: 8053579092763515968}
+  m_Layer: 8
   m_Name: CardMedic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,3 +107,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyID: 5
+--- !u!114 &8053579092763515968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132594228919149748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5cfd337ac6cc547b5601331a2ce34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BC: {fileID: 9132594228919149706}

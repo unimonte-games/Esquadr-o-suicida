@@ -11,6 +11,8 @@ public class Epic : MonoBehaviour
     public int GoldToOpen;
     public bool Key;
 
+    public int ID;
+
     public int MaxListDrop;
     public int ListNumberToDrop;
     public GameObject[] ListToDrop1;
@@ -23,72 +25,65 @@ public class Epic : MonoBehaviour
 
         if (Player1 && Input.GetKeyDown(KeyCode.Q) && !Atived)
         {
-            if (Key)
-            {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyEpic >= KeysToOpen)
-                {
-                    P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyEpic -= KeysToOpen;
-                    Atived = true;
-
-
-                    Debug.Log("Abriu com Key.");
-
-                    DropItem();
-
-                }
-                return;
-            }
-
-
-            if (P.Gold >= GoldToOpen)
-            {
-                P.Gold -= GoldToOpen;
-                Atived = true;
-                Debug.Log("Abriu com Ouro.");
-
-                DropItem();
-
-            }
+            UsingItem();
         }
 
         if (Player2 && Input.GetKeyDown(KeyCode.E) && !Atived)
         {
-            if (Key)
+            UsingItem();
+        }
+    }
+
+
+    void UsingItem()
+    {
+        if (Key)
+        {
+            if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
             {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyEpic >= KeysToOpen)
-                {
-                    P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyEpic -= KeysToOpen;
-                    Atived = true;
-                    Debug.Log("Abriu com Key.");
-
-                    DropItem();
-
-                }
-                return;
-            }
-
-
-            if (P.Gold >= GoldToOpen)
-            {
-                P.Gold -= GoldToOpen;
+                P.Keys_Quantidade -= KeysToOpen;
+                P.KeyID[ID] -= KeysToOpen;
                 Atived = true;
-                Debug.Log("Abriu com Ouro.");
+                Debug.Log("Abriu Epic com Key.");
 
                 DropItem();
 
             }
+            return;
+        }
+
+
+        if (P.Gold >= GoldToOpen)
+        {
+            P.Gold -= GoldToOpen;
+            Atived = true;
+            Debug.Log("Abriu Epic com Ouro.");
+
+            DropItem();
+
         }
     }
 
     void DropItem()
     {
-        ListNumberToDrop = Random.Range(0, MaxListDrop);
-        Instantiate(ListToDrop1[ListNumberToDrop], SpawnToDrop[0].position, SpawnToDrop[0].rotation);
-        Instantiate(ListToDrop2[ListNumberToDrop], SpawnToDrop[1].position, SpawnToDrop[1].rotation);
-    }
+        int NumberToDrop = Random.Range(1, 2);
 
+        if(NumberToDrop == 1)
+        {
+            ListNumberToDrop = Random.Range(0, MaxListDrop);
+            Instantiate(ListToDrop1[ListNumberToDrop], SpawnToDrop[0].position, SpawnToDrop[0].rotation);
+        }
+
+        if (NumberToDrop == 2)
+        {
+            ListNumberToDrop = Random.Range(0, MaxListDrop);
+            Instantiate(ListToDrop1[ListNumberToDrop], SpawnToDrop[0].position, SpawnToDrop[0].rotation);
+
+            ListNumberToDrop = Random.Range(0, MaxListDrop);
+            Instantiate(ListToDrop2[ListNumberToDrop], SpawnToDrop[1].position, SpawnToDrop[1].rotation);
+        }
+
+    }
 
 
     private void OnTriggerEnter(Collider other)

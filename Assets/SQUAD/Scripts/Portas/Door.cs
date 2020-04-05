@@ -8,7 +8,10 @@ public class Door : MonoBehaviour
     Player P;
     bool Player1, Player2, Atived;
 
+    public int ID;
+
     public int KeysToOpen;
+
 
 
     private void FixedUpdate()
@@ -16,28 +19,26 @@ public class Door : MonoBehaviour
 
         if (Player1 && Input.GetKeyDown(KeyCode.Q) && !Atived)
         {
-
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeysDoor >= KeysToOpen)
-            {
-                P.Keys_Quantidade -= KeysToOpen;
-                P.KeysDoor -= KeysToOpen;
-                Atived = true;
-                Debug.Log("Abriu Portao com Key.");
-            }
+            OpenDoor();
         }
 
         if (Player2 && Input.GetKeyDown(KeyCode.E) && !Atived)
         {
 
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeysDoor >= KeysToOpen)
-            {
-                P.Keys_Quantidade -= KeysToOpen;
-                P.KeysDoor -= KeysToOpen;
-                Atived = true;
-                Debug.Log("Abriu Portao com Key.");                
-            }
-
+            OpenDoor();
         }
+    }
+
+    void OpenDoor()
+    {
+        if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
+        {
+            P.Keys_Quantidade -= KeysToOpen;
+            P.KeyID[ID] -= KeysToOpen;
+            Atived = true;
+            Debug.Log("Abriu Portao com Key.");
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

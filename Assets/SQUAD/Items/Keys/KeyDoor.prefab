@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2807372133932226847}
   - component: {fileID: 517262173352605928}
   - component: {fileID: 5386428144001303357}
-  m_Layer: 0
-  m_Name: Key
+  - component: {fileID: -2914406889137234201}
+  m_Layer: 8
+  m_Name: KeyDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,4 +106,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc054ca9a1662d2439d40610c5f8ad04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Key: {fileID: 843520128572631264, guid: 30a0f4db06972c749a392c4b20857186, type: 3}
+  KeyID: 0
+--- !u!114 &-2914406889137234201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843520128572631264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5cfd337ac6cc547b5601331a2ce34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BC: {fileID: 517262173352605928}

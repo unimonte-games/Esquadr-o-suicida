@@ -24,15 +24,20 @@ public class KeyTreasure : MonoBehaviour
 
     void SetKey()
     {
-        if (P.Keys_Quantidade < 3)
+        if (P.Keys_Quantidade <= 3)
         {
             P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
-           
-            P.Keys_Quantidade++;
-            P.KeyTreasure++;
-
             P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
+
+            P.Keys_Quantidade++;
+            P.KeyID[KeyID]++;
+
+
             this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Inventory Full");
         }
     }
 }

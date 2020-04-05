@@ -7,6 +7,8 @@ public class WeaponKit : MonoBehaviour
     Player P;
     bool Player1, Player2, Atived;
 
+    public int ID;
+
     public int KeysToOpen;
 
     public int MaxListDrop;
@@ -21,10 +23,10 @@ public class WeaponKit : MonoBehaviour
         if (Player1 && Input.GetKeyDown(KeyCode.Q) && !Atived)
         {
 
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeyWeaponTech >= KeysToOpen)
+            if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
             {
                 P.Keys_Quantidade -= KeysToOpen;
-                P.KeyWeaponTech -= KeysToOpen;
+                P.KeyID[ID] -= KeysToOpen;
                 Atived = true;
 
 
@@ -39,10 +41,10 @@ public class WeaponKit : MonoBehaviour
         if (Player2 && Input.GetKeyDown(KeyCode.E) && !Atived)
         {
 
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeyWeaponTech >= KeysToOpen)
+            if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
             {
                 P.Keys_Quantidade -= KeysToOpen;
-                P.KeyWeaponTech -= KeysToOpen;
+                P.KeyID[ID] -= KeysToOpen;
                 Atived = true;
                 Debug.Log("Abriu Weapon Kit.");
 

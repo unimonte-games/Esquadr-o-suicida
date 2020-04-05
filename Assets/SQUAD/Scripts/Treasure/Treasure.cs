@@ -11,6 +11,8 @@ public class Treasure : MonoBehaviour
     public int GoldToOpen;
     public bool Key;
 
+    public int ID;
+
     public int MaxListDrop;
     public int ListNumberToDrop;
     public GameObject[] ListToDrop;
@@ -22,62 +24,41 @@ public class Treasure : MonoBehaviour
 
         if (Player1 && Input.GetKeyDown(KeyCode.Q) && !Atived)
         {
-            if (Key)
-            {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTreasure >= KeysToOpen)
-                {
-                    P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyTreasure -= KeysToOpen;
-                    Atived = true;
-
-                   
-                    Debug.Log("Abriu com Key.");
-
-                    DropItem();
-                   
-                }
-                return;
-            }
-
-
-            if (P.Gold >= GoldToOpen)
-            {
-                P.Gold -= GoldToOpen;
-                Atived = true;
-                Debug.Log("Abriu com Ouro.");
-
-                DropItem();
-
-            }
+            UsingItem();
         }
 
         if (Player2 && Input.GetKeyDown(KeyCode.E) && !Atived)
         {
-            if (Key)
+            UsingItem();
+        }
+    }
+
+    void UsingItem()
+    {
+        if (Key)
+        {
+            if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
             {
-                if (P.Keys_Quantidade >= KeysToOpen && P.KeyTreasure >= KeysToOpen)
-                {
-                    P.Keys_Quantidade -= KeysToOpen;
-                    P.KeyTreasure -= KeysToOpen;
-                    Atived = true;
-                    Debug.Log("Abriu com Key.");
-
-                    DropItem();
-                   
-                }
-                return;
-            }
-
-
-            if (P.Gold >= GoldToOpen)
-            {
-                P.Gold -= GoldToOpen;                
+                P.Keys_Quantidade -= KeysToOpen;
+                P.KeyID[ID] -= KeysToOpen;
                 Atived = true;
-                Debug.Log("Abriu com Ouro.");
+                Debug.Log("Abriu Comum com Key.");
 
                 DropItem();
 
             }
+            return;
+        }
+
+
+        if (P.Gold >= GoldToOpen)
+        {
+            P.Gold -= GoldToOpen;
+            Atived = true;
+            Debug.Log("Abriu Comum com Ouro.");
+
+            DropItem();
+
         }
     }
 

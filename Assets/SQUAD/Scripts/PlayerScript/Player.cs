@@ -20,18 +20,11 @@ public class Player : MonoBehaviour
     //A Boss Final ficará pra smp na cena.
     //A key Door depois de um tempo, cria raizes para voce ativar e passar por uma wave para obter novamente.
 
-    public bool KeyFinal; //Serve para abrir a porta do BOSS 
-    public int KeysDoor; //Serve para desbloquear Portas 
-
-    //Todos que forem discartados sumiram depois de um tempo.
-    public int KeyTreasure; //Serve para abrir qualquer Báu [Qualquer Coisa pode vir] [Apenas 1]
-    public int KeyMedicKit; //Serve para Abrir Kits de Medico [Kits Medicos - Vida, defesa, mana ou coracao]
-    public int KeyWeaponTech; //Serve para abrir as Caixas Tecnologicas especiais [Weapons Especiais]
-    public int KeyEpic; //Serve para para abrir Bau Lendario (ROXO) [Baus Especial - 2 Items]
-    public int KeyLegendary; //Serve para o Bau Lendário (DOURADO) [Bau Especial - 3 Items]
-
+    
+ 
     public GameObject[] KeyList; //Prefab
     public GameObject[] Key; //Atual Keys
+    public int[] KeyID; //Quantidade das Chaves
     public GameObject KeyInterface;
     public GameObject[] KeyInterface_Selection;
     public SpriteRenderer[] KeyUI;
@@ -41,8 +34,6 @@ public class Player : MonoBehaviour
     public int BeforeNumber = 3;
     public bool SelectKey;
     public bool DropKey;
-    public GameObject DKC_Prefab;
-    public DropKey DKController;
     public Transform DropKeySpawn;
 
     KeyCode Selecionar_set;
@@ -51,6 +42,13 @@ public class Player : MonoBehaviour
 
     float CountToDisable;
     bool Disabled;
+    bool isDrop;
+
+    public GameObject[] ListReOrganize;
+    public Sprite[] ListReOrganizeUI;
+    int CountRe = 0;
+
+
 
     private void Start()
     {
@@ -79,18 +77,19 @@ public class Player : MonoBehaviour
                 
                 KeyInterface_Selection[SelectCount].SetActive(false);
 
+
                 SelectCount = 0;
                 BeforeNumber = Keys_Quantidade;
 
                 CountToDisable = 0;
                 Disabled = false;
-                DKC_Prefab.SetActive(false);
+                
             }
         }
 
-        if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1) //Passar pro lado
+        if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop) //Passar pro lado
         {
-            DKC_Prefab.SetActive(true);
+           
 
             CountToDisable = 0;
             Disabled = true;
@@ -106,33 +105,92 @@ public class Player : MonoBehaviour
                 
             }
 
-            SelectCount++;
-            KeyInterface_Selection[SelectCount].SetActive(true);
             KeyInterface_Selection[BeforeNumber].SetActive(false);
-
-            AtualKey = SelectCount - 1;
-
-
-
-        }
-
-        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && SelectCount > 0) //Passar pro lado
-        {
+            KeyInterface_Selection[SelectCount].SetActive(true);
             
-            for (int i = 0; i <= 3; i++)
-            {
-                if(DKController.C_check[i] != null)
-                {
-                    DropKeySpawn = DKController.C_check[i].transform;
-                    i = 4;
- 
-                    Instantiate(Key[AtualKey], DropKeySpawn.position, DropKeySpawn.rotation);
+            SelectCount++;
+            
 
-                }
+        }
+
+        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && SelectCount > 0 && !isDrop) //Passar pro lado
+        {
+            isDrop = true;
+
+            DropKey DKScript;
+
+            GameObject DK = Instantiate(Key[AtualKey], DropKeySpawn.position, DropKeySpawn.rotation);
+            DKScript = DK.GetComponent<DropKey>();
+
+            DKScript.BoxDisabled();
+            KeyID[DKScript.ID]--;
+            
+            Key[AtualKey] = null;
+            KeyUI[SelectCount].sprite = null;
+
+            Keys_Quantidade--;
+
+            for (int i = 0; i <= Keys_Quantidade; i++)
+            {
+                ListReOrganize[i] = null;
             }
+
+            for (int i = 1; i < Keys_Quantidade; i++)
+            {
+                ListReOrganizeUI[i] = null;
+
+            }
+
+            SetDropKey();
         }
 
 
+    }
+
+    void SetDropKey()
+    {
+        
+        KeyInterface.SetActive(false);
+
+        KeyInterface_Selection[SelectCount].SetActive(false);
+        KeyInterface_Selection[BeforeNumber].SetActive(false);
+
+        SelectCount = 0;
+        BeforeNumber = Keys_Quantidade;
+
+        CountToDisable = 0;
+        Disabled = false;
+        
+
+        for (int i = 0; i <= Keys_Quantidade; i++)
+        {
+            if (Key[i] != null)
+            {
+                ListReOrganize[CountRe] = Key[i];
+                CountRe++;     
+            }   
+        }
+       
+        CountRe = 0;
+
+        for (int i = 0; i <= Keys_Quantidade; i++)
+        {
+            Key[i] = ListReOrganize[i];    
+        }
+
+        for (int i = 1; i < Keys_Quantidade; i++)
+        {
+            KeyUI[i].sprite = ListReOrganizeUI[i];
+
+        }
+
+
+        Invoke("CancelDrop", 1f);
+    }
+
+    void CancelDrop()
+    {
+        isDrop = false;
     }
 
 

@@ -4,31 +4,18 @@ using UnityEngine;
 
 public class DropKey : MonoBehaviour
 {
-    public bool ControllerCheck;
-    public GameObject[] C_check;
-    public DropKey DK;
-    public int AtualID;
+    public int ID;
+    public BoxCollider BC;
 
-
-    private void OnTriggerStay(Collider other)
+    public void BoxDisabled()
     {
-        if (!ControllerCheck)
-        {
-            if (other.gameObject.layer == 8)
-            {
-                DK.C_check[AtualID] = null;
-              
-            } 
-          
-        }
+        BC.enabled = false;
+        Invoke("BoxEnabled", 2f);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void BoxEnabled()
     {
-        if (other.gameObject.layer == 8)
-        {
-            DK.C_check[AtualID] = this.gameObject;
-        }
+        BC.enabled = true;
     }
 
 }

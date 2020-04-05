@@ -27,12 +27,17 @@ public class CardWeapon : MonoBehaviour
         if (P.Keys_Quantidade < 3)
         {
             P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
+            P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
 
             P.Keys_Quantidade++;
-            P.KeyWeaponTech++;
+            P.KeyID[KeyID]++;
 
-            P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
+
             this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Inventory Full");
         }
     }
 }

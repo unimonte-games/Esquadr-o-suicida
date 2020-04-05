@@ -8,6 +8,8 @@ public class MedicKit : MonoBehaviour
     Player P;
     bool Player1, Player2, Atived;
 
+    public int ID;
+
     public int KeysToOpen;
 
     public int MaxListDrop;
@@ -21,35 +23,28 @@ public class MedicKit : MonoBehaviour
     {
         if (Player1 && Input.GetKeyDown(KeyCode.Q) && !Atived)
         {
-
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeyMedicKit >= KeysToOpen)
-            {
-                P.Keys_Quantidade -= KeysToOpen;
-                P.KeyMedicKit -= KeysToOpen;
-                Atived = true;
-
-
-                Debug.Log("Abriu Medic Kit.");
-
-                DropItem();
-
-            }
+            UsingItem();
         }
 
 
         if (Player2 && Input.GetKeyDown(KeyCode.E) && !Atived)
         {
 
-            if (P.Keys_Quantidade >= KeysToOpen && P.KeyMedicKit >= KeysToOpen)
-            {
-                P.Keys_Quantidade -= KeysToOpen;
-                P.KeyMedicKit -= KeysToOpen;
-                Atived = true;
-                Debug.Log("Abriu Medic Kit.");
+            UsingItem();
+        }
+    }
 
-                DropItem();
+    void UsingItem()
+    {
 
-            }
+        if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
+        {
+            P.Keys_Quantidade -= KeysToOpen;
+            P.KeyID[ID] -= KeysToOpen;
+            Atived = true;
+            Debug.Log("Abriu Medic Kit.");
+
+            DropItem();
 
         }
     }

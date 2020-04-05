@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 335514550331635979}
   - component: {fileID: 335514550331635978}
   - component: {fileID: 335514550331635977}
-  m_Layer: 0
+  - component: {fileID: -1850907029308987941}
+  m_Layer: 8
   m_Name: KeyEpic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,3 +107,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyID: 3
+--- !u!114 &-1850907029308987941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335514550331635975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5cfd337ac6cc547b5601331a2ce34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BC: {fileID: 335514550331635978}

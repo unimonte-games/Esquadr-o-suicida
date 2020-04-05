@@ -24,15 +24,20 @@ public class KeyFinal : MonoBehaviour
 
     void SetKey()
     {
-        if (!P.KeyFinal && P.Keys_Quantidade < 3)
+        if (P.KeyID[KeyID] < 1 && P.Keys_Quantidade < 3)
         {
             P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
+            P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
 
-            P.KeyFinal = true;
+            P.KeyID[KeyID]++;
             P.Keys_Quantidade++;
 
-            P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
+           
             this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Inventory Full");
         }
     }
 }

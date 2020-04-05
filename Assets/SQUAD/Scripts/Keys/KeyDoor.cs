@@ -6,17 +6,19 @@ public class KeyDoor : MonoBehaviour
 {
     public int KeyID;
     Player P;
+    bool PlayerDiscart; 
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player1")
+        if (other.gameObject.name == "Player1" && !PlayerDiscart)
         {
             P = other.GetComponent<Player>();
             SetKey();
         }
         
 
-        if (other.gameObject.name == "Player2")
+        if (other.gameObject.name == "Player2" && !PlayerDiscart)
         {
             P = other.GetComponent<Player>();
             SetKey();
@@ -29,13 +31,17 @@ public class KeyDoor : MonoBehaviour
         if (P.Keys_Quantidade < 3)
         {
             P.Key[P.Keys_Quantidade] = P.KeyList[KeyID];
-            
-            P.Keys_Quantidade++;
-            P.KeysDoor++;
-
             P.KeyUI[P.Keys_Quantidade].sprite = P.KeyUIList[KeyID];
+
+            P.Keys_Quantidade++;
+            P.KeyID[KeyID]++;
+
+            
             this.gameObject.SetActive(false);
            
+        }else
+        {
+            Debug.Log("Inventory Full");
         }
 
     }
