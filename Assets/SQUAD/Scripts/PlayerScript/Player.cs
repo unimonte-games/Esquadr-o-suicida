@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     KeyCode Selecionar_set;
     KeyCode Dropar_set;
+    public KeyCode Accept;
+
     public int AtualKey;
 
     float CountToDisable;
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
     public GameObject[] ListReOrganize;
     public Sprite[] ListReOrganizeUI;
     int CountRe = 0;
-    int QtdUI;
+    public int QtdUI;
 
 
 
@@ -57,17 +59,20 @@ public class Player : MonoBehaviour
         {
             Selecionar_set = KeyCode.Q;
             Dropar_set = KeyCode.E;
+            Accept = KeyCode.Space;
         }
         else
         {
             Selecionar_set = KeyCode.Alpha1;
             Dropar_set = KeyCode.Alpha2;
+            Accept = KeyCode.Alpha3;
         }
     }
 
 
     private void Update()
     {
+
         if (Disabled)
         {
             CountToDisable += 0.1f;
@@ -92,6 +97,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop) //Passar pro lado
         {
+
             if (Keys_Quantidade == 1)
             {
                 QtdUI = 0;
@@ -107,7 +113,6 @@ public class Player : MonoBehaviour
                 QtdUI = 2;
             }
 
-            
             CountToDisable = 0;
             Disabled = true;
 
@@ -128,9 +133,6 @@ public class Player : MonoBehaviour
 
             SelectCount++;
 
-
-
-
         }
 
         if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && !isDrop) //Passar pro lado
@@ -150,19 +152,20 @@ public class Player : MonoBehaviour
 
             Keys_Quantidade--;
 
-            for (int i = 0; i <= Keys_Quantidade; i++)
+            for (int i = 0; i <= 2; i++)
             {
                 ListReOrganize[i] = null;
                 ListReOrganizeUI[i] = null;
             }
 
             SetDropKey();
+           
         }
 
 
     }
 
-    void SetDropKey()
+    public void SetDropKey()
     {
         CountToDisable = 0;
         Disabled = false;
@@ -170,7 +173,7 @@ public class Player : MonoBehaviour
         KeyInterface.SetActive(false);
 
 
-        for (int i = 0; i <= QtdUI; i++)
+        for (int i = 0; i <= 2; i++)
         {
             KeyInterface_Selection[i].SetActive(false);      
         }
@@ -178,7 +181,7 @@ public class Player : MonoBehaviour
         SelectCount = 0;
         
 
-        for (int i = 0; i <= Keys_Quantidade; i++)
+        for (int i = 0; i <= 2; i++)
         {
             if (Key[i] != null)
             {
@@ -186,19 +189,17 @@ public class Player : MonoBehaviour
                 ListReOrganizeUI[CountRe] = KeyUI[i].sprite;
                 CountRe++;     
             }
-
-           
+  
         }
        
         CountRe = 0;
 
-        for (int i = 0; i <= Keys_Quantidade; i++)
+        for (int i = 0; i <= 2; i++)
         {
             Key[i] = ListReOrganize[i];
             KeyUI[i].sprite = ListReOrganizeUI[i];
         }
 
-        
         Invoke("CancelDrop", 1f);
     }
 
@@ -207,6 +208,9 @@ public class Player : MonoBehaviour
         isDrop = false;
     }
 
+   
+
+    
 
 }
    

@@ -32,7 +32,7 @@ public class KeyTreasure : MonoBehaviour
             P.Keys_Quantidade++;
             P.KeyID[KeyID]++;
 
-
+            
             this.gameObject.SetActive(false);
         }
         else

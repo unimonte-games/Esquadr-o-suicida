@@ -18,16 +18,18 @@ public class Treasure : MonoBehaviour
     public GameObject[] ListToDrop;
     public Transform SpawnToDrop;
 
+    int CountToSell;
+
 
     private void FixedUpdate()
     {
 
-        if (Player1 && Input.GetKeyDown(KeyCode.Q) && !Atived)
+        if (Player1 && Input.GetKeyDown(P.Accept) && !Atived)
         {
             UsingItem();
         }
 
-        if (Player2 && Input.GetKeyDown(KeyCode.E) && !Atived)
+        if (Player2 && Input.GetKeyDown(P.Accept) && !Atived)
         {
             UsingItem();
         }
@@ -39,11 +41,43 @@ public class Treasure : MonoBehaviour
         {
             if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
             {
+
+                for (int i = 0; i <= 2; i++)
+                {
+                    if (P.Key[i].GetComponent<DropKey>().ID == ID)
+                    {
+
+                        P.Key[i] = null;
+                        P.KeyUI[i].sprite = null;
+                        Debug.Log("Verificando Inventory: " + i);
+
+                        CountToSell++;
+                        if(CountToSell == KeysToOpen)
+                        {
+                            Debug.Log("Quantos foram usados: " + CountToSell);
+                            i = 3;
+                        }
+
+                        
+                    }
+                }
+
+                for (int i = 0; i <= 2; i++)
+                {
+                    P.ListReOrganize[i] = null;
+                    P.ListReOrganizeUI[i] = null;
+                }
+
+                Atived = true;
+
+                P.SetDropKey();
+
                 P.Keys_Quantidade -= KeysToOpen;
                 P.KeyID[ID] -= KeysToOpen;
-                Atived = true;
-                Debug.Log("Abriu Comum com Key.");
 
+                
+
+                Debug.Log("Abriu Comum com Key.");
                 DropItem();
 
             }
