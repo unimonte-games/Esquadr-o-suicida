@@ -31,9 +31,12 @@ pessoas continuam vivendo por lá normalmente, tudo fica mais insano depois de d
 
 - Fase 2
 - [x] Sprint 6 : Game Design (Ambiente, Programação e Organização), Ilustração, Itens concept, Level Concept e Lista Extra.
-- [ ] Sprint 7 : Game Design, Itens Concept 2, Soundtrack, Enemy Model, Animation, Concepts V3 e Pesquisa.
-- [ ] Sprint 8 : Level Editor, Som, Itens List 1, Wiki, Interface, Texturização e Enemy 4 e 5
-- [ ] Sprint 9 : Level Create, Character 1 e 2, Som, Itens List 2, Testes de Controle, Enemy Animação 1 e 2
-- [ ] Sprint 10 : Game Testing, Balanceamento, Menu e Transições, Character Animation.
+- [x] Sprint 7 : Game Design, Itens Concept 2, Som, Enemy 1, Animation List, Concepts V3 e Pesquisas.
+- [ ] Sprint 8 : Level Editor, Wiki, Som, Interface, Texturização, Enemy 2 e Pesquisas.
+- [ ] Sprint 9 : Level Editor, Som, Wiki, Interface, Ilustracao, Itens List 1, Testes de Controle, Enemy 3, 4 e 5.
+- [ ] Sprint 10 : Game Testing, Character 1 e 2, Enemy Scripts,  Itens List 2, Menu e Transições.
 - [ ] Reuniao Geral 2
+- [ ] Versao 1
+
+
 
