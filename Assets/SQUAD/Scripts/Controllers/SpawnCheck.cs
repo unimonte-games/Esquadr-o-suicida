@@ -10,23 +10,27 @@ public class SpawnCheck : MonoBehaviour
     private void Start()
     {
         Invoke("Atived", 1);
+        Invoke("DestroyThis", 5f);
     }
 
     void Atived()
     {
         SC.List(SpawnObj);
-        Debug.Log("Spawn Acionado!");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 8)
         {
-            CancelInvoke("Atived"); 
             Destroy(gameObject);
             return;
 
         }         
+    }
+
+    void DestroyThis()
+    {
+        this.gameObject.SetActive(false);        
     }
 
 }

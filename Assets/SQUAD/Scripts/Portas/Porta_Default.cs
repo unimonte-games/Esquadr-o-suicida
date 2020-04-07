@@ -46,6 +46,7 @@ public class Porta_Default : MonoBehaviour
     public int AtualMonsters; //Quantidade de Monstros que foi Spawnado
     public int MonstersDestroy; //Quantidade de monstros que foram destruidos
     public GameObject[] MonstersPrefab; //Prefab de cada Monstro
+    public SpawnController SpawnControl;
     public Transform[] LocalSpawn; //Locais que eles vao spawnar
 
     void Start()
@@ -113,10 +114,11 @@ public class Porta_Default : MonoBehaviour
 
         for (int i = 0; i < MonstersNumbers; i++)
         {
-            int randomLocal = Random.Range(0, 9);
+            int RandomLocalNumber = SpawnControl.Acionados - 1;
+            int randomLocal = Random.Range(0, RandomLocalNumber);
             int randomMonster = Random.Range(0, 9);
 
-            GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], LocalSpawn[randomLocal].transform.position, LocalSpawn[randomLocal].transform.rotation);
+            GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
             Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
 
             AtualMonsters++;

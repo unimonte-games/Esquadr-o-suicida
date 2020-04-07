@@ -16,6 +16,8 @@ public class SpawnController : MonoBehaviour
     public int Qtd = 100;
     public int Acionados;
 
+    public GameObject RoomController;
+
     void Start()
     {
         SC_ = GetComponent<SpawnController>();
@@ -33,7 +35,7 @@ public class SpawnController : MonoBehaviour
     void Spawn()
     {
         
-        for (int i = 0; i <= Qtd; i++)
+        for (int i = 0; i < Qtd; i++)
         {
             Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), 0, Random.Range(-size.z / 2, size.z / 2));
 
@@ -41,23 +43,31 @@ public class SpawnController : MonoBehaviour
             SpawnP.transform.parent = SceneTransformList;
             SpawnP.GetComponent<SpawnCheck>().SC = SC_;
         }
+
+        Invoke("RoomControl_Start", 2f);
         
     }
 
+    void RoomControl_Start()
+    {
+        Debug.Log("Iniciando sala...");
+        RoomController.SetActive(true);
+    }
 
     public void List(Transform spw)
     {
-        for (int i = 0; i <= Qtd; i++)
+        for (int i = 0; i < Qtd; i++)
         {
             if(ListSpawn[i] == null)
             {
                 ListSpawn[i] = spw;
-                Debug.Log("Add na List: " + i);
+                
                 Acionados++;
-                i = Qtd+1; //encerrar
-            } 
-           
+                i = Qtd + 1; //encerrar
+                
+            }  
         }
+
     }
 
    
