@@ -16,25 +16,15 @@ public class FpsWalk : MonoBehaviour
     KeyCode Right;
     KeyCode Left;
 
-    private void Start()
+    public void UpdateMoviment()
     {
         P = GetComponent<Player>();
         PlayerController = P.PlayerType;
 
-        if (PlayerController)
-        {
-            Up = KeyCode.W;
-            Down = KeyCode.S;
-            Right = KeyCode.D;
-            Left = KeyCode.A;
-        }
-        else
-        {
-            Up = KeyCode.UpArrow;
-            Down = KeyCode.DownArrow;
-            Right = KeyCode.RightArrow;
-            Left = KeyCode.LeftArrow;
-        }
+        Up = P.Up;
+        Down = P.Down;
+        Right = P.Right;
+        Left = P.Left;
     }
 
     void Update()

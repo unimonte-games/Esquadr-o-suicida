@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
     KeyCode Dropar_set;
     public KeyCode Accept;
 
+    public KeyCode Up;
+    public KeyCode Down;
+    public KeyCode Right;
+    public KeyCode Left;
+
     public int AtualKey;
 
     float CountToDisable;
@@ -51,28 +56,78 @@ public class Player : MonoBehaviour
     int CountRe = 0;
     public int QtdUI;
 
+    public bool Controller1;
+    public bool Controller2;
 
+    FpsWalk FPSWalkScript;
 
     private void Start()
     {
+        FPSWalkScript = GetComponent<FpsWalk>();
+        UpdateController();
+    }
+
+    void UpdateController()
+    {
         if (PlayerType)
         {
-            Selecionar_set = KeyCode.Q;
-            Dropar_set = KeyCode.E;
-            Accept = KeyCode.Space;
+            if (!Controller1) //PC
+            {
+                Selecionar_set = KeyCode.Q;
+                Dropar_set = KeyCode.E;
+                Accept = KeyCode.Space;
+
+                Up = KeyCode.W;
+                Down = KeyCode.S;
+                Right = KeyCode.D;
+                Left = KeyCode.A;
+            }
+            else //Controle
+            {
+                Selecionar_set = KeyCode.Joystick1Button4;
+                Dropar_set = KeyCode.Joystick1Button5;
+                Accept = KeyCode.Joystick1Button0;
+
+                Up = KeyCode.Joystick1Button10;
+                Down = KeyCode.Joystick1Button10;
+                Right = KeyCode.Joystick1Button11;
+                Left = KeyCode.Joystick1Button11;
+            }
         }
         else
         {
-            Selecionar_set = KeyCode.Alpha1;
-            Dropar_set = KeyCode.Alpha2;
-            Accept = KeyCode.Alpha3;
+            if (!Controller2)// PC
+            {
+                Selecionar_set = KeyCode.Alpha1;
+                Dropar_set = KeyCode.Alpha2;
+                Accept = KeyCode.Alpha3;
+
+                Up = KeyCode.UpArrow;
+                Down = KeyCode.DownArrow;
+                Right = KeyCode.RightArrow;
+                Left = KeyCode.LeftArrow;
+            }
+            else //Controle
+            {
+                Selecionar_set = KeyCode.Joystick2Button4;
+                Dropar_set = KeyCode.Joystick2Button5;
+                Accept = KeyCode.Joystick2Button0;
+
+                Up = KeyCode.Joystick2Button10;
+                Down = KeyCode.Joystick2Button10;
+                Right = KeyCode.Joystick2Button11;
+                Left = KeyCode.Joystick2Button11;
+            }
         }
+
+        FPSWalkScript.UpdateMoviment();
     }
+
 
 
     private void Update()
     {
-
+       
         if (Disabled)
         {
             CountToDisable += 0.1f;
@@ -160,6 +215,34 @@ public class Player : MonoBehaviour
 
             SetDropKey();
            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7) && PlayerType && !Controller1) //Ativando Controle 1
+        {
+            Controller1 = true;
+            UpdateController();
+            Debug.Log("Controle 1 Ativado");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Joystick2Button7) && !PlayerType && !Controller2) //Ativando Controle 2
+        {
+            Controller2 = true;
+            UpdateController();
+            Debug.Log("Controle 2 Ativado");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q) && PlayerType && Controller1) //Ativando Teclado 1
+        {
+            Controller1 = false;
+            UpdateController();
+            Debug.Log("Controle 1 Ativado");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !PlayerType && Controller2) //Ativando Teclado 2
+        {
+            Controller2 = false;
+            UpdateController();
+            Debug.Log("Controle 2 Ativado");
         }
 
 
