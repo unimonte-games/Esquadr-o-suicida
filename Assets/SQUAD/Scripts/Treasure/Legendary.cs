@@ -85,9 +85,9 @@ public class Legendary : MonoBehaviour
             return;
         }
 
-        if (P.Gold >= GoldToOpen)
+        if (P.Ouro >= GoldToOpen)
         {
-            P.Gold -= GoldToOpen;
+            P.Ouro -= GoldToOpen;
             Atived = true;
             Debug.Log("Abriu Legendary com Ouro.");
 
