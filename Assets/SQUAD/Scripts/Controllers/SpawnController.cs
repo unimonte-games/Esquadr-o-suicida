@@ -52,6 +52,10 @@ public class SpawnController : MonoBehaviour
     {
         Debug.Log("Iniciando sala...");
         RoomController.SetActive(true);
+
+        DestroySpawn();
+
+
     }
 
     public void List(Transform spw)
@@ -66,6 +70,19 @@ public class SpawnController : MonoBehaviour
                 i = Qtd + 1; //encerrar
                 
             }  
+        }
+
+    }
+
+    public void DestroySpawn()
+    {
+        int StartElement = Acionados - 1;
+
+        for (int i = 0; i <= StartElement; i++) //tirar o Box de cada spawn acionado para nao ficar colidindo com tudo
+        {
+            BoxCollider Obj;
+            Obj = ListSpawn[i].GetComponent<BoxCollider>();
+            Obj.enabled = false;
         }
 
     }

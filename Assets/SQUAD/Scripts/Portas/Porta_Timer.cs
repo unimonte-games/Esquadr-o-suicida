@@ -7,7 +7,7 @@ using UnityEditor;
 [AddComponentMenu("PortaScripts/Timer")]
 public class Porta_Timer : MonoBehaviour
 {
-    RoomController RoomControl;
+    public RoomController RoomControl;
 
     CameraTarget cameraTarget;
 
@@ -22,7 +22,7 @@ public class Porta_Timer : MonoBehaviour
 
     void Start()
     {
-        RoomControl = GetComponent<RoomController>();
+       
         cameraTarget = FindObjectOfType<CameraTarget>();
         UI_Door.SetActive(false);
         Ui_Open.fillAmount = DoorBar / DoorMax;

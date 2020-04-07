@@ -10,7 +10,6 @@ public class SpawnCheck : MonoBehaviour
     private void Start()
     {
         Invoke("Atived", 1);
-        Invoke("DestroyThis", 5f);
     }
 
     void Atived()
@@ -28,9 +27,6 @@ public class SpawnCheck : MonoBehaviour
         }         
     }
 
-    void DestroyThis()
-    {
-        this.gameObject.SetActive(false);        
-    }
+    
 
 }

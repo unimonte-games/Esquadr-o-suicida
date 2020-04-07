@@ -7,7 +7,7 @@ using UnityEditor;
 [AddComponentMenu("PortaScripts/Double")]
 public class Porta_Double : MonoBehaviour
 {
-    RoomController RoomControl;
+    public RoomController RoomControl;
 
     CameraTarget cameraTarget;
 
@@ -23,7 +23,7 @@ public class Porta_Double : MonoBehaviour
 
     void Start()
     {
-        RoomControl = GetComponent<RoomController>();
+        
         cameraTarget = FindObjectOfType<CameraTarget>();
         UI_Door.SetActive(false);
         Ui_Open.fillAmount = DoorBar / DoorMax;

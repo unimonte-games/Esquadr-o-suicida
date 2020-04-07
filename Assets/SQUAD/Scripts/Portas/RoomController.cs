@@ -7,11 +7,11 @@ using UnityEditor;
 [AddComponentMenu("PortaScripts/_RoomController")]
 public class RoomController : MonoBehaviour
 {
-    Porta_Default Default;
-    Porta_Color Color;
-    Porta_Double Double;
-    Porta_Fixed Fixed;
-    Porta_Timer Timer;
+    public Porta_Default Default;
+    public Porta_Color Color;
+    public Porta_Double Double;
+    public Porta_Fixed Fixed;
+    public Porta_Timer Timer;
     
 
     public bool ColorInTheRoom, DoubleInTheRoom, FixedInTheRoom, TimerInTheRoom;
@@ -23,12 +23,24 @@ public class RoomController : MonoBehaviour
 
     void Start()
     {
-        Default = GetComponent<Porta_Default>(); MissionInTheRoom++;
+         MissionInTheRoom++;
 
-        if (ColorInTheRoom){Color = GetComponent<Porta_Color>(); MissionInTheRoom++; }
-        if (DoubleInTheRoom){Double = GetComponent<Porta_Double>(); MissionInTheRoom++; }
-        if (FixedInTheRoom){Fixed = GetComponent<Porta_Fixed>(); }
-        if (TimerInTheRoom){Timer = GetComponent<Porta_Timer>(); MissionInTheRoom++; }
+        if (ColorInTheRoom)
+        {
+            MissionInTheRoom++;
+        }
+        if (DoubleInTheRoom)
+        {
+            MissionInTheRoom++;
+        }
+        if (FixedInTheRoom)
+        {
+            MissionInTheRoom++;
+        }
+        if (TimerInTheRoom)
+        {
+            MissionInTheRoom++;
+        }
 
     }
 

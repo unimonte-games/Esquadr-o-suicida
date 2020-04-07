@@ -7,8 +7,8 @@ using UnityEditor;
 [AddComponentMenu("PortaScripts/Default")]
 public class Porta_Default : MonoBehaviour
 {
-    Porta_Default P; //referencia dele mesmo para passar para os inimigos que dropam
-    RoomController RoomControl; //referencia de missao
+    public Porta_Default P; //referencia dele mesmo para passar para os inimigos que dropam
+    public RoomController RoomControl; //referencia de missao
     BoxCollider triggerPlayers; //BoxCollider do Puzzle
     bool StartingWave; //Colidir pra iniciar a wave
     bool CountPlayerTrigger1, CountPlayerTrigger2;
@@ -51,10 +51,7 @@ public class Porta_Default : MonoBehaviour
 
     void Start()
     {
-        P = GetComponent<Porta_Default>();
-        RoomControl = GetComponent<RoomController>();
         triggerPlayers = GetComponent<BoxCollider>(); //Pegar o Box desse Portao
-
         StartingWave = false;
     }
 
@@ -123,7 +120,6 @@ public class Porta_Default : MonoBehaviour
 
             AtualMonsters++;
 
-           
         }
        
 
@@ -217,10 +213,11 @@ public class Porta_Default : MonoBehaviour
 
             for (int i = 0; i < MonstersNumbers; i++)
             {
-                int randomLocal = Random.Range(0, 9);
+                int RandomLocalNumber = SpawnControl.Acionados - 1;
+                int randomLocal = Random.Range(0, RandomLocalNumber);
                 int randomMonster = Random.Range(0, 9);
 
-                GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], LocalSpawn[randomLocal].transform.position, LocalSpawn[randomLocal].transform.rotation);
+                GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
                 Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
 
                 AtualMonsters++;

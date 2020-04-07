@@ -9,7 +9,7 @@ using UnityEditor;
 public class Porta_Color : MonoBehaviour
 {
 
-    RoomController RoomControl;
+    public RoomController RoomControl;
 
     CameraTarget cameraTarget;
 
@@ -26,7 +26,6 @@ public class Porta_Color : MonoBehaviour
     void Start()
     {
    
-        RoomControl = GetComponent<RoomController>();
         cameraTarget = FindObjectOfType<CameraTarget>();
 
         UI_Door.SetActive(false);
