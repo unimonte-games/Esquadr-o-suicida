@@ -12,6 +12,7 @@ public class Gold : MonoBehaviour
     public int Max;
 
     Player P;
+    public MagnetSystem MS;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class Gold : MonoBehaviour
             P = other.GetComponent<Player>();
 
             P.Ouro += gold;
+            MS.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
 
@@ -33,6 +35,7 @@ public class Gold : MonoBehaviour
             P = other.GetComponent<Player>();
 
             P.Ouro += gold;
+            MS.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
     }
