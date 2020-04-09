@@ -16,6 +16,8 @@ public class FpsWalk : MonoBehaviour
     KeyCode Right;
     KeyCode Left;
 
+    public bool ToMove;
+
     public void UpdateMoviment()
     {
         P = GetComponent<Player>();
@@ -27,32 +29,32 @@ public class FpsWalk : MonoBehaviour
         Left = P.Left;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 pos = transform.position;
+        if (!ToMove)
+        {
+            Vector3 pos = transform.position;
 
-        if (Input.GetKey(Up))
-        {
-            pos.z += speed * Time.deltaTime;
-        }
-        if (Input.GetKey(Down))
-        {
-            pos.z -= speed * Time.deltaTime;
-        }
-        if (Input.GetKey(Right))
-        {
-            pos.x += speed * Time.deltaTime;
-        }
-        if (Input.GetKey(Left))
-        {
-            pos.x -= speed * Time.deltaTime;
-        }
+            if (Input.GetKey(Up))
+            {
+                pos.z += speed * Time.deltaTime;
+            }
+            if (Input.GetKey(Down))
+            {
+                pos.z -= speed * Time.deltaTime;
+            }
+            if (Input.GetKey(Right))
+            {
+                pos.x += speed * Time.deltaTime;
+            }
+            if (Input.GetKey(Left))
+            {
+                pos.x -= speed * Time.deltaTime;
+            }
 
-        transform.position = pos;
-
+            transform.position = pos;
+        }
+        
     }
-       
-        
-        
-    
+  
 }

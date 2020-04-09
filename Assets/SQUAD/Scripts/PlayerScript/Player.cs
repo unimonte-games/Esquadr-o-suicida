@@ -59,15 +59,14 @@ public class Player : MonoBehaviour
     public bool Controller1;
     public bool Controller2;
 
-    FpsWalk FPSWalkScript;
+    public FpsWalk FPSWalkScript;
 
     private void Start()
     {
-        FPSWalkScript = GetComponent<FpsWalk>();
         UpdateController();
     }
 
-    void UpdateController()
+    public void UpdateController()
     {
         if (PlayerType)
         {
@@ -93,9 +92,11 @@ public class Player : MonoBehaviour
                 Right = KeyCode.Joystick1Button11;
                 Left = KeyCode.Joystick1Button11;
             }
+
         }
         else
         {
+
             if (!Controller2)// PC
             {
                 Selecionar_set = KeyCode.Alpha1;

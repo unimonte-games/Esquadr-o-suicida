@@ -16,6 +16,7 @@ public class Porta_Default : MonoBehaviour
     Player player2;
     public int ReWave_Door;
     public bool ReWave;
+    bool Rescue;
 
     
     public bool Normal_Wave; //Selecionar a wave NORMAL
@@ -68,29 +69,40 @@ public class Porta_Default : MonoBehaviour
 
         if (Normal_Wave)
         {
-            MonstersNumbers = Normal_MonstersNumbers;
-            WaveNumbers = 1;
-
             Multiple_Wave = false;
             Orda_Wave = false;
 
+            MonstersNumbers = Normal_MonstersNumbers;
+            WaveNumbers = 1;
         }
 
         if (Multiple_Wave)
         {
+            Normal_Wave = false;
+            Orda_Wave = false;
+
             int MultipleMonsters_temp = Random.Range(Multiple_Min_MonstersNumbers, Multiple_Max_MonstersNumbers);
             MonstersNumbers = MultipleMonsters_temp;
 
-            WaveNumbers = Multiple_WaveNumbers;
-
-            Normal_Wave = false;
-            Orda_Wave = false;
+            if (ReWave)//Se for uma wave Surpresa - Surprise, Rescue
+            {
+                AtualMonsters = 0;
+                MonstersDestroy = 0;
+                AtualWave = 0;
+                WaveNumbers = Random.Range(1, 3);
+            }
+            else
+            {
+                WaveNumbers = Multiple_WaveNumbers;
+            }
 
         }
 
 
         if (Orda_Wave)
         {
+            Normal_Wave = false;
+            Multiple_Wave = false;
 
             if (Orda_RepeatWave == AtualWave)
             {
@@ -102,9 +114,6 @@ public class Porta_Default : MonoBehaviour
             MonstersNumbers = OrdaMonsters_temp;
 
             WaveNumbers = Orda_RepeatWave;
-
-            Normal_Wave = false;
-            Multiple_Wave = false;
 
         }
 
@@ -145,7 +154,11 @@ public class Porta_Default : MonoBehaviour
 
                 if (ReWave)
                 {
-                    RoomControl.ReWaveContest(ReWave_Door);
+                    if (Rescue)
+                    {
+                        return;
+                    }
+                    RoomControl.ReWaveContest(ReWave_Door); //Wave Surprise vai encerrar - Surprise
                     return;
                 }
 
@@ -174,55 +187,63 @@ public class Porta_Default : MonoBehaviour
         ReWave = true;
         ReWave_Door = TypeDoor;
 
-        if (Type >= 0 && Type <= 4)//Nada
+        if (Type >= 0 && Type <= 5)//Nada
         {
             Debug.Log("Nada Acontece");
             RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        if (Type >= 5 && Type <= 7)//Perder Ouro
+        if (Type >= 6 && Type <= 10) //Wave Surpresa
         {
-            Debug.Log("Perderam Vida");
-            RoomControl.ReWaveContest(ReWave_Door);
+
+            Debug.Log("Suprise Wave");
+
+            Normal_Wave = false;
+            Orda_Wave = false;
+            Multiple_Wave = true;
+
+            Invoke("GoToSpawn", TimerToSpawn);
         }
 
-        if (Type >= 8 && Type <= 10)//Perder Defesa
+        if (Type >= 11 && Type <= 15)//Rescue
+        {
+            Debug.Log("Rescue!");
+            Rescue = true;
+
+            int SelectPlayer = Random.Range(0, 1);
+            if(SelectPlayer == 0)
+            {
+                player1.FPSWalkScript.ToMove = true;
+                Debug.Log("Player 1 foi sequestrado!");
+            }
+            if(SelectPlayer == 1)
+            {
+                player2.FPSWalkScript.ToMove = true;
+                Debug.Log("Player 2 foi sequestrado!");
+            }
+
+            Normal_Wave = false;
+            Orda_Wave = false;
+            Multiple_Wave = true;
+
+            Invoke("GoToSpawn", TimerToSpawn);
+
+        }
+
+        if (Type >= 16 && Type <= 20)//Perder Defesa
         {
             Debug.Log("Perderam Defesa");
             RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        if (Type >= 11 && Type <= 13)//Perder Vida
+        if (Type >= 21 && Type <= 25)//Perder Vida
         {
 
             Debug.Log("Perderam Ouro");
             RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        if (Type >= 14 && Type <= 18) //Wave Surpresa
-        {
-           
-            Debug.Log("Suprise Wave");
-            AtualMonsters = 0;
-            MonstersDestroy = 0;
-            WaveNumbers = 1;
-
-            int RandomReWaveMonsters = Random.Range(3, 7);
-            MonstersNumbers = RandomReWaveMonsters;
-
-            for (int i = 0; i < MonstersNumbers; i++)
-            {
-                int RandomLocalNumber = SpawnControl.Acionados - 1;
-                int randomLocal = Random.Range(0, RandomLocalNumber);
-                int randomMonster = Random.Range(0, 9);
-
-                GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
-                Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
-
-                AtualMonsters++;
-
-            }
-        }
+        
 
     }
 
