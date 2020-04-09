@@ -9,7 +9,7 @@ public class Porta_Default : MonoBehaviour
 {
     public Porta_Default P; //referencia dele mesmo para passar para os inimigos que dropam
     public RoomController RoomControl; //referencia de missao
-    BoxCollider triggerPlayers; //BoxCollider do Puzzle
+    public BoxCollider triggerPlayers; //BoxCollider do Puzzle
     bool StartingWave; //Colidir pra iniciar a wave
     bool CountPlayerTrigger1, CountPlayerTrigger2;
     Player player1;
@@ -51,7 +51,6 @@ public class Porta_Default : MonoBehaviour
 
     void Start()
     {
-        triggerPlayers = GetComponent<BoxCollider>(); //Pegar o Box desse Portao
         StartingWave = false;
     }
 
@@ -229,30 +228,28 @@ public class Porta_Default : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player") //Iniciar a wave após o primeiro jogador colidir
         {
-            
-            if (StartingWave == false)
+
+            if (!StartingWave)
             {
                 StartingWave = true;
 
                 if (Orda_Wave)
                 {
                     InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
-                    
                 }
                 else
                 {
-                   
+
                     Invoke("GoToSpawn", TimerToSpawn);
-                    
                 }
-               
-                
+
+
             }
         }
-
-        if(other.gameObject.name == "Player1")
+       
+        if(other.gameObject.name == "Player1") //Pegar a referencia do jogador 1 e aguardar os dois estarem em cena para tirar o box
         {
             CountPlayerTrigger1 = true;
             player1 = other.GetComponent<Player>();
@@ -260,11 +257,10 @@ public class Porta_Default : MonoBehaviour
             if (CountPlayerTrigger1 && CountPlayerTrigger2)
             {
                 triggerPlayers.enabled = false;
-
+              
             }
 
         }
-
 
         if (other.gameObject.name == "Player2")
         {
@@ -274,7 +270,7 @@ public class Porta_Default : MonoBehaviour
             if (CountPlayerTrigger1 && CountPlayerTrigger2)
             {
                 triggerPlayers.enabled = false;
-
+               
             }
 
         }

@@ -14,6 +14,8 @@ public class Porta_Color : MonoBehaviour
     CameraTarget cameraTarget;
 
     public GameObject Door;
+    public GameObject OpenDoor;
+    public Door DoorScript;
     public GameObject UI_Door;
     public Image Ui_Open;
     float DoorBar = 0f;
@@ -57,9 +59,18 @@ public class Porta_Color : MonoBehaviour
                         IsOpen = true;
                         Door.SetActive(false);
                         cameraTarget.targets[2] = cameraTarget.targets[1];
-                        Debug.Log("Portao Liberado!");
-
                         RoomControl.CompleteRoom(1);
+
+                        if (DoorScript.KeysToOpen > 0)
+                        {
+                            OpenDoor.SetActive(true);
+                            Debug.Log("Voce precisará de chaves para desbloquear a porta.");
+                        }
+                        else
+                        {
+                            Debug.Log("Portao Liberado!");
+                        }
+  
                     }
 
                 }
