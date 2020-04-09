@@ -210,15 +210,23 @@ public class Porta_Default : MonoBehaviour
             Debug.Log("Rescue!");
             Rescue = true;
 
-            int SelectPlayer = Random.Range(0, 1);
-            if(SelectPlayer == 0)
+            int SelectPlayer = Random.Range(1, 10);
+            if(SelectPlayer <= 5)
             {
                 player1.FPSWalkScript.ToMove = true;
+                player1.SA.Player1 = true;
+                player1.SA.PD = P;
+
+                player1.Rescue_Object.SetActive(true);
                 Debug.Log("Player 1 foi sequestrado!");
             }
-            if(SelectPlayer == 1)
+            if(SelectPlayer >= 6)
             {
                 player2.FPSWalkScript.ToMove = true;
+                player2.SA.Player2 = true;
+                player2.SA.PD = P;
+                
+                player2.Rescue_Object.SetActive(true);
                 Debug.Log("Player 2 foi sequestrado!");
             }
 
@@ -243,7 +251,19 @@ public class Porta_Default : MonoBehaviour
             RoomControl.ReWaveContest(ReWave_Door);
         }
 
-        
+
+    }
+
+    public void RescueComplete()
+    {
+        Rescue = false;
+        player1.FPSWalkScript.ToMove = false;
+        player2.FPSWalkScript.ToMove = false;
+
+        player1.Rescue_Object.SetActive(false);
+        player2.Rescue_Object.SetActive(false);
+
+        RoomControl.ReWaveContest(ReWave_Door);
 
     }
 

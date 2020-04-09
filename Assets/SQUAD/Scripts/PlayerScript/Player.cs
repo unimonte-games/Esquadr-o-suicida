@@ -59,6 +59,9 @@ public class Player : MonoBehaviour
     public bool Controller1;
     public bool Controller2;
 
+    public GameObject Rescue_Object;
+    public SurpriseAttack SA;
+
     public FpsWalk FPSWalkScript;
 
     private void Start()
@@ -123,8 +126,6 @@ public class Player : MonoBehaviour
 
         FPSWalkScript.UpdateMoviment();
     }
-
-
 
     private void Update()
     {
