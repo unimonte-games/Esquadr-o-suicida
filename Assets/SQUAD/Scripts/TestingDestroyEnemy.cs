@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TestingDestroyEnemy : MonoBehaviour
 {
+    public int TypeEnemy;
+    public Transform PlayerTarget;
     public Porta_Default P_default;
 
     private void OnTriggerEnter(Collider other)

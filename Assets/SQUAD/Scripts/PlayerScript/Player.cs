@@ -20,8 +20,6 @@ public class Player : MonoBehaviour
     //A Boss Final ficará pra smp na cena.
     //A key Door depois de um tempo, cria raizes para voce ativar e passar por uma wave para obter novamente.
 
-    
- 
     public GameObject[] KeyList; //Prefab
     public GameObject[] Key; //Atual Keys
     public int[] KeyID; //Quantidade das Chaves

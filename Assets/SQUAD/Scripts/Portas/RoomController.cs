@@ -92,7 +92,7 @@ public class RoomController : MonoBehaviour
         }
         else if (Complete == 3 && DefaultComplete)
         {
-            int Type = Random.Range(6, 15); //chance maior de sair "surprise wave"
+            int Type = Random.Range(16, 20); 
             Default.PlayerPunition(Type, 3);
             return;
         }

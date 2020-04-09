@@ -17,6 +17,8 @@ public class Porta_Default : MonoBehaviour
     public int ReWave_Door;
     public bool ReWave;
     bool Rescue;
+    bool Protect; 
+    Transform OnPlayer; //referencia do jogador escolhido
 
     
     public bool Normal_Wave; //Selecionar a wave NORMAL
@@ -84,17 +86,9 @@ public class Porta_Default : MonoBehaviour
             int MultipleMonsters_temp = Random.Range(Multiple_Min_MonstersNumbers, Multiple_Max_MonstersNumbers);
             MonstersNumbers = MultipleMonsters_temp;
 
-            if (ReWave)//Se for uma wave Surpresa - Surprise, Rescue
-            {
-                AtualMonsters = 0;
-                MonstersDestroy = 0;
-                AtualWave = 0;
-                WaveNumbers = Random.Range(1, 3);
-            }
-            else
-            {
-                WaveNumbers = Multiple_WaveNumbers;
-            }
+
+            WaveNumbers = Multiple_WaveNumbers;
+
 
         }
 
@@ -110,8 +104,10 @@ public class Porta_Default : MonoBehaviour
                 return;
             }
 
+
             int OrdaMonsters_temp = Random.Range(Orda_Min_MonstersNumbers, Orda_Max_MonstersNumbers);
             MonstersNumbers = OrdaMonsters_temp;
+
 
             WaveNumbers = Orda_RepeatWave;
 
@@ -125,6 +121,11 @@ public class Porta_Default : MonoBehaviour
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
             Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
+
+            if (Protect)
+            {
+                Enemy.GetComponent<TestingDestroyEnemy>().PlayerTarget = OnPlayer;               
+            }
 
             AtualMonsters++;
 
@@ -238,10 +239,28 @@ public class Porta_Default : MonoBehaviour
 
         }
 
-        if (Type >= 16 && Type <= 20)//Perder Defesa
+        if (Type >= 16 && Type <= 20)//Protect/Target
         {
-            Debug.Log("Perderam Defesa");
-            RoomControl.ReWaveContest(ReWave_Door);
+            Debug.Log("Protect! Target Wave.");
+            Protect = true;
+
+            Normal_Wave = false;
+            Multiple_Wave = false;
+            Orda_Wave = true;
+
+            int SelectPlayer = Random.Range(1, 10);
+            if (SelectPlayer <= 5)
+            {
+                OnPlayer = player1.transform;
+                Debug.Log("Player 1 é o Alvo!");
+            }
+            if (SelectPlayer >= 6)
+            {
+                OnPlayer = player2.transform;
+                Debug.Log("Player 2 é o Alvo!");
+            }
+
+            InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }
 
         if (Type >= 21 && Type <= 25)//Perder Vida
