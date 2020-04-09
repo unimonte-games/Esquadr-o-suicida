@@ -19,8 +19,11 @@ public class Porta_Default : MonoBehaviour
     bool Rescue;
     bool Protect; 
     Transform OnPlayer; //referencia do jogador escolhido
+    public bool Peace;
+    public GameObject[] PeaceList;
+    int CountPeaceList;
+    public GameObject OnPeace;
 
-    
     public bool Normal_Wave; //Selecionar a wave NORMAL
     [Range(1, 10)]
     public int Normal_MonstersNumbers; //Inimigos que vao spawnar
@@ -51,6 +54,7 @@ public class Porta_Default : MonoBehaviour
     public GameObject[] MonstersPrefab; //Prefab de cada Monstro
     public SpawnController SpawnControl;
     public Transform[] LocalSpawn; //Locais que eles vao spawnar
+    public Transform parentSpawn; //Lugar que vao dropar
 
     void Start()
     {
@@ -68,7 +72,6 @@ public class Porta_Default : MonoBehaviour
             MonstersDestroy = 0;
         }
        
-
         if (Normal_Wave)
         {
             Multiple_Wave = false;
@@ -89,7 +92,6 @@ public class Porta_Default : MonoBehaviour
 
             WaveNumbers = Multiple_WaveNumbers;
 
-
         }
 
 
@@ -108,9 +110,7 @@ public class Porta_Default : MonoBehaviour
             int OrdaMonsters_temp = Random.Range(Orda_Min_MonstersNumbers, Orda_Max_MonstersNumbers);
             MonstersNumbers = OrdaMonsters_temp;
 
-
             WaveNumbers = Orda_RepeatWave;
-
         }
 
         for (int i = 0; i < MonstersNumbers; i++)
@@ -121,12 +121,18 @@ public class Porta_Default : MonoBehaviour
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
             Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
+            Enemy.transform.parent = parentSpawn;
 
             if (Protect)
             {
                 Enemy.GetComponent<TestingDestroyEnemy>().PlayerTarget = OnPlayer;               
             }
 
+            if (Peace)
+            {
+                PeaceList[CountPeaceList] = Enemy;
+                CountPeaceList++;
+            }
             AtualMonsters++;
 
         }
@@ -174,6 +180,11 @@ public class Porta_Default : MonoBehaviour
 
     public void MonstersDefeat()
     {
+        if (Peace)
+        {
+            PeaceOtherSpawn();
+        }
+
         MonstersDestroy++;
         WaveUpdate();
     }
@@ -263,14 +274,57 @@ public class Porta_Default : MonoBehaviour
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }
 
-        if (Type >= 21 && Type <= 25)//Perder Vida
+        if (Type >= 21 && Type <= 25)//Peace 
         {
+            Debug.Log("Peace Wave!");
+            Peace = true;
 
-            Debug.Log("Perderam Ouro");
-            RoomControl.ReWaveContest(ReWave_Door);
+            Normal_Wave = false;
+            Multiple_Wave = false;
+            Orda_Wave = true;
+
+            OnPeace.GetComponent<PeaceCounter>().PD = P;
+            OnPeace.SetActive(true);
+
+            InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }
 
 
+    }
+
+    void PeaceOtherSpawn()
+    {
+        Debug.Log("Droparam +2!");
+        for (int i = 0; i <= 1; i++)//Dropam +2 a cada morte
+        {
+            int RandomLocalNumber = SpawnControl.Acionados - 1;
+            int randomLocal = Random.Range(0, RandomLocalNumber);
+            int randomMonster = Random.Range(0, 9);
+
+            GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
+            Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
+            Enemy.transform.parent = parentSpawn;
+
+            PeaceList[CountPeaceList] = Enemy;
+            CountPeaceList++;
+
+            AtualMonsters++; 
+        }
+    }
+
+    public void PeaceDestroyAllEnemys()
+    {
+        for (int i = 0; i <= CountPeaceList; i++)
+        {
+            if(PeaceList[i] != null)
+            {
+                PeaceList[i].SetActive(false);
+                PeaceList[i] = null;
+            }
+        }
+
+        OnPeace.SetActive(false);
+        Debug.Log("Todos da Peace List foram destruidos!");
     }
 
     public void RescueComplete()

@@ -92,7 +92,7 @@ public class RoomController : MonoBehaviour
         }
         else if (Complete == 3 && DefaultComplete)
         {
-            int Type = Random.Range(16, 20); 
+            int Type = Random.Range(21, 25); 
             Default.PlayerPunition(Type, 3);
             return;
         }

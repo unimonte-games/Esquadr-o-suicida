@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
         FPSWalkScript.UpdateMoviment();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
        
         if (Disabled)

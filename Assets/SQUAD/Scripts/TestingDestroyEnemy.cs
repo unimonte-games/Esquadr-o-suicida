@@ -13,7 +13,7 @@ public class TestingDestroyEnemy : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             P_default.MonstersDefeat();
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }
