@@ -16,7 +16,6 @@ public class PeaceCounter : MonoBehaviour
         peaceBar.fillAmount = CounterToSurvivor / TimeToSurvivor;
         if (CounterToSurvivor >= TimeToSurvivor)
         {
-            PD.Peace = false;
             PD.PeaceDestroyAllEnemys();
         }
     }

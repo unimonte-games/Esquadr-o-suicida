@@ -23,6 +23,8 @@ public class Porta_Default : MonoBehaviour
     public GameObject[] PeaceList;
     int CountPeaceList;
     public GameObject OnPeace;
+    bool AllTargetEnemy;
+    int EnemyIDforTarget;
 
     public bool Normal_Wave; //Selecionar a wave NORMAL
     [Range(1, 10)]
@@ -94,7 +96,6 @@ public class Porta_Default : MonoBehaviour
 
         }
 
-
         if (Orda_Wave)
         {
             Normal_Wave = false;
@@ -117,7 +118,12 @@ public class Porta_Default : MonoBehaviour
         {
             int RandomLocalNumber = SpawnControl.Acionados - 1;
             int randomLocal = Random.Range(0, RandomLocalNumber);
-            int randomMonster = Random.Range(0, 9);
+            int randomMonster = Random.Range(0, 12);
+
+            if (AllTargetEnemy)
+            {
+                randomMonster = EnemyIDforTarget;
+            }
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
             Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
@@ -130,8 +136,12 @@ public class Porta_Default : MonoBehaviour
 
             if (Peace)
             {
-                PeaceList[CountPeaceList] = Enemy;
-                CountPeaceList++;
+                if(CountPeaceList <= 250)// << é preciso mudar esse valor alguma hora
+                {
+                    PeaceList[CountPeaceList] = Enemy;
+                    CountPeaceList++;
+                }
+                
             }
             AtualMonsters++;
 
@@ -289,17 +299,35 @@ public class Porta_Default : MonoBehaviour
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }
 
+        if (Type >= 26 && Type <= 30)//All Enemys
+        {
+            Debug.Log("All Enemys!");
+            AllTargetEnemy = true;
+
+            Normal_Wave = false;
+            Orda_Wave = false;
+            Multiple_Wave = true;
+
+            EnemyIDforTarget = Random.Range(0, 12);
+
+            Invoke("GoToSpawn", TimerToSpawn);
+        }
+
 
     }
 
     void PeaceOtherSpawn()
     {
+        if (CountPeaceList >= 250)// << é preciso mudar esse valor alguma hora
+        {
+            return;
+        }
         Debug.Log("Droparam +2!");
         for (int i = 0; i <= 1; i++)//Dropam +2 a cada morte
         {
             int RandomLocalNumber = SpawnControl.Acionados - 1;
             int randomLocal = Random.Range(0, RandomLocalNumber);
-            int randomMonster = Random.Range(0, 9);
+            int randomMonster = Random.Range(0, 12);
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
             Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
@@ -308,12 +336,14 @@ public class Porta_Default : MonoBehaviour
             PeaceList[CountPeaceList] = Enemy;
             CountPeaceList++;
 
-            AtualMonsters++; 
+            AtualMonsters++;
         }
     }
 
     public void PeaceDestroyAllEnemys()
     {
+        Peace = false;
+
         for (int i = 0; i <= CountPeaceList; i++)
         {
             if(PeaceList[i] != null)
