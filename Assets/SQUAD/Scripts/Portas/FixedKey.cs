@@ -5,19 +5,20 @@ using UnityEngine;
 public class FixedKey : MonoBehaviour
 {
 
-    public RoomController R;
+    public RoomController R; //Manual
     bool Fixed_Area, P1, P2;
     public int QtdPress;
     public int MaxTimeInPress;
     float timeToAdd;
+    Player P;
 
-
+    
 
     public void FixedUpdate()
     {
         if (Fixed_Area)
         {
-            if (P1 && Input.GetKey(KeyCode.Q))
+            if (P1 && Input.GetKey(P.Accept))
             {
                 timeToAdd += 0.01f;
                 if (timeToAdd >= 1)
@@ -34,7 +35,7 @@ public class FixedKey : MonoBehaviour
 
             }
 
-            if (P2 && Input.GetKey(KeyCode.E))
+            if (P2 && Input.GetKey(P.Accept))
             {
                 timeToAdd += 0.01f;
                 if (timeToAdd >= QtdPress)
@@ -62,6 +63,7 @@ public class FixedKey : MonoBehaviour
             P1 = true;
             P2 = false;
 
+            P = other.GetComponent<Player>();
             Fixed_Area = true;
         }
 
@@ -70,6 +72,7 @@ public class FixedKey : MonoBehaviour
             P2 = true;
             P1 = false;
 
+            P = other.GetComponent<Player>();
             Fixed_Area = true;
         }
     }

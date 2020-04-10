@@ -130,12 +130,11 @@ public class RoomController : MonoBehaviour
     }
 
 
-    void RoomClean()
+    public void RoomClean()
     {
 
         if (CompleteMissions == MissionInTheRoom)
         {
-           
             Debug.Log("Room Clean!");
         }
     }

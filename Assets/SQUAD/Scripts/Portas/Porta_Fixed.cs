@@ -11,25 +11,30 @@ public class Porta_Fixed : MonoBehaviour
     public int Fixed_Unlock;
     public bool Fixed_Area;
     public bool P1, P2;
+    public Player P;
 
     public void FixedUpdate()
     {
         if (Fixed_Area)
         {
-            if (P1 && Input.GetKeyDown(KeyCode.Q))
+            if (P1 && Input.GetKeyDown(P.Accept))
             {
-                if (RoomControl.FixedComplete == Fixed_Unlock)
+                if (RoomControl.FixedComplete >= Fixed_Unlock)
                 {
                     RoomControl.FixedComplete -= Fixed_Unlock;
+                    RoomControl.CompleteMissions++;
+                    RoomControl.RoomClean();
                     Debug.Log("Portao Liberado!");
                 }
             }
 
-            if (P2 && Input.GetKeyDown(KeyCode.E))
+            if (P2 && Input.GetKeyDown(P.Accept))
             {
-                if (RoomControl.FixedComplete == Fixed_Unlock)
+                if (RoomControl.FixedComplete >= Fixed_Unlock)
                 {
                     RoomControl.FixedComplete -= Fixed_Unlock;
+                    RoomControl.CompleteMissions++;
+                    RoomControl.RoomClean();
                     Debug.Log("Portao Liberado!");
                 }
             }
@@ -46,6 +51,8 @@ public class Porta_Fixed : MonoBehaviour
             P1 = true;
             P2 = false;
 
+            P = other.GetComponent<Player>();
+
             Fixed_Area = true;
         }
 
@@ -53,6 +60,8 @@ public class Porta_Fixed : MonoBehaviour
         {
             P2 = true;
             P1 = false;
+
+            P = other.GetComponent<Player>();
 
             Fixed_Area = true;
         }
