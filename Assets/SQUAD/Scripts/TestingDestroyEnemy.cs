@@ -10,9 +10,15 @@ public class TestingDestroyEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.name == "Player1")
         {
-            P_default.MonstersDefeat();
+            P_default.MonstersDefeat(1,TypeEnemy);
+            this.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.name == "Player2")
+        {
+            P_default.MonstersDefeat(2,TypeEnemy);
             this.gameObject.SetActive(false);
         }
     }

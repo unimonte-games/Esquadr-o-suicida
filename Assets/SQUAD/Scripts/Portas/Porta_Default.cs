@@ -17,7 +17,7 @@ public class Porta_Default : MonoBehaviour
     public int ReWave_Door;
     public bool ReWave;
     bool Rescue;
-    bool Protect; 
+    bool Protect;
     Transform OnPlayer; //referencia do jogador escolhido
     public bool Peace;
     public GameObject[] PeaceList;
@@ -47,9 +47,21 @@ public class Porta_Default : MonoBehaviour
     public float Orda_RepeatWave; //Quantas vezes os blocos vao ser spanwnados 
     public float Orda_TimeToSpawn = 3; //Tempo do proximo bloco de inimigos
 
+    public bool Target_Wave;
+    [Range(1, 3)]
+    public int Target_Min_MonstersNumbers; //Inimigos que vai vir por bloco
+    [Range(2, 6)]
+    public int Target_Max_MonstersNumbers; //Inimigos que vai vir por bloco
+    [Range(2, 12)]
+    public float target_RepeatWave; //Quantas vezes os blocos vao ser spanwnados 
+    public float Target_TimeToSpawn = 7; //Tempo do proximo bloco de inimigos
+    int ID_Player1Target, Player1_enemyCount, P1_Total, ID_Player2Target, Player2_enemyCount, P2_Total, CountTarget, CountAllEnemy1, CountAllEnemy2;
+    bool TargetFinish, ChoiceEnemys, Player1_Finish, Player2_Finish;
+    public GameObject[] TargetAllEnemy1, TargetAllEnemy2;
+
     public float TimerToSpawn = 2; //Tempo para iniciar a waves
     public float WaveNumbers; //Quantidade de Waves
-    public int AtualWave; //WaveAtual do jogador
+    public float AtualWave; //WaveAtual do jogador
     public int MonstersNumbers; //Quantidade de Monstros para Spawnar
     public int AtualMonsters; //Quantidade de Monstros que foi Spawnado
     public int MonstersDestroy; //Quantidade de monstros que foram destruidos
@@ -66,18 +78,19 @@ public class Porta_Default : MonoBehaviour
     void GoToSpawn()
     {
         Debug.Log("Iniciando Wave");
-        
-        
+
+
         if (Orda_Wave == false)
         {
             AtualMonsters = 0;
             MonstersDestroy = 0;
         }
-       
+
         if (Normal_Wave)
         {
             Multiple_Wave = false;
             Orda_Wave = false;
+            Target_Wave = false;
 
             MonstersNumbers = Normal_MonstersNumbers;
             WaveNumbers = 1;
@@ -87,6 +100,7 @@ public class Porta_Default : MonoBehaviour
         {
             Normal_Wave = false;
             Orda_Wave = false;
+            Target_Wave = false;
 
             int MultipleMonsters_temp = Random.Range(Multiple_Min_MonstersNumbers, Multiple_Max_MonstersNumbers);
             MonstersNumbers = MultipleMonsters_temp;
@@ -100,6 +114,7 @@ public class Porta_Default : MonoBehaviour
         {
             Normal_Wave = false;
             Multiple_Wave = false;
+            Target_Wave = false;
 
             if (Orda_RepeatWave == AtualWave)
             {
@@ -112,6 +127,42 @@ public class Porta_Default : MonoBehaviour
             MonstersNumbers = OrdaMonsters_temp;
 
             WaveNumbers = Orda_RepeatWave;
+        }
+
+        if (Target_Wave)
+        {
+            Normal_Wave = false;
+            Multiple_Wave = false;
+            Orda_Wave = false;
+
+            if (!ChoiceEnemys)
+            {
+                ChoiceEnemys = true;
+                ID_Player1Target = Random.Range(0, 12);
+                ID_Player2Target = Random.Range(0, 12);
+
+                P1_Total = Random.Range(1, 7);
+                P2_Total = Random.Range(1, 7);
+            }
+  
+            if (target_RepeatWave == AtualWave)
+            {
+                WaveUpdate();
+                return;
+            }
+
+            int targetMonsters_temp = Random.Range(Target_Min_MonstersNumbers, Target_Max_MonstersNumbers);
+            MonstersNumbers = targetMonsters_temp;
+
+            WaveNumbers = target_RepeatWave;
+
+            CountTarget++;
+            if(CountTarget >= 1)
+            {
+                CountTarget = 0;
+                TargetSetEnemy();
+            }
+
         }
 
         for (int i = 0; i < MonstersNumbers; i++)
@@ -129,45 +180,64 @@ public class Porta_Default : MonoBehaviour
             Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
             Enemy.transform.parent = parentSpawn;
 
+            if (Target_Wave)
+            {
+                TargetAllEnemy1[CountAllEnemy1] = Enemy;
+                CountAllEnemy1++; 
+            }
+
             if (Protect)
             {
-                Enemy.GetComponent<TestingDestroyEnemy>().PlayerTarget = OnPlayer;               
+                Enemy.GetComponent<TestingDestroyEnemy>().PlayerTarget = OnPlayer;
             }
 
             if (Peace)
             {
-                if(CountPeaceList <= 250)// << é preciso mudar esse valor alguma hora
+                if (CountPeaceList <= 250)// << é preciso mudar esse valor alguma hora
                 {
                     PeaceList[CountPeaceList] = Enemy;
                     CountPeaceList++;
                 }
-                
+
             }
+
+
             AtualMonsters++;
 
         }
-       
 
         AtualWave++; //Adiciona um contador ao final de dropar os monstros
-       
-  
+
+
     }
 
     public void WaveUpdate()
     {
         if (AtualMonsters == MonstersDestroy)
         {
+            if (Target_Wave)
+            {
+                if (!TargetFinish)
+                {
+                    AtualWave = 0; //Vai sempre reiniciar
+                    Invoke("GoToSpawn", TimerToSpawn);
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+
+
+            }
+
             if (AtualWave == WaveNumbers)
             {
-
                 AtualWave = 0;
                 WaveNumbers = 0;
                 AtualMonsters = 0;
                 MonstersDestroy = 0;
                 MonstersNumbers = 0;
-
-                Debug.Log("Complete Waves");
-                CancelInvoke();
 
                 if (ReWave)
                 {
@@ -179,20 +249,48 @@ public class Porta_Default : MonoBehaviour
                     return;
                 }
 
+                Debug.Log("Complete Waves");
+                CancelInvoke("OrdaRepeatWave");
+
                 RoomControl.CompleteRoom(0);
                 return;
             }
 
             Invoke("GoToSpawn", TimerToSpawn);
-           
+
         }
     }
 
-    public void MonstersDefeat()
+    public void MonstersDefeat(int PlayerToDestroy, int EnemyID)
     {
         if (Peace)
         {
             PeaceOtherSpawn();
+        }
+
+        if (Target_Wave)
+        {
+            if (PlayerToDestroy == 1 && EnemyID == ID_Player1Target && !Player1_Finish)//Player1
+            {
+                Player1_enemyCount++;
+                if(Player1_enemyCount >= P1_Total)
+                {
+                    Debug.Log("P1 Finalizou!");
+                    Player1_Finish = true;
+                    TargetFinished();
+                }
+            }
+
+            if (PlayerToDestroy == 2 && EnemyID == ID_Player2Target && !Player2_Finish)//Player2
+            {
+                Player2_enemyCount++;
+                if (Player2_enemyCount >= P2_Total)
+                {
+                    Debug.Log("P2 Finalizou!");
+                    Player2_Finish = true;
+                    TargetFinished();
+                }
+            }
         }
 
         MonstersDestroy++;
@@ -233,7 +331,7 @@ public class Porta_Default : MonoBehaviour
             Rescue = true;
 
             int SelectPlayer = Random.Range(1, 10);
-            if(SelectPlayer <= 5)
+            if (SelectPlayer <= 5)
             {
                 player1.FPSWalkScript.ToMove = true;
                 player1.SA.Player1 = true;
@@ -242,12 +340,12 @@ public class Porta_Default : MonoBehaviour
                 player1.Rescue_Object.SetActive(true);
                 Debug.Log("Player 1 foi sequestrado!");
             }
-            if(SelectPlayer >= 6)
+            if (SelectPlayer >= 6)
             {
                 player2.FPSWalkScript.ToMove = true;
                 player2.SA.Player2 = true;
                 player2.SA.PD = P;
-                
+
                 player2.Rescue_Object.SetActive(true);
                 Debug.Log("Player 2 foi sequestrado!");
             }
@@ -346,7 +444,7 @@ public class Porta_Default : MonoBehaviour
 
         for (int i = 0; i <= CountPeaceList; i++)
         {
-            if(PeaceList[i] != null)
+            if (PeaceList[i] != null)
             {
                 PeaceList[i].SetActive(false);
                 PeaceList[i] = null;
@@ -355,6 +453,77 @@ public class Porta_Default : MonoBehaviour
 
         OnPeace.SetActive(false);
         Debug.Log("Todos da Peace List foram destruidos!");
+    }
+
+    void TargetSetEnemy()
+    {
+        Debug.Log("Dropando Enemys");
+        int RandomLocalNumber = SpawnControl.Acionados - 1;
+        int randomLocal = Random.Range(0, RandomLocalNumber);
+
+        GameObject Enemy1 = Instantiate(MonstersPrefab[ID_Player1Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
+        Enemy1.GetComponent<TestingDestroyEnemy>().P_default = P;
+        Enemy1.transform.parent = parentSpawn;
+
+        TargetAllEnemy2[CountAllEnemy2] = Enemy1;
+        CountAllEnemy2++;
+
+        randomLocal = Random.Range(0, RandomLocalNumber);
+
+        GameObject Enemy2 = Instantiate(MonstersPrefab[ID_Player2Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
+        Enemy2.GetComponent<TestingDestroyEnemy>().P_default = P;
+        Enemy2.transform.parent = parentSpawn;
+
+        TargetAllEnemy2[CountAllEnemy2] = Enemy2;
+        CountAllEnemy2++;
+
+
+
+    }
+
+    void TargetFinished()
+    {
+       if(Player1_Finish && Player2_Finish)
+        {
+            Debug.Log("Target concluido!");
+            TargetFinish = true;
+            TargetDestroyAllEnemies();
+        }
+    }
+
+    void TargetDestroyAllEnemies()
+    {
+        for (int i = 0; i <= CountAllEnemy1; i++)
+        {
+            if (TargetAllEnemy1[i] != null)
+            {
+                TargetAllEnemy1[i].SetActive(false);
+                TargetAllEnemy1[i] = null;
+            }
+        }
+
+
+        for (int i = 0; i <= CountAllEnemy2; i++)
+        {
+            if (TargetAllEnemy2[i] != null)
+            {
+                TargetAllEnemy2[i].SetActive(false);
+                TargetAllEnemy2[i] = null;
+            }
+        }
+
+        AtualWave = 0;
+        WaveNumbers = 0;
+        AtualMonsters = 0;
+        MonstersDestroy = 0;
+        MonstersNumbers = 0;
+
+        Debug.Log("Complete Waves");
+        CancelInvoke("OrdaRepeatWave");
+        CancelInvoke("GoToSpawn");
+
+        RoomControl.CompleteRoom(0);
+
     }
 
     public void RescueComplete()
@@ -366,13 +535,23 @@ public class Porta_Default : MonoBehaviour
         player1.Rescue_Object.SetActive(false);
         player2.Rescue_Object.SetActive(false);
 
+        AtualWave = 0;
+        WaveNumbers = 0;
+        AtualMonsters = 0;
+        MonstersDestroy = 0;
+        MonstersNumbers = 0;
+
+        Debug.Log("Complete Waves");
+        CancelInvoke("OrdaRepeatWave");
+        CancelInvoke("GoToSpawn");
+
         RoomControl.ReWaveContest(ReWave_Door);
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player") //Iniciar a wave após o primeiro jogador colidir
+        if (other.gameObject.tag == "Player") //Iniciar a wave após o primeiro jogador colidir
         {
 
             if (!StartingWave)
@@ -385,15 +564,14 @@ public class Porta_Default : MonoBehaviour
                 }
                 else
                 {
-
                     Invoke("GoToSpawn", TimerToSpawn);
                 }
 
 
             }
         }
-       
-        if(other.gameObject.name == "Player1") //Pegar a referencia do jogador 1 e aguardar os dois estarem em cena para tirar o box
+
+        if (other.gameObject.name == "Player1") //Pegar a referencia do jogador 1 e aguardar os dois estarem em cena para tirar o box
         {
             CountPlayerTrigger1 = true;
             player1 = other.GetComponent<Player>();
@@ -401,7 +579,7 @@ public class Porta_Default : MonoBehaviour
             if (CountPlayerTrigger1 && CountPlayerTrigger2)
             {
                 triggerPlayers.enabled = false;
-              
+
             }
 
         }
@@ -414,7 +592,7 @@ public class Porta_Default : MonoBehaviour
             if (CountPlayerTrigger1 && CountPlayerTrigger2)
             {
                 triggerPlayers.enabled = false;
-               
+
             }
 
         }
