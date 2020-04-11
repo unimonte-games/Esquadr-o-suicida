@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
        
         if (Disabled)
         {
-            CountToDisable += 0.1f;
+            CountToDisable += 0.01f;
             if (CountToDisable >= 2f)
             {
 
