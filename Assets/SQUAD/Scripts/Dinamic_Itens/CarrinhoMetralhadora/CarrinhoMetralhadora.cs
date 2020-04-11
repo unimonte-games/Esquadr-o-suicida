@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarrinhoMetralhadora : MonoBehaviour
 {
-    public float speed = 10f;
+    
 
     public GameObject Player_Assault; //Assault
     public GameObject Player_Moviment; //Moviment
@@ -13,15 +13,12 @@ public class CarrinhoMetralhadora : MonoBehaviour
     GameObject P2_ref;
     KeyCode P1;
     KeyCode P2;
+    KeyCode P1_Drop;
+    KeyCode P2_Drop;
     bool P1InArea;
     bool P2InArea;
-    bool P1ready;
-    bool P2ready;
-
-    KeyCode Moviment_Up;
-    KeyCode Moviment_Down;
-    KeyCode Moviment_Right;
-    KeyCode Moviment_Left;
+    public bool P1ready;
+    public bool P2ready;
 
     public bool Assault;
     public bool Moviment;
@@ -29,10 +26,12 @@ public class CarrinhoMetralhadora : MonoBehaviour
     public Transform MovimentPosition;
     public Transform DropAssault;
     public Transform DropMoviment;
-    public GameObject CarrinhoBody;
 
-    public GameObject P1_OriginalParent;
-    public GameObject P2_OriginalParent;
+    GameObject P1_OriginalParent;
+    GameObject P2_OriginalParent;
+
+    public CarrinhoController CC;
+    public CarrinhoAssault CA;
 
     private void Start()
     {
@@ -48,7 +47,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             if (Input.GetKeyDown(P1))
             {
                
-                if (!Assault)
+                if (!Assault && !P1ready)
                 {
                     Assault = true;
                     Player_Assault = P1_ref;
@@ -57,12 +56,16 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Assault.GetComponent<FpsWalk>().enabled = false;
 
                     P1ready = true;
+
+                    Player temp = Player_Assault.GetComponent<Player>();
+                    UpdateControllers1_Assault(temp);
+
                     Debug.Log("Player 1 é o Assault!");
                     return;
 
                 }
 
-                if (!Moviment)
+                if (!Moviment && !P1ready)
                 {
                     Moviment = true;
                     Player_Moviment = P1_ref;
@@ -71,14 +74,10 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Moviment.GetComponent<FpsWalk>().enabled = false;
 
                     P1ready = true;
-
+                    
                     Player temp = Player_Moviment.GetComponent<Player>();
-
-                    Moviment_Up = temp.Up;
-                    Moviment_Down = temp.Down;
-                    Moviment_Right = temp.Right;
-                    Moviment_Left = temp.Left;
-
+                    UpdateControllers1_Moviment(temp);
+                    
                     Debug.Log("Player 1 é o Controller!");
                     return;
 
@@ -92,7 +91,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             if (Input.GetKeyDown(P2))
             {
-                if (!Assault && !Moviment)
+                if (!Assault && !P2ready)
                 {
                     Assault = true;
                     Player_Assault = P2_ref;
@@ -101,12 +100,16 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Assault.GetComponent<FpsWalk>().enabled = false;
                     
                     P2ready = true;
+
+                    Player temp = Player_Assault.GetComponent<Player>();
+                    UpdateControllers2_Assault(temp);
+
                     Debug.Log("Player 2 é o Assault!");
                     return;
 
                 }
 
-                if (Assault && !Moviment)
+                if (!Moviment && !P2ready)
                 {
                     Moviment = true;
                     Player_Moviment = P2_ref;
@@ -115,13 +118,10 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Moviment.GetComponent<FpsWalk>().enabled = false;
 
                     P2ready = true;
+                    
 
                     Player temp = Player_Moviment.GetComponent<Player>();
-
-                    Moviment_Up = temp.Up;
-                    Moviment_Down = temp.Down;
-                    Moviment_Right = temp.Right;
-                    Moviment_Left = temp.Left;
+                    UpdateControllers2_Moviment(temp);
 
                     Debug.Log("Player 2 é o Controller!");
                     return;
@@ -132,30 +132,107 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
         }
 
-        if(P1ready && P2ready)
+        if(P1InArea && P1ready)
         {
-            Vector3 pos = CarrinhoBody.transform.position;
+            if (Input.GetKeyDown(P1_Drop))
+            {
+                if(P1_ref == Player_Assault)
+                {
+                    Player_Assault.transform.position = DropAssault.position;
+                    
+                    Player_Assault.GetComponent<FpsWalk>().enabled = true;
+                    Player_Assault.transform.parent = P1_OriginalParent.transform;
 
-            if (Input.GetKey(Moviment_Up))
-            {
-                pos.z += speed * Time.deltaTime;
-            }
-            if (Input.GetKey(Moviment_Down))
-            {
-                pos.z -= speed * Time.deltaTime;
-            }
-            if (Input.GetKey(Moviment_Right))
-            {
-                pos.x += speed * Time.deltaTime;
-            }
-            if (Input.GetKey(Moviment_Left))
-            {
-                pos.x -= speed * Time.deltaTime;
-            }
+                    Player_Assault = null;
+                    P1ready = false;
+                    Assault = false;
+                    return;
+                }
 
-            CarrinhoBody.transform.position = pos;
+                if (P1_ref == Player_Moviment)
+                {
+                    Player_Moviment.transform.position = DropMoviment.position;
+
+                    Player_Moviment.GetComponent<FpsWalk>().enabled = true;
+                    Player_Moviment.transform.parent = P1_OriginalParent.transform;
+
+                    Player_Moviment = null;
+                    P1ready = false;
+                    Moviment = false;
+                    return;
+                }
+
+            }
+        }
+        if (P2InArea && P2ready)
+        {
+            if (Input.GetKeyDown(P2_Drop))
+            {
+                if (P2_ref == Player_Assault)
+                {
+                    Player_Assault.transform.position = DropAssault.position;
+
+                    Player_Assault.GetComponent<FpsWalk>().enabled = true;
+                    Player_Assault.transform.parent = P2_OriginalParent.transform;
+
+                    Player_Assault = null;
+                    P2ready = false;
+                    Assault = false;
+                    return;
+                }
+
+                if (P2_ref == Player_Moviment)
+                {
+                    Player_Moviment.transform.position = DropMoviment.position;
+
+                    Player_Moviment.GetComponent<FpsWalk>().enabled = true;
+                    Player_Moviment.transform.parent = P2_OriginalParent.transform;
+
+                    Player_Moviment = null;
+                    P2ready = false;
+                    Moviment = false;
+                    return;
+                }
+
+            }
         }
 
+    }
+
+    void UpdateControllers1_Assault(Player P)
+    {
+        CA.Assault_Gatilho = P.Accept;
+        CA.Assault_Up = P.Up;
+        CA.Assault_Down = P.Down;
+        CA.Assault_Left = P.Left;
+        CA.Assault_Right = P.Right;
+            
+        //Controles
+    }
+
+    void UpdateControllers1_Moviment(Player P)
+    {
+        CC.Moviment_Up = P.Up;
+        CC.Moviment_Down = P.Down;
+        CC.Moviment_Right = P.Right;
+        CC.Moviment_Left = P.Left;
+    }
+
+    void UpdateControllers2_Assault(Player P)
+    {
+        CA.Assault_Gatilho = P.Accept;
+        CA.Assault_Up = P.Up;
+        CA.Assault_Down = P.Down;
+        CA.Assault_Left = P.Left;
+        CA.Assault_Right = P.Right;
+    }
+
+    void UpdateControllers2_Moviment(Player P)
+    {
+        CC.Moviment_Up = P.Up;
+        CC.Moviment_Down = P.Down;
+        CC.Moviment_Right = P.Right;
+        CC.Moviment_Left = P.Left;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -163,14 +240,18 @@ public class CarrinhoMetralhadora : MonoBehaviour
         if (other.gameObject.name == "Player1")
         {
             P1_ref = other.gameObject;
-            P1 = other.gameObject.GetComponent<Player>().Accept;
+            Player temp = other.gameObject.GetComponent<Player>();
+            P1 = temp.Accept;
+            P1_Drop = temp.Dropar_set;
             P1InArea = true;
         }
 
         if (other.gameObject.name == "Player2")
         {
             P2_ref = other.gameObject;
-            P2 = other.gameObject.GetComponent<Player>().Accept;
+            Player temp = other.gameObject.GetComponent<Player>();
+            P2 = temp.Accept;
+            P2_Drop = temp.Dropar_set;
             P2InArea = true;
         }
     }
@@ -181,7 +262,9 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             P1InArea = false;
             P1ready = false;
-            if(Player_Assault == other.gameObject)
+           
+
+            if (Player_Assault == other.gameObject)
             {
                 Player_Assault.GetComponent<FpsWalk>().enabled = true;
                 Player_Assault.transform.parent = P1_OriginalParent.transform;
@@ -207,6 +290,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             P2InArea = false;
             P2ready = false;
+            
+
             if (Player_Assault == other.gameObject)
             {
                 Player_Assault.GetComponent<FpsWalk>().enabled = true;
@@ -228,4 +313,6 @@ public class CarrinhoMetralhadora : MonoBehaviour
             }
         }
     }
+
+   
 }

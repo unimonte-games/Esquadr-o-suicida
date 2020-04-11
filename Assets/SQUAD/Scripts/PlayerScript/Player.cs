@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     public Transform DropKeySpawn;
 
     KeyCode Selecionar_set;
-    KeyCode Dropar_set;
+    public KeyCode Dropar_set;
     public KeyCode Accept;
 
     public KeyCode Up;
