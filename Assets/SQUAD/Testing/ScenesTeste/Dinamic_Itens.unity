@@ -3638,18 +3638,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc73641828975b48976c740eab67715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   Player_Assault: {fileID: 0}
   Player_Moviment: {fileID: 0}
+  P1ready: 0
+  P2ready: 0
   Assault: 0
   Moviment: 0
   AssaultPosition: {fileID: 841479565}
   MovimentPosition: {fileID: 1370412423}
   DropAssault: {fileID: 1932976088}
   DropMoviment: {fileID: 2060075902}
-  CarrinhoBody: {fileID: 848730480}
-  P1_OriginalParent: {fileID: 44984767}
-  P2_OriginalParent: {fileID: 834625211}
+  CC: {fileID: 848730486}
+  CA: {fileID: 848730487}
 --- !u!1 &553258823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4320,6 +4320,7 @@ MonoBehaviour:
   SelectKey: 0
   DropKey: 0
   DropKeySpawn: {fileID: 1655519320}
+  Dropar_set: 0
   Accept: 0
   Up: 0
   Down: 0
@@ -5492,6 +5493,8 @@ GameObject:
   - component: {fileID: 848730482}
   - component: {fileID: 848730481}
   - component: {fileID: 848730485}
+  - component: {fileID: 848730486}
+  - component: {fileID: 848730487}
   m_Layer: 0
   m_Name: CarrinhoMetralhadora
   m_TagString: Untagged
@@ -5590,6 +5593,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &848730486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848730480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa6bdaeb066b524a80fe51384006457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Moviment_Up: 0
+  Moviment_Down: 0
+  Moviment_Right: 0
+  Moviment_Left: 0
+  speed: 10
+  CM: {fileID: 545154268}
+--- !u!114 &848730487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848730480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36b2722ca8991b47abd60b577afa302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Assault_Gatilho: 0
+  Assault_Up: 0
+  Assault_Down: 0
+  Assault_Left: 0
+  Assault_Right: 0
+  CM: {fileID: 545154268}
 --- !u!1 &856527464
 GameObject:
   m_ObjectHideFlags: 0
@@ -11103,6 +11142,7 @@ MonoBehaviour:
   SelectKey: 0
   DropKey: 0
   DropKeySpawn: {fileID: 1270125682}
+  Dropar_set: 0
   Accept: 0
   Up: 0
   Down: 0
