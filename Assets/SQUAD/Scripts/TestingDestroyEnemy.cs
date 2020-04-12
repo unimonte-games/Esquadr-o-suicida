@@ -21,5 +21,10 @@ public class TestingDestroyEnemy : MonoBehaviour
             P_default.MonstersDefeat(2,TypeEnemy);
             this.gameObject.SetActive(false);
         }
+
+        if (other.gameObject.name == "Ball")
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }

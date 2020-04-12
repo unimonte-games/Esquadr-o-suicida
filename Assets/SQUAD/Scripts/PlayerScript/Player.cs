@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float LifeBar = 100f; //Vida do jogador em Numero
     public float ManaBar = 100f; //Energia do jogador para usar as armas
     public float DefeseBar = 100f; //Defesa do jogador
+    
 
     public int Keys_Quantidade; //Maximo 3
 

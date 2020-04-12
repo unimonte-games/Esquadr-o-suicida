@@ -67,7 +67,6 @@ public class Porta_Default : MonoBehaviour
     public int MonstersDestroy; //Quantidade de monstros que foram destruidos
     public GameObject[] MonstersPrefab; //Prefab de cada Monstro
     public SpawnController SpawnControl;
-    public Transform[] LocalSpawn; //Locais que eles vao spawnar
     public Transform parentSpawn; //Lugar que vao dropar
 
     void Start()
