@@ -13,6 +13,8 @@ public class PingPongBang : MonoBehaviour
     bool P1_ready;
     bool P2_ready;
 
+   
+
     public bool StartPong;
     public GameObject Ball;
     public Ball BallScript;
@@ -28,6 +30,7 @@ public class PingPongBang : MonoBehaviour
             {
                 P1_ready = true;
                 Debug.Log("Player 1 Pronto!");
+                
             }
         }
 
@@ -58,22 +61,26 @@ public class PingPongBang : MonoBehaviour
     {
         if (other.gameObject.name == "Player1" && !P1_inArea && !StartPong) //para pegar
         {
-
-            BallScript.P1_ref = other.GetComponent<Transform>();
-            P1 = other.GetComponent<Player>().Accept;
-            P1_inArea = true;
-            BallScript.p1 = P1;
-            return;
+            if (!other.GetComponent<Player>().UsingItenDinamic)
+            {
+                BallScript.P1_ref = other.GetComponent<Transform>();
+                P1 = other.GetComponent<Player>().Accept;
+                P1_inArea = true;
+                BallScript.p1 = P1;
+                return;
+            }
         }
 
         if (other.gameObject.name == "Player2" && !P2_inArea && !StartPong)// para pegar
         {
-
-            BallScript.P2_ref = other.GetComponent<Transform>();
-            P2 = other.GetComponent<Player>().Accept;
-            P2_inArea = true;
-            BallScript.p2 = P2;
-            return;
+            if (!other.GetComponent<Player>().UsingItenDinamic)
+            {
+                BallScript.P2_ref = other.GetComponent<Transform>();
+                P2 = other.GetComponent<Player>().Accept;
+                P2_inArea = true;
+                BallScript.p2 = P2;
+                return;
+            }
         }
     }
 

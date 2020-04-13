@@ -13,19 +13,32 @@ public class Ball : MonoBehaviour
     bool P1_area;
     bool P2_area;
     public float speed = 5;
-    
+    public int MaxCount;
+
+    private void Start()
+    {
+        Invoke("CancelThis", MaxCount);
+
+        P1_ref.GetComponent<Player>().UsingItenDinamic = true;
+        P2_ref.GetComponent<Player>().UsingItenDinamic = true;
+    }
 
     void FixedUpdate()
     {
 
         if (Input.GetKeyDown(p1) && P1_area)
         {
+           
             Atual = P2_ref;
+            
         }
 
         if (Input.GetKeyDown(p2) && P2_area)
         {
+           
             Atual = P1_ref;
+
+
         }
 
         transform.LookAt(Atual.position);
@@ -36,6 +49,15 @@ public class Ball : MonoBehaviour
             transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
         }
 
+    }
+
+    public void CancelThis()
+    {
+        
+        P1_ref.GetComponent<Player>().UsingItenDinamic = false;
+        P2_ref.GetComponent<Player>().UsingItenDinamic = false;
+
+        PPB.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

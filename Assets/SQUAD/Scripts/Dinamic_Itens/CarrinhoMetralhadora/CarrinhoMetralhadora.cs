@@ -19,6 +19,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
     bool P2InArea;
     public bool P1ready;
     public bool P2ready;
+    bool Atived;
 
     public bool Assault;
     public bool Moviment;
@@ -197,6 +198,19 @@ public class CarrinhoMetralhadora : MonoBehaviour
             }
         }
 
+        if(P1ready && P2ready && !Atived)
+        {
+            P1_ref.GetComponent<Player>().UsingItenDinamic = true;
+            P2_ref.GetComponent<Player>().UsingItenDinamic = true;
+            Atived = true;
+
+        }
+
+        if(!Assault && !Moviment)
+        {
+            Atived = false;
+        }
+
     }
 
     void UpdateControllers1_Assault(Player P)
@@ -241,18 +255,26 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             P1_ref = other.gameObject;
             Player temp = other.gameObject.GetComponent<Player>();
-            P1 = temp.Accept;
-            P1_Drop = temp.Dropar_set;
-            P1InArea = true;
+
+            if (!temp.UsingItenDinamic)
+            {
+                P1 = temp.Accept;
+                P1_Drop = temp.Dropar_set;
+                P1InArea = true;
+            }
         }
 
         if (other.gameObject.name == "Player2")
         {
             P2_ref = other.gameObject;
             Player temp = other.gameObject.GetComponent<Player>();
-            P2 = temp.Accept;
-            P2_Drop = temp.Dropar_set;
-            P2InArea = true;
+
+            if (!temp.UsingItenDinamic)
+            {
+                P2 = temp.Accept;
+                P2_Drop = temp.Dropar_set;
+                P2InArea = true;
+            }
         }
     }
 
@@ -268,7 +290,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
             {
                 Player_Assault.GetComponent<FpsWalk>().enabled = true;
                 Player_Assault.transform.parent = P1_OriginalParent.transform;
-
+                Player_Assault.GetComponent<Player>().UsingItenDinamic = false;
+                
                 Player_Assault = null;
                 Assault = false;
                 return;
@@ -278,6 +301,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             {
                 Player_Moviment.GetComponent<FpsWalk>().enabled = true;
                 Player_Moviment.transform.parent = P1_OriginalParent.transform;
+                Player_Moviment.GetComponent<Player>().UsingItenDinamic = false;
 
                 Player_Moviment = null;
                 Moviment = false;
@@ -296,6 +320,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             {
                 Player_Assault.GetComponent<FpsWalk>().enabled = true;
                 Player_Assault.transform.parent = P2_OriginalParent.transform;
+                Player_Assault.GetComponent<Player>().UsingItenDinamic = false;
 
                 Player_Assault = null;
                 Assault = false;
@@ -306,6 +331,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             {
                 Player_Moviment.GetComponent<FpsWalk>().enabled = true;
                 Player_Moviment.transform.parent = P2_OriginalParent.transform;
+                Player_Moviment.GetComponent<Player>().UsingItenDinamic = false;
 
                 Player_Moviment = null;
                 Moviment = false;
