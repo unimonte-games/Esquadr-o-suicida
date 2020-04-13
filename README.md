@@ -33,10 +33,11 @@ pessoas continuam vivendo por lá normalmente, tudo fica mais insano depois de d
 - [x] Sprint 6 : Game Design (Ambiente, Programação e Organização), Ilustração, Itens concept, Level Concept e Lista Extra.
 - [x] Sprint 7 : Game Design, Itens Concept 2, Som, Enemy 1, Animation List, Concepts V3 e Pesquisas.
 - [x] Sprint 8 : Level Editor, Wiki, Som, Interface, Texturização, Enemy 2 e Pesquisas.
-- [ ] Sprint 9 : Level Editor, Som, Wiki, Interface, Ilustracao, Itens List 1, Testes de Controle, Enemy 3, 4 e 5.
+- [x] Sprint 9 : Level Editor, Som, Wiki, Interface, Ilustracao, Itens List 1, Testes de Controle, Enemy 3, 4 e 5.
 - [ ] Sprint 10 : Game Testing, Character 1 e 2, Enemy Scripts,  Itens List 2, Menu e Transições.
 - [ ] Reuniao Geral 2
 - [ ] Versao 1
+
 
 
 
