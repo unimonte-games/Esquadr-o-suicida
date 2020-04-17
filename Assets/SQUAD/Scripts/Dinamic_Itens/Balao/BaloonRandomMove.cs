@@ -11,6 +11,7 @@ public class BaloonRandomMove : MonoBehaviour
 
     public bool Using;
     bool change;
+    int changeTime;
 
     public float speed;
 
@@ -22,7 +23,7 @@ public class BaloonRandomMove : MonoBehaviour
             if (!change)
             {
                 change = true;
-                Invoke("ChangeDirection", 5);
+                Invoke("ChangeDirection", changeTime);
             }
 
             transform.LookAt(Atual.position);
@@ -33,7 +34,7 @@ public class BaloonRandomMove : MonoBehaviour
                 transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
             }
 
-            if (Vector3.Distance(transform.position, Atual.position) < 0f)
+            if (Vector3.Distance(transform.position, Atual.position) <= 1f)
             {
                 Debug.Log("Chegou perto, troca");
                 CancelInvoke("ChangeDirection");
@@ -44,6 +45,7 @@ public class BaloonRandomMove : MonoBehaviour
 
     void ChangeDirection()
     {
+        changeTime = Random.Range(2, 9);
         int NumberToList = Random.Range(0, SC.Acionados);
         Atual = ListToMove[NumberToList];
 
@@ -60,6 +62,16 @@ public class BaloonRandomMove : MonoBehaviour
         ChangeDirection();
 
         Debug.Log("Lista Organizada");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 8)
+        {
+            Debug.Log("Objeto!");
+            CancelInvoke("ChangeDirection");
+            ChangeDirection();
+        }
     }
 
 }

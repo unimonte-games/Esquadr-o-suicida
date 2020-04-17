@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6941997958999362932}
   - component: {fileID: 6941997958999362939}
   - component: {fileID: 6941997958999362933}
+  - component: {fileID: 6340944353784202758}
   m_Layer: 0
   m_Name: BalonP1
   m_TagString: Untagged
@@ -276,7 +277,20 @@ MonoBehaviour:
   - {fileID: 0}
   Atual: {fileID: 0}
   Using: 0
-  speed: 2
+  speed: 1
+--- !u!65 &6340944353784202758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6941997958999362937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 5, z: 3}
+  m_Center: {x: 0, y: -8, z: 0}
 --- !u!1 &6941997959057059268
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +335,7 @@ GameObject:
   - component: {fileID: 6941997959397498460}
   - component: {fileID: 6941997959397498787}
   - component: {fileID: 6941997959397498461}
+  - component: {fileID: 6410934728444403193}
   m_Layer: 0
   m_Name: BalonP2
   m_TagString: Untagged
@@ -506,7 +521,20 @@ MonoBehaviour:
   - {fileID: 0}
   Atual: {fileID: 0}
   Using: 0
-  speed: 2
+  speed: 1
+--- !u!65 &6410934728444403193
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6941997959397498785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 5, z: 3}
+  m_Center: {x: 0, y: -8, z: 0}
 --- !u!1 &6941997959480466227
 GameObject:
   m_ObjectHideFlags: 0
