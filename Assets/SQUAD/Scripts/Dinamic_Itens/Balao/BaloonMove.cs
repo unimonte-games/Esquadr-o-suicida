@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BaloonMove : MonoBehaviour
 {
-    public SpawnController SC;
-    public Transform[] ListToMove;
 
-    public FpsWalk P1_walk;
-    public FpsWalk P2_walk;
+    public BaloonRandomMove P1;
+    public BaloonRandomMove P2;
+
+    FpsWalk P1_walk;
+    FpsWalk P2_walk;
 
     GameObject P1_ref;
     GameObject P2_ref;
@@ -35,6 +36,7 @@ public class BaloonMove : MonoBehaviour
     KeyCode P1_Drop;
     KeyCode P2_Drop;
 
+
     private void Start()
     {
         P1_OriginalParent = GameObject.Find("Player1_Original");
@@ -50,10 +52,11 @@ public class BaloonMove : MonoBehaviour
 
             P1_walk.enabled = false;
             P1_ref.GetComponent<Rigidbody>().useGravity = false;
-           
+            P1_ref.GetComponent<CapsuleCollider>().enabled = false;
 
             P1_ref.transform.position = P1_Baloon.transform.position;
             P1_ref.transform.parent = P1_Baloon;
+            
 
 
             Debug.Log("Baloon Ativado no Player 1");
@@ -65,6 +68,7 @@ public class BaloonMove : MonoBehaviour
 
             P2_walk.enabled = false;
             P2_ref.GetComponent<Rigidbody>().useGravity = false;
+            P2_ref.GetComponent<CapsuleCollider>().enabled = false;
 
             P2_ref.transform.position = P2_Baloon.transform.position;
             P2_ref.transform.parent = P2_Baloon;
@@ -78,6 +82,7 @@ public class BaloonMove : MonoBehaviour
 
             P1_walk.enabled = true;
             P1_ref.GetComponent<Rigidbody>().useGravity = true;
+            P1_ref.GetComponent<CapsuleCollider>().enabled = true;
 
             P1_ref.transform.parent = P1_OriginalParent.transform;
             
@@ -89,6 +94,7 @@ public class BaloonMove : MonoBehaviour
 
             P2_walk.enabled = true;
             P2_ref.GetComponent<Rigidbody>().useGravity = true;
+            P2_ref.GetComponent<CapsuleCollider>().enabled = true;
 
             P2_ref.transform.parent = P2_OriginalParent.transform;
         }
@@ -99,19 +105,19 @@ public class BaloonMove : MonoBehaviour
             P1_using = true;
             P2_using = true;
 
-            ReOrganizeList();
-            Debug.Log("Balon Iniciado!");
+            P1.StartBaloon();
+            P2.StartBaloon();
+
+            Invoke("StartBaloon", 2);
         }
     }
 
-    void ReOrganizeList()
+    void StartBaloon()
     {
-        for (int i = 0; i <= SC.Acionados; i++)
-        {
-            ListToMove[i] = SC.ListSpawn[i];
-        }
+        P1.Using = true;
+        P2.Using = true;
 
-        Debug.Log("Lista Organizada");
+        Debug.Log("Baloon Iniciado!");
     }
 
     private void OnTriggerEnter(Collider other)
