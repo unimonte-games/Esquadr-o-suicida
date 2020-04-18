@@ -74,17 +74,30 @@ public class TestingDestroyEnemy : MonoBehaviour
         {
             P_default.MonstersDefeat(1,TypeEnemy);
             this.gameObject.SetActive(false);
+            if (Drop)
+            {
+                DropEnergy();
+            }
+            
         }
 
         if (other.gameObject.name == "Player2")
         {
             P_default.MonstersDefeat(2,TypeEnemy);
             this.gameObject.SetActive(false);
+            if (Drop)
+            {
+                DropEnergy();
+            }
         }
 
         if (other.gameObject.name == "Ball")
         {
             this.gameObject.SetActive(false);
+            if (Drop)
+            {
+                DropEnergy();
+            }
         }
 
        
@@ -92,9 +105,10 @@ public class TestingDestroyEnemy : MonoBehaviour
 
     void DropEnergy()
     {
+        Debug.Log("Drop Energy");
         for (int i = 0; i < QtdEnergy; i++)
         {
-            Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), 0, Random.Range(-size.z / 2, size.z / 2));
+            Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), -4 , Random.Range(-size.z / 2, size.z / 2));
             GameObject SpawnP = Instantiate(EnergyCoin, pos, Quaternion.identity);
             
         }

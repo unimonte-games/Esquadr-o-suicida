@@ -22,7 +22,7 @@ public class BaloonRandomMove : MonoBehaviour
     {
         if (Using)
         {
-            Timeframe += 0.3f;
+            Timeframe += 0.01f;
 
             if (!change)
             {
