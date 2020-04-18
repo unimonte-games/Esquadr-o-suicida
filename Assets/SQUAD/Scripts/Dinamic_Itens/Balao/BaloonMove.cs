@@ -46,70 +46,79 @@ public class BaloonMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (P1_inArea && Input.GetKeyDown(P1_Accept) && !P1_ready && !Go && !P1_using)
+        if (!Go)
         {
-            P1_ready = true;
+            if (P1_inArea && Input.GetKeyDown(P1_Accept) && !P1_ready && !P1_using)
+            {
+                P1_ready = true;
 
-            P1_walk.enabled = false;
-            P1_ref.GetComponent<Rigidbody>().useGravity = false;
-            P1_ref.GetComponent<CapsuleCollider>().enabled = false;
+                P1_walk.enabled = false;
+                P1_ref.GetComponent<Rigidbody>().useGravity = false;
+                P1_ref.GetComponent<CapsuleCollider>().enabled = false;
 
-            P1_ref.transform.position = P1_Baloon.transform.position;
-            P1_ref.transform.parent = P1_Baloon;
-            
+                P1_ref.transform.position = P1_Baloon.transform.position;
+                P1_ref.transform.parent = P1_Baloon;
 
 
-            Debug.Log("Baloon Ativado no Player 1");
+
+                Debug.Log("Baloon Ativado no Player 1");
+            }
+
+            if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !P2_using)
+            {
+                P2_ready = true;
+
+                P2_walk.enabled = false;
+                P2_ref.GetComponent<Rigidbody>().useGravity = false;
+                P2_ref.GetComponent<CapsuleCollider>().enabled = false;
+
+                P2_ref.transform.position = P2_Baloon.transform.position;
+                P2_ref.transform.parent = P2_Baloon;
+
+                Debug.Log("Baloon Ativado no Player 2");
+            }
+
+            if (P1_inArea && !P1_ready && Input.GetKeyDown(P1_Drop))
+            {
+                P1_ready = false;
+
+                P1_walk.enabled = true;
+                P1_ref.GetComponent<Rigidbody>().useGravity = true;
+                P1_ref.GetComponent<CapsuleCollider>().enabled = true;
+
+                P1_ref.transform.parent = P1_OriginalParent.transform;
+                P1_ref.transform.localRotation = Quaternion.identity;
+                P1.gameObject.SetActive(false);
+
+            }
+
+            if (P2_inArea && P2_ready && Input.GetKeyDown(P2_Drop))
+            {
+                P2_ready = false;
+
+                P2_walk.enabled = true;
+                P2_ref.GetComponent<Rigidbody>().useGravity = true;
+                P2_ref.GetComponent<CapsuleCollider>().enabled = true;
+
+                P2_ref.transform.parent = P2_OriginalParent.transform;
+                P2_ref.transform.localRotation = Quaternion.identity;
+                P2.gameObject.SetActive(false);
+            }
+
+            if (P1_ready && P2_ready && !Go)
+            {
+                Go = true;
+                P1_using = true;
+                P2_using = true;
+
+                P1.StartBaloon();
+                P2.StartBaloon();
+
+                Invoke("StartBaloon", 2);
+            }
         }
 
-        if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !Go && !P2_using)
-        {
-            P2_ready = true;
-
-            P2_walk.enabled = false;
-            P2_ref.GetComponent<Rigidbody>().useGravity = false;
-            P2_ref.GetComponent<CapsuleCollider>().enabled = false;
-
-            P2_ref.transform.position = P2_Baloon.transform.position;
-            P2_ref.transform.parent = P2_Baloon;
-
-            Debug.Log("Baloon Ativado no Player 2");
-        }
-
-        if(P1_ready && Input.GetKeyDown(P1_Drop))
-        {
-            P1_ready = false;
-
-            P1_walk.enabled = true;
-            P1_ref.GetComponent<Rigidbody>().useGravity = true;
-            P1_ref.GetComponent<CapsuleCollider>().enabled = true;
-
-            P1_ref.transform.parent = P1_OriginalParent.transform;
-            
-        }
-
-        if (P2_ready && Input.GetKeyDown(P2_Drop))
-        {
-            P2_ready = false;
-
-            P2_walk.enabled = true;
-            P2_ref.GetComponent<Rigidbody>().useGravity = true;
-            P2_ref.GetComponent<CapsuleCollider>().enabled = true;
-
-            P2_ref.transform.parent = P2_OriginalParent.transform;
-        }
-
-        if (P1_ready && P2_ready && !Go)
-        {
-            Go = true;
-            P1_using = true;
-            P2_using = true;
-
-            P1.StartBaloon();
-            P2.StartBaloon();
-
-            Invoke("StartBaloon", 2);
-        }
+       
     }
 
     void StartBaloon()
@@ -117,7 +126,38 @@ public class BaloonMove : MonoBehaviour
         P1.Using = true;
         P2.Using = true;
 
+        Invoke("DropPlayers", 10);
         Debug.Log("Baloon Iniciado!");
+    }
+
+    public void DropPlayers()
+    {
+        P1_ready = false;
+
+        P1_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        P1_walk.enabled = true;
+        P1_ref.GetComponent<Rigidbody>().useGravity = true;
+        P1_ref.GetComponent<CapsuleCollider>().enabled = true;
+
+        P1_ref.transform.parent = P1_OriginalParent.transform;
+        P1_ref.transform.localRotation = Quaternion.identity;
+        P1.gameObject.SetActive(false);
+
+        P2_ready = false;
+
+        P2_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        P2_walk.enabled = true;
+        P2_ref.GetComponent<Rigidbody>().useGravity = true;
+        P2_ref.GetComponent<CapsuleCollider>().enabled = true;
+
+        P2_ref.transform.parent = P2_OriginalParent.transform;
+        P2_ref.transform.localRotation = Quaternion.identity;
+        P2.gameObject.SetActive(false);
+
+        Debug.Log("Baloon Encerrado.");
+
     }
 
     private void OnTriggerEnter(Collider other)

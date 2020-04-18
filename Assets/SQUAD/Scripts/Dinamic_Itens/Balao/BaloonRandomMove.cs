@@ -15,7 +15,6 @@ public class BaloonRandomMove : MonoBehaviour
 
     public float speed;
 
-
     private void FixedUpdate()
     {
         if (Using)
@@ -45,7 +44,7 @@ public class BaloonRandomMove : MonoBehaviour
 
     void ChangeDirection()
     {
-        changeTime = Random.Range(2, 9);
+        changeTime = Random.Range(5, 12);
         int NumberToList = Random.Range(0, SC.Acionados);
         Atual = ListToMove[NumberToList];
 
@@ -60,9 +59,10 @@ public class BaloonRandomMove : MonoBehaviour
         }
 
         ChangeDirection();
-
+        
         Debug.Log("Lista Organizada");
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
