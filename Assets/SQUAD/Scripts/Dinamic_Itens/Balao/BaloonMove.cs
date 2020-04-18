@@ -36,6 +36,7 @@ public class BaloonMove : MonoBehaviour
     KeyCode P1_Drop;
     KeyCode P2_Drop;
 
+    public int timeBaloon;
 
     private void Start()
     {
@@ -55,7 +56,7 @@ public class BaloonMove : MonoBehaviour
                 P1_walk.enabled = false;
                 P1_ref.GetComponent<Rigidbody>().useGravity = false;
                 P1_ref.GetComponent<CapsuleCollider>().enabled = false;
-
+                P1.Gatilho = P1_Accept;
                 P1_ref.transform.position = P1_Baloon.transform.position;
                 P1_ref.transform.parent = P1_Baloon;
 
@@ -71,7 +72,7 @@ public class BaloonMove : MonoBehaviour
                 P2_walk.enabled = false;
                 P2_ref.GetComponent<Rigidbody>().useGravity = false;
                 P2_ref.GetComponent<CapsuleCollider>().enabled = false;
-
+                P2.Gatilho = P2_Accept;
                 P2_ref.transform.position = P2_Baloon.transform.position;
                 P2_ref.transform.parent = P2_Baloon;
 
@@ -126,7 +127,7 @@ public class BaloonMove : MonoBehaviour
         P1.Using = true;
         P2.Using = true;
 
-        Invoke("DropPlayers", 10);
+        Invoke("DropPlayers", timeBaloon);
         Debug.Log("Baloon Iniciado!");
     }
 

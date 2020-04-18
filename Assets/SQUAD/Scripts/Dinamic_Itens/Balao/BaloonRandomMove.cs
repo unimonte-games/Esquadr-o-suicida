@@ -6,19 +6,24 @@ public class BaloonRandomMove : MonoBehaviour
 {
     public SpawnController SC;
     public Transform[] ListToMove;
-
+    public KeyCode Gatilho;
     public Transform Atual;
-
+ 
     public bool Using;
     bool change;
     int changeTime;
 
     public float speed;
+    public GameObject Bomb;
+    public Transform spawnBomb;
+    float Timeframe;
 
     private void FixedUpdate()
     {
         if (Using)
         {
+            Timeframe += 0.3f;
+
             if (!change)
             {
                 change = true;
@@ -38,6 +43,17 @@ public class BaloonRandomMove : MonoBehaviour
                 Debug.Log("Chegou perto, troca");
                 CancelInvoke("ChangeDirection");
                 ChangeDirection();
+            }
+        }
+
+        if (Input.GetKeyDown(Gatilho))
+        {
+            
+            if(Timeframe > 2)
+            {
+                Timeframe = 0;
+                Instantiate(Bomb, spawnBomb.position, spawnBomb.rotation);
+                Debug.Log("Bomb");
             }
         }
     }
@@ -62,7 +78,6 @@ public class BaloonRandomMove : MonoBehaviour
         
         Debug.Log("Lista Organizada");
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
