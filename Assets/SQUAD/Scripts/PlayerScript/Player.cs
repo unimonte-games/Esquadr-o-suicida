@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             {
                 Selecionar_set = KeyCode.Alpha1;
                 Dropar_set = KeyCode.Alpha2;
-                Accept = KeyCode.Space;
+                Accept = KeyCode.Alpha3;
 
                 Up = KeyCode.W;
                 Down = KeyCode.S;
@@ -110,14 +110,14 @@ public class Player : MonoBehaviour
             {
                 Selecionar_set = KeyCode.PageUp;
                 Dropar_set = KeyCode.PageDown;
-                Accept = KeyCode.End;
+                Accept = KeyCode.Home;
 
                 Up = KeyCode.UpArrow;
                 Down = KeyCode.DownArrow;
                 Right = KeyCode.RightArrow;
                 Left = KeyCode.LeftArrow;
 
-                Gatilho = KeyCode.End;
+                Gatilho = KeyCode.RightShift;
 
             }
             else //Controle
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
+        
         if (Disabled)
         {
             CountToDisable += 0.01f;
@@ -161,6 +161,7 @@ public class Player : MonoBehaviour
                 
             }
         }
+
 
         if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop) //Passar pro lado
         {
@@ -302,6 +303,13 @@ public class Player : MonoBehaviour
     {
         isDrop = false;
     }
+
+    public void WeaponStop()
+    {
+        playerWeapon.enabled = false;
+    }
+
+
 
    
 

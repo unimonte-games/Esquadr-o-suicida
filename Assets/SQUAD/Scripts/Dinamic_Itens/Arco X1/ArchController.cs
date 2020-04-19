@@ -22,6 +22,9 @@ public class ArchController : MonoBehaviour
     public int P1_Points;
     public int P2_Points;
 
+    public GameObject Arch1_ref;
+    public GameObject Arch2_ref;
+
     public ArchController ACScript;
 
     private void FixedUpdate()
@@ -48,6 +51,9 @@ public class ArchController : MonoBehaviour
         if (P1_ready && P2_ready && !StartX1)
         {
             StartX1 = true;
+            P1_ref.GetComponent<Player>().WeaponStop();
+            P2_ref.GetComponent<Player>().WeaponStop();
+
             StartPlayerVersusPlayer();
             Debug.Log("Player vs Player!");
         }
@@ -57,19 +63,59 @@ public class ArchController : MonoBehaviour
     {
         GameObject Arch1 = Instantiate(Arch, P1_ref.position, P1_ref.rotation);
         Arch1.transform.parent = P1_ref.transform;
+        Arch1_ref = Arch1;
 
         ArchX1 temp1 = Arch1.GetComponent<ArchX1>();
         temp1.Gatilho = P1;
         temp1.PlayerArch = 1;
         temp1.AC = ACScript;
 
+
         GameObject Arch2 = Instantiate(Arch, P2_ref.position, P2_ref.rotation);
         Arch2.transform.parent = P2_ref.transform;
+        Arch2_ref = Arch2;
 
         ArchX1 temp2 = Arch2.GetComponent<ArchX1>();
         temp2.Gatilho = P2;
         temp2.PlayerArch = 2;
         temp2.AC = ACScript;
+
+        Invoke("CancelArch",35);
+
+    }
+
+    void CancelArch()
+    {
+        Arch1_ref.SetActive(false);
+        Arch2_ref.SetActive(false);
+
+        Player P1 = P1_ref.GetComponent<Player>();
+        P1.UsingItenDinamic = false;
+        P1.playerWeapon.enabled = true;
+
+        Player P2 = P2_ref.GetComponent<Player>();
+        P2.UsingItenDinamic = false;
+        P2.playerWeapon.enabled = true;
+
+
+        if (P1_Points > P2_Points)
+        {
+            Debug.Log("Player1 Venceu!");
+            return;
+        }
+
+        if (P1_Points < P2_Points)
+        {
+            Debug.Log("Player2 Venceu!");
+            return;
+        }
+
+        if(P1_Points == P2_Points)
+        {
+            Debug.Log("Empate");
+            return;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,7 +125,7 @@ public class ArchController : MonoBehaviour
             if (!other.GetComponent<Player>().UsingItenDinamic)
             {
                 P1_ref = other.transform;
-                P1 = other.GetComponent<Player>().Accept;
+                P1 = other.GetComponent<Player>().Gatilho;
                 P1_inArea = true;
                 
                 return;
@@ -91,7 +137,7 @@ public class ArchController : MonoBehaviour
             if (!other.GetComponent<Player>().UsingItenDinamic)
             {
                 P2_ref = other.transform;
-                P2 = other.GetComponent<Player>().Accept;
+                P2 = other.GetComponent<Player>().Gatilho;
                 P2_inArea = true;
                 
                 return;
