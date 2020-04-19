@@ -12,19 +12,21 @@ public class RoomController : MonoBehaviour
     public Porta_Default Default;
     public Porta_Color Color;
     public Porta_Double Double;
-    public Porta_Fixed Fixed;
     public Porta_Timer Timer;
     
     public bool ColorInTheRoom, DoubleInTheRoom, FixedInTheRoom, TimerInTheRoom;
     public bool DefaultComplete, ColorComplete, DoubleComplete, TimerComplete;
-    public int FixedComplete;
 
     public int MissionInTheRoom;
     public int CompleteMissions;
 
     public GameObject defaultDoor;
 
-    public GameObject ConectorThisRoom;
+    public GameObject[] C_Default;
+    public GameObject[] C_Color;
+    public GameObject[] C_Double;
+    public GameObject[] C_Timer;
+
 
     void Start()
     {
@@ -59,11 +61,17 @@ public class RoomController : MonoBehaviour
 
     public void CompleteRoom(int Complete)
     {
-        if(Complete == 0)
+        if (Complete == 0)
         {
             DefaultComplete = true;
             CompleteMissions++;
             RoomClean();
+
+            for (int i = 0; i < 4; i++)
+            {
+                C_Default[i].SetActive(true);
+            }
+
             return;
         }
 
@@ -148,7 +156,31 @@ public class RoomController : MonoBehaviour
         if (CompleteMissions == MissionInTheRoom)
         {
             LC.CompleteRoom[Room_ID] = true;
-            ConectorThisRoom.SetActive(true);
+
+            if (ColorComplete)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    C_Color[i].SetActive(true);
+                }
+            }
+
+            if (DoubleComplete)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    C_Double[i].SetActive(true);
+                }
+            }
+
+            if (TimerComplete)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    C_Timer[i].SetActive(true);
+                }
+            }
+
             Debug.Log("Room Clean!");
         }
     }

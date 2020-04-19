@@ -7,11 +7,18 @@ using UnityEditor;
 [AddComponentMenu("PortaScripts/Fixed")]
 public class Porta_Fixed : MonoBehaviour
 {
-    public RoomController RoomControl;
+    public LevelController LC;
     public int Fixed_Unlock;
     public bool Fixed_Area;
+    public GameObject Door;
+    public GameObject Conector;
     public bool P1, P2;
     public Player P;
+
+    private void Start()
+    {
+        LC = FindObjectOfType<LevelController>();
+    }
 
     public void FixedUpdate()
     {
@@ -19,27 +26,26 @@ public class Porta_Fixed : MonoBehaviour
         {
             if (P1 && Input.GetKeyDown(P.Accept))
             {
-                if (RoomControl.FixedComplete >= Fixed_Unlock)
+                if (LC.FixedOpen >= Fixed_Unlock)
                 {
-                    RoomControl.FixedComplete -= Fixed_Unlock;
-                    RoomControl.CompleteMissions++;
-                    RoomControl.RoomClean();
+                    LC.FixedOpen -= Fixed_Unlock;
+                    Door.SetActive(false);
+                    Conector.SetActive(true);
                     Debug.Log("Portao Liberado!");
                 }
             }
 
             if (P2 && Input.GetKeyDown(P.Accept))
             {
-                if (RoomControl.FixedComplete >= Fixed_Unlock)
+                if (LC.FixedOpen >= Fixed_Unlock)
                 {
-                    RoomControl.FixedComplete -= Fixed_Unlock;
-                    RoomControl.CompleteMissions++;
-                    RoomControl.RoomClean();
+                    LC.FixedOpen -= Fixed_Unlock;
+                    Door.SetActive(false);
+                    Conector.SetActive(true);
                     Debug.Log("Portao Liberado!");
                 }
             }
 
-            
         }
     }
 

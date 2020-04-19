@@ -12,8 +12,6 @@ public class Porta_Timer : MonoBehaviour
     CameraTarget cameraTarget;
 
     public GameObject Door;
-    public GameObject OpenDoor;
-    public Door DoorScript;
     public GameObject UI_Door;
     public Image Ui_Open;
     public float DoorBar = 0f;
@@ -56,17 +54,11 @@ public class Porta_Timer : MonoBehaviour
                         cameraTarget.targets[2] = cameraTarget.targets[1];
                         RoomControl.CompleteRoom(3);
 
-                        if (DoorScript.KeysToOpen > 0)
-                        {
-                            OpenDoor.SetActive(true);
-                            Debug.Log("Voce precisará de chaves para desbloquear a porta.");
-                        }
-                        else
-                        {
-                            Debug.Log("Portao Liberado!");
-                        }
 
-                        
+                        Debug.Log("Portao Liberado!");
+
+
+
                     }
 
                 }

@@ -5,31 +5,33 @@ using UnityEngine;
 public class FixedKey : MonoBehaviour
 {
 
-    public RoomController R; //Manual
+    public LevelController LC; 
     bool Fixed_Area, P1, P2;
     public int QtdPress;
     public int MaxTimeInPress;
     float timeToAdd;
     Player P;
 
-    
-
+    private void Start()
+    {
+        LC = FindObjectOfType<LevelController>();
+    }
     public void FixedUpdate()
     {
         if (Fixed_Area)
         {
             if (P1 && Input.GetKey(P.Accept))
             {
-                timeToAdd += 0.01f;
+                timeToAdd += 0.1f;
                 if (timeToAdd >= 1)
                 {
                     timeToAdd = 0;
                     QtdPress++;
                     if(QtdPress >= MaxTimeInPress)
                     {
-                        R.FixedComplete++;
+                        LC.FixedOpen++;
                         QtdPress = 0;
-                        Destroy(gameObject);
+                        this.gameObject.SetActive(false);
                     }
                 }
 
@@ -37,16 +39,16 @@ public class FixedKey : MonoBehaviour
 
             if (P2 && Input.GetKey(P.Accept))
             {
-                timeToAdd += 0.01f;
+                timeToAdd += 0.1f;
                 if (timeToAdd >= QtdPress)
                 {
                     timeToAdd = 0;
                     QtdPress++;
                     if (QtdPress >= MaxTimeInPress)
                     {
-                        R.FixedComplete++;
+                        LC.FixedOpen++;
                         QtdPress = 0;
-                        Destroy(gameObject);
+                        this.gameObject.SetActive(false);
                     }
                 }
             }
@@ -54,7 +56,6 @@ public class FixedKey : MonoBehaviour
         }
 
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -76,8 +77,6 @@ public class FixedKey : MonoBehaviour
             Fixed_Area = true;
         }
     }
-
-
 
     private void OnTriggerExit(Collider other)
     {
