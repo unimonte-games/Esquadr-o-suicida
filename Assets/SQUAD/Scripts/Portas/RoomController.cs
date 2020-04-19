@@ -7,6 +7,8 @@ using UnityEditor;
 [AddComponentMenu("PortaScripts/_RoomController")]
 public class RoomController : MonoBehaviour
 {
+    public int Room_ID;
+    LevelController LC;
     public Porta_Default Default;
     public Porta_Color Color;
     public Porta_Double Double;
@@ -23,7 +25,9 @@ public class RoomController : MonoBehaviour
 
     void Start()
     {
-         MissionInTheRoom++;
+        LC = FindObjectOfType<LevelController>();
+
+        MissionInTheRoom++;
 
         if (ColorInTheRoom)
         {
@@ -129,12 +133,12 @@ public class RoomController : MonoBehaviour
 
     }
 
-
     public void RoomClean()
     {
 
         if (CompleteMissions == MissionInTheRoom)
         {
+            LC.CompleteRoom[Room_ID] = true;
             Debug.Log("Room Clean!");
         }
     }
