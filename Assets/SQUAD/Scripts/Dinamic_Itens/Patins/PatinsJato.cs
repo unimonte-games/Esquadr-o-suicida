@@ -14,8 +14,8 @@ public class PatinsJato : MonoBehaviour
     KeyCode P1;
     KeyCode P2;
 
-    FpsWalk P1_ref;
-    FpsWalk P2_ref;
+    PlayerMovement P1_ref;
+    PlayerMovement P2_ref;
 
     Player P1_script;
     Player P2_script;
@@ -68,7 +68,7 @@ public class PatinsJato : MonoBehaviour
             if (!other.GetComponent<Player>().UsingItenDinamic)
             {
                 P1_inArea = true;
-                P1_ref = other.GetComponent<FpsWalk>();
+                P1_ref = other.GetComponent<PlayerMovement>();
                 P1 = other.GetComponent<Player>().Accept;
                 P1_script = other.GetComponent<Player>();
             }
@@ -79,7 +79,7 @@ public class PatinsJato : MonoBehaviour
             if (!other.GetComponent<Player>().UsingItenDinamic)
             {
                 P2_inArea = true;
-                P2_ref = other.GetComponent<FpsWalk>();
+                P2_ref = other.GetComponent<PlayerMovement>();
                 P2 = other.GetComponent<Player>().Accept;
                 P2_script = other.GetComponent<Player>();
             }

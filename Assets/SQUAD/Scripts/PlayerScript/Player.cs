@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     public KeyCode Right;
     public KeyCode Left;
 
+    public KeyCode Gatilho;
+
     public int AtualKey;
 
     float CountToDisable;
@@ -62,8 +64,9 @@ public class Player : MonoBehaviour
     public GameObject Rescue_Object;
     public SurpriseAttack SA;
 
-    public FpsWalk FPSWalkScript;
-
+    public PlayerMovement playerMovement;
+    public PlayerWeapon playerWeapon;
+   
     private void Start()
     {
         UpdateController();
@@ -75,14 +78,17 @@ public class Player : MonoBehaviour
         {
             if (!Controller1) //PC
             {
-                Selecionar_set = KeyCode.Q;
-                Dropar_set = KeyCode.E;
+                Selecionar_set = KeyCode.Alpha1;
+                Dropar_set = KeyCode.Alpha2;
                 Accept = KeyCode.Space;
 
                 Up = KeyCode.W;
                 Down = KeyCode.S;
                 Right = KeyCode.D;
                 Left = KeyCode.A;
+
+                Gatilho = KeyCode.Space;
+
             }
             else //Controle
             {
@@ -102,14 +108,17 @@ public class Player : MonoBehaviour
 
             if (!Controller2)// PC
             {
-                Selecionar_set = KeyCode.Alpha1;
-                Dropar_set = KeyCode.Alpha2;
-                Accept = KeyCode.Alpha3;
+                Selecionar_set = KeyCode.PageUp;
+                Dropar_set = KeyCode.PageDown;
+                Accept = KeyCode.End;
 
                 Up = KeyCode.UpArrow;
                 Down = KeyCode.DownArrow;
                 Right = KeyCode.RightArrow;
                 Left = KeyCode.LeftArrow;
+
+                Gatilho = KeyCode.End;
+
             }
             else //Controle
             {
@@ -124,7 +133,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        FPSWalkScript.UpdateMoviment();
+        playerMovement.UpdateMoviment();
+        playerWeapon.UpdateGatilhos();
     }
 
     private void FixedUpdate()

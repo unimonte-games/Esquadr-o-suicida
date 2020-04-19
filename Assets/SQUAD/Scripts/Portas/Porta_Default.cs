@@ -332,7 +332,7 @@ public class Porta_Default : MonoBehaviour
             int SelectPlayer = Random.Range(1, 10);
             if (SelectPlayer <= 5)
             {
-                player1.FPSWalkScript.ToMove = true;
+                player1.playerMovement.ToMove = true;
                 player1.SA.Player1 = true;
                 player1.SA.PD = P;
 
@@ -341,7 +341,7 @@ public class Porta_Default : MonoBehaviour
             }
             if (SelectPlayer >= 6)
             {
-                player2.FPSWalkScript.ToMove = true;
+                player2.playerMovement.ToMove = true;
                 player2.SA.Player2 = true;
                 player2.SA.PD = P;
 
@@ -528,8 +528,8 @@ public class Porta_Default : MonoBehaviour
     public void RescueComplete()
     {
         Rescue = false;
-        player1.FPSWalkScript.ToMove = false;
-        player2.FPSWalkScript.ToMove = false;
+        player1.playerMovement.ToMove = false;
+        player2.playerMovement.ToMove = false;
 
         player1.Rescue_Object.SetActive(false);
         player2.Rescue_Object.SetActive(false);

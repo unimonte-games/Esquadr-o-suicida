@@ -8,8 +8,8 @@ public class BaloonMove : MonoBehaviour
     public BaloonRandomMove P1;
     public BaloonRandomMove P2;
 
-    FpsWalk P1_walk;
-    FpsWalk P2_walk;
+    PlayerMovement P1_walk;
+    PlayerMovement P2_walk;
 
     GameObject P1_ref;
     GameObject P2_ref;
@@ -171,7 +171,7 @@ public class BaloonMove : MonoBehaviour
                 P1_ref = other.gameObject;
                 P1_Accept = other.GetComponent<Player>().Accept;
                 P1_Drop = other.GetComponent<Player>().Dropar_set;
-                P1_walk = other.GetComponent<FpsWalk>();
+                P1_walk = other.GetComponent<PlayerMovement>();
                 
             }
         }
@@ -184,7 +184,7 @@ public class BaloonMove : MonoBehaviour
                 P2_ref = other.gameObject;
                 P2_Accept = other.GetComponent<Player>().Accept;
                 P2_Drop = other.GetComponent<Player>().Dropar_set;
-                P2_walk = other.GetComponent<FpsWalk>();
+                P2_walk = other.GetComponent<PlayerMovement>();
             }
         }
 
