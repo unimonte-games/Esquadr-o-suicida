@@ -24,6 +24,8 @@ public class RoomController : MonoBehaviour
 
     public GameObject defaultDoor;
 
+    public GameObject ConectorThisRoom;
+
     void Start()
     {
         LC = FindObjectOfType<LevelController>();
@@ -146,6 +148,7 @@ public class RoomController : MonoBehaviour
         if (CompleteMissions == MissionInTheRoom)
         {
             LC.CompleteRoom[Room_ID] = true;
+            ConectorThisRoom.SetActive(true);
             Debug.Log("Room Clean!");
         }
     }

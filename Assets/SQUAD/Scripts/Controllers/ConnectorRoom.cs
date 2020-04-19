@@ -8,6 +8,8 @@ public class ConnectorRoom : MonoBehaviour
     GameObject ref1;
     GameObject ref2;
 
+    BoxCollider ThisBox;
+
     public Transform Origem1;
     public Transform Origem2;
 
@@ -21,12 +23,26 @@ public class ConnectorRoom : MonoBehaviour
     bool P1_inArea;
     bool P2_inArea;
 
+    private void Start()
+    {
+        ThisBox = GetComponent<BoxCollider>();
+    }
+
     private void FixedUpdate()
     {
         if (Input.GetKeyDown(First) && !Next && P1_inArea && P2_inArea)
         {
             Next = true;
             Invoke("NextRoom", 1);
+        }
+
+        if (CompleteKeyOpenFirst)
+        {
+            ThisBox.enabled = false;
+        }
+        else
+        {
+            ThisBox.enabled = true;
         }
     }
 
@@ -62,15 +78,19 @@ public class ConnectorRoom : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Player1" && !P1_inArea)
+        if (other.gameObject.name == "Player1")
         {
             P1_inArea = false;
+            Go = false;
+            Next = false;
             SetNewFirst();
         }
 
-        if (other.gameObject.name == "Player2" && !P2_inArea)
+        if (other.gameObject.name == "Player2")
         {
             P2_inArea = false;
+            Go = false;
+            Next = false;
             SetNewFirst();
         }
     }
@@ -88,6 +108,11 @@ public class ConnectorRoom : MonoBehaviour
         ref1.transform.position = CR.Origem1.transform.position;
         ref2.transform.position = CR.Origem2.transform.position;
 
+        Go = false;
+        Next = false;
+        P1_inArea = false;
+        P2_inArea = false;
+        
         Debug.Log("Proxima Sala!");
     }
 
