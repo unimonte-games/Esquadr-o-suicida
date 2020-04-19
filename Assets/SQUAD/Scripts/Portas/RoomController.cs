@@ -15,7 +15,6 @@ public class RoomController : MonoBehaviour
     public Porta_Fixed Fixed;
     public Porta_Timer Timer;
     
-
     public bool ColorInTheRoom, DoubleInTheRoom, FixedInTheRoom, TimerInTheRoom;
     public bool DefaultComplete, ColorComplete, DoubleComplete, TimerComplete;
     public int FixedComplete;
@@ -23,9 +22,12 @@ public class RoomController : MonoBehaviour
     public int MissionInTheRoom;
     public int CompleteMissions;
 
+    public GameObject defaultDoor;
+
     void Start()
     {
         LC = FindObjectOfType<LevelController>();
+
 
         MissionInTheRoom++;
 
@@ -44,6 +46,11 @@ public class RoomController : MonoBehaviour
         if (TimerInTheRoom)
         {
             MissionInTheRoom++;
+        }
+
+        if(!ColorInTheRoom && !DoubleInTheRoom && !TimerInTheRoom)
+        {
+            defaultDoor.SetActive(true);
         }
 
     }
