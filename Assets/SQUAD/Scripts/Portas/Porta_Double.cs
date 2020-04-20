@@ -20,13 +20,21 @@ public class Porta_Double : MonoBehaviour
     public bool P1_ColorA, P2_ColorB, LastChance, IsOpen;
     float timeToAdd, timeToCancel;
 
+    LevelController LC;
 
     void Start()
     {
-        
+        LC = FindObjectOfType<LevelController>();
+        if (LC.SoloPlayer)
+        {
+            DoorMax += 10f;
+        }
+
         cameraTarget = FindObjectOfType<CameraTarget>();
         UI_Door.SetActive(false);
         Ui_Open.fillAmount = DoorBar / DoorMax;
+
+        
     }
 
 
