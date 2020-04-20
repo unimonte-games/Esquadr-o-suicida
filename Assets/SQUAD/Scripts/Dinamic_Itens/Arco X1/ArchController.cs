@@ -51,8 +51,16 @@ public class ArchController : MonoBehaviour
         if (P1_ready && P2_ready && !StartX1)
         {
             StartX1 = true;
-            P1_ref.GetComponent<Player>().WeaponStop();
-            P2_ref.GetComponent<Player>().WeaponStop();
+
+            Player P1 = P1_ref.GetComponent<Player>();
+            P1.UsingItenDinamic = true;
+            P1.playerWeapon.enabled = false;
+
+            Player P2 = P2_ref.GetComponent<Player>();
+            P2.UsingItenDinamic = true;
+            P2.playerWeapon.enabled = false;
+
+
 
             StartPlayerVersusPlayer();
             Debug.Log("Player vs Player!");
@@ -101,20 +109,25 @@ public class ArchController : MonoBehaviour
         if (P1_Points > P2_Points)
         {
             Debug.Log("Player1 Venceu!");
+            this.gameObject.SetActive(false);
             return;
         }
 
         if (P1_Points < P2_Points)
         {
             Debug.Log("Player2 Venceu!");
+            this.gameObject.SetActive(false);
             return;
         }
 
         if(P1_Points == P2_Points)
         {
             Debug.Log("Empate");
+            this.gameObject.SetActive(false);
             return;
         }
+
+       
 
     }
 

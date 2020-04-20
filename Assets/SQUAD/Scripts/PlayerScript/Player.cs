@@ -304,11 +304,7 @@ public class Player : MonoBehaviour
         isDrop = false;
     }
 
-    public void WeaponStop()
-    {
-        playerWeapon.enabled = false;
-    }
-
+  
 
 
    

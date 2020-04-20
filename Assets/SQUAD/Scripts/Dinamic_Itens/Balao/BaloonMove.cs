@@ -127,6 +127,16 @@ public class BaloonMove : MonoBehaviour
         P1.Using = true;
         P2.Using = true;
 
+
+        Player P1_ = P1_ref.GetComponent<Player>();
+        P1_.UsingItenDinamic = true;
+        P1_.playerWeapon.enabled = false;
+
+        Player P2_ = P2_ref.GetComponent<Player>();
+        P2_.UsingItenDinamic = true;
+        P2_.playerWeapon.enabled = false;
+
+
         Invoke("DropPlayers", timeBaloon);
         Debug.Log("Baloon Iniciado!");
     }
@@ -141,6 +151,10 @@ public class BaloonMove : MonoBehaviour
         P1_ref.GetComponent<Rigidbody>().useGravity = true;
         P1_ref.GetComponent<CapsuleCollider>().enabled = true;
 
+        Player P1_ = P1_ref.GetComponent<Player>();
+        P1_.UsingItenDinamic = false;
+        P1_.playerWeapon.enabled = true;
+
         P1_ref.transform.parent = P1_OriginalParent.transform;
         P1_ref.transform.localRotation = Quaternion.identity;
         P1.gameObject.SetActive(false);
@@ -153,9 +167,17 @@ public class BaloonMove : MonoBehaviour
         P2_ref.GetComponent<Rigidbody>().useGravity = true;
         P2_ref.GetComponent<CapsuleCollider>().enabled = true;
 
+
+        Player P2_ = P2_ref.GetComponent<Player>();
+        P2_.UsingItenDinamic = false;
+        P2_.playerWeapon.enabled = true;
+
         P2_ref.transform.parent = P2_OriginalParent.transform;
         P2_ref.transform.localRotation = Quaternion.identity;
         P2.gameObject.SetActive(false);
+
+
+        this.gameObject.SetActive(false);
 
         Debug.Log("Baloon Encerrado.");
 
@@ -169,7 +191,7 @@ public class BaloonMove : MonoBehaviour
             {
                 P1_inArea = true;
                 P1_ref = other.gameObject;
-                P1_Accept = other.GetComponent<Player>().Accept;
+                P1_Accept = other.GetComponent<Player>().Gatilho;
                 P1_Drop = other.GetComponent<Player>().Dropar_set;
                 P1_walk = other.GetComponent<PlayerMovement>();
                 
@@ -182,7 +204,7 @@ public class BaloonMove : MonoBehaviour
             {
                 P2_inArea = true;
                 P2_ref = other.gameObject;
-                P2_Accept = other.GetComponent<Player>().Accept;
+                P2_Accept = other.GetComponent<Player>().Gatilho;
                 P2_Drop = other.GetComponent<Player>().Dropar_set;
                 P2_walk = other.GetComponent<PlayerMovement>();
             }
