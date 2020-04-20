@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1200339001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1200339002}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1200339002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200339001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.6, z: 0.631}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3508064357905282403}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &140937717709625432
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +721,6 @@ GameObject:
   - component: {fileID: 140937719272510637}
   - component: {fileID: 140937719272510636}
   - component: {fileID: 140937719272510639}
-  - component: {fileID: 140937719272510635}
   - component: {fileID: 140937719272510632}
   - component: {fileID: 140937719272510633}
   m_Layer: 0
@@ -777,22 +806,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &140937719272510635
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140937719272510638}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &140937719272510632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,6 +823,8 @@ MonoBehaviour:
   Moviment_Right: 0
   Moviment_Left: 0
   speed: 10
+  TurnSpeed: 90
+  downSpeed: 3
   CM: {fileID: 140937719568787714}
 --- !u!114 &140937719272510633
 MonoBehaviour:
@@ -828,6 +843,11 @@ MonoBehaviour:
   Assault_Down: 0
   Assault_Left: 0
   Assault_Right: 0
+  spawn: {fileID: 1200339002}
+  shotingPrefab: {fileID: 7571846407197800152, guid: 0c738c7a6a4d4f14c9405859316ed310,
+    type: 3}
+  frameRate: 1
+  Force: 1500
   CM: {fileID: 140937719568787714}
 --- !u!1 &140937719568787719
 GameObject:
@@ -911,7 +931,6 @@ GameObject:
   - component: {fileID: 3508064357905282403}
   - component: {fileID: 4839182139560405876}
   - component: {fileID: 477548475034838612}
-  - component: {fileID: 5982428358484781562}
   m_Layer: 0
   m_Name: Atirador
   m_TagString: Untagged
@@ -927,9 +946,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758295581445278801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.68, z: 0.508}
+  m_LocalPosition: {x: 0, y: 2.01, z: 0.542}
   m_LocalScale: {x: 0.10784375, y: 0.625, z: 0.4875}
-  m_Children: []
+  m_Children:
+  - {fileID: 1200339002}
   m_Father: {fileID: 140937719272510634}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -979,16 +999,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5982428358484781562
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758295581445278801}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

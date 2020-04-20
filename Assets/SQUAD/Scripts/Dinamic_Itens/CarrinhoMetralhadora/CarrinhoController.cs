@@ -9,33 +9,34 @@ public class CarrinhoController : MonoBehaviour
     public KeyCode Moviment_Right;
     public KeyCode Moviment_Left;
 
-    public float speed = 10f;
+    public float speed = 6f;
+    public float TurnSpeed = 90f;
+    public float downSpeed = 3f;
     public CarrinhoMetralhadora CM;
 
     private void FixedUpdate()
     {
         if (CM.P1ready && CM.P2ready)
         {
-            Vector3 pos = transform.position;
 
             if (Input.GetKey(Moviment_Up))
             {
-                pos.z += speed * Time.deltaTime;
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
             }
-            if (Input.GetKey(Moviment_Down))
+            else if (Input.GetKey(Moviment_Down))
             {
-                pos.z -= speed * Time.deltaTime;
-            }
-            if (Input.GetKey(Moviment_Right))
-            {
-                pos.x += speed * Time.deltaTime;
-            }
-            if (Input.GetKey(Moviment_Left))
-            {
-                pos.x -= speed * Time.deltaTime;
+                transform.Translate(-Vector3.forward * downSpeed * Time.deltaTime);
             }
 
-            transform.position = pos;
+            if (Input.GetKey(Moviment_Right))
+            {
+                transform.Rotate(Vector3.up, TurnSpeed * Time.deltaTime);
+            }
+            else if (Input.GetKey(Moviment_Left))
+            {
+                transform.Rotate(Vector3.up, -TurnSpeed * Time.deltaTime);
+            }
         }
     }
 }

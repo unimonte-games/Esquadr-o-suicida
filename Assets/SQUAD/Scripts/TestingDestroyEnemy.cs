@@ -100,7 +100,17 @@ public class TestingDestroyEnemy : MonoBehaviour
             }
         }
 
-       
+        if (other.gameObject.tag == "Hit")
+        {
+            this.gameObject.SetActive(false);
+            if (Drop)
+            {
+                DropEnergy();
+            }
+        }
+
+
+
     }
 
     void DropEnergy()

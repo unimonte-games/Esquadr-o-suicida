@@ -10,17 +10,28 @@ public class CarrinhoAssault : MonoBehaviour
     public KeyCode Assault_Left;
     public KeyCode Assault_Right;
 
+    public Transform spawn;
+    public GameObject shotingPrefab;
+    float countToShoting;
+    public float frameRate;
+    public float Force;
+
     public CarrinhoMetralhadora CM;
 
     private void FixedUpdate()
     {
         if (CM.P1ready && CM.P2ready)
         {
-            if (Input.GetKeyDown(Assault_Gatilho))
+
+            countToShoting += 0.1f;
+            if (Input.GetKeyDown(Assault_Gatilho) && countToShoting >= frameRate)
             {
-                Debug.Log("Atirando.");
+                countToShoting = 0f;
+                GameObject bullet = Instantiate(shotingPrefab, spawn.transform.position, Quaternion.identity) as GameObject;
+                bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
             }
-            
+
+
         }
     }
 }

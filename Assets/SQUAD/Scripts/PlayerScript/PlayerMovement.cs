@@ -21,15 +21,11 @@ public class PlayerMovement : MonoBehaviour
     KeyCode Right;
     KeyCode Left;
 
- 
-
-
     void FixedUpdate()
     {
         if (!ToMove)
         {
             
-
             if (Input.GetKey(Up))
             {
                 transform.Translate(Vector3.forward * speed * Time.deltaTime );

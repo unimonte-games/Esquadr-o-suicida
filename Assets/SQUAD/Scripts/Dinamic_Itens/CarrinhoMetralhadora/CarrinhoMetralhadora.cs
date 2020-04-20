@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CarrinhoMetralhadora : MonoBehaviour
 {
-    
-
+   
     public GameObject Player_Assault; //Assault
     public GameObject Player_Moviment; //Moviment
 
@@ -202,7 +201,12 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             P1_ref.GetComponent<Player>().UsingItenDinamic = true;
             P2_ref.GetComponent<Player>().UsingItenDinamic = true;
+
+            P1_ref.GetComponent<Player>().playerWeapon.enabled = false;
+            P2_ref.GetComponent<Player>().playerWeapon.enabled = false;
+
             Atived = true;
+            Invoke("CancelCarrinho", 35);
 
         }
 
@@ -258,7 +262,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
             if (!temp.UsingItenDinamic)
             {
-                P1 = temp.Accept;
+                P1 = temp.Gatilho;
                 P1_Drop = temp.Dropar_set;
                 P1InArea = true;
             }
@@ -271,7 +275,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
             if (!temp.UsingItenDinamic)
             {
-                P2 = temp.Accept;
+                P2 = temp.Gatilho;
                 P2_Drop = temp.Dropar_set;
                 P2InArea = true;
             }
@@ -338,6 +342,44 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 return;
             }
         }
+    }
+
+
+    void CancelCarrinho()
+    {
+
+        if (P1InArea)
+        {
+           
+            Player_Assault.transform.position = DropAssault.position;
+            Player_Assault.GetComponent<PlayerMovement>().enabled = true;
+            Player_Assault.transform.parent = P2_OriginalParent.transform;
+            Player_Assault.GetComponent<Player>().UsingItenDinamic = false;
+            Player_Assault.GetComponent<Player>().playerWeapon.enabled = true;
+
+            Player_Assault = null;
+            P2ready = false;
+            Assault = false;
+        }
+
+        if (P2InArea)
+        {
+            Player_Moviment.transform.position = DropMoviment.position;
+
+            Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
+            Player_Moviment.transform.parent = P2_OriginalParent.transform;
+            Player_Moviment.GetComponent<Player>().UsingItenDinamic = false;
+            Player_Moviment.GetComponent<Player>().playerWeapon.enabled = true;
+
+            Player_Moviment = null;
+            P2ready = false;
+            Moviment = false;
+        }
+
+
+       CC.gameObject.SetActive(false);
+       
+        
     }
 
    
