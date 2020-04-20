@@ -7,6 +7,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public bool PlayerType; //true = Player1 // false = Player2
+    public bool PlayerDead;
+
+    public bool ObjectInArea;
+    public GameObject Object;
+    public Transform ObjSpawn;
+    public GetObject Gobj;
 
     public int Ouro; //Ouro do Jogador
     public int Heart = 3; //Vida do jogador em coracoes
@@ -163,7 +169,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop) //Passar pro lado
+        if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop && !ObjectInArea) //Passar pro lado
         {
 
             if (Keys_Quantidade == 1)
@@ -203,7 +209,7 @@ public class Player : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && !isDrop) //Passar pro lado
+        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && !isDrop && !ObjectInArea) //Passar pro lado
         {
             isDrop = true;
 
@@ -258,6 +264,21 @@ public class Player : MonoBehaviour
             Debug.Log("Controle 2 Ativado");
         }
 
+        if (Input.GetKeyDown(Selecionar_set) && ObjectInArea)
+        {
+            Gobj.Get();
+            Debug.Log("Pegou Objeto");
+        }
+
+        if (Input.GetKeyDown(Dropar_set) && ObjectInArea)
+        {
+            GameObject temp = GameObject.Find("Objetos");
+            Object.transform.parent = temp.transform;
+            
+            ObjectInArea = false;
+
+            Debug.Log("Soltou Objeto");
+        }
 
     }
 
@@ -304,12 +325,12 @@ public class Player : MonoBehaviour
         isDrop = false;
     }
 
-  
-
 
    
 
-    
+
+
+
 
 }
    
