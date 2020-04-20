@@ -183,7 +183,6 @@ public class Player : MonoBehaviour
             }
         }
 
-
         if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop && !ObjectInArea) //Passar pro lado
         {
 

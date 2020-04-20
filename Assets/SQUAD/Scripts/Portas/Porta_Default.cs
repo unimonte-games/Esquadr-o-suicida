@@ -69,8 +69,11 @@ public class Porta_Default : MonoBehaviour
     public SpawnController SpawnControl;
     public Transform parentSpawn; //Lugar que vao dropar
 
+    LevelController LC;
+
     void Start()
     {
+        LC = FindObjectOfType<LevelController>();
         StartingWave = false;
     }
 
@@ -137,11 +140,30 @@ public class Porta_Default : MonoBehaviour
             if (!ChoiceEnemys)
             {
                 ChoiceEnemys = true;
-                ID_Player1Target = Random.Range(0, 12);
-                ID_Player2Target = Random.Range(0, 12);
 
-                P1_Total = Random.Range(1, 7);
-                P2_Total = Random.Range(1, 7);
+                if (LC.SoloPlayer)
+                {
+                    if(player1 != null)
+                    {
+                        ID_Player1Target = Random.Range(0, 12);
+                        P1_Total = Random.Range(1, 7);
+                    }
+
+                    if (player2 != null)
+                    {
+                        ID_Player2Target = Random.Range(0, 12);
+                        P2_Total = Random.Range(1, 7);
+                    }
+                }
+                else
+                {
+                    ID_Player1Target = Random.Range(0, 12);
+                    ID_Player2Target = Random.Range(0, 12);
+
+                    P1_Total = Random.Range(1, 7);
+                    P2_Total = Random.Range(1, 7);
+                }
+               
             }
   
             if (target_RepeatWave == AtualWave)
@@ -451,6 +473,10 @@ public class Porta_Default : MonoBehaviour
         }
 
         OnPeace.SetActive(false);
+        CancelInvoke("OrdaRepeatWave");
+        CancelInvoke("GoToSpawn");
+
+        RoomControl.ReWaveContest(ReWave_Door);
         Debug.Log("Todos da Peace List foram destruidos!");
     }
 
@@ -482,7 +508,16 @@ public class Porta_Default : MonoBehaviour
 
     void TargetFinished()
     {
+
        if(Player1_Finish && Player2_Finish)
+        {
+            Debug.Log("Target concluido!");
+            TargetFinish = true;
+            TargetDestroyAllEnemies();
+            return;
+        }
+
+        if (LC.SoloPlayer && Player1_Finish || Player2_Finish)
         {
             Debug.Log("Target concluido!");
             TargetFinish = true;
