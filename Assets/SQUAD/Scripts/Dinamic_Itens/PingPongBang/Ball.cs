@@ -19,6 +19,9 @@ public class Ball : MonoBehaviour
     {
         Invoke("CancelThis", MaxCount);
 
+        P1_ref.GetComponent<Player>().playerWeapon.enabled = false;
+        P2_ref.GetComponent<Player>().playerWeapon.enabled = false;
+
         P1_ref.GetComponent<Player>().UsingItenDinamic = true;
         P2_ref.GetComponent<Player>().UsingItenDinamic = true;
     }
@@ -56,6 +59,9 @@ public class Ball : MonoBehaviour
         
         P1_ref.GetComponent<Player>().UsingItenDinamic = false;
         P2_ref.GetComponent<Player>().UsingItenDinamic = false;
+
+        P1_ref.GetComponent<Player>().playerWeapon.enabled = true;
+        P2_ref.GetComponent<Player>().playerWeapon.enabled = true;
 
         PPB.gameObject.SetActive(false);
     }
