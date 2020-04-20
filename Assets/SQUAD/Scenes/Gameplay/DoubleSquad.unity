@@ -5533,6 +5533,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 0
+  SoloPlayer: 0
+  P1_inRoom: 0
+  P2_inRoom: 0
   FixedOpen: 0
   AllRoomList:
   - {fileID: 1410828042}
@@ -7171,7 +7174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &653527340
 Transform:
   m_ObjectHideFlags: 0
@@ -13021,6 +13024,7 @@ GameObject:
   - component: {fileID: 1097963294}
   - component: {fileID: 1097963293}
   - component: {fileID: 1097963292}
+  - component: {fileID: 1097963297}
   m_Layer: 0
   m_Name: Obj
   m_TagString: Obj
@@ -13114,6 +13118,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097963290}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1097963297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097963290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: -0.00000011920929, z: -0.00000008940697}
 --- !u!1 &1102009391
 GameObject:
   m_ObjectHideFlags: 0
@@ -15415,17 +15432,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285163618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7bc1215b2fc5cd4d82b31a944f92ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RoomControl: {fileID: 1410828044}
+  PlayerInArea: {fileID: 0}
   Door: {fileID: 1344914937}
   UI_Door: {fileID: 620396710}
   Ui_Open: {fileID: 620396711}
   DoorBar: 0
-  DoorMax: 5
+  DoorMax: 15
   Player: 0
   LastChance: 0
   IsOpen: 0
@@ -16899,7 +16917,7 @@ MonoBehaviour:
   ColorInTheRoom: 0
   DoubleInTheRoom: 0
   FixedInTheRoom: 0
-  TimerInTheRoom: 0
+  TimerInTheRoom: 1
   DefaultComplete: 0
   ColorComplete: 0
   DoubleComplete: 0
@@ -16942,7 +16960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1414629765
 Transform:
   m_ObjectHideFlags: 0
@@ -19464,7 +19482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1609413130
 Transform:
   m_ObjectHideFlags: 0

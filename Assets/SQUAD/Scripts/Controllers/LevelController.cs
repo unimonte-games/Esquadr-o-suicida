@@ -16,5 +16,18 @@ public class LevelController : MonoBehaviour
 
     public bool[] CompleteRoom;
 
+    public void UpdatePlayers()
+    {
+        if(P1_inRoom && !P2_inRoom || !P1_inRoom && P2_inRoom)
+        {
+            SoloPlayer = true;
+        } 
+
+        if(P1_inRoom && P2_inRoom)
+        {
+            SoloPlayer = false;
+        }
+    }
+
 
 }

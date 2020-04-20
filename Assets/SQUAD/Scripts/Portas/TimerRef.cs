@@ -8,18 +8,23 @@ public class TimerRef : MonoBehaviour
     public Porta_Timer P;
     public RoomController R;
     public int PlayerInt;
+    
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player1" && P.Player == false && R.TimerComplete == false)
+        if (other.gameObject.name == "Player1" && !P.Player && R.TimerComplete == false)
         {
             P.Player = true;
+            P.PlayerInArea = other.gameObject;
+            other.gameObject.GetComponent<Player>().playerWeapon.enabled = false;
             PlayerInt = 1;
         }
 
-        if (other.gameObject.name == "Player2" && P.Player == false && R.TimerComplete == false)
+        if (other.gameObject.name == "Player2" && !P.Player && R.TimerComplete == false)
         {
             P.Player = true;
+            P.PlayerInArea = other.gameObject;
+            other.gameObject.GetComponent<Player>().playerWeapon.enabled = false;
             PlayerInt = 2;
         }
 
@@ -32,16 +37,16 @@ public class TimerRef : MonoBehaviour
         {
             P.Player = false;
             PlayerInt = 0;
-            P.LastChance = true;
-           
+            other.gameObject.GetComponent<Player>().playerWeapon.enabled = true;
+            P.LastChance = true;   
         }
 
         if (other.gameObject.name == "Player2" && P.Player && PlayerInt != 1)
         {
             P.Player = false;
             PlayerInt = 0;
-            P.LastChance = true;
-            
+            other.gameObject.GetComponent<Player>().playerWeapon.enabled = true;
+            P.LastChance = true;  
         }
     }
 
