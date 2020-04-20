@@ -422,17 +422,36 @@ public class Porta_Default : MonoBehaviour
             Multiple_Wave = false;
             Orda_Wave = true;
 
-            int SelectPlayer = Random.Range(1, 10);
-            if (SelectPlayer <= 5)
+            if (LC.SoloPlayer)
             {
-                OnPlayer = player1.transform;
-                Debug.Log("Player 1 é o Alvo!");
+                if (LC.P1_inRoom)
+                {
+                    OnPlayer = player1.transform;
+                    Debug.Log("Player 1 é o Alvo!");
+                }
+
+                if (LC.P2_inRoom)
+                {
+                    OnPlayer = player2.transform;
+                    Debug.Log("Player 2 é o Alvo!");
+                }
             }
-            if (SelectPlayer >= 6)
+            else
             {
-                OnPlayer = player2.transform;
-                Debug.Log("Player 2 é o Alvo!");
+                int SelectPlayer = Random.Range(1, 10);
+                if (SelectPlayer <= 5)
+                {
+                    OnPlayer = player1.transform;
+                    Debug.Log("Player 1 é o Alvo!");
+                }
+                if (SelectPlayer >= 6)
+                {
+                    OnPlayer = player2.transform;
+                    Debug.Log("Player 2 é o Alvo!");
+                }
             }
+
+           
 
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }
