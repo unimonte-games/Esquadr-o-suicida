@@ -17,10 +17,53 @@ public class CameraTarget : MonoBehaviour
     private Vector3 velocity;
     private Camera cam;
 
-    private void Start()
+    LevelController LC;
+
+    private void Awake()
     {
         cam = GetComponent<Camera>();
+        LC = FindObjectOfType<LevelController>();
     }
+
+    public void UpdateCamera()
+    {
+        
+        if (LC.SoloPlayer)
+        {
+            if (LC.P1_inRoom)
+            {
+                GameObject player1Camera = GameObject.Find("Player1");
+
+                targets[0] = player1Camera.transform;
+                targets[1] = player1Camera.transform;
+                targets[2] = player1Camera.transform;
+
+            }
+
+            if (LC.P2_inRoom)
+            {
+                GameObject player2Camera = GameObject.Find("Player2");
+                targets[1] = player2Camera.transform;
+
+                targets[0] = player2Camera.transform;
+                targets[1] = player2Camera.transform;
+                targets[2] = player2Camera.transform;
+            }
+        }
+        else
+        {
+            GameObject player3Camera = GameObject.Find("Player1");
+            targets[0] = player3Camera.transform;
+
+            GameObject player4Camera = GameObject.Find("Player2");
+            targets[1] = player4Camera.transform;
+            targets[2] = player4Camera.transform; //Extra
+
+
+        }
+        
+    }
+
 
     private void LateUpdate()
     {

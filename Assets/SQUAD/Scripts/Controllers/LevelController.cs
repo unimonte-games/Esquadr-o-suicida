@@ -10,11 +10,20 @@ public class LevelController : MonoBehaviour
     public bool P1_inRoom;
     public bool P2_inRoom;
 
+    public bool P1_dead;
+    public bool P2_dead;
+
     public int FixedOpen;
 
     public GameObject[] AllRoomList;
+    CameraTarget CT;
 
     public bool[] CompleteRoom;
+
+    private void Awake()
+    {
+        CT = FindObjectOfType<CameraTarget>();
+    }
 
     public void UpdatePlayers()
     {
@@ -27,6 +36,13 @@ public class LevelController : MonoBehaviour
         {
             SoloPlayer = false;
         }
+
+        if (!CT.enabled)
+        {
+            CT.enabled = true;
+        }
+
+        CT.UpdateCamera();
     }
 
 
