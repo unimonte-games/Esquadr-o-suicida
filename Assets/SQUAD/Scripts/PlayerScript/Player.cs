@@ -369,6 +369,11 @@ public class Player : MonoBehaviour
             {
                 PD.player2.SA.SetSoloPlayer(PD.player2.Gatilho);
             }
+
+            if (PD.Protect)
+            {
+                PD.OnPlayer = PD.player2.transform;
+            }
             
             Debug.Log("Player1 Morreu.");
         }
@@ -380,6 +385,11 @@ public class Player : MonoBehaviour
             if (PD.Rescue)
             {
                 PD.player1.SA.SetSoloPlayer(PD.player1.Gatilho);
+            }
+
+            if (PD.Protect)
+            {
+                PD.OnPlayer = PD.player1.transform;
             }
 
             Debug.Log("Player2 Morreu.");

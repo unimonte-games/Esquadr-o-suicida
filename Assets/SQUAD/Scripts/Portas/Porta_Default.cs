@@ -17,8 +17,8 @@ public class Porta_Default : MonoBehaviour
     public int ReWave_Door;
     public bool ReWave;
     public bool Rescue;
-    bool Protect;
-    Transform OnPlayer; //referencia do jogador escolhido
+    public bool Protect;
+    public Transform OnPlayer; //referencia do jogador escolhido
     public bool Peace;
     public GameObject[] PeaceList;
     int CountPeaceList;
@@ -209,7 +209,12 @@ public class Porta_Default : MonoBehaviour
 
             if (Protect)
             {
-                Enemy.GetComponent<TestingDestroyEnemy>().PlayerTarget = OnPlayer;
+
+               TestingDestroyEnemy enemyRef = Enemy.GetComponent<TestingDestroyEnemy>();
+
+                enemyRef.PlayerTarget = OnPlayer;
+                enemyRef.LC = LC;
+                enemyRef.InTarget = true;
             }
 
             if (Peace)

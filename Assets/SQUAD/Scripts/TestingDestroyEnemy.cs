@@ -6,8 +6,11 @@ public class TestingDestroyEnemy : MonoBehaviour
 {
     public int TypeEnemy;
     public Transform PlayerTarget;
+    public bool InTarget;
+    public LevelController LC;
     public Porta_Default P_default;
     public GameObject EnergyCoin;
+    bool ChangeTarget;
 
     bool Drop;
     int tempRandom;
@@ -16,9 +19,20 @@ public class TestingDestroyEnemy : MonoBehaviour
     Vector3 center;
     Vector3 size;
 
+    private void FixedUpdate()
+    {
+        if (InTarget)
+        {
+            if (LC.SoloPlayer && LC.P1_dead || LC.P2_dead && !ChangeTarget)
+            {
+                PlayerTarget = P_default.OnPlayer;
+                ChangeTarget = true;
+            }
+        }
+    }
+
     private void Awake()
     {
-        
         tempRandom = Random.Range(0, 100);
         if (tempRandom > 80)
         {
@@ -66,7 +80,6 @@ public class TestingDestroyEnemy : MonoBehaviour
             }
         }
     }
-    
 
     private void OnTriggerEnter(Collider other)
     {
