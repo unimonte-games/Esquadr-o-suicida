@@ -6,20 +6,58 @@ public class SurpriseAttack : MonoBehaviour
 {
     public bool Player1;
     public bool Player2;
+    public int LifeMax = 25;
+
+    public bool Solo;
+    public KeyCode PlayerSolo;
 
     public Porta_Default PD;
+    LevelController LC;
+
+    float tempFrame;
+
+    private void Awake()
+    {
+        LC = FindObjectOfType<LevelController>();
+    }
+
+    private void FixedUpdate()
+    {
+        tempFrame += 0.1f;
+        if (Solo && Input.GetKeyDown(PlayerSolo) && tempFrame > 1f)
+        {
+            tempFrame = 0f;
+
+            LifeMax -= 1;
+            if (LifeMax <= 0)
+            {
+                PD.RescueComplete();
+
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player1" && Player2)
+        if(other.gameObject.tag == "Hit")
         {
-            PD.RescueComplete();
+            LifeMax -= 1;
+            if(LifeMax <= 0)
+            {
+                PD.RescueComplete();
+            } 
         }
+    }
 
 
-        if (other.gameObject.name == "Player2" && Player1)
-        {
-            PD.RescueComplete();
-        }
+    public void SetSoloPlayer(KeyCode Gatilho)
+    {
+
+        PlayerSolo = Gatilho;
+        LifeMax *= 2;
+        Solo = true;
+
+        Debug.Log("Solo Rescue!");
+
     }
 }

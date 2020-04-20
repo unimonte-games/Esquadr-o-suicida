@@ -351,24 +351,58 @@ public class Porta_Default : MonoBehaviour
             Debug.Log("Rescue!");
             Rescue = true;
 
-            int SelectPlayer = Random.Range(1, 10);
-            if (SelectPlayer <= 5)
+            if (LC.SoloPlayer)
             {
-                player1.playerMovement.ToMove = true;
-                player1.SA.Player1 = true;
-                player1.SA.PD = P;
+                if (LC.P1_inRoom)
+                {
+                    player1.playerMovement.ToMove = true;
+                    player1.SA.Player1 = true;
+                    player1.SA.PD = P;
+                    player1.playerWeapon.enabled = false;
+                    player1.SA.SetSoloPlayer(player1.Gatilho);
 
-                player1.Rescue_Object.SetActive(true);
-                Debug.Log("Player 1 foi sequestrado!");
+                    player1.Rescue_Object.SetActive(true);
+                    Debug.Log("Player 1 foi sequestrado!");
+
+                }
+
+                if (LC.P2_inRoom)
+                {
+                    player2.playerMovement.ToMove = true;
+                    player2.SA.Player2 = true;
+                    player2.SA.PD = P;
+                    player2.playerWeapon.enabled = false;
+                    player2.SA.SetSoloPlayer(player2.Gatilho);
+
+                    player2.Rescue_Object.SetActive(true);
+                    Debug.Log("Player 2 foi sequestrado!");
+                }
+
             }
-            if (SelectPlayer >= 6)
+            else
             {
-                player2.playerMovement.ToMove = true;
-                player2.SA.Player2 = true;
-                player2.SA.PD = P;
 
-                player2.Rescue_Object.SetActive(true);
-                Debug.Log("Player 2 foi sequestrado!");
+                int SelectPlayer = Random.Range(1, 10);
+                if (SelectPlayer <= 5)
+                {
+                    player1.playerMovement.ToMove = true;
+                    player1.SA.Player1 = true;
+                    player1.SA.PD = P;
+                    player1.playerWeapon.enabled = false;
+
+                    player1.Rescue_Object.SetActive(true);
+                    Debug.Log("Player 1 foi sequestrado!");
+                }
+                if (SelectPlayer >= 6)
+                {
+                    player2.playerMovement.ToMove = true;
+                    player2.SA.Player2 = true;
+                    player2.SA.PD = P;
+                    player2.playerWeapon.enabled = false;
+
+                    player2.Rescue_Object.SetActive(true);
+                    Debug.Log("Player 2 foi sequestrado!");
+                }
             }
 
             Normal_Wave = false;
@@ -563,23 +597,33 @@ public class Porta_Default : MonoBehaviour
     public void RescueComplete()
     {
         Rescue = false;
-        player1.playerMovement.ToMove = false;
-        player2.playerMovement.ToMove = false;
 
-        player1.Rescue_Object.SetActive(false);
-        player2.Rescue_Object.SetActive(false);
+        if(player1 != null)
+        {
+            player1.playerMovement.ToMove = false;
+            player1.playerWeapon.enabled = true;
+            player1.Rescue_Object.SetActive(false);
+        }
 
+        if(player2 != null)
+        {
+            player2.playerMovement.ToMove = false;
+            player2.playerWeapon.enabled = true;
+            player2.Rescue_Object.SetActive(false);
+        }
+        
         AtualWave = 0;
         WaveNumbers = 0;
         AtualMonsters = 0;
         MonstersDestroy = 0;
         MonstersNumbers = 0;
 
-        Debug.Log("Complete Waves");
+        
         CancelInvoke("OrdaRepeatWave");
         CancelInvoke("GoToSpawn");
 
         RoomControl.ReWaveContest(ReWave_Door);
+        Debug.Log("Rescue Complete!");
 
     }
 

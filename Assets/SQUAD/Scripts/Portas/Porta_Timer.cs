@@ -54,11 +54,10 @@ public class Porta_Timer : MonoBehaviour
                     if (DoorBar >= DoorMax)
                     {
                         IsOpen = true;
+                        PlayerInArea.GetComponent<Player>().playerWeapon.enabled = true;
                         Door.SetActive(false);
                         cameraTarget.targets[2] = cameraTarget.targets[1];
                         RoomControl.CompleteRoom(3);
-
-                        PlayerInArea.GetComponent<Player>().playerWeapon.enabled = true;
 
                         Debug.Log("Portao Liberado!");
 
