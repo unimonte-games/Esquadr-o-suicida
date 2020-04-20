@@ -37,19 +37,65 @@ public class BaloonMove : MonoBehaviour
     KeyCode P2_Drop;
 
     public int timeBaloon;
+    LevelController LC;
+
+    private void Awake()
+    {
+        LC = FindObjectOfType<LevelController>();
+
+    }
 
     private void Start()
     {
         P1_OriginalParent = GameObject.Find("Player1_Original");
         P2_OriginalParent = GameObject.Find("Player2_Original");
-
+ 
     }
 
     private void FixedUpdate()
     {
         if (!Go)
         {
-            if (P1_inArea && Input.GetKeyDown(P1_Accept) && !P1_ready && !P1_using)
+
+            if (P1_inArea && Input.GetKeyDown(P1_Accept) && !P1_ready && !P1_using && LC.SoloPlayer && LC.P1_inRoom)
+            {
+                P1_ready = true;
+
+                P1_walk.enabled = false;
+                P1_ref.GetComponent<Rigidbody>().useGravity = false;
+                P1_ref.GetComponent<CapsuleCollider>().enabled = false;
+                P1.Gatilho = P1_Accept;
+                P1_ref.transform.position = P1_Baloon.transform.position;
+                P1_ref.transform.parent = P1_Baloon;
+
+                Go = true;
+
+                P1.StartBaloon();
+                Invoke("StartBaloon", 2);
+
+                Debug.Log("Baloon Ativado no Player 1");
+            }
+
+            if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !P2_using && LC.SoloPlayer && LC.P2_inRoom)
+            {
+                P2_ready = true;
+
+                P2_walk.enabled = false;
+                P2_ref.GetComponent<Rigidbody>().useGravity = false;
+                P2_ref.GetComponent<CapsuleCollider>().enabled = false;
+                P2.Gatilho = P2_Accept;
+                P2_ref.transform.position = P2_Baloon.transform.position;
+                P2_ref.transform.parent = P2_Baloon;
+
+                Go = true;
+
+                P2.StartBaloon();
+                Invoke("StartBaloon", 2);
+
+                Debug.Log("Baloon Ativado no Player 2");
+            }
+
+            if (P1_inArea && Input.GetKeyDown(P1_Accept) && !P1_ready && !P1_using && !LC.SoloPlayer)
             {
                 P1_ready = true;
 
@@ -65,7 +111,7 @@ public class BaloonMove : MonoBehaviour
                 Debug.Log("Baloon Ativado no Player 1");
             }
 
-            if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !P2_using)
+            if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !P2_using && !LC.SoloPlayer)
             {
                 P2_ready = true;
 
@@ -106,11 +152,9 @@ public class BaloonMove : MonoBehaviour
                 P2.gameObject.SetActive(false);
             }
 
-            if (P1_ready && P2_ready && !Go)
+            if (P1_ready && P2_ready && !Go && !LC.SoloPlayer)
             {
                 Go = true;
-                P1_using = true;
-                P2_using = true;
 
                 P1.StartBaloon();
                 P2.StartBaloon();
@@ -124,58 +168,97 @@ public class BaloonMove : MonoBehaviour
 
     void StartBaloon()
     {
-        P1.Using = true;
-        P2.Using = true;
+
+        if (!LC.SoloPlayer)
+        {
+            P1.Using = true;
+            P2.Using = true;
+
+            Player P1_ = P1_ref.GetComponent<Player>();
+            P1_.UsingItenDinamic = true;
+            P1_.playerWeapon.enabled = false;
+
+            Player P2_ = P2_ref.GetComponent<Player>();
+            P2_.UsingItenDinamic = true;
+            P2_.playerWeapon.enabled = false;
 
 
-        Player P1_ = P1_ref.GetComponent<Player>();
-        P1_.UsingItenDinamic = true;
-        P1_.playerWeapon.enabled = false;
+            Invoke("DropPlayers", timeBaloon);
+            Debug.Log("Baloon Iniciado!");
+        }
+        else
+        {
+            if (LC.P1_inRoom)
+            {
+                P1.Using = true;
+                
+                Player P1_ = P1_ref.GetComponent<Player>();
+                P1_.UsingItenDinamic = true;
+                P1_.playerWeapon.enabled = false;
 
-        Player P2_ = P2_ref.GetComponent<Player>();
-        P2_.UsingItenDinamic = true;
-        P2_.playerWeapon.enabled = false;
+                Invoke("DropPlayers", timeBaloon);
+                Debug.Log("Baloon Iniciado, apenas P1!");
+            }
 
+            if (LC.P2_inRoom)
+            {
+                P2.Using = true;
 
-        Invoke("DropPlayers", timeBaloon);
-        Debug.Log("Baloon Iniciado!");
+                Player P2_ = P2_ref.GetComponent<Player>();
+                P2_.UsingItenDinamic = true;
+                P2_.playerWeapon.enabled = false;
+
+                Invoke("DropPlayers", timeBaloon);
+                Debug.Log("Baloon Iniciado, apenas P2!");
+            }
+        }
     }
 
     public void DropPlayers()
     {
-        P1_ready = false;
 
-        P1_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        if (P1_ready)
+        {
+            P1_ready = false;
 
-        P1_walk.enabled = true;
-        P1_ref.GetComponent<Rigidbody>().useGravity = true;
-        P1_ref.GetComponent<CapsuleCollider>().enabled = true;
+            P1_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-        Player P1_ = P1_ref.GetComponent<Player>();
-        P1_.UsingItenDinamic = false;
-        P1_.playerWeapon.enabled = true;
+            P1_walk.enabled = true;
+            P1_ref.GetComponent<Rigidbody>().useGravity = true;
+            P1_ref.GetComponent<CapsuleCollider>().enabled = true;
 
-        P1_ref.transform.parent = P1_OriginalParent.transform;
-        P1_ref.transform.localRotation = Quaternion.identity;
-        P1.gameObject.SetActive(false);
+            Player P1_ = P1_ref.GetComponent<Player>();
+            P1_.UsingItenDinamic = false;
+            P1_.playerWeapon.enabled = true;
 
-        P2_ready = false;
+            P1_ref.transform.parent = P1_OriginalParent.transform;
+            P1_ref.transform.localRotation = Quaternion.identity;
+            P1.gameObject.SetActive(false);
+        }
 
-        P2_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        if (P2_ready)
+        {
 
-        P2_walk.enabled = true;
-        P2_ref.GetComponent<Rigidbody>().useGravity = true;
-        P2_ref.GetComponent<CapsuleCollider>().enabled = true;
+            P2_ready = false;
+
+            P2_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            P2_walk.enabled = true;
+            P2_ref.GetComponent<Rigidbody>().useGravity = true;
+            P2_ref.GetComponent<CapsuleCollider>().enabled = true;
 
 
-        Player P2_ = P2_ref.GetComponent<Player>();
-        P2_.UsingItenDinamic = false;
-        P2_.playerWeapon.enabled = true;
+            Player P2_ = P2_ref.GetComponent<Player>();
+            P2_.UsingItenDinamic = false;
+            P2_.playerWeapon.enabled = true;
 
-        P2_ref.transform.parent = P2_OriginalParent.transform;
-        P2_ref.transform.localRotation = Quaternion.identity;
-        P2.gameObject.SetActive(false);
+            P2_ref.transform.parent = P2_OriginalParent.transform;
+            P2_ref.transform.localRotation = Quaternion.identity;
+            P2.gameObject.SetActive(false);
+        }
 
+        P1_using = false;
+        P2_using = false;
 
         this.gameObject.SetActive(false);
 
