@@ -72,9 +72,22 @@ public class Player : MonoBehaviour
 
     public PlayerMovement playerMovement;
     public PlayerWeapon playerWeapon;
+
+    LevelController LC;
    
     private void Start()
     {
+        LC = FindObjectOfType<LevelController>();
+        if (PlayerType)
+        {
+            LC.P1_inRoom = true;
+        }
+
+        if (!PlayerType)
+        {
+            LC.P2_inRoom = true;
+        }
+
         UpdateController();
     }
 
@@ -267,6 +280,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(Selecionar_set) && ObjectInArea)
         {
             Gobj.Get();
+            UsingItenDinamic = true;
+            playerWeapon.enabled = false;
+
             Debug.Log("Pegou Objeto");
         }
 
@@ -276,6 +292,9 @@ public class Player : MonoBehaviour
             Object.transform.parent = temp.transform;
             
             ObjectInArea = false;
+
+            UsingItenDinamic = false;
+            playerWeapon.enabled = true;
 
             Debug.Log("Soltou Objeto");
         }
