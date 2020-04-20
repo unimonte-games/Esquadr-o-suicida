@@ -23,13 +23,22 @@ public class ConnectorRoom : MonoBehaviour
     bool P1_inArea;
     bool P2_inArea;
 
+    LevelController LC;
+
+
+    private void Awake()
+    {
+        LC = FindObjectOfType<LevelController>();
+    }
+
     private void Start()
     {
-        ThisBox = GetComponent<BoxCollider>();
+        ThisBox = GetComponent<BoxCollider>(); 
     }
 
     private void FixedUpdate()
     {
+     
         if (Input.GetKeyDown(First) && !Next && P1_inArea && P2_inArea)
         {
             Next = true;
@@ -50,27 +59,65 @@ public class ConnectorRoom : MonoBehaviour
     {
         if (!CompleteKeyOpenFirst)
         {
-            if (other.gameObject.name == "Player1" && !P1_inArea)
+            if (LC.SoloPlayer)
             {
-                P1_inArea = true;
-                ref1 = other.gameObject;
-
-                if (!Go)
+                if (other.gameObject.name == "Player1" && !P1_inArea)
                 {
-                    Go = true;
-                    First = other.GetComponent<Player>().Accept;
+                    P1_inArea = true;
+                    P2_inArea = true;
+
+                    ref1 = other.gameObject; //mesma referencia
+
+                    if (!Go)
+                    {
+                        Go = true;
+                        First = other.GetComponent<Player>().Accept;
+                    }
+
+                    return;
+                }
+
+                if (other.gameObject.name == "Player2" && !P2_inArea)
+                {
+                    P1_inArea = true;
+                    P2_inArea = true;
+
+                    ref1 = other.gameObject; //mesma referencia
+
+                    if (!Go)
+                    {
+                        Go = true;
+                        First = other.GetComponent<Player>().Accept;
+                    }
+
+                    return;
                 }
             }
-
-            if (other.gameObject.name == "Player2" && !P2_inArea)
+            else
             {
-                P2_inArea = true;
-                ref2 = other.gameObject;
 
-                if (!Go)
+                if (other.gameObject.name == "Player1" && !P1_inArea)
                 {
-                    Go = true;
-                    First = other.GetComponent<Player>().Accept;
+                    P1_inArea = true;
+                    ref1 = other.gameObject;
+
+                    if (!Go)
+                    {
+                        Go = true;
+                        First = other.GetComponent<Player>().Accept;
+                    }
+                }
+
+                if (other.gameObject.name == "Player2" && !P2_inArea)
+                {
+                    P2_inArea = true;
+                    ref2 = other.gameObject;
+
+                    if (!Go)
+                    {
+                        Go = true;
+                        First = other.GetComponent<Player>().Accept;
+                    }
                 }
             }
         }
@@ -106,7 +153,10 @@ public class ConnectorRoom : MonoBehaviour
     void NextRoom()
     {
         ref1.transform.position = CR.Origem1.transform.position;
-        ref2.transform.position = CR.Origem2.transform.position;
+        if (!LC.SoloPlayer) //se n for solo, envia os dois
+        {
+            ref2.transform.position = CR.Origem2.transform.position;
+        }
 
         Go = false;
         Next = false;
