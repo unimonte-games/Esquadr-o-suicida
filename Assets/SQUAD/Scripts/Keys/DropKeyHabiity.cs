@@ -9,22 +9,20 @@ public class DropKeyHabiity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Hit")
         {
-            KeyHit();
+            other.gameObject.SetActive(false);
+
+            LifeKey--;
+            if (LifeKey <= 0)
+            {
+                DK.BC.enabled = true;
+                Debug.Log("Chave Utilizavel!");
+
+                this.gameObject.SetActive(false);
+            }
+            Debug.Log("Hit!");
         }
     }
 
-    void KeyHit()
-    {
-        LifeKey--;
-        if(LifeKey <= 0)
-        {
-            DK.BC.enabled = true;
-            Debug.Log("Chave Utilizavel!");
-
-            this.gameObject.SetActive(false);
-        }
-        Debug.Log("Hit!");
-    }
 }

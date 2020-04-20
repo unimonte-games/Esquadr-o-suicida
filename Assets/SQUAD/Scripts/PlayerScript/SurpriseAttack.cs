@@ -41,11 +41,15 @@ public class SurpriseAttack : MonoBehaviour
     {
         if(other.gameObject.tag == "Hit")
         {
+            other.gameObject.SetActive(false);
+
             LifeMax -= 1;
             if(LifeMax <= 0)
             {
                 PD.RescueComplete();
             } 
+
+            
         }
     }
 

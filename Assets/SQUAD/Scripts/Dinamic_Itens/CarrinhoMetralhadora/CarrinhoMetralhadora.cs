@@ -32,11 +32,16 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
     public CarrinhoController CC;
     public CarrinhoAssault CA;
+    LevelController LC;
+
+    public int timeToCancel;
 
     private void Start()
     {
         P1_OriginalParent = GameObject.Find("Player1_Original");
         P2_OriginalParent = GameObject.Find("Player2_Original");
+
+        LC = FindObjectOfType<LevelController>();
 
     }
 
@@ -46,6 +51,40 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             if (Input.GetKeyDown(P1))
             {
+                P1_ref.GetComponent<Player>().UsingItenDinamic = true;
+                P1_ref.GetComponent<Player>().playerWeapon.enabled = false;
+
+                if (LC.SoloPlayer && LC.P1_inRoom)
+                {
+
+                    Assault = true;
+                    Player_Assault = P1_ref;
+
+                    Player_Assault.GetComponent<PlayerMovement>().enabled = false;
+
+                    Player temp1 = Player_Assault.GetComponent<Player>();
+                    UpdateControllers1_Assault(temp1);
+
+                    Moviment = true;
+                    Player_Moviment = P1_ref;
+                    Player_Moviment.transform.position = MovimentPosition.position;
+                    Player_Moviment.transform.parent = MovimentPosition;
+                    Player_Moviment.GetComponent<PlayerMovement>().enabled = false;
+
+                    
+
+
+                    Player temp2 = Player_Moviment.GetComponent<Player>();
+                    UpdateControllers1_Moviment(temp2);
+
+                    P1ready = true;
+                    P2ready = true;
+
+                    Debug.Log("Player 1 é o Controller e o Assault!");
+                    return;
+
+
+                }
                
                 if (!Assault && !P1ready)
                 {
@@ -91,6 +130,37 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             if (Input.GetKeyDown(P2))
             {
+                P2_ref.GetComponent<Player>().UsingItenDinamic = true;
+                P2_ref.GetComponent<Player>().playerWeapon.enabled = false;
+
+                if (LC.SoloPlayer && LC.P2_inRoom)
+                {
+                    Assault = true;
+                    Player_Assault = P2_ref;
+                    Player_Assault.transform.position = AssaultPosition.position;
+                    Player_Assault.transform.parent = AssaultPosition;
+                    Player_Assault.GetComponent<PlayerMovement>().enabled = false;
+
+                    Player temp1 = Player_Assault.GetComponent<Player>();
+                    UpdateControllers2_Assault(temp1);
+
+                    Moviment = true;
+                    Player_Moviment = P2_ref;
+                    Player_Moviment.transform.position = MovimentPosition.position;
+                    Player_Moviment.transform.parent = MovimentPosition;
+                    Player_Moviment.GetComponent<PlayerMovement>().enabled = false;
+
+                    Player temp2 = Player_Moviment.GetComponent<Player>();
+                    UpdateControllers2_Moviment(temp2);
+
+                    P1ready = true;
+                    P2ready = true;
+
+                    Debug.Log("Player 2 é o Controller e o Assault!");
+                    return;
+
+                }
+
                 if (!Assault && !P2ready)
                 {
                     Assault = true;
@@ -136,77 +206,23 @@ public class CarrinhoMetralhadora : MonoBehaviour
         {
             if (Input.GetKeyDown(P1_Drop))
             {
-                if(P1_ref == Player_Assault)
-                {
-                    Player_Assault.transform.position = DropAssault.position;
-                    
-                    Player_Assault.GetComponent<PlayerMovement>().enabled = true;
-                    Player_Assault.transform.parent = P1_OriginalParent.transform;
-
-                    Player_Assault = null;
-                    P1ready = false;
-                    Assault = false;
-                    return;
-                }
-
-                if (P1_ref == Player_Moviment)
-                {
-                    Player_Moviment.transform.position = DropMoviment.position;
-
-                    Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
-                    Player_Moviment.transform.parent = P1_OriginalParent.transform;
-
-                    Player_Moviment = null;
-                    P1ready = false;
-                    Moviment = false;
-                    return;
-                }
-
+                DropPlayer1();
             }
         }
         if (P2InArea && P2ready)
         {
             if (Input.GetKeyDown(P2_Drop))
             {
-                if (P2_ref == Player_Assault)
-                {
-                    Player_Assault.transform.position = DropAssault.position;
-
-                    Player_Assault.GetComponent<PlayerMovement>().enabled = true;
-                    Player_Assault.transform.parent = P2_OriginalParent.transform;
-
-                    Player_Assault = null;
-                    P2ready = false;
-                    Assault = false;
-                    return;
-                }
-
-                if (P2_ref == Player_Moviment)
-                {
-                    Player_Moviment.transform.position = DropMoviment.position;
-
-                    Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
-                    Player_Moviment.transform.parent = P2_OriginalParent.transform;
-
-                    Player_Moviment = null;
-                    P2ready = false;
-                    Moviment = false;
-                    return;
-                }
-
+                DropPlayer2();
             }
         }
 
+
         if(P1ready && P2ready && !Atived)
         {
-            P1_ref.GetComponent<Player>().UsingItenDinamic = true;
-            P2_ref.GetComponent<Player>().UsingItenDinamic = true;
-
-            P1_ref.GetComponent<Player>().playerWeapon.enabled = false;
-            P2_ref.GetComponent<Player>().playerWeapon.enabled = false;
 
             Atived = true;
-            Invoke("CancelCarrinho", 35);
+            Invoke("CancelCarrinho", timeToCancel);
 
         }
 
@@ -253,6 +269,135 @@ public class CarrinhoMetralhadora : MonoBehaviour
         CC.Moviment_Left = P.Left;
     }
 
+    void DropPlayer1()
+    {
+        if (!LC.SoloPlayer)
+        {
+            if (P1_ref == Player_Assault)
+            {
+                Player_Assault.transform.position = DropAssault.position;
+
+                Player_Assault.GetComponent<PlayerMovement>().enabled = true;
+                Player_Assault.transform.parent = P1_OriginalParent.transform;
+                P1_ref.GetComponent<Player>().UsingItenDinamic = false;
+                P1_ref.GetComponent<Player>().playerWeapon.enabled = true;
+
+                Player_Assault = null;
+                P1ready = false;
+                Assault = false;
+
+            }
+
+            if (P1_ref == Player_Moviment)
+            {
+                Player_Moviment.transform.position = DropMoviment.position;
+
+                Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
+                Player_Moviment.transform.parent = P1_OriginalParent.transform;
+                P1_ref.GetComponent<Player>().UsingItenDinamic = false;
+                P1_ref.GetComponent<Player>().playerWeapon.enabled = true;
+
+                Player_Moviment = null;
+                P1ready = false;
+                Moviment = false;
+
+            }
+        }
+
+        if (LC.SoloPlayer && P1ready && LC.P1_inRoom)
+        {
+            Player_Moviment.transform.position = DropMoviment.position;
+
+            Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
+            Player_Moviment.transform.parent = P1_OriginalParent.transform;
+            P1_ref.GetComponent<Player>().UsingItenDinamic = false;
+            P1_ref.GetComponent<Player>().playerWeapon.enabled = true;
+
+            Player_Assault = null;
+            P1ready = false;
+            Assault = false;
+
+            Player_Moviment = null;
+            P1ready = false;
+            Moviment = false;
+
+            Player_Assault = null;
+            P2ready = false;
+            Assault = false;
+
+            Player_Moviment = null;
+            P2ready = false;
+            Moviment = false;
+
+
+        }
+       
+    }
+
+    void DropPlayer2()
+    {
+        if (!LC.SoloPlayer)
+        {
+            if (P2_ref == Player_Assault)
+            {
+                Player_Assault.transform.position = DropAssault.position;
+
+                Player_Assault.GetComponent<PlayerMovement>().enabled = true;
+                Player_Assault.transform.parent = P2_OriginalParent.transform;
+                P2_ref.GetComponent<Player>().UsingItenDinamic = false;
+                P2_ref.GetComponent<Player>().playerWeapon.enabled = true;
+
+                Player_Assault = null;
+                P2ready = false;
+                Assault = false;
+                return;
+            }
+
+            if (P2_ref == Player_Moviment)
+            {
+                Player_Moviment.transform.position = DropMoviment.position;
+
+                Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
+                Player_Moviment.transform.parent = P2_OriginalParent.transform;
+                P2_ref.GetComponent<Player>().UsingItenDinamic = false;
+                P2_ref.GetComponent<Player>().playerWeapon.enabled = true;
+
+                Player_Moviment = null;
+                P2ready = false;
+                Moviment = false;
+
+            }
+        }
+        
+        if (LC.SoloPlayer && P2ready && LC.P2_inRoom)
+        {
+            Player_Moviment.transform.position = DropMoviment.position;
+
+            Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
+            Player_Moviment.transform.parent = P2_OriginalParent.transform;
+            P2_ref.GetComponent<Player>().UsingItenDinamic = false;
+            P2_ref.GetComponent<Player>().playerWeapon.enabled = true;
+
+            Player_Assault = null;
+            P1ready = false;
+            Assault = false;
+
+            Player_Moviment = null;
+            P1ready = false;
+            Moviment = false;
+
+            Player_Assault = null;
+            P2ready = false;
+            Assault = false;
+
+            Player_Moviment = null;
+            P2ready = false;
+            Moviment = false;
+
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player1")
@@ -287,99 +432,26 @@ public class CarrinhoMetralhadora : MonoBehaviour
         if (other.gameObject.name == "Player1")
         {
             P1InArea = false;
-            P1ready = false;
-           
-
-            if (Player_Assault == other.gameObject)
-            {
-                Player_Assault.GetComponent<PlayerMovement>().enabled = true;
-                Player_Assault.transform.parent = P1_OriginalParent.transform;
-                Player_Assault.GetComponent<Player>().UsingItenDinamic = false;
-                
-                Player_Assault = null;
-                Assault = false;
-                return;
-            }
-
-            if(Player_Moviment == other.gameObject)
-            {
-                Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
-                Player_Moviment.transform.parent = P1_OriginalParent.transform;
-                Player_Moviment.GetComponent<Player>().UsingItenDinamic = false;
-
-                Player_Moviment = null;
-                Moviment = false;
-                return;
-            }
+            DropPlayer1();
 
         }
 
         if (other.gameObject.name == "Player2")
         {
             P2InArea = false;
-            P2ready = false;
-            
-
-            if (Player_Assault == other.gameObject)
-            {
-                Player_Assault.GetComponent<PlayerMovement>().enabled = true;
-                Player_Assault.transform.parent = P2_OriginalParent.transform;
-                Player_Assault.GetComponent<Player>().UsingItenDinamic = false;
-
-                Player_Assault = null;
-                Assault = false;
-                return;
-            }
-
-            if (Player_Moviment == other.gameObject)
-            {
-                Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
-                Player_Moviment.transform.parent = P2_OriginalParent.transform;
-                Player_Moviment.GetComponent<Player>().UsingItenDinamic = false;
-
-                Player_Moviment = null;
-                Moviment = false;
-                return;
-            }
+            DropPlayer2();
         }
     }
-
 
     void CancelCarrinho()
     {
 
-        if (P1InArea)
-        {
-           
-            Player_Assault.transform.position = DropAssault.position;
-            Player_Assault.GetComponent<PlayerMovement>().enabled = true;
-            Player_Assault.transform.parent = P2_OriginalParent.transform;
-            Player_Assault.GetComponent<Player>().UsingItenDinamic = false;
-            Player_Assault.GetComponent<Player>().playerWeapon.enabled = true;
+        DropPlayer1();
+        DropPlayer2();
 
-            Player_Assault = null;
-            P2ready = false;
-            Assault = false;
-        }
+        CC.gameObject.SetActive(false);
+        Debug.Log("Carrinho encerrou");
 
-        if (P2InArea)
-        {
-            Player_Moviment.transform.position = DropMoviment.position;
-
-            Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
-            Player_Moviment.transform.parent = P2_OriginalParent.transform;
-            Player_Moviment.GetComponent<Player>().UsingItenDinamic = false;
-            Player_Moviment.GetComponent<Player>().playerWeapon.enabled = true;
-
-            Player_Moviment = null;
-            P2ready = false;
-            Moviment = false;
-        }
-
-
-       CC.gameObject.SetActive(false);
-       
-        
     }
 
    
