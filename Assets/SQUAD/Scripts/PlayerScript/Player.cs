@@ -72,12 +72,14 @@ public class Player : MonoBehaviour
 
     public PlayerMovement playerMovement;
     public PlayerWeapon playerWeapon;
+    public Porta_Default PD;
 
     LevelController LC;
    
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
+        
         if (PlayerType)
         {
             LC.P1_inRoom = true;
@@ -91,6 +93,7 @@ public class Player : MonoBehaviour
         }
 
         UpdateController();
+
     }
 
     public void UpdateController()
@@ -300,6 +303,16 @@ public class Player : MonoBehaviour
             Debug.Log("Soltou Objeto");
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha4) && PlayerType)
+        {
+            Invoke("PlayerIsDead", 3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5) && !PlayerType)
+        {
+            Invoke("PlayerIsDead", 3);
+        }
+        
+
     }
 
     public void SetDropKey()
@@ -343,6 +356,37 @@ public class Player : MonoBehaviour
     void CancelDrop()
     {
         isDrop = false;
+    }
+
+    void PlayerIsDead()
+    {
+        if (PlayerType)
+        {
+            LC.P1_inRoom = false;
+            LC.P1_dead = true;
+
+            if (PD.Rescue)
+            {
+                PD.player2.SA.SetSoloPlayer(PD.player2.Gatilho);
+            }
+            
+            Debug.Log("Player1 Morreu.");
+        }
+        else
+        {
+            LC.P2_inRoom = false;
+            LC.P2_dead = true;
+
+            if (PD.Rescue)
+            {
+                PD.player1.SA.SetSoloPlayer(PD.player1.Gatilho);
+            }
+
+            Debug.Log("Player2 Morreu.");
+        }
+
+        this.gameObject.SetActive(false);
+        LC.UpdatePlayers();
     }
 
 

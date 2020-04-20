@@ -58,7 +58,6 @@ public class SurpriseAttack : MonoBehaviour
     {
 
         PlayerSolo = Gatilho;
-        LifeMax *= 2;
         Solo = true;
 
         Debug.Log("Solo Rescue!");

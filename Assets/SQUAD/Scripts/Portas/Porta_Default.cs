@@ -12,11 +12,11 @@ public class Porta_Default : MonoBehaviour
     public BoxCollider triggerPlayers; //BoxCollider do Puzzle
     bool StartingWave; //Colidir pra iniciar a wave
     bool CountPlayerTrigger1, CountPlayerTrigger2;
-    Player player1;
-    Player player2;
+    public Player player1;
+    public Player player2;
     public int ReWave_Door;
     public bool ReWave;
-    bool Rescue;
+    public bool Rescue;
     bool Protect;
     Transform OnPlayer; //referencia do jogador escolhido
     public bool Peace;
@@ -327,6 +327,16 @@ public class Porta_Default : MonoBehaviour
     {
         ReWave = true;
         ReWave_Door = TypeDoor;
+
+        if(player1 != null)
+        {
+            player1.PD = this;
+        }
+
+        if (player2 != null)
+        {
+            player2.PD = this;
+        }
 
         if (Type >= 0 && Type <= 5)//Nada
         {
