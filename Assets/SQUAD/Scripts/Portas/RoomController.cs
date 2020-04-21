@@ -8,6 +8,7 @@ using UnityEditor;
 public class RoomController : MonoBehaviour
 {
     public int Room_ID;
+ 
     LevelController LC;
     public Porta_Default Default;
     public Porta_Color Color;
@@ -17,44 +18,66 @@ public class RoomController : MonoBehaviour
     public bool ColorInTheRoom, DoubleInTheRoom, FixedInTheRoom, TimerInTheRoom;
     public bool DefaultComplete, ColorComplete, DoubleComplete, TimerComplete;
 
+    public GameObject[] ColorIsAtived;
+    public GameObject[] DoubleIsAtived;
+    public GameObject[] TimerIsAtived;
+    public GameObject FixedIsAtived;
+    public GameObject DefaultIsAtived;
+
     public int MissionInTheRoom;
     public int CompleteMissions;
-
-    public GameObject defaultDoor;
 
     public GameObject[] C_Default;
     public GameObject[] C_Color;
     public GameObject[] C_Double;
     public GameObject[] C_Timer;
 
+    public MapSystem mapSystem;
+
 
     void Start()
     {
         LC = FindObjectOfType<LevelController>();
+        mapSystem = FindObjectOfType<MapSystem>();
 
 
         MissionInTheRoom++;
 
         if (ColorInTheRoom)
         {
+            for (int i = 0; i < 2; i++)
+            {
+                ColorIsAtived[i].SetActive(true);
+            }
             MissionInTheRoom++;
         }
         if (DoubleInTheRoom)
         {
+            for (int i = 0; i < 2; i++)
+            {
+               DoubleIsAtived[i].SetActive(true);
+            }
             MissionInTheRoom++;
         }
         if (FixedInTheRoom)
         {
+
+            FixedIsAtived.SetActive(true);
+
             MissionInTheRoom++;
         }
         if (TimerInTheRoom)
         {
+            for (int i = 0; i < 2; i++)
+            {
+                TimerIsAtived[i].SetActive(true);
+            }
             MissionInTheRoom++;
         }
 
         if(!ColorInTheRoom && !DoubleInTheRoom && !TimerInTheRoom)
         {
-            defaultDoor.SetActive(true);
+            DefaultIsAtived.SetActive(true);
         }
 
     }
@@ -156,6 +179,7 @@ public class RoomController : MonoBehaviour
         if (CompleteMissions == MissionInTheRoom)
         {
             LC.CompleteRoom[Room_ID] = true;
+            mapSystem.RoomExplored[Room_ID] = true;
 
             if (ColorComplete)
             {
@@ -181,6 +205,8 @@ public class RoomController : MonoBehaviour
                 }
             }
 
+
+            
             Debug.Log("Room Clean!");
         }
     }
