@@ -5,6 +5,8 @@ using UnityEngine;
 public class Destroy : MonoBehaviour
 {
     public int time;
+    public bool PlayerDestroy;
+
     private void Start()
     {
         Invoke("destroyThis", time);

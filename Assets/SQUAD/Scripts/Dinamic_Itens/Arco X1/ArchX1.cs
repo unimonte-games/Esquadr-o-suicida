@@ -13,7 +13,9 @@ public class ArchX1 : MonoBehaviour
     public Transform SpawnShot;
     public float Force = 1200;
     public ArchController AC;
-  
+
+    public Porta_Default P;
+
     private void FixedUpdate()
     {
         countToShoting += 0.1f;
@@ -26,6 +28,7 @@ public class ArchX1 : MonoBehaviour
             ArchShot temp = bullet.GetComponent<ArchShot>();
             temp.ID = PlayerArch;
             temp.AC = AC;
+            temp.PD = P;
              
         }
     }

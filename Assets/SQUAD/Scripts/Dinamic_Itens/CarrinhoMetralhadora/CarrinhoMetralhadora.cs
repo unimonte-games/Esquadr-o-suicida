@@ -61,18 +61,18 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Assault = P1_ref;
 
                     Player_Assault.GetComponent<PlayerMovement>().enabled = false;
+                    
 
                     Player temp1 = Player_Assault.GetComponent<Player>();
                     UpdateControllers1_Assault(temp1);
+                    CA.PlayerThis = temp1.PlayerType;
 
                     Moviment = true;
                     Player_Moviment = P1_ref;
                     Player_Moviment.transform.position = MovimentPosition.position;
                     Player_Moviment.transform.parent = MovimentPosition;
-                    Player_Moviment.GetComponent<PlayerMovement>().enabled = false;
-
                     
-
+                    Player_Moviment.GetComponent<PlayerMovement>().enabled = false;
 
                     Player temp2 = Player_Moviment.GetComponent<Player>();
                     UpdateControllers1_Moviment(temp2);
@@ -92,6 +92,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Assault = P1_ref;
                     Player_Assault.transform.position = AssaultPosition.position;
                     Player_Assault.transform.parent = AssaultPosition;
+                    CA.PlayerThis = Player_Assault.GetComponent<Player>().PlayerType;
                     Player_Assault.GetComponent<PlayerMovement>().enabled = false;
 
                     P1ready = true;
@@ -139,10 +140,12 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Assault = P2_ref;
                     Player_Assault.transform.position = AssaultPosition.position;
                     Player_Assault.transform.parent = AssaultPosition;
+                    
                     Player_Assault.GetComponent<PlayerMovement>().enabled = false;
 
                     Player temp1 = Player_Assault.GetComponent<Player>();
                     UpdateControllers2_Assault(temp1);
+                    CA.PlayerThis = temp1.PlayerType;
 
                     Moviment = true;
                     Player_Moviment = P2_ref;
@@ -167,6 +170,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player_Assault = P2_ref;
                     Player_Assault.transform.position = AssaultPosition.position;
                     Player_Assault.transform.parent = AssaultPosition;
+                    CA.PlayerThis = Player_Assault.GetComponent<Player>().PlayerType;
                     Player_Assault.GetComponent<PlayerMovement>().enabled = false;
                     
                     P2ready = true;

@@ -83,29 +83,18 @@ public class TestingDestroyEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player1")
-        {
-            P_default.MonstersDefeat(1,TypeEnemy);
-            this.gameObject.SetActive(false);
-            if (Drop)
-            {
-                DropEnergy();
-            }
-            
-        }
-
-        if (other.gameObject.name == "Player2")
-        {
-            P_default.MonstersDefeat(2,TypeEnemy);
-            this.gameObject.SetActive(false);
-            if (Drop)
-            {
-                DropEnergy();
-            }
-        }
-
+       
         if (other.gameObject.name == "Ball")
         {
+            if (other.GetComponent<Ball>().PlayerDestroy)
+            {
+                P_default.MonstersDefeat(1, TypeEnemy);
+            }
+            else
+            {
+                P_default.MonstersDefeat(2, TypeEnemy);
+            }
+           
             this.gameObject.SetActive(false);
             if (Drop)
             {
@@ -115,6 +104,16 @@ public class TestingDestroyEnemy : MonoBehaviour
 
         if (other.gameObject.tag == "Hit")
         {
+            bool Player = other.GetComponent<Destroy>().PlayerDestroy;
+            if (Player)
+            {
+                P_default.MonstersDefeat(1, TypeEnemy);
+            }
+            else
+            {
+                P_default.MonstersDefeat(2, TypeEnemy);
+            }
+
             this.gameObject.SetActive(false);
             if (Drop)
             {

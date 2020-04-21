@@ -60,8 +60,6 @@ public class ArchController : MonoBehaviour
             P2.UsingItenDinamic = true;
             P2.playerWeapon.enabled = false;
 
-
-
             StartPlayerVersusPlayer();
             Debug.Log("Player vs Player!");
         }
@@ -77,16 +75,19 @@ public class ArchController : MonoBehaviour
         temp1.Gatilho = P1;
         temp1.PlayerArch = 1;
         temp1.AC = ACScript;
+        temp1.P = P1_ref.GetComponent<Player>().PD;
 
 
         GameObject Arch2 = Instantiate(Arch, P2_ref.position, P2_ref.rotation);
         Arch2.transform.parent = P2_ref.transform;
         Arch2_ref = Arch2;
+        
 
         ArchX1 temp2 = Arch2.GetComponent<ArchX1>();
         temp2.Gatilho = P2;
         temp2.PlayerArch = 2;
         temp2.AC = ACScript;
+        temp2.P = P2_ref.GetComponent<Player>().PD;
 
         Invoke("CancelArch",35);
 

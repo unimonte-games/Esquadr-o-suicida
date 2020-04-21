@@ -125,7 +125,7 @@ public class BaloonMove : MonoBehaviour
                 Debug.Log("Baloon Ativado no Player 2");
             }
 
-            if (P1_inArea && !P1_ready && Input.GetKeyDown(P1_Drop))
+            if (P1_ready && Input.GetKeyDown(P1_Drop))
             {
                 P1_ready = false;
 
@@ -135,11 +135,15 @@ public class BaloonMove : MonoBehaviour
 
                 P1_ref.transform.parent = P1_OriginalParent.transform;
                 P1_ref.transform.localRotation = Quaternion.identity;
-                P1.gameObject.SetActive(false);
+
+                if (P1_using)
+                {
+                    P1.gameObject.SetActive(false);
+                }
 
             }
 
-            if (P2_inArea && P2_ready && Input.GetKeyDown(P2_Drop))
+            if (P2_ready && Input.GetKeyDown(P2_Drop))
             {
                 P2_ready = false;
 
@@ -149,7 +153,11 @@ public class BaloonMove : MonoBehaviour
 
                 P2_ref.transform.parent = P2_OriginalParent.transform;
                 P2_ref.transform.localRotation = Quaternion.identity;
-                P2.gameObject.SetActive(false);
+
+                if (P2_using)
+                {
+                    P2.gameObject.SetActive(false);
+                }
             }
 
             if (P1_ready && P2_ready && !Go && !LC.SoloPlayer)
@@ -292,6 +300,25 @@ public class BaloonMove : MonoBehaviour
                 P2_walk = other.GetComponent<PlayerMovement>();
             }
         }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "Player1" && P1_inArea)
+        {
+            P1_ready = false;
+            P1_inArea = false;
+
+        }
+
+        if (other.gameObject.name == "Player2" && P2_inArea)
+        {
+            P2_ready = false;
+            P2_inArea = false;
+
+        }
+        
 
     }
 

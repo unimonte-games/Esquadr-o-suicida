@@ -18,6 +18,8 @@ public class BaloonRandomMove : MonoBehaviour
     public Transform spawnBomb;
     float Timeframe;
 
+    public bool PlayerThis;
+
     private void FixedUpdate()
     {
         if (Using)
@@ -52,7 +54,8 @@ public class BaloonRandomMove : MonoBehaviour
             if(Timeframe > 1)
             {
                 Timeframe = 0;
-                Instantiate(Bomb, spawnBomb.position, spawnBomb.rotation);
+                GameObject Bullet = Instantiate(Bomb, spawnBomb.position, spawnBomb.rotation);
+                Bullet.GetComponent<Destroy>().PlayerDestroy = PlayerThis;
                 Debug.Log("Bomb");
             }
         }

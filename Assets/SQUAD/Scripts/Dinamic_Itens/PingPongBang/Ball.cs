@@ -15,6 +15,9 @@ public class Ball : MonoBehaviour
     public float speed = 5;
     public int MaxCount;
 
+    public bool PlayerDestroy;
+  
+
     private void Start()
     {
         Invoke("CancelThis", MaxCount);
@@ -31,17 +34,16 @@ public class Ball : MonoBehaviour
 
         if (Input.GetKeyDown(p1) && P1_area)
         {
-           
-            Atual = P2_ref;
-            
+            PlayerDestroy = true;
+
+            Atual = P2_ref;    
         }
 
         if (Input.GetKeyDown(p2) && P2_area)
         {
-           
+            PlayerDestroy = false;
+
             Atual = P1_ref;
-
-
         }
 
         transform.LookAt(Atual.position);

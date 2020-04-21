@@ -22,6 +22,7 @@ public class PlayerWeapon : MonoBehaviour
         {
                 countToShoting = 0f;
                 GameObject bullet = Instantiate(shotingPrefab, spawn.transform.position, Quaternion.identity) as GameObject;
+                bullet.GetComponent<Destroy>().PlayerDestroy = P.PlayerType;
                 bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
         }
     }
