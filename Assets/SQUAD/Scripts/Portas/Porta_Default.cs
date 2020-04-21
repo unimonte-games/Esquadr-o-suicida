@@ -210,7 +210,6 @@ public class Porta_Default : MonoBehaviour
 
             if (Protect)
             {
-
                TestingDestroyEnemy enemyRef = Enemy.GetComponent<TestingDestroyEnemy>();
 
                 enemyRef.PlayerTarget = OnPlayer;
@@ -272,9 +271,19 @@ public class Porta_Default : MonoBehaviour
                     {
                         return;
                     }
+
+                    if (Protect)
+                    {
+                        Protect = false;
+                        CancelInvoke("OrdaRepeatWave");
+
+                        Debug.Log("Protect Terminou!");
+                    }
                     RoomControl.ReWaveContest(ReWave_Door); //Wave Surprise vai encerrar - Surprise
                     return;
                 }
+
+                
 
                 Debug.Log("Complete Waves");
                 CancelInvoke("OrdaRepeatWave");
@@ -582,6 +591,8 @@ public class Porta_Default : MonoBehaviour
         {
             Debug.Log("Target concluido!");
             TargetFinish = true;
+            CancelInvoke("OrdaRepeatWave");
+            CancelInvoke("GoToSpawn");
             TargetDestroyAllEnemies();
             return;
         }
@@ -590,6 +601,8 @@ public class Porta_Default : MonoBehaviour
         {
             Debug.Log("Target concluido!");
             TargetFinish = true;
+            CancelInvoke("OrdaRepeatWave");
+            CancelInvoke("GoToSpawn");
             TargetDestroyAllEnemies();
         }
     }
@@ -622,9 +635,6 @@ public class Porta_Default : MonoBehaviour
         MonstersNumbers = 0;
 
         Debug.Log("Complete Waves");
-        CancelInvoke("OrdaRepeatWave");
-        CancelInvoke("GoToSpawn");
-
         RoomControl.CompleteRoom(0);
 
     }

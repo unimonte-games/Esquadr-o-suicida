@@ -84,15 +84,21 @@ public class Player : MonoBehaviour
         {
             LC.P1_inRoom = true;
             LC.UpdatePlayers();
+            UpdateController();
+
+            return;
         }
 
         if (!PlayerType)
         {
             LC.P2_inRoom = true;
             LC.UpdatePlayers();
+            UpdateController();
+
+            return;
         }
 
-        UpdateController();
+        
 
     }
 

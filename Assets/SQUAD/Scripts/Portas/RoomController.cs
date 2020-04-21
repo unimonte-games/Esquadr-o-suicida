@@ -42,6 +42,11 @@ public class RoomController : MonoBehaviour
 
 
         MissionInTheRoom++;
+        if (!ColorInTheRoom && !DoubleInTheRoom && !TimerInTheRoom)
+        {
+            DefaultIsAtived.SetActive(true);
+            return;
+        }
 
         if (ColorInTheRoom)
         {
@@ -49,7 +54,11 @@ public class RoomController : MonoBehaviour
             {
                 ColorIsAtived[i].SetActive(true);
             }
+
+            Color.enabled = true;
             MissionInTheRoom++;
+            return;
+
         }
         if (DoubleInTheRoom)
         {
@@ -57,14 +66,17 @@ public class RoomController : MonoBehaviour
             {
                DoubleIsAtived[i].SetActive(true);
             }
+
+            Double.enabled = true;
             MissionInTheRoom++;
+            return;
         }
         if (FixedInTheRoom)
         {
 
             FixedIsAtived.SetActive(true);
-
             MissionInTheRoom++;
+            return;
         }
         if (TimerInTheRoom)
         {
@@ -72,13 +84,13 @@ public class RoomController : MonoBehaviour
             {
                 TimerIsAtived[i].SetActive(true);
             }
+
+            Timer.enabled = true;
             MissionInTheRoom++;
+            return;
         }
 
-        if(!ColorInTheRoom && !DoubleInTheRoom && !TimerInTheRoom)
-        {
-            DefaultIsAtived.SetActive(true);
-        }
+        
 
     }
 
