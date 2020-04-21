@@ -374,6 +374,11 @@ public class Player : MonoBehaviour
             {
                 PD.OnPlayer = PD.player2.transform;
             }
+
+            if (PD.Target_Wave)
+            {
+                PD.TargetFinished();
+            }
             
             Debug.Log("Player1 Morreu.");
         }
@@ -390,6 +395,11 @@ public class Player : MonoBehaviour
             if (PD.Protect)
             {
                 PD.OnPlayer = PD.player1.transform;
+            }
+
+            if (PD.Target_Wave)
+            {
+                PD.TargetFinished();
             }
 
             Debug.Log("Player2 Morreu.");

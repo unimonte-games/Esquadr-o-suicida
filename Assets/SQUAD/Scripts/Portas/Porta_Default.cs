@@ -75,6 +75,7 @@ public class Porta_Default : MonoBehaviour
     {
         LC = FindObjectOfType<LevelController>();
         StartingWave = false;
+
     }
 
     void GoToSpawn()
@@ -574,7 +575,7 @@ public class Porta_Default : MonoBehaviour
 
     }
 
-    void TargetFinished()
+    public void TargetFinished()
     {
 
        if(Player1_Finish && Player2_Finish)
@@ -665,7 +666,7 @@ public class Porta_Default : MonoBehaviour
     {
         if (other.gameObject.tag == "Player") //Iniciar a wave após o primeiro jogador colidir
         {
-
+           
             if (!StartingWave)
             {
                 StartingWave = true;
@@ -687,6 +688,7 @@ public class Porta_Default : MonoBehaviour
         {
             CountPlayerTrigger1 = true;
             player1 = other.GetComponent<Player>();
+            player1.PD = this;
 
             if (CountPlayerTrigger1 && CountPlayerTrigger2)
             {
@@ -700,6 +702,7 @@ public class Porta_Default : MonoBehaviour
         {
             CountPlayerTrigger2 = true;
             player2 = other.GetComponent<Player>();
+            player2.PD = this;
 
             if (CountPlayerTrigger1 && CountPlayerTrigger2)
             {
