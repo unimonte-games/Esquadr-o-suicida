@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     public KeyCode Left;
 
     public KeyCode Gatilho;
+    public KeyCode MapaGatilho;
 
     public int AtualKey;
 
@@ -75,16 +76,21 @@ public class Player : MonoBehaviour
     public Porta_Default PD;
 
     LevelController LC;
-   
+    UI Interface;
+
+    
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
+        Interface = FindObjectOfType<UI>();
         
         if (PlayerType)
         {
             LC.P1_inRoom = true;
             LC.UpdatePlayers();
             UpdateController();
+
+            Interface.P1 = MapaGatilho;
 
             return;
         }
@@ -95,11 +101,10 @@ public class Player : MonoBehaviour
             LC.UpdatePlayers();
             UpdateController();
 
+            Interface.P2 = MapaGatilho;
+
             return;
         }
-
-        
-
     }
 
     public void UpdateController()
@@ -118,6 +123,7 @@ public class Player : MonoBehaviour
                 Left = KeyCode.A;
 
                 Gatilho = KeyCode.Space;
+                MapaGatilho = KeyCode.Escape;
 
             }
             else //Controle
@@ -147,7 +153,8 @@ public class Player : MonoBehaviour
                 Right = KeyCode.RightArrow;
                 Left = KeyCode.LeftArrow;
 
-                Gatilho = KeyCode.RightShift;
+                Gatilho = KeyCode.L;
+                MapaGatilho = KeyCode.O;
 
             }
             else //Controle
@@ -317,7 +324,8 @@ public class Player : MonoBehaviour
         {
             Invoke("PlayerIsDead", 3);
         }
-        
+
+
 
     }
 

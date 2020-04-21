@@ -11,7 +11,6 @@ public class Porta_Default : MonoBehaviour
     public RoomController RoomControl; //referencia de missao
     public BoxCollider triggerPlayers; //BoxCollider do Puzzle
     bool StartingWave; //Colidir pra iniciar a wave
-    bool CountPlayerTrigger1, CountPlayerTrigger2;
     public Player player1;
     public Player player2;
     public int ReWave_Door;
@@ -71,11 +70,27 @@ public class Porta_Default : MonoBehaviour
 
     LevelController LC;
 
-    void Start()
+    private void Awake()
     {
         LC = FindObjectOfType<LevelController>();
         StartingWave = false;
+    }
+    void Start()
+    {
+        GameObject Ref1 = GameObject.Find("Player1");
+        GameObject Ref2 = GameObject.Find("Player2");
 
+        if(Ref1 != null)
+        {
+            player1 = Ref1.GetComponent<Player>();
+            player1.PD = this;
+        }
+
+        if (Ref2 != null)
+        {
+            player2 = Ref2.GetComponent<Player>();
+            player2.PD = this;
+        }
     }
 
     void GoToSpawn()
@@ -674,13 +689,12 @@ public class Porta_Default : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") //Iniciar a wave após o primeiro jogador colidir
+
+        if (other.gameObject.tag == "Player") //Pegar a referencia do jogador 1 e aguardar os dois estarem em cena para tirar o box
         {
-           
             if (!StartingWave)
             {
                 StartingWave = true;
-
                 if (Orda_Wave)
                 {
                     InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
@@ -689,39 +703,37 @@ public class Porta_Default : MonoBehaviour
                 {
                     Invoke("GoToSpawn", TimerToSpawn);
                 }
-
-
-            }
-        }
-
-        if (other.gameObject.name == "Player1") //Pegar a referencia do jogador 1 e aguardar os dois estarem em cena para tirar o box
-        {
-            CountPlayerTrigger1 = true;
-            player1 = other.GetComponent<Player>();
-            player1.PD = this;
-
-            if (CountPlayerTrigger1 && CountPlayerTrigger2)
-            {
-                triggerPlayers.enabled = false;
-
             }
 
-        }
-
-        if (other.gameObject.name == "Player2")
-        {
-            CountPlayerTrigger2 = true;
-            player2 = other.GetComponent<Player>();
-            player2.PD = this;
-
-            if (CountPlayerTrigger1 && CountPlayerTrigger2)
+            if(player1 != null && player2 != null)
             {
                 triggerPlayers.enabled = false;
+                CancelInvoke("Canceltrigger");
+                Debug.Log("Ambos estao na cena");
+            }
 
+            if(LC.SoloPlayer && !LC.P1_dead || !LC.P2_dead)
+            {
+                triggerPlayers.enabled = false;
+                Debug.Log("Está jogando sozinho");
+            }
+
+
+            if (LC.SoloPlayer && LC.P1_dead || LC.P2_dead)
+            {
+                Invoke("Canceltrigger",5);
+                Debug.Log("Está Sozinho, mas o outro está morto");
             }
 
         }
     }
+
+    void Canceltrigger()
+    {
+        triggerPlayers.enabled = false;
+        Debug.Log("Outro está morto, segue sozinho");
+    }
+        
 
 
 }

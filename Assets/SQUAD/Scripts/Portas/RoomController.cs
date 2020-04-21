@@ -33,13 +33,13 @@ public class RoomController : MonoBehaviour
     public GameObject[] C_Timer;
 
     public MapSystem mapSystem;
-
+  
 
     void Start()
     {
         LC = FindObjectOfType<LevelController>();
         mapSystem = FindObjectOfType<MapSystem>();
-
+        
 
         MissionInTheRoom++;
         if (!ColorInTheRoom && !DoubleInTheRoom && !TimerInTheRoom)
@@ -192,6 +192,7 @@ public class RoomController : MonoBehaviour
         {
             LC.CompleteRoom[Room_ID] = true;
             mapSystem.RoomExplored[Room_ID] = true;
+            mapSystem.UI_MapExplored[Room_ID].SetActive(true);
 
             if (ColorComplete)
             {
@@ -223,6 +224,5 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    
-   
+
 }

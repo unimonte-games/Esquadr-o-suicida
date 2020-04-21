@@ -2,25 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapTrigger : MonoBehaviour
+public class EndCheck : MonoBehaviour
 {
-    public int TriggerID;
     public MapSystem MP;
 
     bool isCheck;
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Room")
+        if (other.gameObject.tag == "Player")
         {
             if (!isCheck)
             {
                 isCheck = true;
-
-                RoomController RC = other.GetComponent<RoomController>();
-                RC.Room_ID = TriggerID;
-                MP.RoomExist[TriggerID] = true;
-                MP.UI_MapExist[TriggerID].SetActive(true);
+                MP.EndCheck();
 
                 this.gameObject.SetActive(false);
 
