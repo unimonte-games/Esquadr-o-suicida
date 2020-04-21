@@ -30,15 +30,16 @@ public class DeadCheck : MonoBehaviour
 
     void ReLive_Player1()
     {
+        P1.GetComponent<Player>().PD = P2.GetComponent<Player>().PD;
         P1.SetActive(true);
         LC.P1_dead = false;
-        
 
         Debug.Log("Player 1 Renasceu");
     }
 
     void ReLive_Player2()
     {
+        P2.GetComponent<Player>().PD = P1.GetComponent<Player>().PD;
         P2.SetActive(true);
         LC.P2_dead = false;
         
