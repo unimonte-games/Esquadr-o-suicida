@@ -29,6 +29,7 @@ public class UI : MonoBehaviour
             Map.SetActive(false);
             MapAtived = false;
             CancelInvoke("CancelAuto");
+            
         }
     }
 

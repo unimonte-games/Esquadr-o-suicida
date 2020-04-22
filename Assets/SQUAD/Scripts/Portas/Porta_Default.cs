@@ -75,24 +75,7 @@ public class Porta_Default : MonoBehaviour
         LC = FindObjectOfType<LevelController>();
         StartingWave = false;
     }
-    void Start()
-    {
-        GameObject Ref1 = GameObject.Find("Player1");
-        GameObject Ref2 = GameObject.Find("Player2");
-
-        if(Ref1 != null)
-        {
-            player1 = Ref1.GetComponent<Player>();
-            player1.PD = this;
-        }
-
-        if (Ref2 != null)
-        {
-            player2 = Ref2.GetComponent<Player>();
-            player2.PD = this;
-        }
-    }
-
+    
     void GoToSpawn()
     {
         Debug.Log("Iniciando Wave");
@@ -690,50 +673,22 @@ public class Porta_Default : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.tag == "Player") //Pegar a referencia do jogador 1 e aguardar os dois estarem em cena para tirar o box
+        if (other.gameObject.tag == "Player" && !StartingWave)
         {
-            if (!StartingWave)
+
+            StartingWave = true;
+            if (Orda_Wave)
             {
-                StartingWave = true;
-                if (Orda_Wave)
-                {
-                    InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
-                }
-                else
-                {
-                    Invoke("GoToSpawn", TimerToSpawn);
-                }
+                InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
+            }
+            else
+            {
+                Invoke("GoToSpawn", TimerToSpawn);
             }
 
-            if(player1 != null && player2 != null)
-            {
-                triggerPlayers.enabled = false;
-                CancelInvoke("Canceltrigger");
-                Debug.Log("Ambos estao na cena");
-            }
-
-            if(LC.SoloPlayer && !LC.P1_dead || !LC.P2_dead)
-            {
-                triggerPlayers.enabled = false;
-                Debug.Log("Está jogando sozinho");
-            }
-
-
-            if (LC.SoloPlayer && LC.P1_dead || LC.P2_dead)
-            {
-                Invoke("Canceltrigger",5);
-                Debug.Log("Está Sozinho, mas o outro está morto");
-            }
+            triggerPlayers.enabled = false;
 
         }
     }
-
-    void Canceltrigger()
-    {
-        triggerPlayers.enabled = false;
-        Debug.Log("Outro está morto, segue sozinho");
-    }
-        
-
 
 }

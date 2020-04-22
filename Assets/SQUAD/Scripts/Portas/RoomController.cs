@@ -190,6 +190,7 @@ public class RoomController : MonoBehaviour
 
         if (CompleteMissions == MissionInTheRoom)
         {
+            Default.enabled = false;
             LC.CompleteRoom[Room_ID] = true;
             mapSystem.RoomExplored[Room_ID] = true;
             mapSystem.UI_MapExplored[Room_ID].SetActive(true);

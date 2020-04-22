@@ -18,12 +18,12 @@ public class DeadCheck : MonoBehaviour
 
         if (LC.P1_dead)
         {
-            Invoke("ReLive_Player1", 3);
+            Invoke("ReLive_Player1", 2);
         }
 
         if (LC.P2_dead)
         {
-            Invoke("ReLive_Player2", 3);
+            Invoke("ReLive_Player2", 2);
         }
 
     }
