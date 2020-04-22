@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
 
     public KeyCode Gatilho;
     public KeyCode MapaGatilho;
+    public KeyCode Esquiva;
 
     public int AtualKey;
 
@@ -124,6 +125,7 @@ public class Player : MonoBehaviour
 
                 Gatilho = KeyCode.Space;
                 MapaGatilho = KeyCode.Escape;
+                Esquiva = KeyCode.R;
 
             }
             else //Controle
@@ -155,6 +157,7 @@ public class Player : MonoBehaviour
 
                 Gatilho = KeyCode.L;
                 MapaGatilho = KeyCode.O;
+                Esquiva = KeyCode.K;
 
             }
             else //Controle
