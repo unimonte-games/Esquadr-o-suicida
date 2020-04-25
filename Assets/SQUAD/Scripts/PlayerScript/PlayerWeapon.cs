@@ -36,7 +36,6 @@ public class PlayerWeapon : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (Input.GetKeyDown(Switch))
         {
             if (MaxItens > 2)
@@ -44,15 +43,15 @@ public class PlayerWeapon : MonoBehaviour
                 MaxItens = 2;
             }
 
+            ID_AtualWeapon++;
+            if (ID_AtualWeapon > 2)
+            {
+                ID_AtualWeapon = 1;
+            }
+
             for (int i = 0; i <= MaxItens; i++)
             {
                 ItemParent[i].gameObject.SetActive(false);
-            }
-
-            ID_AtualWeapon++;
-            if(ID_AtualWeapon > 2)
-            {
-                ID_AtualWeapon = 1;
             }
 
             ItemParent[ID_AtualWeapon].gameObject.SetActive(true);
@@ -173,23 +172,33 @@ public class PlayerWeapon : MonoBehaviour
         if (ItemWeaponList[1] == null && ItemWeaponList[2] != null)
         {
             MaxItens = 1;
+            return;
         }
 
         if (ItemWeaponList[1] != null && ItemWeaponList[2] == null)
         {
             MaxItens = 1;
+            return;
         }
 
         if (ItemWeaponList[1] != null && ItemWeaponList[2] != null)
         {
             MaxItens = 2;
+            return;
         }
 
         if (ItemWeaponList[1] == null && ItemWeaponList[2] == null)
         {
             MaxItens = 0;
             ID_AtualWeapon = 0;
-            ItemParent[0].SetActive(true);
+
+            for (int i = 0; i <= MaxItens; i++)
+            {
+                ItemParent[i].gameObject.SetActive(false);
+            }
+
+            ItemParent[ID_AtualWeapon].SetActive(true);
+            return;
         }
 
     }
@@ -208,5 +217,6 @@ public class PlayerWeapon : MonoBehaviour
     {
         ItemParent[ID_AtualWeapon].gameObject.SetActive(true);
     }
+
 
 }

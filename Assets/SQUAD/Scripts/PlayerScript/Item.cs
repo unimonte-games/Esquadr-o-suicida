@@ -44,7 +44,6 @@ public class Item : MonoBehaviour
                     return;
                 }
 
-
                 playerWeapon.GetWeapon(ID);
                 this.gameObject.SetActive(false);
 
@@ -66,7 +65,6 @@ public class Item : MonoBehaviour
                     return;
                 }
 
-                
                 playerWeapon.GetWeapon(ID);
                 this.gameObject.SetActive(false);
 
