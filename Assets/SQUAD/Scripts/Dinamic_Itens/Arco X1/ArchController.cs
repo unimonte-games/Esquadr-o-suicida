@@ -54,11 +54,11 @@ public class ArchController : MonoBehaviour
 
             Player P1 = P1_ref.GetComponent<Player>();
             P1.UsingItenDinamic = true;
-            P1.playerWeapon.enabled = false;
+            P1.playerWeapon.DisabledItem();
 
             Player P2 = P2_ref.GetComponent<Player>();
             P2.UsingItenDinamic = true;
-            P2.playerWeapon.enabled = false;
+            P1.playerWeapon.DisabledItem();
 
             StartPlayerVersusPlayer();
             Debug.Log("Player vs Player!");
@@ -100,11 +100,11 @@ public class ArchController : MonoBehaviour
 
         Player P1 = P1_ref.GetComponent<Player>();
         P1.UsingItenDinamic = false;
-        P1.playerWeapon.enabled = true;
+        P1.playerWeapon.EnabledItem();
 
         Player P2 = P2_ref.GetComponent<Player>();
         P2.UsingItenDinamic = false;
-        P2.playerWeapon.enabled = true;
+        P2.playerWeapon.EnabledItem();
 
 
         if (P1_Points > P2_Points)

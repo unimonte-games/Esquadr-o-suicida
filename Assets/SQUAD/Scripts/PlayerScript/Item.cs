@@ -80,20 +80,29 @@ public class Item : MonoBehaviour
     {
         if(other.gameObject.name == "Player1" && !inUse1 && !inUse2)
         {
-            inUse1 = true;
-
-            GetItem = other.gameObject.GetComponent<Player>().Accept;
-            playerWeapon = other.gameObject.GetComponent<PlayerWeapon>();
+            
             player = other.gameObject.GetComponent<Player>();
+            if (!player.UsingItenDinamic)
+            {
+
+                inUse1 = true;
+
+                GetItem = player.Accept;
+                playerWeapon = other.gameObject.GetComponent<PlayerWeapon>();
+            }
         }
 
         if (other.gameObject.name == "Player2" && !inUse1 && !inUse2)
         {
-            inUse2 = true;
-
-            GetItem = other.gameObject.GetComponent<Player>().Accept;
-            playerWeapon = other.gameObject.GetComponent<PlayerWeapon>();
             player = other.gameObject.GetComponent<Player>();
+            if (!player.UsingItenDinamic)
+            {
+
+                inUse2 = true;
+
+                GetItem = player.Accept;
+                playerWeapon = other.gameObject.GetComponent<PlayerWeapon>();
+            }
         }
 
     }

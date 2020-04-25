@@ -332,8 +332,6 @@ public class Player : MonoBehaviour
             Invoke("PlayerIsDead", 3);
         }
 
-
-
     }
 
     public void SetDropKey()

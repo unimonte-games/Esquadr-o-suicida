@@ -49,8 +49,7 @@ public class BaloonRandomMove : MonoBehaviour
         }
 
         if (Input.GetKeyDown(Gatilho))
-        {
-            
+        {  
             if(Timeframe > 1)
             {
                 Timeframe = 0;

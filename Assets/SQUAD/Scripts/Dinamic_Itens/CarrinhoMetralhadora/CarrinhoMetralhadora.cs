@@ -10,10 +10,12 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
     GameObject P1_ref;
     GameObject P2_ref;
+
     KeyCode P1;
     KeyCode P2;
     KeyCode P1_Drop;
     KeyCode P2_Drop;
+
     bool P1InArea;
     bool P2InArea;
     public bool P1ready;
@@ -52,7 +54,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             if (Input.GetKeyDown(P1))
             {
                 P1_ref.GetComponent<Player>().UsingItenDinamic = true;
-                P1_ref.GetComponent<Player>().playerWeapon.enabled = false;
+                P1_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
                 if (LC.SoloPlayer && LC.P1_inRoom)
                 {
@@ -132,7 +134,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             if (Input.GetKeyDown(P2))
             {
                 P2_ref.GetComponent<Player>().UsingItenDinamic = true;
-                P2_ref.GetComponent<Player>().playerWeapon.enabled = false;
+                P2_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
                 if (LC.SoloPlayer && LC.P2_inRoom)
                 {
@@ -284,7 +286,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 Player_Assault.GetComponent<PlayerMovement>().enabled = true;
                 Player_Assault.transform.parent = P1_OriginalParent.transform;
                 P1_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P1_ref.GetComponent<Player>().playerWeapon.enabled = true;
+                P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 Player_Assault = null;
                 P1ready = false;
@@ -299,7 +301,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
                 Player_Moviment.transform.parent = P1_OriginalParent.transform;
                 P1_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P1_ref.GetComponent<Player>().playerWeapon.enabled = true;
+                P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 Player_Moviment = null;
                 P1ready = false;
@@ -315,7 +317,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
             Player_Moviment.transform.parent = P1_OriginalParent.transform;
             P1_ref.GetComponent<Player>().UsingItenDinamic = false;
-            P1_ref.GetComponent<Player>().playerWeapon.enabled = true;
+            P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
             Player_Assault = null;
             P1ready = false;
@@ -349,7 +351,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 Player_Assault.GetComponent<PlayerMovement>().enabled = true;
                 Player_Assault.transform.parent = P2_OriginalParent.transform;
                 P2_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P2_ref.GetComponent<Player>().playerWeapon.enabled = true;
+                P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 Player_Assault = null;
                 P2ready = false;
@@ -364,7 +366,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
                 Player_Moviment.transform.parent = P2_OriginalParent.transform;
                 P2_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P2_ref.GetComponent<Player>().playerWeapon.enabled = true;
+                P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 Player_Moviment = null;
                 P2ready = false;
@@ -380,7 +382,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
             Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
             Player_Moviment.transform.parent = P2_OriginalParent.transform;
             P2_ref.GetComponent<Player>().UsingItenDinamic = false;
-            P2_ref.GetComponent<Player>().playerWeapon.enabled = true;
+            P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
             Player_Assault = null;
             P1ready = false;

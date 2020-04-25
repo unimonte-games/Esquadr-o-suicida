@@ -135,4 +135,19 @@ public class PlayerWeapon : MonoBehaviour
        
     }
 
+    public void DisabledItem()
+    {
+
+        for (int i = 0; i < 3; i++)
+        {
+            ItemParent[i].gameObject.SetActive(false);
+        }
+
+    }
+
+    public void EnabledItem()
+    {
+        ItemParent[ID_AtualWeapon].gameObject.SetActive(true);
+    }
+
 }

@@ -67,13 +67,15 @@ public class BaloonMove : MonoBehaviour
                 P1.Gatilho = P1_Accept;
                 P1_ref.transform.position = P1_Baloon.transform.position;
                 P1_ref.transform.parent = P1_Baloon;
+                P1_ref.GetComponent<Player>().playerWeapon.DisabledItem();
+                
 
                 Go = true;
 
                 P1.StartBaloon();
                 Invoke("StartBaloon", 2);
 
-                Debug.Log("Baloon Ativado no Player 1");
+                Debug.Log("Baloon Solo Player 1");
             }
 
             if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !P2_using && LC.SoloPlayer && LC.P2_inRoom)
@@ -86,13 +88,14 @@ public class BaloonMove : MonoBehaviour
                 P2.Gatilho = P2_Accept;
                 P2_ref.transform.position = P2_Baloon.transform.position;
                 P2_ref.transform.parent = P2_Baloon;
+                P2_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
                 Go = true;
 
                 P2.StartBaloon();
                 Invoke("StartBaloon", 2);
 
-                Debug.Log("Baloon Ativado no Player 2");
+                Debug.Log("Baloon Solo Player 2");
             }
 
             if (P1_inArea && Input.GetKeyDown(P1_Accept) && !P1_ready && !P1_using && !LC.SoloPlayer)
@@ -105,10 +108,11 @@ public class BaloonMove : MonoBehaviour
                 P1.Gatilho = P1_Accept;
                 P1_ref.transform.position = P1_Baloon.transform.position;
                 P1_ref.transform.parent = P1_Baloon;
+                P1_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
 
 
-                Debug.Log("Baloon Ativado no Player 1");
+                Debug.Log("Baloon Solo no Player 1");
             }
 
             if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !P2_using && !LC.SoloPlayer)
@@ -121,8 +125,9 @@ public class BaloonMove : MonoBehaviour
                 P2.Gatilho = P2_Accept;
                 P2_ref.transform.position = P2_Baloon.transform.position;
                 P2_ref.transform.parent = P2_Baloon;
+                P2_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
-                Debug.Log("Baloon Ativado no Player 2");
+                Debug.Log("Baloon Solo no Player 2");
             }
 
             if (P1_ready && Input.GetKeyDown(P1_Drop))
@@ -135,6 +140,8 @@ public class BaloonMove : MonoBehaviour
 
                 P1_ref.transform.parent = P1_OriginalParent.transform;
                 P1_ref.transform.localRotation = Quaternion.identity;
+
+                P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 if (P1_using)
                 {
@@ -153,6 +160,8 @@ public class BaloonMove : MonoBehaviour
 
                 P2_ref.transform.parent = P2_OriginalParent.transform;
                 P2_ref.transform.localRotation = Quaternion.identity;
+
+                P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 if (P2_using)
                 {
@@ -184,11 +193,11 @@ public class BaloonMove : MonoBehaviour
 
             Player P1_ = P1_ref.GetComponent<Player>();
             P1_.UsingItenDinamic = true;
-            P1_.playerWeapon.enabled = false;
+            P1_.playerWeapon.DisabledItem();
 
             Player P2_ = P2_ref.GetComponent<Player>();
             P2_.UsingItenDinamic = true;
-            P2_.playerWeapon.enabled = false;
+            P2_.playerWeapon.DisabledItem();
 
 
             Invoke("DropPlayers", timeBaloon);
@@ -202,7 +211,7 @@ public class BaloonMove : MonoBehaviour
                 
                 Player P1_ = P1_ref.GetComponent<Player>();
                 P1_.UsingItenDinamic = true;
-                P1_.playerWeapon.enabled = false;
+                P1_.playerWeapon.DisabledItem();
 
                 Invoke("DropPlayers", timeBaloon);
                 Debug.Log("Baloon Iniciado, apenas P1!");
@@ -214,7 +223,7 @@ public class BaloonMove : MonoBehaviour
 
                 Player P2_ = P2_ref.GetComponent<Player>();
                 P2_.UsingItenDinamic = true;
-                P2_.playerWeapon.enabled = false;
+                P2_.playerWeapon.DisabledItem();
 
                 Invoke("DropPlayers", timeBaloon);
                 Debug.Log("Baloon Iniciado, apenas P2!");
@@ -237,7 +246,7 @@ public class BaloonMove : MonoBehaviour
 
             Player P1_ = P1_ref.GetComponent<Player>();
             P1_.UsingItenDinamic = false;
-            P1_.playerWeapon.enabled = true;
+            P1_.playerWeapon.EnabledItem();
 
             P1_ref.transform.parent = P1_OriginalParent.transform;
             P1_ref.transform.localRotation = Quaternion.identity;
@@ -258,7 +267,7 @@ public class BaloonMove : MonoBehaviour
 
             Player P2_ = P2_ref.GetComponent<Player>();
             P2_.UsingItenDinamic = false;
-            P2_.playerWeapon.enabled = true;
+            P2_.playerWeapon.EnabledItem();
 
             P2_ref.transform.parent = P2_OriginalParent.transform;
             P2_ref.transform.localRotation = Quaternion.identity;

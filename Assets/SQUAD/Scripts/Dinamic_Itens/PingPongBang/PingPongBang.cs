@@ -13,8 +13,6 @@ public class PingPongBang : MonoBehaviour
     bool P1_ready;
     bool P2_ready;
 
-   
-
     public bool StartPong;
     public GameObject Ball;
     public Ball BallScript;
