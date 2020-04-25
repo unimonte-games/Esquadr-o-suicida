@@ -6,6 +6,7 @@ public class PlayerWeapon : MonoBehaviour
 {
 
     public int ID_AtualWeapon;
+    int MaxItens;
 
     public GameObject[] ItemWeaponList; //Armas atuais
     public int[] ID_Weapons;
@@ -18,6 +19,7 @@ public class PlayerWeapon : MonoBehaviour
     Player P;
     WeaponList WL;
     KeyCode Gatilho;
+    KeyCode Switch;
 
     bool isDrop;
 
@@ -27,11 +29,42 @@ public class PlayerWeapon : MonoBehaviour
         Discart = WL.transform;
     }
 
+    private void Start()
+    {
+        CheckMax();
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (Input.GetKeyDown(Switch))
+        {
+            if (MaxItens > 2)
+            {
+                MaxItens = 2;
+            }
+
+            for (int i = 0; i <= MaxItens; i++)
+            {
+                ItemParent[i].gameObject.SetActive(false);
+            }
+
+            ID_AtualWeapon++;
+            if(ID_AtualWeapon > 2)
+            {
+                ID_AtualWeapon = 1;
+            }
+
+            ItemParent[ID_AtualWeapon].gameObject.SetActive(true);
+        }
+    }
+
     public void UpdateGatilhos()
     {
         P = GetComponent<Player>();
 
         Gatilho = P.Gatilho;
+        Switch = P.Dropar_set;
 
     }
 
@@ -114,7 +147,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         
         ID_AtualWeapon = Type;
-
+       
         GameObject WeaponSet = Instantiate(ItemWeaponList[Type], LocalToSpawn.position, LocalToSpawn.rotation);
         WeaponSet.transform.parent = ItemParent[Type].transform;
         WeaponSet.gameObject.GetComponent<Weapon>().Gatilho = Gatilho;
@@ -128,11 +161,37 @@ public class PlayerWeapon : MonoBehaviour
         }
 
         ItemParent[Type].SetActive(true);
-
+        CheckMax();
         
         Debug.Log("Weapon Update");
         return;
        
+    }
+
+    void CheckMax()
+    {
+        if (ItemWeaponList[1] == null && ItemWeaponList[2] != null)
+        {
+            MaxItens = 1;
+        }
+
+        if (ItemWeaponList[1] != null && ItemWeaponList[2] == null)
+        {
+            MaxItens = 1;
+        }
+
+        if (ItemWeaponList[1] != null && ItemWeaponList[2] != null)
+        {
+            MaxItens = 2;
+        }
+
+        if (ItemWeaponList[1] == null && ItemWeaponList[2] == null)
+        {
+            MaxItens = 0;
+            ID_AtualWeapon = 0;
+            ItemParent[0].SetActive(true);
+        }
+
     }
 
     public void DisabledItem()
