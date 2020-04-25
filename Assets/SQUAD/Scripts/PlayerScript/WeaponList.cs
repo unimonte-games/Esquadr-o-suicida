@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WeaponList : MonoBehaviour
 {
+    public GameObject[] Weapon;
     public GameObject[] wItem;
-    
+
 
 }

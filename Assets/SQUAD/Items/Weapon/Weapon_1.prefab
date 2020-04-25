@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 694893182345029634}
   - component: {fileID: 570471626204895871}
   m_Layer: 0
-  m_Name: Weapon_0
+  m_Name: Weapon_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f6ade2ee25f3ee246836449dec5fa83b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,12 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0797fdd44166624a8e5e3768baadb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponID: 1
+  weaponID: 0
   Shot: {fileID: 7571846407197800152, guid: 0c738c7a6a4d4f14c9405859316ed310, type: 3}
-  Fire: 15
-  FrameRate: 0.5
-  Mana: 15
-  Range: 1
+  Fire: 0
+  FrameRate: 1
+  Mana: 5
+  Range: 0.5
   Nivel: 2
   Force: 1500
   Gatilho: 0

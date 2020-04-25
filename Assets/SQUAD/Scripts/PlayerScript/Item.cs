@@ -19,6 +19,8 @@ public class Item : MonoBehaviour
 
     WeaponList WL;
 
+    bool Set;
+
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -26,48 +28,52 @@ public class Item : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        if(inUse1 && Input.GetKeyDown(GetItem))
+        if (!Set)
         {
-            if (isBuy && player.Ouro >= Value)
+            if (inUse1 && Input.GetKeyDown(GetItem))
             {
-                player.Ouro -= Value;
+                Set = true;
+                if (isBuy && player.Ouro >= Value)
+                {
+                    player.Ouro -= Value;
+                    playerWeapon.GetWeapon(ID);
+                    this.gameObject.SetActive(false);
+
+
+                    Debug.Log("Player 1 comprou um item!");
+                    return;
+                }
+
+
                 playerWeapon.GetWeapon(ID);
                 this.gameObject.SetActive(false);
-                
-                
-                Debug.Log("Player 1 comprou um item!");
+
+                Debug.Log("Player 1 pegou um item!");
                 return;
             }
 
-            playerWeapon.GetWeapon(ID);
-            this.gameObject.SetActive(false);
-
-            Debug.Log("Player 1 pegou um item!");
-            return;
-        }
-
-        if (inUse2 && Input.GetKeyDown(GetItem))
-        {
-            if (isBuy && player.Ouro >= Value)
+            if (inUse2 && Input.GetKeyDown(GetItem))
             {
-                player.Ouro -= Value;
+                Set = true;
+                if (isBuy && player.Ouro >= Value)
+                {
+                    player.Ouro -= Value;
+                    playerWeapon.GetWeapon(ID);
+
+                    Debug.Log("Player 2 comprou um item!");
+
+                    this.gameObject.SetActive(false);
+                    return;
+                }
+
+                
                 playerWeapon.GetWeapon(ID);
-
-                Debug.Log("Player 2 comprou um item!");
-
                 this.gameObject.SetActive(false);
+
+                Debug.Log("Player 2 pegou um item!");
                 return;
             }
-
-           
-            playerWeapon.GetWeapon(ID);
-            this.gameObject.SetActive(false);
-
-            Debug.Log("Player 2 pegou um item!");
-            return;
         }
-       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,4 +111,5 @@ public class Item : MonoBehaviour
         }
 
     }
+
 }
