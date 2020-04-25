@@ -7,47 +7,22 @@ public class PlayerWeapon : MonoBehaviour
 
     public int ID_AtualWeapon;
 
-    public GameObject w_Shot;
-    public float w_Fire;
-    public float w_FrameRate;
-    public int w_Mana;
-    public int w_Range;
-
-
-    public int[] weaponID;
-    public GameObject[] WeaponPlayer;
-    public GameObject[] WeaponToDrop;
-    public GameObject[] ShotWeapon;
-    public float[] Fire;
-    public float[] FrameRate;
-    public int[] Mana;
-    public int[] Range;
-    public int[] Nivel;
-
-    public float Force;
-    public KeyCode Gatilho;
-
-    public Transform spawn;
-    public Transform spawnToDrop;
+    public GameObject[] ItemWeaponList; //Armas atuais
+   
+    public Transform LocalToSpawn; //Lugar q a arma nasce
+    public Transform[] ItemParent;
+    public Transform spawnToDrop; //Local que a arma dropa
 
     Player P;
     WeaponList WL;
+    KeyCode Gatilho;
 
-    bool PlayerController;
-    float countToShoting;
-
-
-    private void FixedUpdate()
+    private void Awake()
     {
-        countToShoting += 0.1f;
-        if (Input.GetKeyDown(Gatilho) && countToShoting >= w_FrameRate)
-        {
-                countToShoting = 0f;
-                GameObject bullet = Instantiate(w_Shot, spawn.transform.position, Quaternion.identity) as GameObject;
-                bullet.GetComponent<Destroy>().PlayerDestroy = P.PlayerType;
-                bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
-        }
+        WL = FindObjectOfType<WeaponList>();
     }
+
+   
 
     public void UpdateGatilhos()
     {
@@ -59,86 +34,57 @@ public class PlayerWeapon : MonoBehaviour
 
     public void GetWeapon(int ID)
     {
-        if (WeaponPlayer[1] == null)
+        
+        if (ItemWeaponList[1] == null)
         {
-            weaponID[1] = ID;
-            WeaponPlayer[1] = WL.wItem[ID];
-            WeaponToDrop[1] = WL.wToDrop[ID];
-            ShotWeapon[1] = WL.wShoting[ID];
-            Fire[1] = WL.wFire[ID];
-            FrameRate[1] = WL.wFrameRate[ID];
-            Mana[1] = WL.wMana[ID];
-            Range[1] = WL.wRange[ID];
-            Nivel[1] = WL.wNivel[ID];
+            ItemWeaponList[1] = WL.wItem[ID];
 
-            Atual(1);
+            Atual(ID,1);
             return;
         }
 
-        if (WeaponPlayer[2] == null)
+        if (ItemWeaponList[2] == null)
         {
-            weaponID[2] = ID;
-            WeaponPlayer[2] = WL.wItem[ID];
-            WeaponToDrop[2] = WL.wToDrop[ID];
-            ShotWeapon[2] = WL.wShoting[ID];
-            Fire[2] = WL.wFire[ID];
-            FrameRate[2] = WL.wFrameRate[ID];
-            Mana[2] = WL.wMana[ID];
-            Range[2] = WL.wRange[ID];
-            Nivel[2] = WL.wNivel[ID];
 
-            Atual(2);
+            ItemWeaponList[2] = WL.wItem[ID];
+
+            Atual(ID,2);
             return;
         }
 
 
-        if(WeaponPlayer[1] != null && ID_AtualWeapon == 1)
+        if(ItemWeaponList[1] != null && ID_AtualWeapon == 1)
         {
-            Instantiate(WeaponToDrop[1], spawnToDrop.position, spawnToDrop.rotation);
 
-            weaponID[1] = ID;
-            WeaponPlayer[1] = WL.wItem[ID];
-            WeaponToDrop[1] = WL.wToDrop[ID];
-            ShotWeapon[1] = WL.wShoting[ID];
-            Fire[1] = WL.wFire[ID];
-            FrameRate[1] = WL.wFrameRate[ID];
-            Mana[1] = WL.wMana[ID];
-            Range[1] = WL.wRange[ID];
-            Nivel[1] = WL.wNivel[ID];
+            ItemWeaponList[1] = WL.wItem[ID];
 
-            Atual(1);
+            Atual(ID,1);
             return;
         }
 
 
-        if (WeaponPlayer[2] != null && ID_AtualWeapon == 2)
+        if (ItemWeaponList[2] != null && ID_AtualWeapon == 2)
         {
-            Instantiate(WeaponToDrop[2], spawnToDrop.position, spawnToDrop.rotation);
+            ItemWeaponList[2] = WL.wItem[ID];
 
-            weaponID[2] = ID;
-            WeaponPlayer[2] = WL.wItem[ID];
-            WeaponToDrop[2] = WL.wToDrop[ID];
-            ShotWeapon[2] = WL.wShoting[ID];
-            Fire[2] = WL.wFire[ID];
-            FrameRate[2] = WL.wFrameRate[ID];
-            Mana[2] = WL.wMana[ID];
-            Range[2] = WL.wRange[ID];
-            Nivel[2] = WL.wNivel[ID];
-
-            Atual(2);
+            Atual(ID,2);
             return;
         }
 
 
     }
 
-    void Atual(int W)
+    void Atual(int ID, int Type)
     {
-        ShotWeapon[W] = w_Shot;
-        Fire[W] = w_Fire;
-        FrameRate[W] = w_FrameRate;
-        Mana[W] = w_Mana;
-        Range[W] = w_Range;
+
+        ID_AtualWeapon = Type;
+
+        GameObject WeaponSet = Instantiate(ItemWeaponList[Type], LocalToSpawn.position, LocalToSpawn.rotation);
+        WeaponSet.transform.parent = ItemParent[Type];
+        WeaponSet.gameObject.GetComponent<Weapon>().Gatilho = Gatilho;
+        WeaponSet.gameObject.GetComponent<Weapon>().P = P;
+
+        Debug.Log("Weapon Update");
        
     }
 }

@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
     public KeyCode Esquiva;
 
     public int AtualKey;
+    public bool IsKey;
 
     float CountToDisable;
     bool Disabled;
@@ -198,12 +199,15 @@ public class Player : MonoBehaviour
 
                 CountToDisable = 0;
                 Disabled = false;
-                
+                IsKey = false;
+
+
             }
         }
 
         if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop && !ObjectInArea) //Passar pro lado
         {
+            IsKey = true;
 
             if (Keys_Quantidade == 1)
             {

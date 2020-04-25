@@ -24,27 +24,50 @@ public class Item : MonoBehaviour
         WL = FindObjectOfType<WeaponList>();
     }
 
-    private void Start()
-    {   
-        Value = WL.wValue[ID];
-    }
-
     private void FixedUpdate()
     {
-        if(inUse1 || inUse2 && Input.GetKeyDown(GetItem))
+
+        if(inUse1 && Input.GetKeyDown(GetItem))
+        {
+            if (isBuy && player.Ouro >= Value)
+            {
+                player.Ouro -= Value;
+                playerWeapon.GetWeapon(ID);
+                this.gameObject.SetActive(false);
+                
+                
+                Debug.Log("Player 1 comprou um item!");
+                return;
+            }
+
+            playerWeapon.GetWeapon(ID);
+            this.gameObject.SetActive(false);
+
+            Debug.Log("Player 1 pegou um item!");
+            return;
+        }
+
+        if (inUse2 && Input.GetKeyDown(GetItem))
         {
             if (isBuy && player.Ouro >= Value)
             {
                 player.Ouro -= Value;
                 playerWeapon.GetWeapon(ID);
 
+                Debug.Log("Player 2 comprou um item!");
+
                 this.gameObject.SetActive(false);
                 return;
             }
 
+           
             playerWeapon.GetWeapon(ID);
             this.gameObject.SetActive(false);
+
+            Debug.Log("Player 2 pegou um item!");
+            return;
         }
+       
     }
 
     private void OnTriggerEnter(Collider other)

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    public int time;
+    public float time;
     public bool PlayerDestroy;
+    public int Hit;
 
     private void Start()
     {
