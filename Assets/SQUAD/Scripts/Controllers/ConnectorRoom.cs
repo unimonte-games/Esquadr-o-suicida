@@ -33,7 +33,13 @@ public class ConnectorRoom : MonoBehaviour
 
     private void Start()
     {
-        ThisBox = GetComponent<BoxCollider>(); 
+        ThisBox = GetComponent<BoxCollider>();
+        Invoke("CancelThis",1);
+    }
+
+    void CancelThis()
+    {
+        this.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
