@@ -42,11 +42,11 @@ pessoas continuam vivendo por lá normalmente, tudo fica mais insano depois de d
 
 **Fase 3 : Jogabilidade e Testes**
 
-- [x] Sprint 11 : Game Editor, Character, Itens List 3, Interface 2, Sons de Itens 1, Enemy 6,7 e 8.
+- [x] Sprint 11 : Game Editor, Character, Itens List 3, Interface 2, Sons de Itens 1, Enemy 6 ao 8.
 - [ ] Sprint 12 : Game Editor, Texturizaçao, Item IA 1, Enemy IA 1 ao 5, Interface 3, Sons de Itens 2, Book 1.
-- [ ] Sprint 13 : Soundtrack, LD 1, Item IA 2, Enemy IA 6 ao 10, Menu 1, Sons de Itens 3, Enemy 7 ao 10, Book 2.
-- [ ] Sprint 14 : Legendas, LD 2, Animation 1, Item IA 3, Enemy IA Boss, Menu 2, Sons Geral 1,  Enemy Boss 1 e 2, Wiki 2.
-- [ ] Sprint 15 : Cutscene, Animation 2, Item IA 4, Enemy IA Final Boss,  Menu 3, Global Teste, Book 3 e Wiki 3.
+- [ ] Sprint 13 : Soundtrack, LD 1, Item IA 2, Enemy IA 6 ao 10, Menu 1, Sons de Itens 3, Enemy 9 ao 13, Book 2.
+- [ ] Sprint 14 : Legendas, LD 2, Animation 1, Item IA 3, Enemy IA Boss, Menu 2, Sons Geral 1,  Character 1, Wiki 2.
+- [ ] Sprint 15 : Cutscene, Animation 2, Item IA 4, Character 2, Menu 3, Sons Geral 2, Global Teste, Book 3 e Wiki 3.
 - [ ] Reuniao Geral 3
 - [ ] Versao Beta
 
