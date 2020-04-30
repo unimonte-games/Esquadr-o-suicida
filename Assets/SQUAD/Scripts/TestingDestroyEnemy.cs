@@ -104,7 +104,7 @@ public class TestingDestroyEnemy : MonoBehaviour
 
         if (other.gameObject.tag == "Hit")
         {
-            bool Player = other.GetComponent<Destroy>().PlayerDestroy;
+            bool Player = other.GetComponent<Hit>().PlayerDestroy;
             if (Player)
             {
                 P_default.MonstersDefeat(1, TypeEnemy);

@@ -29,7 +29,7 @@ public class CarrinhoAssault : MonoBehaviour
             {
                 countToShoting = 0f;
                 GameObject bullet = Instantiate(shotingPrefab, spawn.transform.position, Quaternion.identity) as GameObject;
-                bullet.GetComponent<Destroy>().PlayerDestroy = PlayerThis;
+                bullet.GetComponent<Hit>().PlayerDestroy = PlayerThis;
                 bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
 
             }

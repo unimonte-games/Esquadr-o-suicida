@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroy : MonoBehaviour
+public class Hit : MonoBehaviour
 {
     public float time;
     public bool PlayerDestroy;
-    public int Hit;
+    public int Hit_Plant;
+    public int Hit_Tech;
+
 
     private void Start()
     {

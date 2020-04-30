@@ -7,7 +7,8 @@ public class Weapon : MonoBehaviour
     public int weaponID;
 
     public GameObject Shot;
-    public int Fire;
+    public int Fire_Plant;
+    public int Fire_Tech;
     public float FrameRate;
     public int Mana;
     public float Range;
@@ -28,11 +29,12 @@ public class Weapon : MonoBehaviour
         {
             countToShoting = 0f;
             GameObject bullet = Instantiate(Shot, spawnShot.transform.position, Quaternion.identity) as GameObject;
-            Destroy HitEnemy = bullet.GetComponent<Destroy>();
+            Hit HitEnemy = bullet.GetComponent<Hit>();
 
             HitEnemy.PlayerDestroy = P.PlayerType;
             HitEnemy.time = Range;
-            HitEnemy.Hit = Fire;
+            HitEnemy.Hit_Plant = Fire_Plant;
+            HitEnemy.Hit_Tech = Fire_Tech;
             P.ManaBar -= Mana;
 
             bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);

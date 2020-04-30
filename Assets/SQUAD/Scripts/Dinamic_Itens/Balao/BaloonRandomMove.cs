@@ -54,7 +54,7 @@ public class BaloonRandomMove : MonoBehaviour
             {
                 Timeframe = 0;
                 GameObject Bullet = Instantiate(Bomb, spawnBomb.position, spawnBomb.rotation);
-                Bullet.GetComponent<Destroy>().PlayerDestroy = PlayerThis;
+                Bullet.GetComponent<Hit>().PlayerDestroy = PlayerThis;
                 Debug.Log("Bomb");
             }
         }
