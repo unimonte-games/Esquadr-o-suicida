@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5923913544976653941}
   - component: {fileID: 5966018451556580648}
   - component: {fileID: -7697245789313893745}
-  - component: {fileID: 1965792455206757187}
   m_Layer: 0
   m_Name: Enemy11
   m_TagString: Enemy
@@ -125,25 +124,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c127d086f8f0b40ac6e4647ab2f40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TypeEnemy: 10
+  E_ID: 10
+  Type: 1
+  Life: 100
   PlayerTarget: {fileID: 0}
+  InTarget: 0
+  LC: {fileID: 0}
   P_default: {fileID: 0}
   EnergyCoin: {fileID: 4619143403726693803, guid: 4b63aa28cde029d488a70f9740196bab,
     type: 3}
   RoomSize: {fileID: 8830341930594950698}
---- !u!65 &1965792455206757187
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184271755764462669}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.2, z: 1.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2099332952542445858
 GameObject:
   m_ObjectHideFlags: 0

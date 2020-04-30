@@ -197,7 +197,7 @@ public class Porta_Default : MonoBehaviour
             }
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
-            Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
+            Enemy.GetComponent<EnemyStats>().P_default = P;
             Enemy.transform.parent = parentSpawn;
 
             if (Target_Wave)
@@ -208,7 +208,7 @@ public class Porta_Default : MonoBehaviour
 
             if (Protect)
             {
-               TestingDestroyEnemy enemyRef = Enemy.GetComponent<TestingDestroyEnemy>();
+               EnemyStats enemyRef = Enemy.GetComponent<EnemyStats>();
 
                 enemyRef.PlayerTarget = OnPlayer;
                 enemyRef.LC = LC;
@@ -525,7 +525,7 @@ public class Porta_Default : MonoBehaviour
             int randomMonster = Random.Range(0, 12);
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
-            Enemy.GetComponent<TestingDestroyEnemy>().P_default = P;
+            Enemy.GetComponent<EnemyStats>().P_default = P;
             Enemy.transform.parent = parentSpawn;
 
             PeaceList[CountPeaceList] = Enemy;
@@ -563,7 +563,7 @@ public class Porta_Default : MonoBehaviour
         int randomLocal = Random.Range(0, RandomLocalNumber);
 
         GameObject Enemy1 = Instantiate(MonstersPrefab[ID_Player1Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
-        Enemy1.GetComponent<TestingDestroyEnemy>().P_default = P;
+        Enemy1.GetComponent<EnemyStats>().P_default = P;
         Enemy1.transform.parent = parentSpawn;
 
         TargetAllEnemy2[CountAllEnemy2] = Enemy1;
@@ -572,7 +572,7 @@ public class Porta_Default : MonoBehaviour
         randomLocal = Random.Range(0, RandomLocalNumber);
 
         GameObject Enemy2 = Instantiate(MonstersPrefab[ID_Player2Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
-        Enemy2.GetComponent<TestingDestroyEnemy>().P_default = P;
+        Enemy2.GetComponent<EnemyStats>().P_default = P;
         Enemy2.transform.parent = parentSpawn;
 
         TargetAllEnemy2[CountAllEnemy2] = Enemy2;

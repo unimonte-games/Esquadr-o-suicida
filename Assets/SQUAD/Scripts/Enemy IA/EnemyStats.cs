@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestingDestroyEnemy : MonoBehaviour
+public class EnemyStats : MonoBehaviour
 {
-    public int TypeEnemy;
+    public int E_ID; //Id do inimigo
+    public bool Type; //True = Tech | False = Plant
+
+    public int Life;
+
     public Transform PlayerTarget;
     public bool InTarget;
     public LevelController LC;
@@ -83,56 +87,57 @@ public class TestingDestroyEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
-        if (other.gameObject.name == "Ball")
-        {
-            if (other.GetComponent<Ball>().PlayerDestroy)
-            {
-                P_default.MonstersDefeat(1, TypeEnemy);
-            }
-            else
-            {
-                P_default.MonstersDefeat(2, TypeEnemy);
-            }
-           
-            this.gameObject.SetActive(false);
-            if (Drop)
-            {
-                DropEnergy();
-            }
-        }
 
         if (other.gameObject.tag == "Hit")
         {
-            bool Player = other.GetComponent<Hit>().PlayerDestroy;
-            if (Player)
+            Hit h = other.GetComponent<Hit>();
+
+            if (Type)
             {
-                P_default.MonstersDefeat(1, TypeEnemy);
+                 Life -= h.Hit_Tech;
             }
             else
             {
-                P_default.MonstersDefeat(2, TypeEnemy);
+                Life -= h.Hit_Plant;
             }
 
-            this.gameObject.SetActive(false);
-            if (Drop)
+            if (Life <= 0)
             {
-                DropEnergy();
-            }
-        }
+                if (h.PlayerDestroy)
+                {
+                    P_default.MonstersDefeat(1, E_ID);
+                    Dead();
+                    return;
+                }
+                else
+                {
+                    P_default.MonstersDefeat(2, E_ID);
+                    Dead();
+                    return;
+                }
 
+            }
+
+        }
 
 
     }
 
-    void DropEnergy()
+  
+
+    void Dead()
     {
-        Debug.Log("Drop Energy");
-        for (int i = 0; i < QtdEnergy; i++)
+        if (Drop)
         {
-            Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), -4 , Random.Range(-size.z / 2, size.z / 2));
-            GameObject SpawnP = Instantiate(EnergyCoin, pos, Quaternion.identity);
-            
+            for (int i = 0; i < QtdEnergy; i++)
+            {
+                Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), -4, Random.Range(-size.z / 2, size.z / 2));
+                GameObject SpawnP = Instantiate(EnergyCoin, pos, Quaternion.identity);
+
+            }
         }
+
+        Debug.Log("Derrotado");
+        this.gameObject.SetActive(false);
     }
 }

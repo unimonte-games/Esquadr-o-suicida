@@ -14,7 +14,7 @@ public class ArchShot : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-            int Type = other.GetComponent<TestingDestroyEnemy>().TypeEnemy;
+            int Type = other.GetComponent<EnemyStats>().E_ID;
 
             if (ID == 1)
             {
