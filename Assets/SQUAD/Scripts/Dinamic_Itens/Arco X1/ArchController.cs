@@ -58,7 +58,7 @@ public class ArchController : MonoBehaviour
 
             Player P2 = P2_ref.GetComponent<Player>();
             P2.UsingItenDinamic = true;
-            P1.playerWeapon.DisabledItem();
+            P2.playerWeapon.DisabledItem();
 
             StartPlayerVersusPlayer();
             Debug.Log("Player vs Player!");
