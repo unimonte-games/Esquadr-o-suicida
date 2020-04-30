@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7644878591464550199}
   m_Layer: 0
   m_Name: ArchShot
-  m_TagString: Untagged
+  m_TagString: Hit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   AC: {fileID: 0}
+  PD: {fileID: 0}
 --- !u!54 &5675390140414501737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -138,3 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 3
+  PlayerDestroy: 0
+  Hit_Plant: 1
+  Hit_Tech: 1

@@ -12,25 +12,6 @@ public class ArchShot : MonoBehaviour
     private void OnTriggerEnter(Collider other)
 
     {
-        if(other.gameObject.tag == "Enemy")
-        {
-            int Type = other.GetComponent<EnemyStats>().E_ID;
-
-            if (ID == 1)
-            {
-                PD.MonstersDefeat(1, Type);
-                other.gameObject.SetActive(false);
-                this.gameObject.SetActive(false);
-            }
-
-            if (ID == 2)
-            {
-                PD.MonstersDefeat(2, Type);
-                other.gameObject.SetActive(false);
-                this.gameObject.SetActive(false);
-            }
-            
-        }
 
         if(ID == 1 && other.gameObject.name == "Player2")
         {
