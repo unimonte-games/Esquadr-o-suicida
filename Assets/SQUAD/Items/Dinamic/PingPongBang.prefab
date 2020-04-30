@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4207770705765049247}
   - component: {fileID: 4207770705765049244}
   - component: {fileID: 4207770705765049245}
+  - component: {fileID: 8015641924192059079}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Hit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +114,23 @@ MonoBehaviour:
   Atual: {fileID: 0}
   speed: 35
   MaxCount: 30
+  h: {fileID: 8015641924192059079}
+--- !u!114 &8015641924192059079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207770705765049234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edecdee0266f8ec4fac0cf28050792f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 30
+  PlayerDestroy: 0
+  Hit_Plant: 2
+  Hit_Tech: 2
 --- !u!1 &4207770706345503451
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dcbf893b611a0264aa2f27b2d2e124a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
