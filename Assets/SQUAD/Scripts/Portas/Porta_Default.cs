@@ -8,6 +8,7 @@ using UnityEditor;
 public class Porta_Default : MonoBehaviour
 {
     public Porta_Default P; //referencia dele mesmo para passar para os inimigos que dropam
+    public SpawnController SC_spawn; //referencia para o IA Patrol dos inimigos.
     public RoomController RoomControl; //referencia de missao
     public BoxCollider triggerPlayers; //BoxCollider do Puzzle
     bool StartingWave; //Colidir pra iniciar a wave
@@ -198,6 +199,7 @@ public class Porta_Default : MonoBehaviour
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
             Enemy.GetComponent<EnemyStats>().P_default = P;
+            Enemy.GetComponent<EnemyPatrol>().SC_inRoom = SC_spawn;
             Enemy.transform.parent = parentSpawn;
 
             if (Target_Wave)
@@ -526,6 +528,7 @@ public class Porta_Default : MonoBehaviour
 
             GameObject Enemy = Instantiate(MonstersPrefab[randomMonster], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
             Enemy.GetComponent<EnemyStats>().P_default = P;
+            Enemy.GetComponent<EnemyPatrol>().SC_inRoom = SC_spawn;
             Enemy.transform.parent = parentSpawn;
 
             PeaceList[CountPeaceList] = Enemy;
@@ -564,6 +567,7 @@ public class Porta_Default : MonoBehaviour
 
         GameObject Enemy1 = Instantiate(MonstersPrefab[ID_Player1Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
         Enemy1.GetComponent<EnemyStats>().P_default = P;
+        Enemy1.GetComponent<EnemyPatrol>().SC_inRoom = SC_spawn;
         Enemy1.transform.parent = parentSpawn;
 
         TargetAllEnemy2[CountAllEnemy2] = Enemy1;
@@ -573,6 +577,7 @@ public class Porta_Default : MonoBehaviour
 
         GameObject Enemy2 = Instantiate(MonstersPrefab[ID_Player2Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
         Enemy2.GetComponent<EnemyStats>().P_default = P;
+        Enemy2.GetComponent<EnemyPatrol>().SC_inRoom = SC_spawn;
         Enemy2.transform.parent = parentSpawn;
 
         TargetAllEnemy2[CountAllEnemy2] = Enemy2;

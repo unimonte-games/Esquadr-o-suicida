@@ -7,6 +7,10 @@ public class EnemyPatrol : MonoBehaviour
     public float speed;
     public float waitTime;
     public float startWaitTime;
+    public float DistanceToPlayer;
+
+    int SpawnToMove;
+    public SpawnController SC_inRoom;
 
     public Transform moveLocal;
     public float minX;
@@ -16,23 +20,29 @@ public class EnemyPatrol : MonoBehaviour
 
     void Start()
     {
-        waitTime = startWaitTime;
 
-        moveLocal.position = new Vector3(Random.Range(minX, maxX), 0, Random.Range(minZ, maxZ));
+        SpawnToMove = SC_inRoom.Acionados;
+
+        int nextLocal = Random.Range(0, SpawnToMove);
+        moveLocal = SC_inRoom.ListSpawn[nextLocal];
+
+        waitTime = startWaitTime;
+        
 
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, moveLocal.position, speed * Time.deltaTime);
 
-        if(Vector3.Distance(transform.position, moveLocal.position) < 0.2f)
+        if(Vector3.Distance(transform.position, moveLocal.position) < 1f)
         {
             if(waitTime <= 0)
             {
-               
-                moveLocal.position = new Vector3(Random.Range(minX, maxX), 0, Random.Range(minZ, maxZ));
+                int nextLocal = Random.Range(0, SpawnToMove);
+                moveLocal = SC_inRoom.ListSpawn[nextLocal];
+
                 waitTime = startWaitTime;
             }
             else
@@ -40,5 +50,15 @@ public class EnemyPatrol : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
         }
+    }
+
+    public void ObjectHit()
+    {
+        Debug.Log("Objecto");
+
+        int nextLocal = Random.Range(0, SpawnToMove);
+        moveLocal = SC_inRoom.ListSpawn[nextLocal];
+
+        waitTime = startWaitTime;
     }
 }

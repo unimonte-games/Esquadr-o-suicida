@@ -20,7 +20,7 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
-        SC_ = GetComponent<SpawnController>();
+        SC_ = this;
 
         center.x = RoomSize.transform.position.x;
         center.y = RoomSize.transform.position.y;
@@ -52,6 +52,7 @@ public class SpawnController : MonoBehaviour
     {
         Debug.Log("Iniciando sala...");
         RoomController.SetActive(true);
+        RoomController.GetComponent<Porta_Default>().SC_spawn = SC_;
 
         DestroySpawn();
 
