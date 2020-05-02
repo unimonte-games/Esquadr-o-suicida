@@ -54,7 +54,7 @@ public class EnemyPatrol : MonoBehaviour
 
     public void ObjectHit()
     {
-        Debug.Log("Objecto");
+        Debug.Log("Object");
 
         int nextLocal = Random.Range(0, SpawnToMove);
         moveLocal = SC_inRoom.ListSpawn[nextLocal];

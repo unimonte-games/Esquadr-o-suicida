@@ -8,7 +8,7 @@ public class EnemyCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 8)
+        if(other.gameObject.layer == 11)
         {
             EP.ObjectHit();
         }
