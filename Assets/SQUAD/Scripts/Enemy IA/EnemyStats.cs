@@ -10,6 +10,8 @@ public class EnemyStats : MonoBehaviour
     public float Life;
 
     public Transform PlayerTarget;
+    public bool PlayerInArea;
+
     public bool InTarget;
     public LevelController LC;
     public Porta_Default P_default;

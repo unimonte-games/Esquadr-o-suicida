@@ -10,21 +10,15 @@ public class Enemy1_Attack : MonoBehaviour
     public Transform Spawn;
     public int TimeToAttack;
 
-  
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
             ES.PlayerTarget = other.gameObject.transform;
+            ES.PlayerInArea = true;
+
+            Debug.Log("Player Detectado!");
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            ES.PlayerTarget = null;
-        }
-    }
 }
