@@ -10,6 +10,14 @@ public class Enemy1_Attack : MonoBehaviour
     public Transform Spawn;
     public int TimeToAttack;
 
+    private void FixedUpdate()
+    {
+        if (ES.Attack)
+        {
+            Debug.Log("Atacando");
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Player1" && !ES.Player1_inArea)
@@ -17,6 +25,8 @@ public class Enemy1_Attack : MonoBehaviour
             ES.PlayerTarget = other.gameObject.transform;
             ES.PlayerInArea = true;
             ES.Player1_inArea = true;
+
+            ES.OnAttack();
 
             Debug.Log("Player 1 Detectado!");
         }
@@ -27,6 +37,8 @@ public class Enemy1_Attack : MonoBehaviour
             ES.PlayerTarget = other.gameObject.transform;
             ES.PlayerInArea = true;
             ES.Player2_inArea = true;
+
+            ES.OnAttack();
 
             Debug.Log("Player 2 Detectado!");
         }

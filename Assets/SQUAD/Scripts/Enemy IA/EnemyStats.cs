@@ -9,11 +9,15 @@ public class EnemyStats : MonoBehaviour
 
     public float Life;
 
+    public bool Patrol;
+    public bool Attack;
+
     public Transform PlayerTarget;
     public bool PlayerInArea;
 
     public bool Player1_inArea;
     public bool Player2_inArea;
+
 
     public bool InTarget;
     public LevelController LC;
@@ -29,6 +33,7 @@ public class EnemyStats : MonoBehaviour
     Vector3 size;
 
     public EnemyPatrol EP;
+    
     public float SizeLife;
 
     private void FixedUpdate()
@@ -45,6 +50,7 @@ public class EnemyStats : MonoBehaviour
 
     private void Awake()
     {
+        Patrol = true;
         SizeLife = Life / 2;
         EP = GetComponent<EnemyPatrol>();
 
@@ -146,8 +152,6 @@ public class EnemyStats : MonoBehaviour
 
     }
 
-  
-
     void Dead()
     {
         if (Drop)
@@ -162,5 +166,17 @@ public class EnemyStats : MonoBehaviour
 
         Debug.Log("Derrotado");
         this.gameObject.SetActive(false);
+    }
+
+    public void OnAttack()
+    {
+        Attack = true;
+        Patrol = false;
+    }
+
+    public void OnPatrol()
+    {
+        Attack = false;
+        Patrol = true;
     }
 }

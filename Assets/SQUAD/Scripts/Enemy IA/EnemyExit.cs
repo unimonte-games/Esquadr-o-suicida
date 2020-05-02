@@ -14,6 +14,8 @@ public class EnemyExit : MonoBehaviour
             ES.PlayerInArea = false;
             ES.Player1_inArea = false;
 
+            ES.OnPatrol();
+
             Debug.Log("Player 1 Fugiu!");
         }
 
@@ -23,6 +25,8 @@ public class EnemyExit : MonoBehaviour
             ES.PlayerTarget = null;
             ES.PlayerInArea = false;
             ES.Player2_inArea = false;
+
+            ES.OnPatrol();
 
             Debug.Log("Player 2 Fugiu!");
         }
