@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    
+
     public int speed_min;
     public int speed_max;
 
@@ -16,6 +16,7 @@ public class EnemyPatrol : MonoBehaviour
     public float speedTurn;
     bool InLocal;
     bool ToMove;
+    
     public int timeToTurn;
 
     int SpawnToMove;
@@ -34,11 +35,11 @@ public class EnemyPatrol : MonoBehaviour
         startWaitTime = Random.Range(0, 5);
         waitTime = startWaitTime;
 
-        
-        
+
+
     }
 
-    
+
     void FixedUpdate()
     {
         if (!InLocal)
@@ -58,7 +59,7 @@ public class EnemyPatrol : MonoBehaviour
 
         if (Vector3.Distance(transform.position, moveLocal.position) < 1f)
         {
-            if(waitTime <= 0)
+            if (waitTime <= 0)
             {
                 int nextLocal = Random.Range(0, SpawnToMove);
                 moveLocal = SC_inRoom.ListSpawn[nextLocal];
@@ -86,6 +87,7 @@ public class EnemyPatrol : MonoBehaviour
     void WaitToRotationInObj()
     {
         ToMove = false;
+        transform.LookAt(moveLocal);
     }
 
 
@@ -103,9 +105,25 @@ public class EnemyPatrol : MonoBehaviour
         Invoke("WaitToRotationInObj", 2f);
     }
 
+
+    public void EnemyHit(int timeToRotation)
+    {
+        ToMove = true;
+
+        int nextLocal = Random.Range(0, SpawnToMove);
+        moveLocal = SC_inRoom.ListSpawn[nextLocal];
+
+        startWaitTime = Random.Range(2, 5);
+        waitTime = startWaitTime;
+
+       
+        Invoke("WaitToRotationInObj", timeToRotation);
+    }
+
     public void ChangeSpeed()
     {
         speed = Random.Range(speed_min, speed_max);
         Debug.Log("Speed: " + speed);
     }
+
 }
