@@ -12,6 +12,9 @@ public class EnemyStats : MonoBehaviour
     public Transform PlayerTarget;
     public bool PlayerInArea;
 
+    public bool Player1_inArea;
+    public bool Player2_inArea;
+
     public bool InTarget;
     public LevelController LC;
     public Porta_Default P_default;

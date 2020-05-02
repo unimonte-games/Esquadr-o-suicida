@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class EnemyExit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public EnemyStats ES;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.name == "Player1" && ES.Player1_inArea)
+        {
+            ES.PlayerTarget = null;
+            ES.PlayerInArea = false;
+            ES.Player1_inArea = false;
+
+            Debug.Log("Player 1 Fugiu!");
+        }
+
+
+        if (other.gameObject.name == "Player2" && ES.Player2_inArea)
+        {
+            ES.PlayerTarget = null;
+            ES.PlayerInArea = false;
+            ES.Player2_inArea = false;
+
+            Debug.Log("Player 2 Fugiu!");
+        }
     }
 }

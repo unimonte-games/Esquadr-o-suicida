@@ -12,12 +12,23 @@ public class Enemy1_Attack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.name == "Player1" && !ES.Player1_inArea)
         {
             ES.PlayerTarget = other.gameObject.transform;
             ES.PlayerInArea = true;
+            ES.Player1_inArea = true;
 
-            Debug.Log("Player Detectado!");
+            Debug.Log("Player 1 Detectado!");
+        }
+
+
+        if (other.gameObject.name == "Player2" && !ES.Player2_inArea)
+        {
+            ES.PlayerTarget = other.gameObject.transform;
+            ES.PlayerInArea = true;
+            ES.Player2_inArea = true;
+
+            Debug.Log("Player 2 Detectado!");
         }
     }
 

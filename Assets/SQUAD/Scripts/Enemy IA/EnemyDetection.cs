@@ -11,8 +11,7 @@ public class EnemyDetection : MonoBehaviour
     {
         if(other.gameObject.layer == 13 && !Check)
         {
-            Debug.Log("Colidiu");
-
+            
             Check = true;
             int timeToRotation = Random.Range(3, 7);
             Invoke("ReCheck", timeToRotation);
