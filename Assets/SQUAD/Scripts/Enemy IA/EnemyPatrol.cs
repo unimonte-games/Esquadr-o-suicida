@@ -36,9 +36,13 @@ public class EnemyPatrol : MonoBehaviour
     
     void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, moveLocal.position, speed * Time.deltaTime);
 
-        if(Vector3.Distance(transform.position, moveLocal.position) < 1f)
+        transform.LookAt(moveLocal, Vector3.up);
+
+        transform.position = Vector3.MoveTowards(transform.position, moveLocal.position, speed * Time.deltaTime);
+        
+
+        if (Vector3.Distance(transform.position, moveLocal.position) < 1f)
         {
             if(waitTime <= 0)
             {
