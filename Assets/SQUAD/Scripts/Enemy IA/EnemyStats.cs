@@ -7,7 +7,7 @@ public class EnemyStats : MonoBehaviour
     public int E_ID; //Id do inimigo
     public bool Type; //True = Tech | False = Plant
 
-    public int Life;
+    public float Life;
 
     public Transform PlayerTarget;
     public bool InTarget;
@@ -23,6 +23,9 @@ public class EnemyStats : MonoBehaviour
     Vector3 center;
     Vector3 size;
 
+    public EnemyPatrol EP;
+    public float SizeLife;
+
     private void FixedUpdate()
     {
         if (InTarget)
@@ -37,6 +40,9 @@ public class EnemyStats : MonoBehaviour
 
     private void Awake()
     {
+        SizeLife = Life / 2;
+        EP = GetComponent<EnemyPatrol>();
+
         tempRandom = Random.Range(0, 100);
         if (tempRandom > 80)
         {
@@ -95,10 +101,22 @@ public class EnemyStats : MonoBehaviour
             if (Type)
             {
                  Life -= h.Hit_Tech;
+
+                if(Life <= SizeLife)
+                {
+                    EP.ChangeSpeed();
+                    
+                }
             }
             else
             {
                 Life -= h.Hit_Plant;
+
+                if (Life <= SizeLife)
+                {
+                    EP.ChangeSpeed();
+                   
+                }
             }
 
             if (Life <= 0)

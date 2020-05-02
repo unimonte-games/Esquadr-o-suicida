@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public float speed;
+    
+    public int speed_min;
+    public int speed_max;
+
+    public int speed;
     public float waitTime;
     public float startWaitTime;
     public float DistanceToPlayer;
@@ -13,22 +17,20 @@ public class EnemyPatrol : MonoBehaviour
     public SpawnController SC_inRoom;
 
     public Transform moveLocal;
-    public float minX;
-    public float maxX;
-    public float minZ;
-    public float maxZ;
 
     void Start()
     {
+        speed = Random.Range(speed_min, speed_max);
+        Debug.Log("Speed: " + speed);
 
         SpawnToMove = SC_inRoom.Acionados;
 
         int nextLocal = Random.Range(0, SpawnToMove);
         moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
+        startWaitTime = Random.Range(0, 5);
         waitTime = startWaitTime;
         
-
     }
 
     
@@ -43,6 +45,7 @@ public class EnemyPatrol : MonoBehaviour
                 int nextLocal = Random.Range(0, SpawnToMove);
                 moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
+                startWaitTime = Random.Range(0, 5);
                 waitTime = startWaitTime;
             }
             else
@@ -59,6 +62,13 @@ public class EnemyPatrol : MonoBehaviour
         int nextLocal = Random.Range(0, SpawnToMove);
         moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
+        startWaitTime = Random.Range(0, 5);
         waitTime = startWaitTime;
+    }
+
+    public void ChangeSpeed()
+    {
+        speed = Random.Range(speed_min, speed_max);
+        Debug.Log("Speed: " + speed);
     }
 }
