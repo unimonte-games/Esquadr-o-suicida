@@ -84,6 +84,7 @@ public class SpawnController : MonoBehaviour
             BoxCollider Obj;
             Obj = ListSpawn[i].GetComponent<BoxCollider>();
             Obj.enabled = false;
+
         }
 
     }

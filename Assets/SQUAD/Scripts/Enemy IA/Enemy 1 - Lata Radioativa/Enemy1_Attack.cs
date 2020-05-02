@@ -6,13 +6,17 @@ public class Enemy1_Attack : MonoBehaviour
 {
     public EnemyStats ES;
 
+    public GameObject Shot;
+    public Transform Spawn;
+    public int TimeToAttack;
+
+  
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
             ES.PlayerTarget = other.gameObject.transform;
-            
         }
     }
 
@@ -21,7 +25,6 @@ public class Enemy1_Attack : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             ES.PlayerTarget = null;
-            
         }
     }
 }
