@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public bool PlayerType; //true = Player1 // false = Player2
-    public bool PlayerDead;
 
     public bool ObjectInArea;
     public GameObject Object;
@@ -15,7 +14,6 @@ public class Player : MonoBehaviour
     public GetObject Gobj;
 
     public int Ouro; //Ouro do Jogador
-    public int Heart = 3; //Vida do jogador em coracoes
     public float LifeBar = 100f; //Vida do jogador em Numero
     public float ManaBar = 100f; //Energia do jogador para usar as armas
     public float DefeseBar = 100f; //Defesa do jogador
@@ -180,6 +178,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         
         if (Disabled)
         {
@@ -377,6 +376,14 @@ public class Player : MonoBehaviour
     void CancelDrop()
     {
         isDrop = false;
+    }
+
+    public void SetDamage()
+    {
+        if(LifeBar <= 0)
+        {
+            PlayerIsDead();
+        }
     }
 
     void PlayerIsDead()
