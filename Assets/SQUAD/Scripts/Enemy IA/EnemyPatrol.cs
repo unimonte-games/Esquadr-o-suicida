@@ -98,12 +98,14 @@ public class EnemyPatrol : MonoBehaviour
         {
             InArea = true;
             ToMove = true;
+            
         }
 
-        if (Vector3.Distance(transform.position, moveLocal.position) > DistanceToPlayer && OnAttack && InArea)
+        if (Vector3.Distance(transform.position, moveLocal.position) > DistanceToPlayer && OnAttack)
         {
             InArea = false;
-            WaitToRotationInObj();
+            ToMove = false;
+            transform.LookAt(moveLocal);
 
             DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
         }
@@ -144,17 +146,25 @@ public class EnemyPatrol : MonoBehaviour
             waitTime = startWaitTime;
 
             ToMove = true;
-            Invoke("ReLocal", 2f);
+            StartCoroutine("ReLocal");
         }
     }
 
-    void ReLocal()
+
+
+    IEnumerator ReLocal()
     {
         if (OnAttack)
         {
+            yield return new WaitForSeconds(2f);
+            
             ToMove = false;
+
+            yield return new WaitForSeconds(1f);
+
             moveLocal = playerTemp;
             transform.LookAt(moveLocal);
+
 
             Debug.Log("Continuando a busca...");
         }
@@ -180,6 +190,7 @@ public class EnemyPatrol : MonoBehaviour
 
             Invoke("WaitToRotationInObj", timeToRotation);
         }
+      
     }
 
     public void ChangeSpeed()
