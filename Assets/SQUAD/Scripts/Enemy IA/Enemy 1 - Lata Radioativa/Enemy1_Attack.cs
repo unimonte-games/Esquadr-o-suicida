@@ -17,6 +17,8 @@ public class Enemy1_Attack : MonoBehaviour
     public float Force;
     public int TimeToAttack;
 
+    
+
     private void OnEnable()
     {
         InvokeRepeating("CombatCountDown", 1, TimeToAttack);
@@ -31,6 +33,7 @@ public class Enemy1_Attack : MonoBehaviour
     void CombatCountDown()
     {
         {
+            TimeToAttack = Random.Range(3, 10);
 
             GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
             bullet1.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
@@ -41,4 +44,6 @@ public class Enemy1_Attack : MonoBehaviour
 
 
     }
+
+   
 }

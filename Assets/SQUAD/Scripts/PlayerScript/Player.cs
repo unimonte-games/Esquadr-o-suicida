@@ -78,6 +78,8 @@ public class Player : MonoBehaviour
     LevelController LC;
     UI Interface;
 
+    public GameObject PlayerDead_Tree;
+
     
     private void Start()
     {
