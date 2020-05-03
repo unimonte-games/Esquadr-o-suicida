@@ -9581,7 +9581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631959246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.1635528, y: 2.3400307, z: -7.3}
+  m_LocalPosition: {x: 25.7, y: 2.3400307, z: -18.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1356968454}
@@ -9612,7 +9612,7 @@ MonoBehaviour:
   ObjSpawn: {fileID: 988537034}
   Gobj: {fileID: 0}
   Ouro: 100
-  LifeBar: 100
+  LifeBar: 50
   ManaBar: 100
   DefeseBar: 100
   UsingItenDinamic: 0
@@ -9680,6 +9680,8 @@ MonoBehaviour:
   playerMovement: {fileID: 631959252}
   playerWeapon: {fileID: 631959254}
   PD: {fileID: 0}
+  PlayerDead_Tree: {fileID: 4115751237911627146, guid: a79483627ef281445829e96443814458,
+    type: 3}
 --- !u!114 &631959252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11445,7 +11447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &733246697
 Transform:
   m_ObjectHideFlags: 0
@@ -11454,7 +11456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733246696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.17, y: 2.3400307, z: 1.6999998}
+  m_LocalPosition: {x: 17.17, y: 2.3400307, z: 9.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 69245298}
@@ -11485,7 +11487,7 @@ MonoBehaviour:
   ObjSpawn: {fileID: 2106104198}
   Gobj: {fileID: 0}
   Ouro: 100
-  LifeBar: 100
+  LifeBar: 10
   ManaBar: 100
   DefeseBar: 100
   UsingItenDinamic: 0
@@ -11553,6 +11555,8 @@ MonoBehaviour:
   playerMovement: {fileID: 733246700}
   playerWeapon: {fileID: 733246699}
   PD: {fileID: 0}
+  PlayerDead_Tree: {fileID: 4115751237911627146, guid: a79483627ef281445829e96443814458,
+    type: 3}
 --- !u!114 &733246699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21045,7 +21049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1285163619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21386,7 +21390,7 @@ MonoBehaviour:
   - {fileID: 0}
   OnPeace: {fileID: 1213374970}
   Normal_Wave: 1
-  Normal_MonstersNumbers: 5
+  Normal_MonstersNumbers: 10
   Multiple_Wave: 0
   Multiple_Min_MonstersNumbers: 1
   Multiple_Max_MonstersNumbers: 5

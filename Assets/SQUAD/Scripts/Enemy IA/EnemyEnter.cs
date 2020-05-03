@@ -30,5 +30,7 @@ public class EnemyEnter : MonoBehaviour
 
             Debug.Log("Player 2 Detectado!");
         }
+
+       
     }
 }

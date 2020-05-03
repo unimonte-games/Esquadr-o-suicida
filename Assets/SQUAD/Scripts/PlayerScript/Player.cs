@@ -409,7 +409,10 @@ public class Player : MonoBehaviour
             {
                 PD.TargetFinished();
             }
-            
+
+            GameObject Dead = Instantiate(PlayerDead_Tree, transform.position, transform.rotation) as GameObject;
+            Dead.GetComponent<PlayerDead>().P1_dead = true;
+
             Debug.Log("Player1 Morreu.");
         }
         else
@@ -432,9 +435,13 @@ public class Player : MonoBehaviour
                 PD.TargetFinished();
             }
 
+            GameObject Dead = Instantiate(PlayerDead_Tree, transform.position, transform.rotation) as GameObject;
+            Dead.GetComponent<PlayerDead>().P2_dead = true;
+
             Debug.Log("Player2 Morreu.");
         }
-
+ 
+        
         this.gameObject.SetActive(false);
         LC.UpdatePlayers();
     }
