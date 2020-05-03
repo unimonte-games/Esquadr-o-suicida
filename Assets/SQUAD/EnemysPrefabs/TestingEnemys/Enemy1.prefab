@@ -130,7 +130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   E_ID: 0
   Type: 0
-  Life: 20
+  Life: 0
+  Life_min: 5
+  Life_max: 7
   AttackArea: {fileID: 1724872714924175524}
   PlayerTarget: {fileID: 0}
   PlayerInArea: 0
@@ -157,8 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnAttack: 0
-  speed_min: 3
-  speed_max: 4
+  speed_min: 2
+  speed_max: 3
   speed: 0
   waitTime: 0
   startWaitTime: 3
@@ -214,7 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97d9c522e71e284eb4b3fbe2ddbddc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dano: 1
+  Dano: 0
+  dano_min: 1
+  dano_max: 3
   ES: {fileID: -7697245789313893745}
   EP: {fileID: 924068113508821622}
   Target: {fileID: 0}

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Enemy1_Attack : MonoBehaviour
 {
-    [Range(1, 3)]
+    
     public int Dano;
+
+    public int dano_min;
+    public int dano_max;
 
     public EnemyStats ES;
     public EnemyPatrol EP;
@@ -17,7 +20,11 @@ public class Enemy1_Attack : MonoBehaviour
     public float Force;
     public int TimeToAttack;
 
-    
+    private void Awake()
+    {
+        Dano = Random.Range(dano_min, dano_max);
+    }
+   
 
     private void OnEnable()
     {

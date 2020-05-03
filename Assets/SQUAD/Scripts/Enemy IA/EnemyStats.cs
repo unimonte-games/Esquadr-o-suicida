@@ -9,6 +9,9 @@ public class EnemyStats : MonoBehaviour
 
     public float Life;
 
+    public int Life_min;
+    public int Life_max;
+
     public GameObject AttackArea;
 
     public Transform PlayerTarget;
@@ -34,6 +37,11 @@ public class EnemyStats : MonoBehaviour
     public EnemyPatrol EP;
     
     public float SizeLife;
+
+    private void Start()
+    {
+        Life = Random.Range(Life_min, Life_max);
+    }
 
     private void FixedUpdate()
     {
