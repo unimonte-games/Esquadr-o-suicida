@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyExit : MonoBehaviour
 {
     public EnemyStats ES;
+    public EnemyPatrol EP;
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Player1" && ES.Player1_inArea)
         {
-            ES.PlayerTarget = null;
+            
             ES.PlayerInArea = false;
             ES.Player1_inArea = false;
 
@@ -22,7 +23,7 @@ public class EnemyExit : MonoBehaviour
 
         if (other.gameObject.name == "Player2" && ES.Player2_inArea)
         {
-            ES.PlayerTarget = null;
+            
             ES.PlayerInArea = false;
             ES.Player2_inArea = false;
 

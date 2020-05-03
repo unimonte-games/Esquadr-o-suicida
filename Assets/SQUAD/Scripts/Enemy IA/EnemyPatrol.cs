@@ -5,24 +5,32 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
 
+    public bool OnAttack;
+    bool InArea;
+
     public int speed_min;
     public int speed_max;
 
     public int speed;
     public float waitTime;
     public float startWaitTime;
+
     public float DistanceToPlayer;
+
+    public int Dis_Min;
+    public int Dis_Max;
 
     public float speedTurn;
     bool InLocal;
     bool ToMove;
-    
+
     public int timeToTurn;
 
     int SpawnToMove;
     public SpawnController SC_inRoom;
 
     public Transform moveLocal;
+    public Transform playerTemp;
 
     EnemyStats ES;
 
@@ -42,48 +50,65 @@ public class EnemyPatrol : MonoBehaviour
         startWaitTime = Random.Range(0, 5);
         waitTime = startWaitTime;
 
+
     }
 
     void FixedUpdate()
     {
-        if (ES.Patrol)
+
+        if (!InLocal)
         {
-            if (!InLocal)
+            Vector3 dirFromMeToTarget = moveLocal.position - transform.position;
+            dirFromMeToTarget.y = 0f;
+
+            Quaternion lookRotation = Quaternion.LookRotation(dirFromMeToTarget);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (speedTurn / 360.0f));
+        }
+
+        if (!ToMove)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, moveLocal.position, speed * Time.deltaTime);
+        }
+
+        if (Vector3.Distance(transform.position, moveLocal.position) < 1f && !OnAttack)
+        {
+            if (waitTime <= 0)
             {
-                Vector3 dirFromMeToTarget = moveLocal.position - transform.position;
-                dirFromMeToTarget.y = 0f;
 
-                Quaternion lookRotation = Quaternion.LookRotation(dirFromMeToTarget);
+                int nextLocal = Random.Range(0, SpawnToMove);
+                moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
-                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (speedTurn / 360.0f));
+                startWaitTime = Random.Range(0, 5);
+                waitTime = startWaitTime;
+                InLocal = false;
+
+                ToMove = true;
+                Invoke("WaitToRotation", timeToTurn);
+
             }
-
-            if (!ToMove)
+            else
             {
-                transform.position = Vector3.MoveTowards(transform.position, moveLocal.position, speed * Time.deltaTime);
-            }
-
-            if (Vector3.Distance(transform.position, moveLocal.position) < 1f)
-            {
-                if (waitTime <= 0)
-                {
-                    int nextLocal = Random.Range(0, SpawnToMove);
-                    moveLocal = SC_inRoom.ListSpawn[nextLocal];
-
-                    startWaitTime = Random.Range(0, 5);
-                    waitTime = startWaitTime;
-                    InLocal = false;
-
-                    ToMove = true;
-                    Invoke("WaitToRotation", timeToTurn);
-                }
-                else
-                {
-                    InLocal = true;
-                    waitTime -= Time.deltaTime;
-                }
+                InLocal = true;
+                waitTime -= Time.deltaTime;
             }
         }
+
+        if (Vector3.Distance(transform.position, moveLocal.position) < DistanceToPlayer && OnAttack && !InArea)
+        {
+            InArea = true;
+            ToMove = true;
+        }
+
+        if (Vector3.Distance(transform.position, moveLocal.position) > DistanceToPlayer && OnAttack && InArea)
+        {
+            InArea = false;
+            WaitToRotationInObj();
+
+            DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
+        }
+
+       
     }
 
     void WaitToRotation()
@@ -99,28 +124,62 @@ public class EnemyPatrol : MonoBehaviour
 
     public void ObjectHit()
     {
-        int nextLocal = Random.Range(0, SpawnToMove);
-        moveLocal = SC_inRoom.ListSpawn[nextLocal];
+        if (!OnAttack)
+        {
+            int nextLocal = Random.Range(0, SpawnToMove);
+            moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
-        startWaitTime = Random.Range(2, 5);
-        waitTime = startWaitTime;
+            startWaitTime = Random.Range(2, 5);
+            waitTime = startWaitTime;
 
-        ToMove = true;
-        Invoke("WaitToRotationInObj", 2f);
+            ToMove = true;
+            Invoke("WaitToRotationInObj", 2f);
+        }
+        else
+        {
+            int nextLocal = Random.Range(0, SpawnToMove);
+            moveLocal = SC_inRoom.ListSpawn[nextLocal];
+
+            startWaitTime = Random.Range(2, 5);
+            waitTime = startWaitTime;
+
+            ToMove = true;
+            Invoke("ReLocal", 2f);
+        }
+    }
+
+    void ReLocal()
+    {
+        if (OnAttack)
+        {
+            ToMove = false;
+            moveLocal = playerTemp;
+            transform.LookAt(moveLocal);
+
+            Debug.Log("Continuando a busca...");
+        }
+        else
+        {
+            Debug.Log("Muito Longe...");
+            ObjectHit();
+        }
     }
 
     public void EnemyHit(int timeToRotation)
     {
-        ToMove = true;
+        if (!OnAttack)
+        {
+            ToMove = true;
 
-        int nextLocal = Random.Range(0, SpawnToMove);
-        moveLocal = SC_inRoom.ListSpawn[nextLocal];
+            int nextLocal = Random.Range(0, SpawnToMove);
+            moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
-        startWaitTime = Random.Range(2, 5);
-        waitTime = startWaitTime;
+            startWaitTime = Random.Range(2, 5);
+            waitTime = startWaitTime;
 
-       
-        Invoke("WaitToRotationInObj", timeToRotation);
+
+            Invoke("WaitToRotationInObj", timeToRotation);
+        }
     }
 
     public void ChangeSpeed()
@@ -128,5 +187,6 @@ public class EnemyPatrol : MonoBehaviour
         speed = Random.Range(speed_min, speed_max);
         Debug.Log("Speed: " + speed);
     }
+
 
 }

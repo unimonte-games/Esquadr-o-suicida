@@ -9,8 +9,7 @@ public class EnemyStats : MonoBehaviour
 
     public float Life;
 
-    public bool Patrol;
-    public bool Attack;
+    public GameObject AttackArea;
 
     public Transform PlayerTarget;
     public bool PlayerInArea;
@@ -50,7 +49,6 @@ public class EnemyStats : MonoBehaviour
 
     private void Awake()
     {
-        Patrol = true;
         SizeLife = Life / 2;
         EP = GetComponent<EnemyPatrol>();
 
@@ -170,13 +168,18 @@ public class EnemyStats : MonoBehaviour
 
     public void OnAttack()
     {
-        Attack = true;
-        Patrol = false;
+        EP.OnAttack = true;
+        EP.moveLocal = PlayerTarget;
+        EP.playerTemp = PlayerTarget;
+        AttackArea.SetActive(true);
+        
     }
 
     public void OnPatrol()
     {
-        Attack = false;
-        Patrol = true;
+        EP.OnAttack = false;
+        AttackArea.SetActive(false);
+        EP.ObjectHit();
+        
     }
 }
