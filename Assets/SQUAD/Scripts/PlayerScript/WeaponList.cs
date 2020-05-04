@@ -6,6 +6,7 @@ public class WeaponList : MonoBehaviour
 {
     public GameObject[] Weapon;
     public GameObject[] wItem;
+    public Sprite[] wIcon;
 
 
 }

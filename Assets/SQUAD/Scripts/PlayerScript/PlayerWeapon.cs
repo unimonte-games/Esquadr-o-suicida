@@ -22,10 +22,13 @@ public class PlayerWeapon : MonoBehaviour
     KeyCode Switch;
 
     bool isDrop;
+    public PlayerUI PUI;
+    float countToChange;
 
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
+        PUI = FindObjectOfType<PlayerUI>();
         Discart = WL.transform;
     }
 
@@ -36,8 +39,11 @@ public class PlayerWeapon : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(Switch))
+        countToChange += Time.deltaTime;
+        if (Input.GetKeyDown(Switch) && ID_AtualWeapon >= 1 && countToChange >= 1f && MaxItens == 2)
         {
+            countToChange = 0f;
+
             if (MaxItens > 2)
             {
                 MaxItens = 2;
@@ -55,6 +61,7 @@ public class PlayerWeapon : MonoBehaviour
             }
 
             ItemParent[ID_AtualWeapon].gameObject.SetActive(true);
+            SetWeaponIcon();
         }
     }
 
@@ -161,7 +168,9 @@ public class PlayerWeapon : MonoBehaviour
 
         ItemParent[Type].SetActive(true);
         CheckMax();
-        
+
+        SetWeaponIcon();
+
         Debug.Log("Weapon Update");
         return;
        
@@ -198,6 +207,7 @@ public class PlayerWeapon : MonoBehaviour
             }
 
             ItemParent[ID_AtualWeapon].SetActive(true);
+            SetWeaponIcon();
             return;
         }
 
@@ -216,6 +226,13 @@ public class PlayerWeapon : MonoBehaviour
     public void EnabledItem()
     {
         ItemParent[ID_AtualWeapon].gameObject.SetActive(true);
+        SetWeaponIcon();
+    }
+
+    void SetWeaponIcon()
+    {
+        int ID = ID_Weapons[ID_AtualWeapon];
+        PUI.ChangeWeapon(P.PlayerType, ID);
     }
 
 

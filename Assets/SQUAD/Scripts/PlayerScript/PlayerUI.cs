@@ -25,6 +25,9 @@ public class PlayerUI : MonoBehaviour
 
     public Text P1_Gold;
 
+    public Image P1_Weapon1;
+    public Image P1_Weapon2;
+
     public GameObject Player2_On;
     public GameObject Player2_Off;
 
@@ -44,6 +47,15 @@ public class PlayerUI : MonoBehaviour
 
     public Text P2_Gold;
 
+    public Image P2_Weapon1;
+    public Image P2_Weapon2;
+
+    WeaponList WL;
+
+    private void Awake()
+    {
+        WL = FindObjectOfType<WeaponList>();
+    }
 
     public void ChangeLife(bool Player, float Life, float LifeMax, float Size)
     {
@@ -131,7 +143,6 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-
     public void ReLivePlayer (bool Player)
     {
         if (Player)
@@ -165,7 +176,6 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-
     public void ChangeGold(bool Player, float Gold)
     {
         if (Player)
@@ -175,6 +185,21 @@ public class PlayerUI : MonoBehaviour
         else
         {
             P2_Gold.text = "" + Gold;
+        }
+    }
+
+    public void ChangeWeapon (bool Player, int wIcon)
+    {
+        if (Player)
+        {
+            P1_Weapon2.sprite = P1_Weapon1.sprite;
+            P1_Weapon1.sprite = WL.wIcon[wIcon];
+           
+        }
+        else
+        {
+            P2_Weapon2.sprite = P2_Weapon1.sprite;
+            P2_Weapon1.sprite = WL.wIcon[wIcon];
         }
     }
 
