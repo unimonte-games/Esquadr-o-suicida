@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
     public float ManaBar_max;
     public float TimeToIncrement; //add mana
     public float ValueToIncrement;
+
+    public float Level;
+    public float L_atual;
+    public float L_max;
     
     public bool UsingItenDinamic; //Se está usando algum item dinamico
 
@@ -96,10 +100,11 @@ public class Player : MonoBehaviour
 
         LifeBar = LifeBar_max;
         ManaBar = ManaBar_max;
-
+        
         SetWarning();
         PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max,LifeSize);
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
+        PUI.ChangeLevel(PlayerType, Level, L_atual, L_max);
     }
 
     private void Start()
@@ -430,6 +435,27 @@ public class Player : MonoBehaviour
         }
 
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
+    }
+
+    public void SetLevel(float AddExperience)
+    {
+        L_atual += AddExperience;
+        if(L_atual >= L_max)
+        {
+            L_atual -= L_max;
+            Level++;
+            NextLevel();
+            return;
+        }
+
+        PUI.ChangeLevel(PlayerType, Level, L_atual, L_max);
+    }
+
+    void NextLevel()
+    {
+        L_max = L_max * 2;
+        PUI.ChangeLevel(PlayerType, Level, L_atual, L_max);
+
     }
 
     void PlayerIsDead()

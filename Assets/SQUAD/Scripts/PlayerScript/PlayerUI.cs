@@ -147,6 +147,24 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    public void ChangeLevel(bool Player, float Level, float L_atual, float L_max)
+    {
+        if (Player)
+        {
+            P1_Nv.text = ""+Level;
+
+            float LevelCal = L_atual / L_max;
+            P1_NvUI.fillAmount = LevelCal;
+        }
+        else
+        {
+            P2_Nv.text = "" + Level;
+
+            float LevelCal = L_atual / L_max;
+            P2_NvUI.fillAmount = LevelCal;
+        }
+    }
+
 
 
 }

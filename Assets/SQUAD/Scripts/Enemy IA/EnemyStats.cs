@@ -12,6 +12,7 @@ public class EnemyStats : MonoBehaviour
     public float L_Max;
     public int Life_min;
     public int Life_max;
+    public int Experience;
 
     public Image life_barInterface;
     public GameObject Life_bar;
@@ -117,7 +118,6 @@ public class EnemyStats : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag == "Hit")
         {
             Hit h = other.GetComponent<Hit>();
@@ -152,12 +152,14 @@ public class EnemyStats : MonoBehaviour
                 if (h.PlayerDestroy)
                 {
                     P_default.MonstersDefeat(1, E_ID);
+                    P_default.player1.SetLevel(Experience);
                     Dead();
                     return;
                 }
                 else
                 {
                     P_default.MonstersDefeat(2, E_ID);
+                    P_default.player2.SetLevel(Experience);
                     Dead();
                     return;
                 }
