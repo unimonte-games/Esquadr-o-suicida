@@ -166,5 +166,19 @@ public class PlayerUI : MonoBehaviour
     }
 
 
+    public void ChangeGold(bool Player, float Gold)
+    {
+        if (Player)
+        {
+            P1_Gold.text = "" + Gold;
+        }
+        else
+        {
+            P2_Gold.text = "" + Gold;
+        }
+    }
+
+
+
 
 }

@@ -86,9 +86,9 @@ public class Epic : MonoBehaviour
         }
 
 
-        if (P.Ouro >= GoldToOpen)
+        if (P.Gold >= GoldToOpen)
         {
-            P.Ouro -= GoldToOpen;
+            P.Gold -= GoldToOpen;
             Atived = true;
             Debug.Log("Abriu Epic com Ouro.");
 

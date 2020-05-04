@@ -34,6 +34,8 @@ public class EnemyStats : MonoBehaviour
     public GameObject EnergyCoin;
     bool ChangeTarget;
 
+    [Range(30,100)]
+    public int Gold_rare;
     bool Drop;
     int tempRandom;
     int QtdEnergy;
@@ -69,45 +71,54 @@ public class EnemyStats : MonoBehaviour
         EP = GetComponent<EnemyPatrol>();
 
         tempRandom = Random.Range(0, 100);
-        if (tempRandom > 80)
+        if (tempRandom > Gold_rare)
         {
             Drop = true;
 
-            center.x = RoomSize.transform.position.x;
-            center.y = RoomSize.transform.position.y;
-            center.z = RoomSize.transform.position.z;
-
-            size.x = RoomSize.transform.localScale.x;
-            size.z = RoomSize.transform.localScale.z;
-
-
             if (Drop)
             {
-                if (tempRandom >= 80 && tempRandom <= 85)
+
+                if (tempRandom >= 30 && tempRandom <= 60)
                 {
                     int quantidadeRandom = Random.Range(1, 2);
                     QtdEnergy = quantidadeRandom;
                     return;
                 }
 
-                if (tempRandom >= 86 && tempRandom <= 90)
-                {
-                    int quantidadeRandom = Random.Range(1, 3);
-                    QtdEnergy = quantidadeRandom;
-                    return;
-                }
-
-                if (tempRandom >= 91 && tempRandom <= 95)
+                if (tempRandom >= 61 && tempRandom <= 70)
                 {
                     int quantidadeRandom = Random.Range(1, 4);
                     QtdEnergy = quantidadeRandom;
                     return;
                 }
 
-                if (tempRandom >= 96 && tempRandom <= 100)
+                if (tempRandom >= 71 && tempRandom <= 80)
                 {
-                    int quantidadeRandom = Random.Range(1, 5);
+                    int quantidadeRandom = Random.Range(2, 6);
                     QtdEnergy = quantidadeRandom;
+                    return;
+                }
+
+                if (tempRandom >= 81 && tempRandom <= 90)
+                {
+                    int quantidadeRandom = Random.Range(3, 7);
+                    QtdEnergy = quantidadeRandom;
+                    return;
+                }
+
+                if (tempRandom >= 91 && tempRandom <= 99)
+                {
+                    int quantidadeRandom = Random.Range(4, 10);
+                    QtdEnergy = quantidadeRandom;
+                    return;
+                }
+
+                if (tempRandom >= 100)
+                {
+                    int quantidadeRandom = Random.Range(10, 30);
+                    QtdEnergy = quantidadeRandom;
+
+                    Debug.Log("Muita Sorte!");
                     return;
                 }
 
@@ -193,11 +204,18 @@ public class EnemyStats : MonoBehaviour
 
     void Dead()
     {
+        center.x = RoomSize.transform.position.x;
+        center.y = RoomSize.transform.position.y;
+        center.z = RoomSize.transform.position.z;
+
+        size.x = RoomSize.transform.localScale.x;
+        size.z = RoomSize.transform.localScale.z;
+
         if (Drop)
         {
             for (int i = 0; i < QtdEnergy; i++)
             {
-                Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), -4, Random.Range(-size.z / 2, size.z / 2));
+                Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), 1, Random.Range(-size.z / 2, size.z / 2));
                 GameObject SpawnP = Instantiate(EnergyCoin, pos, Quaternion.identity);
 
             }

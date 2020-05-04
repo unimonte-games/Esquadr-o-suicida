@@ -33,9 +33,9 @@ public class Item : MonoBehaviour
             if (inUse1 && Input.GetKeyDown(GetItem))
             {
                 Set = true;
-                if (isBuy && player.Ouro >= Value)
+                if (isBuy && player.Gold >= Value)
                 {
-                    player.Ouro -= Value;
+                    player.Gold -= Value;
                     playerWeapon.GetWeapon(ID);
                     this.gameObject.SetActive(false);
 
@@ -54,9 +54,9 @@ public class Item : MonoBehaviour
             if (inUse2 && Input.GetKeyDown(GetItem))
             {
                 Set = true;
-                if (isBuy && player.Ouro >= Value)
+                if (isBuy && player.Gold >= Value)
                 {
-                    player.Ouro -= Value;
+                    player.Gold -= Value;
                     playerWeapon.GetWeapon(ID);
 
                     Debug.Log("Player 2 comprou um item!");

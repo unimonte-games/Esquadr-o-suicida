@@ -25,7 +25,8 @@ public class Gold : MonoBehaviour
         {
             P = other.GetComponent<Player>();
 
-            P.Ouro += gold;
+            P.Gold += gold;
+            P.SetGold();
             MS.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
@@ -34,7 +35,8 @@ public class Gold : MonoBehaviour
         {
             P = other.GetComponent<Player>();
 
-            P.Ouro += gold;
+            P.Gold += gold;
+            P.SetGold();
             MS.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }

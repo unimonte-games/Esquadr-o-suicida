@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public Transform ObjSpawn;
     public GetObject Gobj;
 
-    public int Ouro; //Ouro do Jogador
+    public int Gold; //Ouro do Jogador
     public float LifeBar;//Vida do jogador em Numero
     public float LifeBar_max = 10;
     float LifeSize; //1/4 da vida
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max,LifeSize);
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
         PUI.ChangeLevel(PlayerType, Level, L_atual, L_max);
+        PUI.ChangeGold(PlayerType, Gold);
     }
 
     private void Start()
@@ -435,6 +436,11 @@ public class Player : MonoBehaviour
         }
 
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
+    }
+
+    public void SetGold()
+    {
+        PUI.ChangeGold(PlayerType,Gold);
     }
 
     public void SetLevel(float AddExperience)
