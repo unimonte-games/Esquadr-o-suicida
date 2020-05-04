@@ -32,6 +32,7 @@ public class EnemyPatrol : MonoBehaviour
     public Transform moveLocal;
     public Transform playerTemp;
 
+
     EnemyStats ES;
 
     private void Awake()
