@@ -88,6 +88,7 @@ public class Treasure : MonoBehaviour
         if (P.Gold >= GoldToOpen)
         {
             P.Gold -= GoldToOpen;
+            P.SetGold();
             Atived = true;
             Debug.Log("Abriu Comum com Ouro.");
 

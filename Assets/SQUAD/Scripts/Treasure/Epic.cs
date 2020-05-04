@@ -21,6 +21,8 @@ public class Epic : MonoBehaviour
 
     int CountToSell;
 
+    
+
     private void FixedUpdate()
     {
 
@@ -89,6 +91,7 @@ public class Epic : MonoBehaviour
         if (P.Gold >= GoldToOpen)
         {
             P.Gold -= GoldToOpen;
+            P.SetGold();
             Atived = true;
             Debug.Log("Abriu Epic com Ouro.");
 

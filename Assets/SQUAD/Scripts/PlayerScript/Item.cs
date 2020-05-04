@@ -18,12 +18,14 @@ public class Item : MonoBehaviour
     PlayerWeapon playerWeapon;
 
     WeaponList WL;
+    
 
     bool Set;
 
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
+        
     }
 
     private void FixedUpdate()
@@ -36,6 +38,7 @@ public class Item : MonoBehaviour
                 if (isBuy && player.Gold >= Value)
                 {
                     player.Gold -= Value;
+                    player.SetGold();
                     playerWeapon.GetWeapon(ID);
                     this.gameObject.SetActive(false);
 
@@ -57,6 +60,7 @@ public class Item : MonoBehaviour
                 if (isBuy && player.Gold >= Value)
                 {
                     player.Gold -= Value;
+                    player.SetGold();
                     playerWeapon.GetWeapon(ID);
 
                     Debug.Log("Player 2 comprou um item!");

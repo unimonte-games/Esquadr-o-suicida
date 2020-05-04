@@ -22,6 +22,8 @@ public class Legendary : MonoBehaviour
 
     int CountToSell;
 
+    
+
     private void FixedUpdate()
     {
 
@@ -88,6 +90,7 @@ public class Legendary : MonoBehaviour
         if (P.Gold >= GoldToOpen)
         {
             P.Gold -= GoldToOpen;
+            P.SetGold();
             Atived = true;
             Debug.Log("Abriu Legendary com Ouro.");
 
