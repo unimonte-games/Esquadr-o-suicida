@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     float LifeSize; //1/4 da vida
     public float ManaBar; //Energia do jogador para usar as armas
     public float ManaBar_max;
+    public float TimeToIncrement; //add mana
+    public float ValueToIncrement;
     
     public bool UsingItenDinamic; //Se está usando algum item dinamico
 
@@ -93,13 +95,16 @@ public class Player : MonoBehaviour
         Interface = FindObjectOfType<UI>();
 
         LifeBar = LifeBar_max;
+        ManaBar = ManaBar_max;
+
         SetWarning();
         PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max,LifeSize);
+        PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
     }
 
     private void Start()
     {
-        
+
         if (PlayerType)
         {
             LC.P1_inRoom = true;
@@ -108,10 +113,9 @@ public class Player : MonoBehaviour
 
             Interface.P1 = MapaGatilho;
 
-            return;
-        }
 
-        if (!PlayerType)
+        }
+        else
         {
             LC.P2_inRoom = true;
             LC.UpdatePlayers();
@@ -119,8 +123,9 @@ public class Player : MonoBehaviour
 
             Interface.P2 = MapaGatilho;
 
-            return;
         }
+
+        InvokeRepeating("SetMana", 1, TimeToIncrement);
     }
 
     public void UpdateController()
@@ -414,6 +419,17 @@ public class Player : MonoBehaviour
         }
 
         PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max,LifeSize);
+    }
+
+    public void SetMana()
+    {
+        ManaBar += ValueToIncrement;
+        if(ManaBar >= ManaBar_max)
+        {
+            ManaBar = ManaBar_max;
+        }
+
+        PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
     }
 
     void PlayerIsDead()

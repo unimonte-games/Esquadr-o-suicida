@@ -132,5 +132,21 @@ public class PlayerUI : MonoBehaviour
     }
 
 
+    public void ReLivePlayer (bool Player)
+    {
+        if (Player)
+        {
+            Player1_On.SetActive(true);
+            Player1_Off.SetActive(false);
+
+        }
+        else
+        {
+            Player2_On.SetActive(true);
+            Player2_Off.SetActive(false);
+        }
+    }
+
+
 
 }

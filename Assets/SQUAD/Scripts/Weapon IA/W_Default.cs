@@ -23,6 +23,13 @@ public class W_Default : MonoBehaviour
     public Transform spawnShot;
     public Player P;
 
+    public PlayerUI PUI;
+
+    private void Awake()
+    {
+        PUI = FindObjectOfType<PlayerUI>();
+    }
+
     void Start()
     {
         Gatilho = P.Gatilho;
@@ -30,7 +37,7 @@ public class W_Default : MonoBehaviour
     private void FixedUpdate()
     {
         countToShoting += 0.1f;
-        if (Input.GetKeyDown(Gatilho) && countToShoting >= FrameRate)
+        if (Input.GetKeyDown(Gatilho) && countToShoting >= FrameRate && P.ManaBar >= Mana)
         {
             countToShoting = 0f;
             GameObject bullet = Instantiate(Shot, spawnShot.transform.position, Quaternion.identity) as GameObject;
@@ -41,6 +48,8 @@ public class W_Default : MonoBehaviour
             HitEnemy.Hit_Plant = Fire_Plant;
             HitEnemy.Hit_Tech = Fire_Tech;
             P.ManaBar -= Mana;
+
+            PUI.ChangeMana(P.PlayerType, P.ManaBar, P.ManaBar_max);
 
             bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
         }
