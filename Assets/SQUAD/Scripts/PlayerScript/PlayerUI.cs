@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    public GameObject Player1_On;
+    public GameObject Player1_Off;
+
     public Text P1_Life;
     public Text P1_LifeMax;
     public Image P1_LifeUI;
+    public GameObject WarningUI;
 
     public Text P1_Mana;
     public Text P1_ManaMax;
@@ -20,6 +24,9 @@ public class PlayerUI : MonoBehaviour
     public Image P1_Skill_2;
 
     public Text P1_Gold;
+
+    public GameObject Player2_On;
+    public GameObject Player2_Off;
 
     public Text P2_Life;
     public Text P2_LifeMax;
@@ -38,7 +45,7 @@ public class PlayerUI : MonoBehaviour
     public Text P2_Gold;
 
 
-    public void ChangeLife(bool Player, float Life, float LifeMax)
+    public void ChangeLife(bool Player, float Life, float LifeMax, float Size)
     {
         if (Player)
         {
@@ -47,6 +54,22 @@ public class PlayerUI : MonoBehaviour
 
             float LifeCal = Life / LifeMax;
             P1_LifeUI.fillAmount = LifeCal;
+
+           if(Life < Size)
+            {
+                WarningUI.SetActive(true);
+            }
+            else
+            {
+                WarningUI.SetActive(false);
+            }
+
+           if(Life <= 0)
+            {
+                Player1_On.SetActive(false);
+                Player1_Off.SetActive(true);
+               
+            }
  
         }
         else
@@ -56,6 +79,22 @@ public class PlayerUI : MonoBehaviour
 
             float LifeCal = Life / LifeMax;
             P2_LifeUI.fillAmount = LifeCal;
+
+            if (Life < Size)
+            {
+                WarningUI.SetActive(true);
+            }
+            else
+            {
+                WarningUI.SetActive(false);
+            }
+
+            if (Life <= 0)
+            {
+                Player2_On.SetActive(false);
+                Player2_Off.SetActive(true);
+
+            }
         }
     }
 
@@ -80,7 +119,6 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-
     public void ChangeGold (bool Player, int Gold)
     {
         if (Player)
@@ -92,4 +130,7 @@ public class PlayerUI : MonoBehaviour
             P2_Gold.text = "" + Gold;
         }
     }
+
+
+
 }
