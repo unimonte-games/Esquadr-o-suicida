@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     public KeyCode Gatilho;
     public KeyCode MapaGatilho;
     public KeyCode Esquiva;
+    public KeyCode Turn;
 
     public int AtualKey;
     public bool IsKey;
@@ -128,7 +129,8 @@ public class Player : MonoBehaviour
 
                 Gatilho = KeyCode.Space;
                 MapaGatilho = KeyCode.Escape;
-                Esquiva = KeyCode.R;
+                Esquiva = KeyCode.E;
+                Turn = KeyCode.Q;
 
             }
             else //Controle
@@ -158,9 +160,12 @@ public class Player : MonoBehaviour
                 Right = KeyCode.RightArrow;
                 Left = KeyCode.LeftArrow;
 
-                Gatilho = KeyCode.L;
+                Gatilho = KeyCode.K;
                 MapaGatilho = KeyCode.O;
-                Esquiva = KeyCode.K;
+                Esquiva = KeyCode.L;
+                Turn = KeyCode.J;
+
+
 
             }
             else //Controle

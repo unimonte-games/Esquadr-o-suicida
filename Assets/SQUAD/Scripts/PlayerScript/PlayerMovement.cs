@@ -7,12 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float speed = 5f;
+    public float speedRotate = 6f;
     public float downSpeed = 3f;
     public float TurnSpeed = 50f;
     Vector3 velocity;
 
     Player P;
-
+ 
     bool PlayerController;
     public bool ToMove;
 
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     KeyCode Right;
     KeyCode Left;
     KeyCode Esquiva;
+    KeyCode Turn;
 
     bool Esquiva_Forward;
     bool Esquiva_Right;
@@ -29,11 +31,8 @@ public class PlayerMovement : MonoBehaviour
     bool EsquivaInUsing;
     float time_Esquiva;
 
-    bool Rotate_Right;
-    float time_Right;
-
-    bool Rotate_Left;
-    float time_Left;
+    bool Rotete_Turn;
+    float TimeTurn;
 
     void FixedUpdate()
     {
@@ -54,17 +53,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.Translate(-Vector3.forward * downSpeed * Time.deltaTime);
 
+            }
 
-                if (Input.GetKeyDown(Right) && !Rotate_Left)
-                {
-                    Rotate_Right = true;
-                }
-
-                if (Input.GetKeyDown(Left) && !Rotate_Right)
-                {
-                    Rotate_Left = true;
-                }
-
+            if (Input.GetKeyDown(Turn))
+            {
+                    Rotete_Turn = true;
             }
 
             if (Input.GetKey(Right))
@@ -148,25 +141,14 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (Rotate_Right)
+            if (Rotete_Turn)
             {
-                transform.Rotate(Vector3.up, 500 * Time.deltaTime);
-                time_Right += 0.1f;
-                if(time_Right >= 1.5f)
+                transform.Rotate(Vector3.up, 600 * Time.deltaTime);
+                TimeTurn += 0.1f;
+                if(TimeTurn >= 1.5f)
                 {
-                    Rotate_Right = false;
-                    time_Right = 0f;
-                }
-            }
-
-            if (Rotate_Left)
-            {
-                transform.Rotate(Vector3.up, -500 * Time.deltaTime);
-                time_Left += 0.1f;
-                if (time_Left >= 1.5f)
-                {
-                    Rotate_Left = false;
-                    time_Left = 0f;
+                    Rotete_Turn = false;
+                    TimeTurn = 0f;
                 }
             }
 
@@ -184,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
         Left = P.Left;
 
         Esquiva = P.Esquiva;
+        Turn = P.Turn;
 
     }
 

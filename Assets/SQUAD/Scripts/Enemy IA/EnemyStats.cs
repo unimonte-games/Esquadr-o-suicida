@@ -15,6 +15,8 @@ public class EnemyStats : MonoBehaviour
 
     public Image life_barInterface;
     public GameObject Life_bar;
+    public GameObject HitDamage;
+    public Transform spawnDamage;
 
     public GameObject AttackArea;
 
@@ -123,6 +125,10 @@ public class EnemyStats : MonoBehaviour
             if (Type)
             {
                 Life_Atual -= h.Hit_Tech;
+                GameObject hit = Instantiate(HitDamage, spawnDamage.position, spawnDamage.rotation) as GameObject;
+                hit.GetComponent<EnemyUIHit>().danoHit = h.Hit_Tech;
+                hit.transform.parent = transform;
+                
                 TakeHit();
                 other.gameObject.SetActive(false);
 
@@ -130,6 +136,10 @@ public class EnemyStats : MonoBehaviour
             else
             {
                 Life_Atual -= h.Hit_Plant;
+                GameObject hit = Instantiate(HitDamage, spawnDamage.position, spawnDamage.rotation) as GameObject;
+                hit.GetComponent<EnemyUIHit>().danoHit = h.Hit_Plant;
+                hit.transform.parent = transform;
+
                 TakeHit();
                 other.gameObject.SetActive(false);
 
