@@ -78,6 +78,8 @@ public class Player : MonoBehaviour
     LevelController LC;
     UI Interface;
 
+    public GameObject Life_Hud;
+
     public GameObject PlayerDead_Tree;
 
     
@@ -382,7 +384,9 @@ public class Player : MonoBehaviour
 
     public void SetDamage()
     {
-        if(LifeBar <= 0)
+        
+
+        if (LifeBar <= 0)
         {
             PlayerIsDead();
         }

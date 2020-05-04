@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyStats : MonoBehaviour
 {
     public int E_ID; //Id do inimigo
     public bool Type; //True = Tech | False = Plant
 
-    public float Life;
-
+    public float Life_Atual;
+    public float L_Max;
     public int Life_min;
     public int Life_max;
+
+    public Image life_barInterface;
+    public GameObject Life_bar;
 
     public GameObject AttackArea;
 
@@ -40,7 +44,8 @@ public class EnemyStats : MonoBehaviour
 
     private void Start()
     {
-        Life = Random.Range(Life_min, Life_max);
+        Life_Atual = Random.Range(Life_min, Life_max);
+        L_Max = Life_Atual;
     }
 
     private void FixedUpdate()
@@ -57,7 +62,7 @@ public class EnemyStats : MonoBehaviour
 
     private void Awake()
     {
-        SizeLife = Life / 2;
+        SizeLife = Life_Atual / 2;
         EP = GetComponent<EnemyPatrol>();
 
         tempRandom = Random.Range(0, 100);
@@ -117,27 +122,23 @@ public class EnemyStats : MonoBehaviour
 
             if (Type)
             {
-                 Life -= h.Hit_Tech;
+                Life_Atual -= h.Hit_Tech;
+                TakeHit();
+                other.gameObject.SetActive(false);
 
-                if(Life <= SizeLife)
-                {
-                    EP.ChangeSpeed();
-                    
-                }
             }
             else
             {
-                Life -= h.Hit_Plant;
+                Life_Atual -= h.Hit_Plant;
+                TakeHit();
+                other.gameObject.SetActive(false);
 
-                if (Life <= SizeLife)
-                {
-                    EP.ChangeSpeed();
-                   
-                }
             }
 
-            if (Life <= 0)
+            if (Life_Atual <= 0)
             {
+                
+
                 if (h.PlayerDestroy)
                 {
                     P_default.MonstersDefeat(1, E_ID);
@@ -156,6 +157,26 @@ public class EnemyStats : MonoBehaviour
         }
 
 
+    }
+
+    void TakeHit()
+    {
+        float Life_Cal = Life_Atual / L_Max;
+        life_barInterface.fillAmount = Life_Cal;
+
+        Life_bar.SetActive(true);
+        Invoke("CancelInterface", 1);
+
+        if (Life_Atual == SizeLife)
+        {
+            EP.ChangeSpeed();
+        }
+        
+    }
+
+    void CancelInterface()
+    {
+        Life_bar.SetActive(false);
     }
 
     void Dead()

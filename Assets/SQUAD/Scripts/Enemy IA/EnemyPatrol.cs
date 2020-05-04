@@ -32,6 +32,7 @@ public class EnemyPatrol : MonoBehaviour
     public Transform moveLocal;
     public Transform playerTemp;
 
+    public GameObject Body;
 
     EnemyStats ES;
 
@@ -64,7 +65,7 @@ public class EnemyPatrol : MonoBehaviour
 
             Quaternion lookRotation = Quaternion.LookRotation(dirFromMeToTarget);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (speedTurn / 360.0f));
+            Body.transform.rotation = Quaternion.Lerp(Body.transform.rotation, lookRotation, Time.deltaTime * (speedTurn / 360.0f));
         }
 
         if (!ToMove)
@@ -106,7 +107,7 @@ public class EnemyPatrol : MonoBehaviour
         {
             InArea = false;
             ToMove = false;
-            transform.LookAt(moveLocal);
+            Body.transform.LookAt(moveLocal);
 
             DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
         }
@@ -122,7 +123,7 @@ public class EnemyPatrol : MonoBehaviour
     void WaitToRotationInObj()
     {
         ToMove = false;
-        transform.LookAt(moveLocal);
+        Body.transform.LookAt(moveLocal);
     }
 
     public void ObjectHit()
@@ -164,7 +165,7 @@ public class EnemyPatrol : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             moveLocal = playerTemp;
-            transform.LookAt(moveLocal);
+            Body.transform.LookAt(moveLocal);
 
 
             Debug.Log("Continuando a busca...");
