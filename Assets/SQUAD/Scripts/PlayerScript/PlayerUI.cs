@@ -19,6 +19,8 @@ public class PlayerUI : MonoBehaviour
     public Image P1_Skill_1;
     public Image P1_Skill_2;
 
+    public Text P1_Gold;
+
     public Text P2_Life;
     public Text P2_LifeMax;
     public Image P2_LifeUI;
@@ -33,8 +35,10 @@ public class PlayerUI : MonoBehaviour
     public Image P2_Skill_1;
     public Image P2_Skill_2;
 
+    public Text P2_Gold;
 
-    public void ChangeLife(bool Player, int Life, int LifeMax)
+
+    public void ChangeLife(bool Player, float Life, float LifeMax)
     {
         if (Player)
         {
@@ -47,11 +51,15 @@ public class PlayerUI : MonoBehaviour
         }
         else
         {
+            P2_Life.text = "" + Life;
+            P2_LifeMax.text = "" + LifeMax;
 
+            float LifeCal = Life / LifeMax;
+            P2_LifeUI.fillAmount = LifeCal;
         }
     }
 
-    public void ChangeMana(bool Player, int Mana, int ManaMax)
+    public void ChangeMana(bool Player, float Mana, float ManaMax)
     {
         if (Player)
         {
@@ -64,7 +72,24 @@ public class PlayerUI : MonoBehaviour
         }
         else
         {
+            P2_Mana.text = "" + Mana;
+            P2_ManaMax.text = "" + ManaMax;
 
+            float ManaCal = Mana / ManaMax;
+            P2_ManaUI.fillAmount = ManaCal;
+        }
+    }
+
+
+    public void ChangeGold (bool Player, int Gold)
+    {
+        if (Player)
+        {
+            P1_Gold.text = "" + Gold;
+        }
+        else
+        {
+            P2_Gold.text = "" + Gold;
         }
     }
 }

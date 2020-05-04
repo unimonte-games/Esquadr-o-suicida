@@ -14,10 +14,11 @@ public class Player : MonoBehaviour
     public GetObject Gobj;
 
     public int Ouro; //Ouro do Jogador
-    public float LifeBar = 100f; //Vida do jogador em Numero
-    public float ManaBar = 100f; //Energia do jogador para usar as armas
-    public float DefeseBar = 100f; //Defesa do jogador
-
+    public float LifeBar;//Vida do jogador em Numero
+    public float LifeBar_max = 10;
+    public float ManaBar; //Energia do jogador para usar as armas
+    public float ManaBar_max;
+    
     public bool UsingItenDinamic; //Se está usando algum item dinamico
 
     public int Keys_Quantidade; //Maximo 3
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour
     public PlayerMovement playerMovement;
     public PlayerWeapon playerWeapon;
     public Porta_Default PD;
+    public PlayerUI PUI;
 
     LevelController LC;
     UI Interface;
@@ -82,13 +84,16 @@ public class Player : MonoBehaviour
     public GameObject Life_Hud;
 
     public GameObject PlayerDead_Tree;
-
     
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
+        PUI = FindObjectOfType<PlayerUI>();
         Interface = FindObjectOfType<UI>();
-        
+
+        LifeBar = LifeBar_max;
+        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max);
+
         if (PlayerType)
         {
             LC.P1_inRoom = true;
@@ -389,12 +394,14 @@ public class Player : MonoBehaviour
 
     public void SetDamage()
     {
-        
 
         if (LifeBar <= 0)
         {
+            LifeBar = 0f;
             PlayerIsDead();
         }
+
+        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max);
     }
 
     void PlayerIsDead()
