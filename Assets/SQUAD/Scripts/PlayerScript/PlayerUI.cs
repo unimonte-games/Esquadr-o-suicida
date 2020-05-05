@@ -239,6 +239,7 @@ public class PlayerUI : MonoBehaviour
     {
         S_wave.SetActive(false);
         R_wave.SetActive(false);
+        O_wave.SetActive(false);
     }
 
     

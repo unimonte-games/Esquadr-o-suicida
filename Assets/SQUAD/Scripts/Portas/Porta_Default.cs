@@ -223,7 +223,7 @@ public class Porta_Default : MonoBehaviour
 
             if (Peace)
             {
-                if (CountPeaceList <= 30)// << é preciso mudar esse valor alguma hora
+                if (CountPeaceList <= 250)
                 {
                     PeaceList[CountPeaceList] = Enemy;
                     CountPeaceList++;
@@ -498,8 +498,8 @@ public class Porta_Default : MonoBehaviour
 
             TimeToSurviveInPeace = 30f;
             OnPeace.GetComponent<PeaceCounter>().PD = P;
-           
 
+            PUI.SetOnPeace();
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }
 
@@ -522,12 +522,14 @@ public class Porta_Default : MonoBehaviour
 
     void PeaceOtherSpawn()
     {
-
-        if (CountPeaceList >= 30)// << é preciso mudar esse valor alguma hora
+        if (CountPeaceList >= 20)// << é preciso mudar esse valor alguma hora
         {
             Debug.Log("Esse é o maximo!");
             return;
         }
+
+        TimeToSurviveInPeace += 3;
+
         Debug.Log("Droparam +2!");
         for (int i = 0; i <= 1; i++)//Dropam +2 a cada morte
         {
@@ -559,7 +561,6 @@ public class Porta_Default : MonoBehaviour
                 PeaceList[i] = null;
             }
         }
-
         
         CancelInvoke("OrdaRepeatWave");
         CancelInvoke("GoToSpawn");
