@@ -82,6 +82,8 @@ public class PlayerUI : MonoBehaviour
     public GameObject P1_target;
     public GameObject P2_target;
 
+    public GameObject roomClean;
+
     WeaponList WL;
     
     private void Awake()
@@ -357,9 +359,14 @@ public class PlayerUI : MonoBehaviour
         sE.SetActive(false);
         P_wave.SetActive(false);
 
+        roomClean.SetActive(true);
+        Invoke("CancelRoomClean",3);
     }
 
-
+    void CancelRoomClean()
+    {
+        roomClean.SetActive(false);
+    }
 
     
 
