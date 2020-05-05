@@ -7,9 +7,11 @@ public class GetObject : MonoBehaviour
     public Player P;
     GetObject Gobj;
     bool InArea;
+    SphereCollider SC;
 
     private void Start()
     {
+        SC = GetComponent<SphereCollider>();
         Gobj = GetComponent<GetObject>();
     }
 
@@ -62,5 +64,14 @@ public class GetObject : MonoBehaviour
     {
         this.gameObject.transform.position = P.ObjSpawn.position;
         this.gameObject.transform.parent = P.ObjSpawn;
+
+        SC.enabled = false;
     }
+
+    public void Drop()
+    {
+        SC.enabled = true;
+    }
+
+    
 }

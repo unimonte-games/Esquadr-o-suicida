@@ -78,6 +78,10 @@ public class PlayerUI : MonoBehaviour
     Porta_Default P;
     int YourEscolha;
 
+    public GameObject P_wave;
+    public GameObject P1_target;
+    public GameObject P2_target;
+
     WeaponList WL;
     
     private void Awake()
@@ -281,27 +285,46 @@ public class PlayerUI : MonoBehaviour
 
     public void SetRoulleteDecision(int ID)
     {
-        suaEscolha.sprite = AllMonsters[ID];
+
+        if(ID == 0)
+        {
+            suaEscolha.sprite = Escolha1.sprite;
+        }
+
+
+        if (ID == 1)
+        {
+            suaEscolha.sprite = Escolha2.sprite;
+        }
+
+
+        if (ID == 2)
+        {
+            suaEscolha.sprite = Escolha3.sprite;
+        }
+        
         YourEscolha = ID;
 
-        Invoke("StartingWaveRoulette", 7);
+        Invoke("StartingWaveRoulette", 2);
         StartCoroutine("SetDecisionVisuals");
     }
 
     IEnumerator SetDecisionVisuals()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         E1.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         E2.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         E3.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         E1.SetActive(false);
         E2.SetActive(false);
         E3.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        RL_wave.SetActive(false);
         sE.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         sE.SetActive(false);
 
     }
@@ -309,7 +332,21 @@ public class PlayerUI : MonoBehaviour
     void StartingWaveRoulette ()
     {
         P.StartRoulette(YourEscolha);
-        RL_wave.SetActive(false);
+        
+    }
+
+    public void SetProtect(int Player)
+    {
+        if(Player == 1)
+        {
+            P1_target.SetActive(true);
+        }
+        if(Player == 2)
+        {
+            P2_target.SetActive(true);
+        }
+
+        P_wave.SetActive(true);
     }
 
     public void CancelAllSurpriseWaves()
@@ -317,7 +354,9 @@ public class PlayerUI : MonoBehaviour
         S_wave.SetActive(false);
         R_wave.SetActive(false);
         O_wave.SetActive(false);
-       
+        sE.SetActive(false);
+        P_wave.SetActive(false);
+
     }
 
 

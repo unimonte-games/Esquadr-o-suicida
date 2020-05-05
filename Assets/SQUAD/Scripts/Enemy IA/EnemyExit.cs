@@ -39,6 +39,7 @@ public class EnemyExit : MonoBehaviour
         if (other.gameObject.name == "Player1" && ES.Player1_inArea)
         {
             
+            
             ES.PlayerInArea = false;
             ES.Player1_inArea = false;
 

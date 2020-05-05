@@ -6,6 +6,7 @@ public class EnemyEnter : MonoBehaviour
 {
     public EnemyStats ES;
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player1" && !ES.Player1_inArea && !ES.PlayerInArea)

@@ -216,6 +216,7 @@ public class Porta_Default : MonoBehaviour
             {
                EnemyStats enemyRef = Enemy.GetComponent<EnemyStats>();
 
+                
                 enemyRef.PlayerTarget = OnPlayer;
                 enemyRef.LC = LC;
                 enemyRef.InTarget = true;
@@ -459,12 +460,16 @@ public class Porta_Default : MonoBehaviour
                 {
                     OnPlayer = player1.transform;
                     Debug.Log("Player 1 é o Alvo!");
+
+                    PUI.SetProtect(1);
                 }
 
                 if (LC.P2_inRoom)
                 {
                     OnPlayer = player2.transform;
                     Debug.Log("Player 2 é o Alvo!");
+
+                    PUI.SetProtect(2);
                 }
             }
             else
@@ -474,15 +479,17 @@ public class Porta_Default : MonoBehaviour
                 {
                     OnPlayer = player1.transform;
                     Debug.Log("Player 1 é o Alvo!");
+
+                    PUI.SetProtect(1);
                 }
                 if (SelectPlayer >= 6)
                 {
                     OnPlayer = player2.transform;
                     Debug.Log("Player 2 é o Alvo!");
+
+                    PUI.SetProtect(2);
                 }
             }
-
-           
 
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }

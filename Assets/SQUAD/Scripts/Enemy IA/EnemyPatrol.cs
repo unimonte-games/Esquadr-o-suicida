@@ -52,7 +52,7 @@ public class EnemyPatrol : MonoBehaviour
         startWaitTime = Random.Range(0, 5);
         waitTime = startWaitTime;
 
-
+       
     }
 
     void FixedUpdate()

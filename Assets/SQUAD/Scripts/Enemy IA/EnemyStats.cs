@@ -51,6 +51,11 @@ public class EnemyStats : MonoBehaviour
     {
         Life_Atual = Random.Range(Life_min, Life_max);
         L_Max = Life_Atual;
+
+        if (InTarget)
+        {
+            OnAttack();
+        }
     }
 
     private void FixedUpdate()
@@ -236,6 +241,12 @@ public class EnemyStats : MonoBehaviour
 
     public void OnPatrol()
     {
+        if (InTarget)
+        {
+            Debug.Log("Player fixo, continuar seguindo.");
+            return;
+        }
+
         EP.OnAttack = false;
         AttackArea.SetActive(false);
         EP.ObjectHit();

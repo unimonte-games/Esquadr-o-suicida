@@ -40,7 +40,7 @@ public class Decision : MonoBehaviour
             }
 
             timeToClick += Time.deltaTime;
-            if (Input.GetKeyDown(Selecionar) && timeToClick >= 1f)
+            if (Input.GetKeyDown(Selecionar) && timeToClick >= 0.5f)
             {
                 timeToClick = 0f;
                 Escolha[Select].SetActive(false);

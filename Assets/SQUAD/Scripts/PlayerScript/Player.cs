@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public GameObject Object;
     public Transform ObjSpawn;
     public GetObject Gobj;
+    bool GetObj;
 
     public int Gold; //Ouro do Jogador
     public float LifeBar;//Vida do jogador em Numero
@@ -332,24 +333,28 @@ public class Player : MonoBehaviour
             Debug.Log("Controle 2 Ativado");
         }
 
-        if (Input.GetKeyDown(Selecionar_set) && ObjectInArea)
+        if (Input.GetKeyDown(Selecionar_set) && ObjectInArea && !GetObj)
         {
             Gobj.Get();
             UsingItenDinamic = true;
             playerWeapon.enabled = false;
+            GetObj = true;
 
             Debug.Log("Pegou Objeto");
         }
 
-        if (Input.GetKeyDown(Dropar_set) && ObjectInArea)
+        if (Input.GetKeyDown(Dropar_set) && ObjectInArea && GetObj)
         {
             GameObject temp = GameObject.Find("Objetos");
             Object.transform.parent = temp.transform;
-            
+
+            Gobj.Drop();
+
             ObjectInArea = false;
 
             UsingItenDinamic = false;
             playerWeapon.enabled = true;
+            GetObj = false;
 
             Debug.Log("Soltou Objeto");
         }
