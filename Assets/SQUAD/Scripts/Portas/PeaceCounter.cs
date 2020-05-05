@@ -6,16 +6,22 @@ using UnityEngine.UI;
 public class PeaceCounter : MonoBehaviour
 {
     public Porta_Default PD;
-    public float TimeToSurvivor;
     float CounterToSurvivor;
     public Image peaceBar;
 
-    void FixedUpdate()
+    private void OnEnable()
     {
-        CounterToSurvivor += 0.01f;
-        peaceBar.fillAmount = CounterToSurvivor / TimeToSurvivor;
-        if (CounterToSurvivor >= TimeToSurvivor)
+        InvokeRepeating("Countdown", 0, 1);
+    }
+
+    void Countdown()
+    {
+        CounterToSurvivor++;
+        peaceBar.fillAmount = CounterToSurvivor / PD.TimeToSurviveInPeace;
+
+        if (CounterToSurvivor >= PD.TimeToSurviveInPeace)
         {
+            CancelInvoke("Countdown");
             PD.PeaceDestroyAllEnemys();
         }
     }

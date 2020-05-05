@@ -56,6 +56,8 @@ public class PlayerUI : MonoBehaviour
     public GameObject R_wave;
     public Image Rescue_bar;
 
+    public GameObject O_wave;
+
 
     WeaponList WL;
     
@@ -226,6 +228,11 @@ public class PlayerUI : MonoBehaviour
     {
         float Rescue_cal = Life / 25;
         Rescue_bar.fillAmount = Rescue_cal; 
+    }
+
+    public void SetOnPeace()
+    {
+        O_wave.SetActive(true);
     }
 
     public void CancelAllSurpriseWaves()

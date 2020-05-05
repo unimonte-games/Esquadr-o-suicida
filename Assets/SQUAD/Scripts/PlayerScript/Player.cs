@@ -479,7 +479,10 @@ public class Player : MonoBehaviour
 
             if (PD.Protect)
             {
-                PD.OnPlayer = PD.player2.transform;
+                if (PD.player2 != null)
+                {
+                    PD.OnPlayer = PD.player2.transform;
+                }
             }
 
             if (PD.Target_Wave)
@@ -504,7 +507,10 @@ public class Player : MonoBehaviour
 
             if (PD.Protect)
             {
-                PD.OnPlayer = PD.player1.transform;
+                if (PD.player1 != null)
+                {
+                    PD.OnPlayer = PD.player1.transform;
+                }
             }
 
             if (PD.Target_Wave)

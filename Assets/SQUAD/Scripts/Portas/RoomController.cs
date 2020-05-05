@@ -38,6 +38,7 @@ public class RoomController : MonoBehaviour
 
     void Start()
     {
+        PUI = FindObjectOfType<PlayerUI>();
         LC = FindObjectOfType<LevelController>();
         mapSystem = FindObjectOfType<MapSystem>();
         
