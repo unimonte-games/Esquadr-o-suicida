@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
             UpdateController();
 
             Interface.P1 = MapaGatilho;
-
+            
 
         }
         else
@@ -128,6 +128,7 @@ public class Player : MonoBehaviour
             UpdateController();
 
             Interface.P2 = MapaGatilho;
+            
 
         }
 

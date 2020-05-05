@@ -50,8 +50,15 @@ public class PlayerUI : MonoBehaviour
     public Image P2_Weapon1;
     public Image P2_Weapon2;
 
-    WeaponList WL;
+    public Text Surprise;
+    public GameObject S_wave;
 
+    public GameObject R_wave;
+    public Image Rescue_bar;
+
+
+    WeaponList WL;
+    
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -195,6 +202,7 @@ public class PlayerUI : MonoBehaviour
             P1_Weapon2.sprite = P1_Weapon1.sprite;
             P1_Weapon1.sprite = WL.wIcon[wIcon];
            
+
         }
         else
         {
@@ -203,7 +211,29 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    public void SetSurprise(int MaxDestroy)
+    {
+        Surprise.text = "" + MaxDestroy;
+        S_wave.SetActive(true);
+    }
 
+    public  void SetRescue()
+    {
+        R_wave.SetActive(true);
+    }
 
+    public void SetRescueDamage (int Life)
+    {
+        float Rescue_cal = Life / 25;
+        Rescue_bar.fillAmount = Rescue_cal; 
+    }
+
+    public void CancelAllSurpriseWaves()
+    {
+        S_wave.SetActive(false);
+        R_wave.SetActive(false);
+    }
+
+    
 
 }

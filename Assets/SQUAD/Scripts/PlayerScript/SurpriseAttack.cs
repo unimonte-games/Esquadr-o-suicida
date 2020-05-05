@@ -14,25 +14,31 @@ public class SurpriseAttack : MonoBehaviour
     public Porta_Default PD;
     LevelController LC;
 
+    PlayerUI PUI;
+
     float tempFrame;
 
     private void Awake()
     {
+        PUI = FindObjectOfType<PlayerUI>();
         LC = FindObjectOfType<LevelController>();
     }
 
     private void FixedUpdate()
     {
-        tempFrame += 0.1f;
-        if (Solo && Input.GetKeyDown(PlayerSolo) && tempFrame > 1f)
+        if (Solo)
         {
-            tempFrame = 0f;
-
-            LifeMax -= 1;
-            if (LifeMax <= 0)
+            tempFrame += Time.deltaTime;
+            if (Input.GetKeyDown(PlayerSolo) && tempFrame > 1f)
             {
-                PD.RescueComplete();
+                tempFrame = 0f;
 
+                LifeMax -= 1;
+                PUI.SetRescueDamage(LifeMax);
+                if (LifeMax <= 0)
+                {
+                    PD.RescueComplete();
+                }
             }
         }
     }
@@ -44,7 +50,8 @@ public class SurpriseAttack : MonoBehaviour
             other.gameObject.SetActive(false);
 
             LifeMax -= 1;
-            if(LifeMax <= 0)
+            PUI.SetRescueDamage(LifeMax);
+            if (LifeMax <= 0)
             {
                 PD.RescueComplete();
             } 

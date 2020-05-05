@@ -71,8 +71,11 @@ public class Porta_Default : MonoBehaviour
 
     LevelController LC;
 
+    PlayerUI PUI;
+
     private void Awake()
     {
+        PUI = FindObjectOfType<PlayerUI>();
         LC = FindObjectOfType<LevelController>();
         StartingWave = false;
     }
@@ -368,6 +371,7 @@ public class Porta_Default : MonoBehaviour
             Orda_Wave = false;
             Multiple_Wave = true;
 
+            PUI.SetSurprise(AtualMonsters);
             Invoke("GoToSpawn", TimerToSpawn);
         }
 
@@ -434,6 +438,7 @@ public class Porta_Default : MonoBehaviour
             Orda_Wave = false;
             Multiple_Wave = true;
 
+            PUI.SetRescue();
             Invoke("GoToSpawn", TimerToSpawn);
 
         }

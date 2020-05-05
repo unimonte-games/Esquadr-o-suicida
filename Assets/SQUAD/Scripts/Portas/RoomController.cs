@@ -33,6 +33,7 @@ public class RoomController : MonoBehaviour
     public GameObject[] C_Timer;
 
     public MapSystem mapSystem;
+    PlayerUI PUI;
   
 
     void Start()
@@ -181,6 +182,7 @@ public class RoomController : MonoBehaviour
             CompleteMissions++;
         }
 
+        PUI.CancelAllSurpriseWaves();
         RoomClean();
 
     }
