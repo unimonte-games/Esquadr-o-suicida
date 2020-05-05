@@ -6,7 +6,7 @@ public class SurpriseAttack : MonoBehaviour
 {
     public bool Player1;
     public bool Player2;
-    public int LifeMax = 25;
+    public float LifeMax = 50;
 
     public bool Solo;
     public KeyCode PlayerSolo;

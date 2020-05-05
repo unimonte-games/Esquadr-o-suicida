@@ -50,7 +50,6 @@ public class PlayerUI : MonoBehaviour
     public Image P2_Weapon1;
     public Image P2_Weapon2;
 
-    public Text Surprise;
     public GameObject S_wave;
 
     public GameObject R_wave;
@@ -58,6 +57,26 @@ public class PlayerUI : MonoBehaviour
 
     public GameObject O_wave;
 
+    public GameObject RL_wave;
+    public Sprite[] AllMonsters;
+
+    public GameObject E1;
+    public GameObject E2;
+    public GameObject E3;
+
+    public Image Escolha1;
+    public Image Escolha2;
+    public Image Escolha3;
+
+    public int value1;
+    public int value2;
+    public int value3;
+
+    public Decision D;
+    public Image suaEscolha;
+    public GameObject sE;
+    Porta_Default P;
+    int YourEscolha;
 
     WeaponList WL;
     
@@ -213,9 +232,8 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    public void SetSurprise(int MaxDestroy)
+    public void SetSurprise()
     {
-        Surprise.text = "" + MaxDestroy;
         S_wave.SetActive(true);
     }
 
@@ -224,7 +242,7 @@ public class PlayerUI : MonoBehaviour
         R_wave.SetActive(true);
     }
 
-    public void SetRescueDamage (int Life)
+    public void SetRescueDamage (float Life)
     {
         float Rescue_cal = Life / 25;
         Rescue_bar.fillAmount = Rescue_cal; 
@@ -235,12 +253,74 @@ public class PlayerUI : MonoBehaviour
         O_wave.SetActive(true);
     }
 
+    public void SetRoulette(KeyCode P1, KeyCode P2, Porta_Default PD)
+    {
+        P = PD;
+
+        value1 = Random.Range(0, 12);
+        value2 = Random.Range(0, 12);
+        value3 = Random.Range(0, 12);
+
+        int R_player = Random.Range(0, 1);
+        if(R_player == 0)
+        {
+            D.Selecionar = P1;
+        }
+        if(R_player == 1)
+        {
+            D.Selecionar = P2;
+        }
+
+        Escolha1.sprite = AllMonsters[value1];
+        Escolha2.sprite = AllMonsters[value2];
+        Escolha3.sprite = AllMonsters[value3];
+
+        RL_wave.SetActive(true);
+
+    }
+
+    public void SetRoulleteDecision(int ID)
+    {
+        suaEscolha.sprite = AllMonsters[ID];
+        YourEscolha = ID;
+
+        Invoke("StartingWaveRoulette", 7);
+        StartCoroutine("SetDecisionVisuals");
+    }
+
+    IEnumerator SetDecisionVisuals()
+    {
+        yield return new WaitForSeconds(1f);
+        E1.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        E2.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        E3.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        E1.SetActive(false);
+        E2.SetActive(false);
+        E3.SetActive(false);
+        sE.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        sE.SetActive(false);
+
+    }
+
+    void StartingWaveRoulette ()
+    {
+        P.StartRoulette(YourEscolha);
+        RL_wave.SetActive(false);
+    }
+
     public void CancelAllSurpriseWaves()
     {
         S_wave.SetActive(false);
         R_wave.SetActive(false);
         O_wave.SetActive(false);
+       
     }
+
+
 
     
 

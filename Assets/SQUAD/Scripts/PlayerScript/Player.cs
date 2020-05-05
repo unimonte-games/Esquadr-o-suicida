@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
     public bool DropKey;
     public Transform DropKeySpawn;
 
-    KeyCode Selecionar_set;
+    public KeyCode Selecionar_set;
     public KeyCode Dropar_set;
     public KeyCode Accept;
 
@@ -474,7 +474,10 @@ public class Player : MonoBehaviour
 
             if (PD.Rescue)
             {
-                PD.player2.SA.SetSoloPlayer(PD.player2.Gatilho);
+                if (PD.player2 != null)
+                {
+                    PD.player2.SA.SetSoloPlayer(PD.player2.Gatilho);
+                }
             }
 
             if (PD.Protect)
@@ -502,7 +505,10 @@ public class Player : MonoBehaviour
 
             if (PD.Rescue)
             {
-                PD.player1.SA.SetSoloPlayer(PD.player1.Gatilho);
+                if (PD.player1 != null)
+                {
+                    PD.player1.SA.SetSoloPlayer(PD.player1.Gatilho);
+                }
             }
 
             if (PD.Protect)

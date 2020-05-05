@@ -372,7 +372,7 @@ public class Porta_Default : MonoBehaviour
             Orda_Wave = false;
             Multiple_Wave = true;
 
-            PUI.SetSurprise(AtualMonsters);
+            PUI.SetSurprise();
             Invoke("GoToSpawn", TimerToSpawn);
         }
 
@@ -503,7 +503,7 @@ public class Porta_Default : MonoBehaviour
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
         }
 
-        if (Type >= 26 && Type <= 30)//All Enemys
+        if (Type >= 26 && Type <= 30)//Roulete
         {
             Debug.Log("All Enemys!");
             AllTargetEnemy = true;
@@ -512,12 +512,30 @@ public class Porta_Default : MonoBehaviour
             Orda_Wave = false;
             Multiple_Wave = true;
 
-            EnemyIDforTarget = Random.Range(0, 12);
+            if(player1 != null && player2 != null)
+            {
+                PUI.SetRoulette(player1.Selecionar_set, player2.Selecionar_set, this);
+            }
 
-            Invoke("GoToSpawn", TimerToSpawn);
+            if (player1 != null && player2 == null)
+            {
+                PUI.SetRoulette(player1.Selecionar_set, player1.Selecionar_set, this);
+            }
+
+            if (player1 == null && player2 != null)
+            {
+                PUI.SetRoulette(player2.Selecionar_set, player2.Selecionar_set, this);
+            }
+     
         }
 
 
+    }
+
+    public void StartRoulette(int ID)
+    {
+        EnemyIDforTarget = ID;
+        Invoke("GoToSpawn", TimerToSpawn);
     }
 
     void PeaceOtherSpawn()

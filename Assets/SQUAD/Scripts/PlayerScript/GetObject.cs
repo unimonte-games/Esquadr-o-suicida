@@ -6,26 +6,29 @@ public class GetObject : MonoBehaviour
 {
     public Player P;
     GetObject Gobj;
+    bool InArea;
 
     private void Start()
     {
         Gobj = GetComponent<GetObject>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "Player1")
+        if (other.gameObject.name == "Player1" && !InArea)
         {
+            InArea = true;
             P = other.GetComponent<Player>();
-
+            
             P.Object = this.gameObject;
             P.ObjectInArea = true;
             P.Gobj = Gobj;
             return;
         }
 
-        if (other.gameObject.name == "Player2")
+        if (other.gameObject.name == "Player2" && !InArea)
         {
+            InArea = true;
             P = other.GetComponent<Player>();
 
             P.Object = this.gameObject;
@@ -39,7 +42,8 @@ public class GetObject : MonoBehaviour
     {
 
         if (other.gameObject.name == "Player1")
-        {  
+        {
+            InArea = false;
             P.ObjectInArea = false;
             P.Object = null;
             return;
@@ -47,6 +51,7 @@ public class GetObject : MonoBehaviour
 
         if (other.gameObject.name == "Player2")
         {
+            InArea = false;
             P.ObjectInArea = false;
             P.Object = null;
             return;
