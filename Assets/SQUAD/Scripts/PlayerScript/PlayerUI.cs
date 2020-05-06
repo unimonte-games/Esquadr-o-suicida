@@ -102,7 +102,7 @@ public class PlayerUI : MonoBehaviour
             float LifeCal = Life / LifeMax;
             P1_LifeUI.fillAmount = LifeCal;
 
-           if(Life < Size)
+           if(Life <= Size)
             {
                 WarningUI.SetActive(true);
             }
@@ -209,6 +209,7 @@ public class PlayerUI : MonoBehaviour
             float LevelCal = L_atual / L_max;
             P2_NvUI.fillAmount = LevelCal;
         }
+
     }
 
     public void ChangeGold(bool Player, float Gold)

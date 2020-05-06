@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float LifeBar;//Vida do jogador em Numero
     public float LifeBar_max = 10;
     float LifeSize; //1/4 da vida
+    public float Size;
     public float ManaBar; //Energia do jogador para usar as armas
     public float ManaBar_max;
     public float TimeToIncrement; //add mana
@@ -81,6 +82,8 @@ public class Player : MonoBehaviour
     public GameObject Rescue_Object;
     public SurpriseAttack SA;
 
+    public GameObject WarningFX;
+
     public PlayerMovement playerMovement;
     public PlayerWeapon playerWeapon;
     public Porta_Default PD;
@@ -101,15 +104,11 @@ public class Player : MonoBehaviour
         Interface = FindObjectOfType<UI>();
         PL = FindObjectOfType<PlayerLevel>();
 
-        LifeBar = LifeBar_max;
-        ManaBar = ManaBar_max;
-        
-        SetWarning();
-        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max,LifeSize);
+        UpdateLevel();
+
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
         PUI.ChangeGold(PlayerType, Gold);
-
-        UpdateLevel();
+        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max, LifeSize);  
     }
 
     private void Start()
@@ -420,22 +419,30 @@ public class Player : MonoBehaviour
         isDrop = false;
     }
 
-    void SetWarning()
+    public void SetWarning()
     {
-        float cal = LifeBar / 4;
+        float cal =  LifeBar_max / Size;
         LifeSize = cal;
     }
 
     public void SetDamage()
     {
-       
         if (LifeBar <= 0)
         {
             LifeBar = 0f;
             PlayerIsDead();
         }
 
-        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max,LifeSize);
+        if(LifeBar < LifeSize)
+        {
+            WarningFX.SetActive(true);
+        }
+        else
+        {
+            WarningFX.SetActive(false);
+        }
+
+        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max, LifeSize);
     }
 
     public void SetMana()
@@ -472,7 +479,6 @@ public class Player : MonoBehaviour
     {
         PL.ChangeYourStats(this, playerMovement);
     }
-  
 
     void PlayerIsDead()
     {

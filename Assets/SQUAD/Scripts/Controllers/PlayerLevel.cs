@@ -25,6 +25,7 @@ public class PlayerLevel : MonoBehaviour
             PlayerMovement.speed = 6f;
             PlayerMovement.downSpeed = 4f;
             PlayerMovement.TurnSpeed = 100f;
+            Player.Size = 3; //3 minimo
 
 
         }
@@ -35,6 +36,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 15;
             Player.ManaBar_max = 30;
             
+
         }
 
         if (Player.Level == 2)
@@ -43,6 +45,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 20;
             Player.ManaBar_max = 35;
             PlayerMovement.downSpeed = 4.5f;
+            
             //Turn ON
 
         }
@@ -63,6 +66,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 30;
             Player.ManaBar_max = 45;
             PlayerMovement.downSpeed = 5f;
+            Player.Size = 4;
 
         }
 
@@ -72,8 +76,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 45;
             Player.ManaBar_max = 50;
             PlayerMovement.TurnSpeed = 115f;
-            //Esquiva Comum
-
+           
 
         }
 
@@ -83,6 +86,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 60;
             Player.ManaBar_max = 60;
             PlayerMovement.downSpeed = 5.5f;
+            Player.Size = 5;
 
         }
 
@@ -114,6 +118,7 @@ public class PlayerLevel : MonoBehaviour
             Player.ManaBar_max = 90;
             PlayerMovement.TurnSpeed = 125f;
             //Habilidade 2
+            Player.Size = 6;
         }
 
         if (Player.Level == 10)
@@ -141,6 +146,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 175;
             Player.ManaBar_max = 150;
             Player.TimeToIncrement = 2f;
+            Player.Size = 8;
 
         }
 
@@ -151,6 +157,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 200;
             Player.ManaBar_max = 175;
             PlayerMovement.speed = 8f;
+            Player.Size = 9;
         }
 
         if (Player.Level == 14)
@@ -160,7 +167,7 @@ public class PlayerLevel : MonoBehaviour
             Player.ManaBar_max = 200;
             PlayerMovement.downSpeed = 7f;
             PlayerMovement.TurnSpeed = 130f;
-
+            Player.Size = 10;
         }
 
         if (Player.Level == 15)
@@ -169,7 +176,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 250;
             Player.ManaBar_max = 225;
             Player.TimeToIncrement = 2.5f;
-            
+   
         }
 
         if (Player.Level == 16)
@@ -177,6 +184,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 1100f;
             Player.LifeBar_max = 275;
             Player.ManaBar_max = 250;
+
         }
 
         if (Player.Level == 17)
@@ -211,15 +219,17 @@ public class PlayerLevel : MonoBehaviour
             Player.ManaBar_max = 400;
             Player.TimeToIncrement = 3.5f;
             PlayerMovement.speed = 8.5f;
+            Player.Size = 11;
 
         }
 
         if (Player.Level == 21)
         {
             Player.L_max = 2200f;
-            Player.LifeBar_max = 475;
+            Player.LifeBar_max = 400;
             Player.ManaBar_max = 425;
             PlayerMovement.downSpeed = 8f;
+  
         }
 
         if (Player.Level == 22)
@@ -236,6 +246,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 450;
             Player.ManaBar_max = 465;
 
+
         }
 
         if (Player.Level == 24)
@@ -243,6 +254,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 3500f;
             Player.LifeBar_max = 475;
             Player.ManaBar_max = 485;
+            Player.Size = 12;
 
         }
 
@@ -252,8 +264,11 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 500;
             Player.ManaBar_max = 500;
             Player.TimeToIncrement = 4f;
+
         }
 
+        Player.SetWarning();
+        Player.SetDamage();
         PUI.ChangeLevel(Player.PlayerType, Player.Level, Player.L_atual, Player.L_max);
 
     }
