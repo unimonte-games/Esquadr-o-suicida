@@ -94,13 +94,11 @@ public class Player : MonoBehaviour
     LevelController LC;
     UI Interface;
 
-    public GameObject Life_Hud;
+    public GameObject Life_Hud; 
 
     public GameObject PlayerDead_Tree;
 
-
-
-    private void Awake()
+    private void Start()
     {
         LC = FindObjectOfType<LevelController>();
         PUI = FindObjectOfType<PlayerUI>();
@@ -111,11 +109,7 @@ public class Player : MonoBehaviour
 
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
         PUI.ChangeGold(PlayerType, Gold);
-        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max, LifeSize);  
-    }
-
-    private void Start()
-    {
+        PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max, LifeSize);
 
         if (PlayerType)
         {
