@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public float Level;
     public float L_atual;
     public float L_max;
+    public GameObject LevelFX;
     
     public bool UsingItenDinamic; //Se está usando algum item dinamico
 
@@ -96,6 +97,8 @@ public class Player : MonoBehaviour
     public GameObject Life_Hud;
 
     public GameObject PlayerDead_Tree;
+
+
 
     private void Awake()
     {
@@ -433,7 +436,7 @@ public class Player : MonoBehaviour
             PlayerIsDead();
         }
 
-        if(LifeBar < LifeSize)
+        if(LifeBar <= LifeSize)
         {
             WarningFX.SetActive(true);
         }
@@ -468,6 +471,10 @@ public class Player : MonoBehaviour
         {
             L_atual -= L_max;
             Level++;
+
+            LevelFX.SetActive(true);
+            Invoke("CancelFX", 3);
+
             UpdateLevel();
             return;
         }
@@ -478,6 +485,11 @@ public class Player : MonoBehaviour
     public void UpdateLevel()
     {
         PL.ChangeYourStats(this, playerMovement);
+    }
+
+    void CancelFX()
+    {
+        LevelFX.SetActive(false);
     }
 
     void PlayerIsDead()
