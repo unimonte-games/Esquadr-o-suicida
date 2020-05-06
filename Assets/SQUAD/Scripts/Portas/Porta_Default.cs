@@ -85,7 +85,6 @@ public class Porta_Default : MonoBehaviour
     {
         Debug.Log("Iniciando Wave");
 
-
         if (Orda_Wave == false)
         {
             AtualMonsters = 0;
@@ -719,10 +718,12 @@ public class Porta_Default : MonoBehaviour
             StartingWave = true;
             if (Orda_Wave)
             {
+                PUI.StartRoom();
                 InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
             }
             else
             {
+                PUI.StartRoom();
                 Invoke("GoToSpawn", TimerToSpawn);
             }
 

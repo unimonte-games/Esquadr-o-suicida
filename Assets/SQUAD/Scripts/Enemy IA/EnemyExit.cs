@@ -36,7 +36,7 @@ public class EnemyExit : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Player1" && ES.Player1_inArea)
+        if (other.gameObject.name == "Player1" && ES.Player1_inArea && !ES.InTarget)
         {
             
             
@@ -49,7 +49,7 @@ public class EnemyExit : MonoBehaviour
         }
 
 
-        if (other.gameObject.name == "Player2" && ES.Player2_inArea)
+        if (other.gameObject.name == "Player2" && ES.Player2_inArea && !ES.InTarget)
         {
             
             ES.PlayerInArea = false;

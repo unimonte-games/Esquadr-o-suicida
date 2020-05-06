@@ -67,6 +67,12 @@ public class EnemyStats : MonoBehaviour
                 PlayerTarget = P_default.OnPlayer;
                 ChangeTarget = true;
             }
+
+            if(LC.SoloPlayer && LC.P1_dead && LC.P2_dead)
+            {
+                InTarget = false;
+                OnPatrol(); 
+            }
         }
     }
 

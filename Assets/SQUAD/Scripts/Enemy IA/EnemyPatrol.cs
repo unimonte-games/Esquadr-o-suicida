@@ -152,7 +152,6 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-
     IEnumerator ReLocal()
     {
         if (OnAttack)

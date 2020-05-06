@@ -83,6 +83,7 @@ public class PlayerUI : MonoBehaviour
     public GameObject P2_target;
 
     public GameObject roomClean;
+    public GameObject startRoom;
 
     WeaponList WL;
     
@@ -351,6 +352,22 @@ public class PlayerUI : MonoBehaviour
         P_wave.SetActive(true);
     }
 
+    void CancelRoomClean()
+    {
+        roomClean.SetActive(false);
+    }
+
+    void CancelStartRoom()
+    {
+        startRoom.SetActive(false);
+    }
+
+    public void StartRoom()
+    {
+        startRoom.SetActive(true);
+        Invoke("CancelStartRoom", 2);
+    }
+
     public void CancelAllSurpriseWaves()
     {
         S_wave.SetActive(false);
@@ -363,10 +380,7 @@ public class PlayerUI : MonoBehaviour
         Invoke("CancelRoomClean",3);
     }
 
-    void CancelRoomClean()
-    {
-        roomClean.SetActive(false);
-    }
+    
 
     
 

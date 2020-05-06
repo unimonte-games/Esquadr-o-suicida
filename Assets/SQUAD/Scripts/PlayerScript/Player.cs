@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
     public PlayerWeapon playerWeapon;
     public Porta_Default PD;
     public PlayerUI PUI;
+    public PlayerLevel PL;
 
     LevelController LC;
     UI Interface;
@@ -98,6 +99,7 @@ public class Player : MonoBehaviour
         LC = FindObjectOfType<LevelController>();
         PUI = FindObjectOfType<PlayerUI>();
         Interface = FindObjectOfType<UI>();
+        PL = FindObjectOfType<PlayerLevel>();
 
         LifeBar = LifeBar_max;
         ManaBar = ManaBar_max;
@@ -105,8 +107,9 @@ public class Player : MonoBehaviour
         SetWarning();
         PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max,LifeSize);
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
-        PUI.ChangeLevel(PlayerType, Level, L_atual, L_max);
         PUI.ChangeGold(PlayerType, Gold);
+
+        UpdateLevel();
     }
 
     private void Start()
@@ -340,6 +343,7 @@ public class Player : MonoBehaviour
             playerWeapon.enabled = false;
             GetObj = true;
 
+            playerWeapon.DisabledItem();
             Debug.Log("Pegou Objeto");
         }
 
@@ -356,6 +360,7 @@ public class Player : MonoBehaviour
             playerWeapon.enabled = true;
             GetObj = false;
 
+            playerWeapon.EnabledItem();
             Debug.Log("Soltou Objeto");
         }
 
@@ -456,19 +461,18 @@ public class Player : MonoBehaviour
         {
             L_atual -= L_max;
             Level++;
-            NextLevel();
+            UpdateLevel();
             return;
         }
 
         PUI.ChangeLevel(PlayerType, Level, L_atual, L_max);
     }
 
-    void NextLevel()
+    public void UpdateLevel()
     {
-        L_max = L_max * 2;
-        PUI.ChangeLevel(PlayerType, Level, L_atual, L_max);
-
+        PL.ChangeYourStats(this, playerMovement);
     }
+  
 
     void PlayerIsDead()
     {
