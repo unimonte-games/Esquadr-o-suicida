@@ -32,9 +32,9 @@ public class EnemyStats : MonoBehaviour
     public LevelController LC;
     public Porta_Default P_default;
     public GameObject EnergyCoin;
-    bool ChangeTarget;
 
-    [Range(30,100)]
+
+    [Range(30, 100)]
     public int Gold_rare;
     bool Drop;
     int tempRandom;
@@ -44,36 +44,16 @@ public class EnemyStats : MonoBehaviour
     Vector3 size;
 
     public EnemyPatrol EP;
-    
+
     public float SizeLife;
 
     private void Start()
     {
+        LC = FindObjectOfType<LevelController>();
+
         Life_Atual = Random.Range(Life_min, Life_max);
         L_Max = Life_Atual;
 
-        if (InTarget)
-        {
-            OnAttack();
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (InTarget)
-        {
-            if (LC.SoloPlayer && LC.P1_dead || LC.P2_dead && !ChangeTarget)
-            {
-                PlayerTarget = P_default.OnPlayer;
-                ChangeTarget = true;
-            }
-
-            if(LC.SoloPlayer && LC.P1_dead && LC.P2_dead)
-            {
-                InTarget = false;
-                OnPatrol(); 
-            }
-        }
     }
 
     private void Awake()
@@ -150,7 +130,7 @@ public class EnemyStats : MonoBehaviour
                 GameObject hit = Instantiate(HitDamage, spawnDamage.position, spawnDamage.rotation) as GameObject;
                 hit.GetComponent<EnemyUIHit>().danoHit = h.Hit_Tech;
                 hit.transform.parent = transform;
-                
+
                 TakeHit();
                 other.gameObject.SetActive(false);
 
@@ -169,7 +149,7 @@ public class EnemyStats : MonoBehaviour
 
             if (Life_Atual <= 0)
             {
-                
+
 
                 if (h.PlayerDestroy)
                 {
@@ -205,7 +185,7 @@ public class EnemyStats : MonoBehaviour
         {
             EP.ChangeSpeed();
         }
-        
+
     }
 
     void CancelInterface()
@@ -238,11 +218,18 @@ public class EnemyStats : MonoBehaviour
 
     public void OnAttack()
     {
+        if (InTarget)
+        {
+            Change();
+
+        }
+
         EP.OnAttack = true;
         EP.moveLocal = PlayerTarget;
         EP.playerTemp = PlayerTarget;
         AttackArea.SetActive(true);
-        
+
+
     }
 
     public void OnPatrol()
@@ -256,6 +243,26 @@ public class EnemyStats : MonoBehaviour
         EP.OnAttack = false;
         AttackArea.SetActive(false);
         EP.ObjectHit();
-        
+
+    }
+
+    public void Change()
+    {
+        if (LC.SoloPlayer && LC.P1_dead || LC.P2_dead)
+        {
+            PlayerTarget = P_default.OnPlayer;
+            EP.moveLocal = P_default.OnPlayer;
+            EP.playerTemp = P_default.OnPlayer;
+
+            Debug.Log("Change Target!");
+
+        }
+
+        if (LC.P1_dead && LC.P2_dead)
+        {
+            InTarget = false;
+            OnPatrol();
+        }
     }
 }
+

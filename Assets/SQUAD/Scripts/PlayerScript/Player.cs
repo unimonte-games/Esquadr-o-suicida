@@ -556,6 +556,14 @@ public class Player : MonoBehaviour
         LC.UpdatePlayers();
     }
 
+    public void Revive()
+    {
+        LifeBar = LifeBar_max / 2;
+        ManaBar = ManaBar_max;
+        
+        UpdateLevel();
+    }
+
 
 }
    

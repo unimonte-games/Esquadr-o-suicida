@@ -100,7 +100,7 @@ public class EnemyPatrol : MonoBehaviour
         {
             InArea = true;
             ToMove = true;
-            
+
         }
 
         if (Vector3.Distance(transform.position, moveLocal.position) > DistanceToPlayer && OnAttack)
@@ -110,6 +110,7 @@ public class EnemyPatrol : MonoBehaviour
             Body.transform.LookAt(moveLocal);
 
             DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
+
         }
 
        
@@ -165,6 +166,7 @@ public class EnemyPatrol : MonoBehaviour
             moveLocal = playerTemp;
             Body.transform.LookAt(moveLocal);
 
+            ES.Change();
 
             Debug.Log("Continuando a busca...");
         }
@@ -190,7 +192,6 @@ public class EnemyPatrol : MonoBehaviour
 
             Invoke("WaitToRotationInObj", timeToRotation);
         }
-      
     }
 
     public void ChangeSpeed()

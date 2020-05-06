@@ -11,7 +11,7 @@ public class DeadCheck : MonoBehaviour
     public GameObject P1;
     public GameObject P2;
 
-    private void Awake()
+    private void Start()
     {
         LC = FindObjectOfType<LevelController>();
         CT = FindObjectOfType<CameraTarget>();
@@ -45,5 +45,26 @@ public class DeadCheck : MonoBehaviour
         
 
         Debug.Log("Player 2 Renasceu");
+    }
+
+
+    public void ReviveInRoom_Player1()
+    {
+        P1.GetComponent<Player>().PD = P2.GetComponent<Player>().PD;
+        
+        LC.P1_dead = false;
+        LC.P1_inRoom = true;
+        P1.GetComponent<Player>().Revive();
+        P1.SetActive(true);
+    }
+
+    public void ReviveInRoom_Player2()
+    {
+        P2.GetComponent<Player>().PD = P1.GetComponent<Player>().PD;
+        
+        LC.P2_dead = false;
+        LC.P2_inRoom = true;
+        P2.GetComponent<Player>().Revive();
+        P2.SetActive(true);
     }
 }

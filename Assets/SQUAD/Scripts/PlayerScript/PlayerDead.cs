@@ -11,14 +11,23 @@ public class PlayerDead : MonoBehaviour
 
     private void Start()
     {
-        Invoke("CancelRef", 15);
+        Invoke("Cancel", 25);
     }
 
-    void CancelRef()
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            if (other.GetComponent<EnemyStats>().InTarget)
+            {
+                other.GetComponent<EnemyStats>().Change();
+            }
+            
+        }
+    }
+
+    void Cancel()
     {
         SC.enabled = false;
     }
-
-
-
 }

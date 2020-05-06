@@ -215,10 +215,15 @@ public class Porta_Default : MonoBehaviour
             {
                EnemyStats enemyRef = Enemy.GetComponent<EnemyStats>();
 
-                
                 enemyRef.PlayerTarget = OnPlayer;
+                
                 enemyRef.LC = LC;
                 enemyRef.InTarget = true;
+
+                EnemyPatrol enemyPatrol = Enemy.GetComponent<EnemyPatrol>();
+                enemyPatrol.OnAttack = true;
+                enemyPatrol.moveLocal = OnPlayer;
+                enemyPatrol.playerTemp = OnPlayer;
             }
 
             if (Peace)

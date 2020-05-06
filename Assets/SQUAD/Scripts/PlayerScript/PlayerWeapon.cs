@@ -16,7 +16,7 @@ public class PlayerWeapon : MonoBehaviour
     public Transform spawnToDrop; //Local que a arma dropa
     public Transform Discart;
 
-    Player P;
+    public Player P;
     WeaponList WL;
     KeyCode Gatilho;
     KeyCode Switch;
@@ -25,15 +25,12 @@ public class PlayerWeapon : MonoBehaviour
     public PlayerUI PUI;
     float countToChange;
 
-    private void Awake()
+    private void Start()
     {
         WL = FindObjectOfType<WeaponList>();
         PUI = FindObjectOfType<PlayerUI>();
+        
         Discart = WL.transform;
-    }
-
-    private void Start()
-    {
         CheckMax();
     }
 
@@ -67,8 +64,7 @@ public class PlayerWeapon : MonoBehaviour
 
     public void UpdateGatilhos()
     {
-        P = GetComponent<Player>();
-
+        
         Gatilho = P.Gatilho;
         Switch = P.Dropar_set;
 

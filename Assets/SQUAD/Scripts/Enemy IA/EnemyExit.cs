@@ -38,8 +38,7 @@ public class EnemyExit : MonoBehaviour
     {
         if (other.gameObject.name == "Player1" && ES.Player1_inArea && !ES.InTarget)
         {
-            
-            
+
             ES.PlayerInArea = false;
             ES.Player1_inArea = false;
 
@@ -51,13 +50,22 @@ public class EnemyExit : MonoBehaviour
 
         if (other.gameObject.name == "Player2" && ES.Player2_inArea && !ES.InTarget)
         {
-            
+           
             ES.PlayerInArea = false;
             ES.Player2_inArea = false;
 
             ES.OnPatrol();
 
             Debug.Log("Player 2 Fugiu!");
+        }
+
+
+        if(ES.InTarget && other.gameObject.name == ES.PlayerTarget.name)
+        {
+            ES.PlayerInArea = false;
+            EP.ObjectHit();
+
+            Debug.Log("Player Alvo muito longe");
         }
     }
 }

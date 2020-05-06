@@ -9,8 +9,9 @@ public class EnemyEnter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player1" && !ES.Player1_inArea && !ES.PlayerInArea)
+        if (other.gameObject.name == "Player1" && !ES.Player1_inArea && !ES.PlayerInArea && !ES.InTarget)
         {
+       
             ES.PlayerTarget = other.gameObject.transform;
             ES.PlayerInArea = true;
             ES.Player1_inArea = true;
@@ -21,7 +22,7 @@ public class EnemyEnter : MonoBehaviour
         }
 
 
-        if (other.gameObject.name == "Player2" && !ES.Player2_inArea && !ES.PlayerInArea)
+        if (other.gameObject.name == "Player2" && !ES.Player2_inArea && !ES.PlayerInArea && !ES.InTarget)
         {
             ES.PlayerTarget = other.gameObject.transform;
             ES.PlayerInArea = true;
@@ -30,6 +31,13 @@ public class EnemyEnter : MonoBehaviour
             ES.OnAttack();
 
             Debug.Log("Player 2 Detectado!");
+        }
+
+        if (ES.InTarget && other.gameObject.name == ES.PlayerTarget.name)
+        {
+            ES.PlayerInArea = true;
+            ES.OnAttack();
+            Debug.Log("Ele é o alvo, ataque!");
         }
 
        
