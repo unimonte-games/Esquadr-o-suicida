@@ -7,9 +7,15 @@ public class EnemyHit : MonoBehaviour
 
     public int dano;
     public int timeToDestroy;
+    public bool DontDestroy;
 
     private void Start()
     {
+        if (DontDestroy)
+        {
+            return;
+        }
+
         Invoke("DestroyThis", timeToDestroy);
     }
 

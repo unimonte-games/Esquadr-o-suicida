@@ -7,6 +7,7 @@ public class PlayerSlow : MonoBehaviour
 
     public PlayerMovement PM;
     public GameObject Effect;
+    public int TimeToSlow;
     float tempSpeed;
     float tempDownSpeed;
 
@@ -20,7 +21,7 @@ public class PlayerSlow : MonoBehaviour
         PM.speed = 1f;
         PM.downSpeed = 1f;
         Debug.Log("Player Slow!");
-        Invoke("Cancel", 10f);
+        Invoke("Cancel", TimeToSlow);
     }
 
     void Cancel()

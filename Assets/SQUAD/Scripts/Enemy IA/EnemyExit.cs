@@ -7,6 +7,12 @@ public class EnemyExit : MonoBehaviour
     public EnemyStats ES;
     public EnemyPatrol EP;
 
+    public EnemyEnter EE;
+
+    private void Start()
+    {
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +24,8 @@ public class EnemyExit : MonoBehaviour
                 ES.Player1_inArea = false;
                 ES.PlayerInArea = false;
                 ES.PlayerTarget = null;
+                EE.SC.enabled = false;
+                Invoke("EnabledEnter", 1);
 
                 Debug.Log("Player 1 morreu, ignorando.");
                 ES.OnPatrol();
@@ -27,11 +35,18 @@ public class EnemyExit : MonoBehaviour
                 ES.Player2_inArea = false;
                 ES.PlayerInArea = false;
                 ES.PlayerTarget = null;
+                EE.SC.enabled = false;
+                Invoke("EnabledEnter", 1);
 
                 Debug.Log("Player 2 morreu, ignorando.");
                 ES.OnPatrol();
             }
         }
+    }
+
+    void EnabledEnter()
+    {
+        EE.SC.enabled = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -67,5 +82,7 @@ public class EnemyExit : MonoBehaviour
 
             Debug.Log("Player Alvo muito longe");
         }
+
+       
     }
 }

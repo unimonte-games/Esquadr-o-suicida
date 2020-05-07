@@ -5,7 +5,12 @@ using UnityEngine;
 public class EnemyEnter : MonoBehaviour
 {
     public EnemyStats ES;
+    public SphereCollider SC;
 
+    private void Start()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
