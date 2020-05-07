@@ -141,6 +141,8 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
+            ES.AttackArea.SetActive(false);
+
             int nextLocal = Random.Range(0, SpawnToMove);
             moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
@@ -157,11 +159,13 @@ public class EnemyPatrol : MonoBehaviour
         if (OnAttack)
         {
             yield return new WaitForSeconds(2f);
+
             
             ToMove = false;
 
             yield return new WaitForSeconds(1f);
 
+            ES.AttackArea.SetActive(true);
             moveLocal = playerTemp;
             Body.transform.LookAt(moveLocal);
 
