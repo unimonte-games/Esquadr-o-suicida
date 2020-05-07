@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public bool Stun;
+    public bool Slow;
+
     public float speed = 5f;
     public float speedRotate = 6f;
     public float downSpeed = 3f;

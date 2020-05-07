@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
 
     public GameObject PlayerDead_Tree;
 
+
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
@@ -563,6 +564,7 @@ public class Player : MonoBehaviour
         
         UpdateLevel();
     }
+    
 
 
 }
