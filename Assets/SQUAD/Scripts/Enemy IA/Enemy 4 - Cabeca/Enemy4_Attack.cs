@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy3_Attack : MonoBehaviour
+public class Enemy4_Attack : MonoBehaviour
 {
     public int Dano;
 
     public int dano_min;
     public int dano_max;
 
-    public int TimeToSlow;
+    public int TimeToStun;
 
     public EnemyStats ES;
     public EnemyPatrol EP;
@@ -21,16 +21,16 @@ public class Enemy3_Attack : MonoBehaviour
 
     public int countToAttacks;
     public int EffectTime;
-    public bool OnSlow;
+    public bool OnStun;
 
     public BoxCollider AtkFront;
 
     private void Awake()
     {
         Dano = Random.Range(dano_min, dano_max);
-        TimeToSlow = Random.Range(5, 15);
-        EffectTime = Random.Range(0, 3);
-        TimeToAttack = Random.Range(2, 5);
+        TimeToStun = Random.Range(3, 10);
+        EffectTime = Random.Range(0, 5);
+        TimeToAttack = Random.Range(1, 3);
     }
 
     private void Start()
@@ -55,35 +55,35 @@ public class Enemy3_Attack : MonoBehaviour
         AtkFront.enabled = true;
 
         countToAttacks++;
-        if(countToAttacks >= EffectTime)
+        if (countToAttacks >= EffectTime)
         {
             countToAttacks = 0;
-            EffectTime = Random.Range(0, 3);
+            EffectTime = Random.Range(0, 5);
 
-            OnSlow = true;
-            Debug.Log("Slow Aplicado!");
+            OnStun = true;
+            Debug.Log("Stun Aplicado!");
         }
 
         TimeToAttack = Random.Range(2, 5);
 
-        Invoke("CancelAtk",2);
+        Invoke("CancelAtk", 2);
     }
 
     void CancelAtk()
     {
         AtkFront.enabled = false;
-        OnSlow = false;
+        OnStun = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && OnSlow)
+        if (other.gameObject.tag == "Player" && OnStun)
         {
-            PlayerSlow PS = other.gameObject.GetComponent<PlayerSlow>();
+            PlayerStun PS = other.gameObject.GetComponent<PlayerStun>();
 
-            PS.TimeToSlow = TimeToSlow;
+            PS.TimeToStun = TimeToStun;
             PS.enabled = true;
-            
+
         }
     }
 

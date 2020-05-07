@@ -7,7 +7,8 @@ public class PlayerStun : MonoBehaviour
 
     public PlayerMovement PM;
     public GameObject Effect;
-    
+    public int TimeToStun;
+
     private void OnEnable()
     {
         PM.Stun = true;
@@ -15,7 +16,7 @@ public class PlayerStun : MonoBehaviour
         Effect.SetActive(true);
         PM.enabled = false;
         Debug.Log("Player foi Stunado!");
-        Invoke("Cancel", 3f);
+        Invoke("Cancel", TimeToStun);
     }
 
     void Cancel()
