@@ -6,6 +6,7 @@ public class PlayerSlow : MonoBehaviour
 {
 
     public PlayerMovement PM;
+    public GameObject Effect;
     float tempSpeed;
     float tempDownSpeed;
 
@@ -14,6 +15,7 @@ public class PlayerSlow : MonoBehaviour
         tempSpeed = PM.speed;
         tempDownSpeed = PM.downSpeed;
         PM.Slow = true;
+        Effect.SetActive(true);
 
         PM.speed = 1f;
         PM.downSpeed = 1f;
@@ -25,6 +27,7 @@ public class PlayerSlow : MonoBehaviour
     {
         PM.Slow = false;
 
+        Effect.SetActive(false);
         PM.downSpeed = tempDownSpeed;
         PM.speed = tempSpeed;
         this.enabled = false;
