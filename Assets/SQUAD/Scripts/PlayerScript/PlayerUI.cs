@@ -11,7 +11,7 @@ public class PlayerUI : MonoBehaviour
     public Text P1_Life;
     public Text P1_LifeMax;
     public Image P1_LifeUI;
-    public GameObject WarningUI;
+    public GameObject WarningUI_1;
 
     public Text P1_Mana;
     public Text P1_ManaMax;
@@ -34,6 +34,7 @@ public class PlayerUI : MonoBehaviour
     public Text P2_Life;
     public Text P2_LifeMax;
     public Image P2_LifeUI;
+    public GameObject WarningUI_2;
 
     public Text P2_Mana;
     public Text P2_ManaMax;
@@ -86,12 +87,11 @@ public class PlayerUI : MonoBehaviour
     public GameObject startRoom;
 
     WeaponList WL;
-    
+
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
     }
-
     private void Start()
     {
         
@@ -109,11 +109,11 @@ public class PlayerUI : MonoBehaviour
 
            if(Life <= Size)
             {
-                WarningUI.SetActive(true);
+                WarningUI_1.SetActive(true);
             }
             else
             {
-                WarningUI.SetActive(false);
+                WarningUI_1.SetActive(false);
             }
 
            if(Life <= 0)
@@ -134,11 +134,11 @@ public class PlayerUI : MonoBehaviour
 
             if (Life < Size)
             {
-                WarningUI.SetActive(true);
+                WarningUI_2.SetActive(true);
             }
             else
             {
-                WarningUI.SetActive(false);
+                WarningUI_2.SetActive(false);
             }
 
             if (Life <= 0)

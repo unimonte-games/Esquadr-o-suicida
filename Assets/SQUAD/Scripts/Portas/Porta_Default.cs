@@ -80,7 +80,12 @@ public class Porta_Default : MonoBehaviour
         LC = FindObjectOfType<LevelController>();
         StartingWave = false;
     }
-    
+
+    private void Start()
+    {
+        P = this;
+    }
+
     void GoToSpawn()
     {
         Debug.Log("Iniciando Wave");
