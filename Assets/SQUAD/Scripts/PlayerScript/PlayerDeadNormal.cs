@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDead : MonoBehaviour
+public class PlayerDeadNormal : MonoBehaviour
 {
-    public bool P1_dead;
-    public bool P2_dead;
 
     public SphereCollider SC;
 
@@ -16,13 +14,15 @@ public class PlayerDead : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && other.GetComponent<EnemyStats>().InTarget)
+        if (other.gameObject.tag == "Enemy" && !other.GetComponent<EnemyStats>().InTarget)
         {
 
-            other.GetComponent<EnemyStats>().Change();
+            other.GetComponent<EnemyStats>().OnPatrol();
 
         }
+
     }
+
     void Cancel()
     {
         SC.enabled = false;

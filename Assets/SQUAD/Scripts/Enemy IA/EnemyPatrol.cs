@@ -57,7 +57,6 @@ public class EnemyPatrol : MonoBehaviour
 
     void FixedUpdate()
     {
-
         if (!InLocal)
         {
             Vector3 dirFromMeToTarget = moveLocal.position - transform.position;
@@ -166,7 +165,10 @@ public class EnemyPatrol : MonoBehaviour
             moveLocal = playerTemp;
             Body.transform.LookAt(moveLocal);
 
-            ES.Change();
+            if (ES.InTarget)
+            {
+                ES.Change();
+            }
 
             Debug.Log("Continuando a busca...");
         }
