@@ -92,6 +92,11 @@ public class PlayerUI : MonoBehaviour
         WL = FindObjectOfType<WeaponList>();
     }
 
+    private void Start()
+    {
+        
+    }
+
     public void ChangeLife(bool Player, float Life, float LifeMax, float Size)
     {
         if (Player)

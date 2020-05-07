@@ -25,6 +25,11 @@ public class LevelController : MonoBehaviour
         CT = FindObjectOfType<CameraTarget>();
     }
 
+    private void Start()
+    {
+        
+    }
+
     public void UpdatePlayers()
     {
         if(P1_inRoom && !P2_inRoom || !P1_inRoom && P2_inRoom)

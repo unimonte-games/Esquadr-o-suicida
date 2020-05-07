@@ -12,6 +12,11 @@ public class PlayerLevel : MonoBehaviour
         PUI = FindObjectOfType<PlayerUI>();
     }
 
+    private void Start()
+    {
+        
+    }
+
     public void ChangeYourStats(Player Player, PlayerMovement PlayerMovement)
     {
 
