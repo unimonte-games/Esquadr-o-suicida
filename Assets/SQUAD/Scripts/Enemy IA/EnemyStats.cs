@@ -45,6 +45,8 @@ public class EnemyStats : MonoBehaviour
 
     public EnemyPatrol EP;
 
+    public bool PlantaCanina;
+
     public float SizeLife;
 
     private void Start()
@@ -222,6 +224,15 @@ public class EnemyStats : MonoBehaviour
         {
             Change();
 
+        }
+
+        if (PlantaCanina)
+        {
+            EP.OnAttack = true;
+            AttackArea.SetActive(true);
+
+            Invoke("OnPatrol", 1);
+            return;
         }
 
         EP.OnAttack = true;
