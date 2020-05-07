@@ -311,7 +311,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &549691051070748382
 MonoBehaviour:
@@ -337,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6814888629990094268}
-  - component: {fileID: 1926470850200881793}
+  - component: {fileID: 6242248579358924128}
   m_Layer: 0
   m_Name: shotSpawn
   m_TagString: Untagged
@@ -352,15 +352,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4377351696196374650}
-  m_LocalRotation: {x: -0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.79, z: -0.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 921221869005643478}
   m_Father: {fileID: 6074450607203988792}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -70, y: 0, z: 0}
---- !u!114 &1926470850200881793
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6242248579358924128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -369,19 +369,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4377351696196374650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97d9c522e71e284eb4b3fbe2ddbddc2, type: 3}
+  m_Script: {fileID: 11500000, guid: b5252902099b97d4a8cd054c676f4be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Dano: 0
-  dano_min: 1
-  dano_max: 3
+  dano_min: 2
+  dano_max: 5
   ES: {fileID: 2510330853933830302}
-  EP: {fileID: 5030384957194750947}
   Target: {fileID: 0}
-  Shot: {fileID: 7105187896741376222, guid: 3d0e711b646ce40429f4f54f69e93b22, type: 3}
+  Shot: {fileID: 2469249300227764820, guid: 8d8f0fb63f9785542b23c64ea5b72ca6, type: 3}
   Spawn: {fileID: 921221869005643478}
-  Force: 400
-  TimeToAttack: 5
+  TimeToDestroy: 10
 --- !u!1 &4490731581087767792
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +444,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &2510330853933830302
 MonoBehaviour:
@@ -486,6 +484,8 @@ MonoBehaviour:
   RoomSize: {fileID: 4200704567914034867}
   EP: {fileID: 5030384957194750947}
   PlantaCanina: 1
+  EnergyDamage: {fileID: 941708913554131664, guid: 7eb13690441b4604e95329fbc0f6e73b,
+    type: 3}
   SizeLife: 0
 --- !u!114 &5030384957194750947
 MonoBehaviour:
@@ -501,10 +501,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnAttack: 0
   speed_min: 6
-  speed_max: 8
+  speed_max: 9
   speed: 0
-  waitTime: 0
-  startWaitTime: 0
+  waitTime: 1
+  startWaitTime: 1
   DistanceToPlayer: 5
   Dis_Min: 1
   Dis_Max: 5
@@ -744,7 +744,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5312601759502635213
 MonoBehaviour:
@@ -982,7 +982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8501081456016157049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6814888629990094268}

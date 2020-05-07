@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class IncreaseLife : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public EnemyStats ES;
+    public int LifeAdd;
+    bool Add;
+
+    private void Start()
     {
-        
+        Add = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay(Collider other)
     {
-        
+        if(other.gameObject.tag == "Player" && !Add)
+        {
+            Add = true;
+
+            float tempMax = ES.L_Max;
+            float tempAtual = ES.Life_Atual + LifeAdd;
+
+            if(tempAtual >= tempMax)
+            {
+                tempMax = tempAtual;
+            }
+
+            ES.L_Max = tempMax;
+            ES.Life_Atual = tempAtual;
+
+            ES.TakeEnergy(LifeAdd);
+            Invoke("Cancel", 2);
+        }
     }
+
+    void Cancel()
+    {
+        Add = false;
+    }
+
+
 }

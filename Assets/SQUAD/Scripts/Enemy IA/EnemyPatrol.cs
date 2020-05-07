@@ -81,6 +81,12 @@ public class EnemyPatrol : MonoBehaviour
                 moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
                 startWaitTime = Random.Range(0, 5);
+
+                if (ES.PlantaCanina)
+                {
+                    startWaitTime = 1f;
+                }
+ 
                 waitTime = startWaitTime;
                 InLocal = false;
 
@@ -146,10 +152,22 @@ public class EnemyPatrol : MonoBehaviour
             int nextLocal = Random.Range(0, SpawnToMove);
             moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
+            if (ES.PlantaCanina)
+            {
+                startWaitTime = 1f;
+                waitTime = startWaitTime;
+
+                ToMove = true;
+
+                Invoke("WaitToRotationInObj", 2f);
+                return; 
+            }
+
             startWaitTime = Random.Range(2, 5);
             waitTime = startWaitTime;
 
             ToMove = true;
+
             StartCoroutine("ReLocal");
         }
     }
@@ -160,10 +178,10 @@ public class EnemyPatrol : MonoBehaviour
         {
             yield return new WaitForSeconds(2f);
 
-            
             ToMove = false;
 
             yield return new WaitForSeconds(1f);
+
 
             ES.AttackArea.SetActive(true);
             moveLocal = playerTemp;

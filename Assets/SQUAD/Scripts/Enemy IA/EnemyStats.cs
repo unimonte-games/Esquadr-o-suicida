@@ -10,8 +10,8 @@ public class EnemyStats : MonoBehaviour
 
     public float Life_Atual;
     public float L_Max;
-    public int Life_min;
-    public int Life_max;
+    public float Life_min;
+    public float Life_max;
     public int Experience;
 
     public Image life_barInterface;
@@ -46,6 +46,7 @@ public class EnemyStats : MonoBehaviour
     public EnemyPatrol EP;
 
     public bool PlantaCanina;
+    public GameObject EnergyDamage;
 
     public float SizeLife;
 
@@ -190,6 +191,19 @@ public class EnemyStats : MonoBehaviour
 
     }
 
+    public void TakeEnergy(int Add)
+    {
+        float Life_Cal = Life_Atual / L_Max;
+        life_barInterface.fillAmount = Life_Cal;
+
+        Life_bar.SetActive(true);
+        Invoke("CancelInterface", 1);
+
+        GameObject hit = Instantiate(EnergyDamage, spawnDamage.position, spawnDamage.rotation) as GameObject;
+        hit.GetComponent<EnemyUIHit>().danoHit = Add;
+        hit.transform.parent = transform;
+    }
+
     void CancelInterface()
     {
         Life_bar.SetActive(false);
@@ -220,12 +234,6 @@ public class EnemyStats : MonoBehaviour
 
     public void OnAttack()
     {
-        if (InTarget)
-        {
-            Change();
-
-        }
-
         if (PlantaCanina)
         {
             EP.OnAttack = true;
@@ -233,6 +241,13 @@ public class EnemyStats : MonoBehaviour
 
             Invoke("OnPatrol", 1);
             return;
+
+        }
+
+        if (InTarget)
+        {
+            Change();
+
         }
 
         EP.OnAttack = true;
@@ -240,11 +255,15 @@ public class EnemyStats : MonoBehaviour
         EP.playerTemp = PlayerTarget;
         AttackArea.SetActive(true);
 
-
     }
 
     public void OnPatrol()
     {
+        if (PlantaCanina && InTarget)
+        {
+            InTarget = false;
+        }
+
         if (InTarget)
         {
             Debug.Log("Player fixo, continuar seguindo.");
@@ -261,6 +280,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (LC.SoloPlayer && LC.P1_dead || LC.P2_dead)
         {
+
             PlayerTarget = P_default.OnPlayer;
             EP.moveLocal = P_default.OnPlayer;
             EP.playerTemp = P_default.OnPlayer;
