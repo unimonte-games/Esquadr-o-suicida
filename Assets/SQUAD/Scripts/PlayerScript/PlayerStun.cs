@@ -9,6 +9,8 @@ public class PlayerStun : MonoBehaviour
     
     private void OnEnable()
     {
+        PM.Stun = true;
+
         PM.enabled = false;
         Debug.Log("Player foi Stunado!");
         Invoke("Cancel", 3f);
@@ -16,7 +18,8 @@ public class PlayerStun : MonoBehaviour
 
     void Cancel()
     {
-        Debug.Log("Efeito Acabou.");
+        PM.Stun = false;
+
         PM.enabled = true;
         this.enabled = false;
     }
