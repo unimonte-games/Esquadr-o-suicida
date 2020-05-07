@@ -25,9 +25,12 @@ public class PlayerWeapon : MonoBehaviour
     public PlayerUI PUI;
     float countToChange;
 
-    private void Start()
+    private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
+    }
+    private void Start()
+    {
         PUI = FindObjectOfType<PlayerUI>();
         
         Discart = WL.transform;
@@ -147,7 +150,6 @@ public class PlayerWeapon : MonoBehaviour
 
     void Atual(int ID, int Type)
     {
-        
         ID_AtualWeapon = Type;
        
         GameObject WeaponSet = Instantiate(ItemWeaponList[Type], LocalToSpawn.position, LocalToSpawn.rotation);

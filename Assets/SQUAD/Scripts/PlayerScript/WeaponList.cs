@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WeaponList : MonoBehaviour
 {
-    
+    WeaponList WL;
     public GameObject[] Weapon;
     public GameObject[] wItem;
     public Sprite[] wIcon;
 
-    private void Start()
+    public void Start()
     {
-       
+        WL = this;
     }
 
 }
