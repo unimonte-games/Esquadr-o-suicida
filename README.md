@@ -38,13 +38,13 @@ pessoas continuam vivendo por lá normalmente, tudo fica mais insano depois de d
 - [x] Sprint 9 : Level Editor, Som, Wiki, Interface, Ilustracao, Itens List 1, Testes de Controle, Enemy 3, 4 e 5.
 - [x] Sprint 10 : Game Testing, Character 1 e 2, Enemy Scripts,  Itens List 2, Interface 1
 - [x] Reuniao Geral 2
-- [ ] Versao Alpha 
+- [x] Versao Alpha 
 
 **Fase 3 : Jogabilidade e Testes**
 
 - [x] Sprint 11 : Game Editor, Character, Itens List 3, Interface 2, Sons de Itens 1, Enemy 6 ao 8.
 - [x] Sprint 12 : Game Editor, Texturizaçao, Item IA 1, Enemy IA 1 ao 5, Interface 3, Sons de Itens 2, Book 1.
-- [ ] Sprint 13 : Soundtrack, LD 1, Item IA 2, Enemy IA 6 ao 10, Menu 1, Sons de Itens 3, Enemy 9 ao 13, Book 2.
+- [x] Sprint 13 : Soundtrack, LD 1, Item IA 2, Enemy IA 6 ao 10, Menu 1, Sons de Itens 3, Enemy 9 ao 13, Book 2.
 - [ ] Sprint 14 : Legendas, LD 2, Animation 1, Item IA 3, Enemy IA Boss, Menu 2, Sons Geral 1,  Character 1, Wiki 2.
 - [ ] Sprint 15 : Cutscene, Animation 2, Item IA 4, Character 2, Menu 3, Sons Geral 2, Global Teste, Book 3 e Wiki 3.
 - [ ] Reuniao Geral 3
