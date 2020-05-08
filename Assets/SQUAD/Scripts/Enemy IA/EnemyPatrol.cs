@@ -36,6 +36,8 @@ public class EnemyPatrol : MonoBehaviour
 
     EnemyStats ES;
 
+    bool CafToAttack;
+    
     private void Awake()
     {
         ES = GetComponent<EnemyStats>();
@@ -106,6 +108,7 @@ public class EnemyPatrol : MonoBehaviour
             InArea = true;
             ToMove = true;
 
+
         }
 
         if (Vector3.Distance(transform.position, moveLocal.position) > DistanceToPlayer && OnAttack)
@@ -114,7 +117,14 @@ public class EnemyPatrol : MonoBehaviour
             ToMove = false;
             Body.transform.LookAt(moveLocal);
 
-            DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
+            if (CafToAttack)
+            {
+                DistanceToPlayer = 2;
+            }
+            else
+            {
+                DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
+            }
 
         }
 
@@ -218,11 +228,10 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-    public void ChangeSpeed()
+    public void CafeteiraChangeSpeed()
     {
-        speed = Random.Range(speed_min, speed_max);
-        Debug.Log("Speed: " + speed);
+        speed = Random.Range(5, 6);
+        CafToAttack = true;   
     }
-
 
 }

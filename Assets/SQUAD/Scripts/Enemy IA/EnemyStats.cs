@@ -48,8 +48,10 @@ public class EnemyStats : MonoBehaviour
     public bool PlantaCanina;
     public GameObject EnergyDamage;
 
-    public float SizeLife;
+    public bool Cafeteira;
 
+    public float SizeLife;
+    bool S;
 
     private void Start()
     {
@@ -65,12 +67,17 @@ public class EnemyStats : MonoBehaviour
         Life_Atual = Random.Range(Life_min, Life_max);
         L_Max = Life_Atual;
 
+        if (Cafeteira)
+        {
+            SizeLife = Life_Atual / 2;
+        }
+
     }
 
     private void Awake()
     {
         
-        SizeLife = Life_Atual / 2;
+        
         EP = GetComponent<EnemyPatrol>();
 
         tempRandom = Random.Range(0, 100);
@@ -193,11 +200,14 @@ public class EnemyStats : MonoBehaviour
         Life_bar.SetActive(true);
         Invoke("CancelInterface", 1);
 
-        if (Life_Atual == SizeLife)
+        if (Cafeteira && Life_Atual <= SizeLife && !S)
         {
-            EP.ChangeSpeed();
-        }
+            S = true;
+            
+            EP.CafeteiraChangeSpeed();
 
+            Debug.Log("Cafeteira ao Ataque!");
+        }
     }
 
     public void TakeEnergy(int Add)
