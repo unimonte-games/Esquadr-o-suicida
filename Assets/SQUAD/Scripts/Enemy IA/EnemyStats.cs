@@ -21,6 +21,9 @@ public class EnemyStats : MonoBehaviour
 
     public GameObject AttackArea;
 
+    public GameObject Body;
+    public GameObject BodyEffect;
+
     public Transform PlayerTarget;
     public bool PlayerInArea;
 
@@ -53,8 +56,11 @@ public class EnemyStats : MonoBehaviour
     public float SizeLife;
     bool S;
 
+    
+
     private void Start()
     {
+
         if (InTarget && PlantaCanina)
         {
             InTarget = false;
@@ -72,13 +78,25 @@ public class EnemyStats : MonoBehaviour
             SizeLife = Life_Atual / 2;
         }
 
+        Invoke("StartEnemy", 1);
+    }
+
+    void StartEnemy()
+    {
+        EP.enabled = true;
+
+        BodyEffect.SetActive(false);
+        Body.SetActive(true);
+        
     }
 
     private void Awake()
     {
-        
-        
         EP = GetComponent<EnemyPatrol>();
+        EP.enabled = false;
+
+        Body.SetActive(false);
+        BodyEffect.SetActive(true);
 
         tempRandom = Random.Range(0, 100);
         if (tempRandom > Gold_rare)
