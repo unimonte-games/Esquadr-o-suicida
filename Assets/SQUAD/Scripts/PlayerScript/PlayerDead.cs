@@ -18,9 +18,7 @@ public class PlayerDead : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy" && other.GetComponent<EnemyStats>().InTarget)
         {
-
             other.GetComponent<EnemyStats>().Change();
-
         }
     }
     void Cancel()

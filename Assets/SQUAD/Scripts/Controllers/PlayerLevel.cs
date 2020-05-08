@@ -26,7 +26,8 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 15f;
             Player.LifeBar_max = 10;
             Player.ManaBar_max = 25;
-            Player.TimeToIncrement = 1f;
+            Player.TimeToIncrement = 2f;
+            Player.ValueToIncrement = 1f;
             PlayerMovement.speed = 6f;
             PlayerMovement.downSpeed = 4f;
             PlayerMovement.TurnSpeed = 100f;
@@ -100,7 +101,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 150f;
             Player.LifeBar_max = 75;
             Player.ManaBar_max = 70;
-            Player.TimeToIncrement = 1.5f;
+            Player.TimeToIncrement = 1.75f;
             PlayerMovement.speed = 7f;
             //Habilidade 1
 
@@ -150,7 +151,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 500f;
             Player.LifeBar_max = 175;
             Player.ManaBar_max = 150;
-            Player.TimeToIncrement = 2f;
+            Player.TimeToIncrement = 1.5f;
             Player.Size = 8;
 
         }
@@ -162,6 +163,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 200;
             Player.ManaBar_max = 175;
             PlayerMovement.speed = 8f;
+            Player.ValueToIncrement = 2f;
             Player.Size = 9;
         }
 
@@ -180,7 +182,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 900f;
             Player.LifeBar_max = 250;
             Player.ManaBar_max = 225;
-            Player.TimeToIncrement = 2.5f;
+            Player.TimeToIncrement = 1f;
    
         }
 
@@ -197,7 +199,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 1300f;
             Player.LifeBar_max = 300;
             Player.ManaBar_max = 275;
-            Player.TimeToIncrement = 3f;
+           
             //Esquiva Especial
         }
 
@@ -207,6 +209,7 @@ public class PlayerLevel : MonoBehaviour
             Player.LifeBar_max = 325;
             Player.ManaBar_max = 300;
             PlayerMovement.downSpeed = 7.5f;
+            Player.ValueToIncrement = 2f;
         }
 
         if (Player.Level == 19)
@@ -222,7 +225,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 1900f;
             Player.LifeBar_max = 375;
             Player.ManaBar_max = 400;
-            Player.TimeToIncrement = 3.5f;
+            Player.TimeToIncrement = 0.75f;
             PlayerMovement.speed = 8.5f;
             Player.Size = 11;
 
@@ -242,6 +245,7 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 2500f;
             Player.LifeBar_max = 425;
             Player.ManaBar_max = 445;
+            Player.ValueToIncrement = 4f;
 
         }
 
@@ -268,7 +272,8 @@ public class PlayerLevel : MonoBehaviour
             Player.L_max = 0f;
             Player.LifeBar_max = 500;
             Player.ManaBar_max = 500;
-            Player.TimeToIncrement = 4f;
+            Player.TimeToIncrement = 0.5f;
+            Player.ValueToIncrement = 5f;
 
         }
 
