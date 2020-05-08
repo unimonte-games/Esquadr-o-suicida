@@ -50,8 +50,16 @@ public class EnemyStats : MonoBehaviour
 
     public float SizeLife;
 
+
     private void Start()
     {
+        if (InTarget && PlantaCanina)
+        {
+            InTarget = false;
+            OnPatrol();
+            Debug.Log("Cancelando ao iniciar o Target");
+        }
+
         LC = FindObjectOfType<LevelController>();
 
         Life_Atual = Random.Range(Life_min, Life_max);
@@ -61,6 +69,7 @@ public class EnemyStats : MonoBehaviour
 
     private void Awake()
     {
+        
         SizeLife = Life_Atual / 2;
         EP = GetComponent<EnemyPatrol>();
 
@@ -259,11 +268,7 @@ public class EnemyStats : MonoBehaviour
 
     public void OnPatrol()
     {
-        if (PlantaCanina && InTarget)
-        {
-            InTarget = false;
-        }
-
+        
         if (InTarget)
         {
             Debug.Log("Player fixo, continuar seguindo.");

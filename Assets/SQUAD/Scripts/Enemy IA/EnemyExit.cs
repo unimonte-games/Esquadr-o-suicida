@@ -77,6 +77,7 @@ public class EnemyExit : MonoBehaviour
 
         if(ES.InTarget && other.gameObject.name == ES.PlayerTarget.name)
         {
+            
             ES.PlayerInArea = false;
             EP.ObjectHit();
 
