@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class Enemy8_Golem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    bool OnAttack;
+    public EnemyHit HH;
+
+    public Transform Target;
+
+    public Animation ShotAnin;
+    public float TimeToAttack;
+
+    private void OnEnable()
     {
-        
+        InvokeRepeating("CombatCountDown", 3, TimeToAttack);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        CancelInvoke("CombatCountDown");
     }
+
+
+    void CombatCountDown()
+    {
+        {
+            TimeToAttack = Random.Range(3, 7);
+            if (!OnAttack)
+            {
+                OnAttack = true;
+                ShotAnin.Play();
+                Invoke("Cancel", 2);
+            }
+
+        }
+    }
+
+    void Cancel()
+    {
+        OnAttack = false;
+    }
+
 }
