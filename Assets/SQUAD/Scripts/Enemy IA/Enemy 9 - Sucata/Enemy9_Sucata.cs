@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy6_Attack : MonoBehaviour
+public class Enemy9_Sucata : MonoBehaviour
 {
     public int Dano;
 
@@ -13,6 +13,8 @@ public class Enemy6_Attack : MonoBehaviour
     public BoxCollider Attack;
 
     public Transform Target;
+
+    public float TimeToAttack;
 
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class Enemy6_Attack : MonoBehaviour
 
     private void OnEnable()
     {
-        InvokeRepeating("CombatCountDown", 1, 1);
+        InvokeRepeating("CombatCountDown", 0, TimeToAttack);
     }
 
     private void OnDisable()
@@ -38,7 +40,7 @@ public class Enemy6_Attack : MonoBehaviour
     void CombatCountDown()
     {
         Attack.enabled = true;
-        Invoke("CancelAtk", 1);
+        Invoke("CancelAtk", TimeToAttack);
     }
 
     void CancelAtk()
@@ -47,4 +49,4 @@ public class Enemy6_Attack : MonoBehaviour
     }
 
 
- }
+}

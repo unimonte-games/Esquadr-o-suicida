@@ -155,12 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c127d086f8f0b40ac6e4647ab2f40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  E_ID: 0
+  E_ID: 7
   Type: 0
   Life_Atual: 0
   L_Max: 0
-  Life_min: 120
-  Life_max: 75
+  Life_min: 37
+  Life_max: 51
   Experience: 25
   life_barInterface: {fileID: 4942281406181303673}
   Life_bar: {fileID: 8367096730188908772}
@@ -469,7 +469,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6ade2ee25f3ee246836449dec5fa83b, type: 2}
+  - {fileID: 2100000, guid: 564eeecdcb139864fba7160b52258160, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4057f1ec0cfd44e98dacf213079684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dano: 25
+  dano: 15
   timeToDestroy: 0
   DontDestroy: 1
 --- !u!1 &2363998030818340033
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4057f1ec0cfd44e98dacf213079684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dano: 15
+  dano: 10
   timeToDestroy: 0
   DontDestroy: 1
 --- !u!1 &3633309815765233255
@@ -1105,9 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa21657c33dbff74d9f7e7deba1baf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dano: 15
   AreaShot: {fileID: 8285315092926295072}
-  TimeToAttack: 1
 --- !u!1 &5912385639359381584
 GameObject:
   m_ObjectHideFlags: 0

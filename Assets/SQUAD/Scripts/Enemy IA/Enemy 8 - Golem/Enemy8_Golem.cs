@@ -29,7 +29,7 @@ public class Enemy8_Golem : MonoBehaviour
     void CombatCountDown()
     {
         {
-            TimeToAttack = Random.Range(3, 7);
+            TimeToAttack = Random.Range(10, 12);
             if (!OnAttack)
             {
                 OnAttack = true;
@@ -50,16 +50,15 @@ public class Enemy8_Golem : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Area.SetActive(true);
+            Invoke("CancelArea",2);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void CancelArea()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Area.SetActive(false);
-        }
+        Area.SetActive(false);
     }
 
+    
 
 }
