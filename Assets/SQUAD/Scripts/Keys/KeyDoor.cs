@@ -6,19 +6,19 @@ public class KeyDoor : MonoBehaviour
 {
     public int KeyID;
     Player P;
-    bool PlayerDiscart; 
+    ///bool PlayerDiscart; 
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player1" && !PlayerDiscart)
+        if (other.gameObject.name == "Player1")
         {
             P = other.GetComponent<Player>();
             SetKey();
         }
         
 
-        if (other.gameObject.name == "Player2" && !PlayerDiscart)
+        if (other.gameObject.name == "Player2")
         {
             P = other.GetComponent<Player>();
             SetKey();
