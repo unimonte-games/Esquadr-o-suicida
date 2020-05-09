@@ -11,8 +11,10 @@ public class Enemy8_Golem : MonoBehaviour
     public Transform Target;
 
     public Animation ShotAnin;
-    public float TimeToAttack;
+    public GameObject Area;
 
+    public float TimeToAttack;
+    
     private void OnEnable()
     {
         InvokeRepeating("CombatCountDown", 3, TimeToAttack);
@@ -31,7 +33,7 @@ public class Enemy8_Golem : MonoBehaviour
             if (!OnAttack)
             {
                 OnAttack = true;
-                ShotAnin.Play();
+                ShotAnin.Play("LeiserGolem");
                 Invoke("Cancel", 2);
             }
 
@@ -42,5 +44,22 @@ public class Enemy8_Golem : MonoBehaviour
     {
         OnAttack = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Area.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Area.SetActive(false);
+        }
+    }
+
 
 }
