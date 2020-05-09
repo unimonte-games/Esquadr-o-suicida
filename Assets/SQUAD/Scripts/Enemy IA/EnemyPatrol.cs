@@ -14,6 +14,8 @@ public class EnemyPatrol : MonoBehaviour
     public int speed;
     public float waitTime;
     public float startWaitTime;
+    public float W_min;
+    public float W_max;
 
     public float DistanceToPlayer;
 
@@ -82,7 +84,7 @@ public class EnemyPatrol : MonoBehaviour
                 int nextLocal = Random.Range(0, SpawnToMove);
                 moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
-                startWaitTime = Random.Range(0, 3);
+                startWaitTime = Random.Range(W_min, W_max);
 
                 if (ES.PlantaCanina)
                 {
@@ -142,7 +144,7 @@ public class EnemyPatrol : MonoBehaviour
             int nextLocal = Random.Range(0, SpawnToMove);
             moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
-            startWaitTime = Random.Range(2, 5);
+            startWaitTime = Random.Range(W_min, W_max);
             waitTime = startWaitTime;
 
             ToMove = true;
@@ -213,7 +215,7 @@ public class EnemyPatrol : MonoBehaviour
             int nextLocal = Random.Range(0, SpawnToMove);
             moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
-            startWaitTime = Random.Range(2, 5);
+            startWaitTime = Random.Range(W_min, W_max);
             waitTime = startWaitTime;
 
 

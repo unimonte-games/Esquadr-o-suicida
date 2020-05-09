@@ -6,6 +6,10 @@ public class EnemyDetection : MonoBehaviour
 {
     public EnemyPatrol EP;
     public bool Check;
+    int timeToRotation;
+    public int R_min;
+    public int R_max;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,7 +17,7 @@ public class EnemyDetection : MonoBehaviour
         {
             
             Check = true;
-            int timeToRotation = Random.Range(3, 7);
+            timeToRotation = Random.Range(R_min, R_max);
             Invoke("ReCheck", timeToRotation);
             EP.EnemyHit(timeToRotation);
            

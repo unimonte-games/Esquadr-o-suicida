@@ -552,6 +552,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EP: {fileID: 4147030059974957607}
   Check: 0
+  R_min: 1
+  R_max: 3
 --- !u!1 &4683122962178392510
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +620,7 @@ GameObject:
   - component: {fileID: 6815297767759315290}
   - component: {fileID: 4147030059974957607}
   - component: {fileID: 5270295644081927684}
+  - component: {fileID: 4125258726231153788}
   m_Layer: 20
   m_Name: Enemy2_Drone
   m_TagString: Enemy
@@ -733,11 +736,13 @@ MonoBehaviour:
   speed: 0
   waitTime: 0
   startWaitTime: 2
+  W_min: 1
+  W_max: 2
   DistanceToPlayer: 7
   Dis_Min: 5
   Dis_Max: 10
   speedTurn: 500
-  timeToTurn: 3
+  timeToTurn: 1
   SC_inRoom: {fileID: 0}
   moveLocal: {fileID: 0}
   playerTemp: {fileID: 0}
@@ -755,6 +760,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.3864384, y: 3.1045547, z: 3.2349339}
   m_Center: {x: 0.07343364, y: 4.619504, z: 0.097863674}
+--- !u!111 &4125258726231153788
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760578850629225780}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a72df6afff82e6f4aba60d07dadf5739, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a72df6afff82e6f4aba60d07dadf5739, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5012615540732185053
 GameObject:
   m_ObjectHideFlags: 0
