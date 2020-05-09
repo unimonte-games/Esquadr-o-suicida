@@ -18,6 +18,7 @@ public class Item : MonoBehaviour
     PlayerWeapon playerWeapon;
 
     WeaponList WL;
+    public Outline O;
     
 
     bool Set;
@@ -40,6 +41,7 @@ public class Item : MonoBehaviour
                     player.Gold -= Value;
                     player.SetGold();
                     playerWeapon.GetWeapon(ID);
+                    O.DisabledLine();
                     this.gameObject.SetActive(false);
 
 
@@ -48,6 +50,7 @@ public class Item : MonoBehaviour
                 }
 
                 playerWeapon.GetWeapon(ID);
+                O.DisabledLine();
                 this.gameObject.SetActive(false);
 
                 Debug.Log("Player 1 pegou um item!");
@@ -65,11 +68,13 @@ public class Item : MonoBehaviour
 
                     Debug.Log("Player 2 comprou um item!");
 
+                    O.DisabledLine();
                     this.gameObject.SetActive(false);
                     return;
                 }
 
                 playerWeapon.GetWeapon(ID);
+                O.DisabledLine();
                 this.gameObject.SetActive(false);
 
                 Debug.Log("Player 2 pegou um item!");

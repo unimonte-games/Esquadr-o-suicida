@@ -8,6 +8,7 @@ public class GetObject : MonoBehaviour
     GetObject Gobj;
     bool InArea;
     SphereCollider SC;
+    public Outline O;
 
     private void Start()
     {
@@ -65,12 +66,14 @@ public class GetObject : MonoBehaviour
         this.gameObject.transform.position = P.ObjSpawn.position;
         this.gameObject.transform.parent = P.ObjSpawn;
 
+        O.DisabledLine();
         SC.enabled = false;
     }
 
     public void Drop()
     {
         SC.enabled = true;
+        O.ShowLine();
     }
 
     

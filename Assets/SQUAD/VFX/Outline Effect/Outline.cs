@@ -3,49 +3,46 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace cakeslice
+
+[RequireComponent(typeof(Renderer))]
+public class Outline : MonoBehaviour
 {
-    
-    [RequireComponent(typeof(Renderer))]
-    public class Outline : MonoBehaviour
+    public Renderer Renderer { get; private set; }
+
+    public int color;
+    public bool eraseRenderer;
+
+    [HideInInspector]
+    public int originalLayer;
+    [HideInInspector]
+    public Material[] originalMaterials;
+
+    private void Start()
     {
-        public Renderer Renderer { get; private set; }
+        Renderer = GetComponent<Renderer>();
+    }
 
-        public int color;
-        public bool eraseRenderer;
+    public void ShowLine()
+    {
+        IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
+            .Select(c => c.GetComponent<OutlineEffect>())
+            .Where(e => e != null);
 
-        [HideInInspector]
-        public int originalLayer;
-        [HideInInspector]
-        public Material[] originalMaterials;
-
-        private void Start()
+        foreach (OutlineEffect effect in effects)
         {
-            Renderer = GetComponent<Renderer>();
+            effect.AddOutline(this);
         }
+    }
 
-        public void ShowLine()
+    public void DisabledLine()
+    {
+        IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
+            .Select(c => c.GetComponent<OutlineEffect>())
+            .Where(e => e != null);
+
+        foreach (OutlineEffect effect in effects)
         {
-			IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
-				.Select(c => c.GetComponent<OutlineEffect>())
-				.Where(e => e != null);
-
-			foreach (OutlineEffect effect in effects)
-            {
-                effect.AddOutline(this);
-            }
-        }
-
-        public void DisabledLine()
-        {
-			IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
-				.Select(c => c.GetComponent<OutlineEffect>())
-				.Where(e => e != null);
-
-			foreach (OutlineEffect effect in effects)
-            {
-                effect.RemoveOutline(this);
-            }
+            effect.RemoveOutline(this);
         }
     }
 }

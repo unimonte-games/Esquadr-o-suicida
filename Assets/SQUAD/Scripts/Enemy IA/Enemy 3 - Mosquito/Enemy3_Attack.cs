@@ -28,7 +28,7 @@ public class Enemy3_Attack : MonoBehaviour
     private void Awake()
     {
         Dano = Random.Range(dano_min, dano_max);
-        TimeToSlow = Random.Range(5, 15);
+        TimeToSlow = Random.Range(3, 5);
         EffectTime = Random.Range(0, 3);
         TimeToAttack = Random.Range(2, 5);
     }

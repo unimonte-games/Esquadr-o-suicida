@@ -5,11 +5,8 @@ using System.Collections.Generic;
 using UnityEngine.Rendering;
 using UnityEngine.VR;
 
-namespace cakeslice
-{
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera))]
-    [ExecuteInEditMode]
     public class OutlineEffect : MonoBehaviour
     {
         private static OutlineEffect m_instance;
@@ -382,4 +379,3 @@ namespace cakeslice
                 outlines.Remove(outline);
         }
     }
-}
