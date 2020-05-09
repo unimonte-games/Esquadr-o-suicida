@@ -38,8 +38,7 @@ public class EnemyPatrol : MonoBehaviour
 
     EnemyStats ES;
 
-    bool CafToAttack;
-    
+
     private void Awake()
     {
         ES = GetComponent<EnemyStats>();
@@ -47,6 +46,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void Start()
     {
+
         speed = Random.Range(speed_min, speed_max);
         SpawnToMove = SC_inRoom.Acionados;
 
@@ -57,10 +57,12 @@ public class EnemyPatrol : MonoBehaviour
         waitTime = startWaitTime;
 
        
+
     }
 
     void FixedUpdate()
     {
+
         if (!InLocal)
         {
             Vector3 dirFromMeToTarget = moveLocal.position - transform.position;
@@ -73,10 +75,12 @@ public class EnemyPatrol : MonoBehaviour
 
         if (!ToMove)
         {
+            
             transform.position = Vector3.MoveTowards(transform.position, moveLocal.position, speed * Time.deltaTime);
+
         }
 
-        if (Vector3.Distance(transform.position, moveLocal.position) < 1f && !OnAttack)
+        if (Vector3.Distance(transform.position, moveLocal.position) < 2f && !OnAttack)
         {
             if (waitTime <= 0)
             {
@@ -226,7 +230,6 @@ public class EnemyPatrol : MonoBehaviour
     public void CafeteiraChangeSpeed()
     {
         speed = Random.Range(5, 6);
-        CafToAttack = true;   
     }
 
 }

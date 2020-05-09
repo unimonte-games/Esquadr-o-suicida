@@ -785,9 +785,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8463149246338089728}
   - component: {fileID: 3763545214479912244}
-  - component: {fileID: 7370805480431363674}
   - component: {fileID: 5782606100765708224}
   - component: {fileID: 3973874130461627581}
+  - component: {fileID: -1238125197856003046}
   m_Layer: 20
   m_Name: Enemy1_LataRadioativa
   m_TagString: Enemy
@@ -826,22 +826,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2299228, y: 2.4027927, z: 2.214228}
   m_Center: {x: 0.0134913325, y: 0.70139635, z: 0.10793126}
---- !u!54 &7370805480431363674
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5529230208870450094}
-  serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &5782606100765708224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,6 +898,22 @@ MonoBehaviour:
   moveLocal: {fileID: 0}
   playerTemp: {fileID: 0}
   Body: {fileID: 8826589704045032869}
+--- !u!54 &-1238125197856003046
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529230208870450094}
+  serializedVersion: 2
+  m_Mass: 7
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &5644970951808732964
 GameObject:
   m_ObjectHideFlags: 0

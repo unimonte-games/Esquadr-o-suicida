@@ -83,6 +83,8 @@ public class EnemyStats : MonoBehaviour
        
         BodyEffect.SetActive(false);
         Body.SetActive(true);
+
+        
         
     }
 
