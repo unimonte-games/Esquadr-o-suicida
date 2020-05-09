@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ConectorTrigger : MonoBehaviour
 {
-    public ConnectorRoom CR;
+    public ConnectorRoom Room;
+
+    public bool TopDown;
+    public bool LeftRight;
 
     private void Start()
     {
@@ -18,10 +21,20 @@ public class ConectorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Conector")
+        if (TopDown && other.gameObject.layer == 23)
         {
-            CR.CR = other.gameObject.GetComponent<ConnectorRoom>();
-            Debug.Log("Conector Search");
+            ConectorTrigger CT = other.gameObject.GetComponent<ConectorTrigger>();
+            Room.CR = CT.Room;
+            Debug.Log("Conector Top to Down");
+            return;
+        }
+
+        if (LeftRight && other.gameObject.layer == 24)
+        {
+            ConectorTrigger CT = other.gameObject.GetComponent<ConectorTrigger>();
+            Room.CR = CT.Room;
+            Debug.Log("Conector Left to Right");
+            return;
         }
     }
 }
