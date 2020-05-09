@@ -56,11 +56,8 @@ public class EnemyStats : MonoBehaviour
     public float SizeLife;
     bool S;
 
-    
-
     private void Start()
     {
-
         if (InTarget && PlantaCanina)
         {
             InTarget = false;
@@ -83,8 +80,7 @@ public class EnemyStats : MonoBehaviour
 
     void StartEnemy()
     {
-        EP.enabled = true;
-
+       
         BodyEffect.SetActive(false);
         Body.SetActive(true);
         
@@ -93,7 +89,6 @@ public class EnemyStats : MonoBehaviour
     private void Awake()
     {
         EP = GetComponent<EnemyPatrol>();
-        EP.enabled = false;
 
         Body.SetActive(false);
         BodyEffect.SetActive(true);

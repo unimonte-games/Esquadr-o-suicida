@@ -28,8 +28,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 106912665892647323}
-  m_Father: {fileID: 5741963829527995057}
-  m_RootOrder: 1
+  m_Father: {fileID: 8463149246338089728}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &284197621630624307
 GameObject:
@@ -806,6 +806,7 @@ Transform:
   m_Children:
   - {fileID: 7732931660230997366}
   - {fileID: 2687534822713023059}
+  - {fileID: 3939833873835529425}
   - {fileID: 3195704159787468659}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -831,7 +832,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5529230208870450094}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 4
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -864,7 +865,7 @@ MonoBehaviour:
     type: 3}
   spawnDamage: {fileID: 2687534822713023059}
   AttackArea: {fileID: 5421032057530402631}
-  Body: {fileID: 284197621630624307}
+  Body: {fileID: 8826589704045032869}
   BodyEffect: {fileID: 28145547116807734}
   PlayerTarget: {fileID: 0}
   PlayerInArea: 0
@@ -1068,7 +1069,7 @@ Transform:
   - {fileID: 6358753387465912765}
   - {fileID: 2784708516504726118}
   m_Father: {fileID: 8463149246338089728}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9155598991001900879
 GameObject:
@@ -1098,7 +1099,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5233863968843901421}
-  - {fileID: 3939833873835529425}
   m_Father: {fileID: 3195704159787468659}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

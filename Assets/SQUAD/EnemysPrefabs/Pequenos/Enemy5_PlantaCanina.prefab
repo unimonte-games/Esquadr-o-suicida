@@ -32,7 +32,7 @@ Transform:
   - {fileID: 3087034497275784931}
   - {fileID: 6074450607203988792}
   m_Father: {fileID: 547935463610031198}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1001687833135515665
 GameObject:
@@ -62,7 +62,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4200704567914034867}
-  - {fileID: 9016971929074407034}
   m_Father: {fileID: 6823200827765069869}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,13 +161,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3493443381869994979}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1651469315779484115}
-  m_Father: {fileID: 4415217235050642927}
-  m_RootOrder: 1
+  m_Father: {fileID: 547935463610031198}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3939402962759798276
 GameObject:
@@ -445,6 +444,7 @@ Transform:
   m_Children:
   - {fileID: 1853628579342510632}
   - {fileID: 6315603235663316237}
+  - {fileID: 9016971929074407034}
   - {fileID: 6823200827765069869}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
     type: 3}
   spawnDamage: {fileID: 6315603235663316237}
   AttackArea: {fileID: 4166624532571002905}
-  Body: {fileID: 8149300066671508845}
+  Body: {fileID: 619198301105892091}
   BodyEffect: {fileID: 3493443381869994979}
   PlayerTarget: {fileID: 0}
   PlayerInArea: 0

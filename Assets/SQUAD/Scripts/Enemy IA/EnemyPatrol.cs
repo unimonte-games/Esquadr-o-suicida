@@ -82,7 +82,7 @@ public class EnemyPatrol : MonoBehaviour
                 int nextLocal = Random.Range(0, SpawnToMove);
                 moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
-                startWaitTime = Random.Range(0, 5);
+                startWaitTime = Random.Range(0, 3);
 
                 if (ES.PlantaCanina)
                 {
@@ -117,14 +117,7 @@ public class EnemyPatrol : MonoBehaviour
             ToMove = false;
             Body.transform.LookAt(moveLocal);
 
-            if (CafToAttack)
-            {
-                DistanceToPlayer = 2;
-            }
-            else
-            {
-                DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
-            }
+            DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
 
         }
 
