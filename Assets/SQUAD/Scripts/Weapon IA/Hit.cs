@@ -11,7 +11,6 @@ public class Hit : MonoBehaviour
 
     public bool DontDestroy;
 
-
     private void Start()
     {
         Invoke("destroyThis", time);

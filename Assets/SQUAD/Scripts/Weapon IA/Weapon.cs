@@ -22,6 +22,8 @@ public class Weapon : MonoBehaviour
     public Player P;
     public PlayerUI PUI;
 
+    public bool Punch;
+
     private void Awake()
     {
         PUI = FindObjectOfType<PlayerUI>();
@@ -36,6 +38,7 @@ public class Weapon : MonoBehaviour
             GameObject bullet = Instantiate(Shot, spawnShot.transform.position, Quaternion.identity) as GameObject;
             Hit HitEnemy = bullet.GetComponent<Hit>();
 
+
             HitEnemy.PlayerDestroy = P.PlayerType;
             HitEnemy.time = Range;
             HitEnemy.Hit_Plant = Fire_Plant;
@@ -44,7 +47,14 @@ public class Weapon : MonoBehaviour
 
             PUI.ChangeMana(P.PlayerType, P.ManaBar, P.ManaBar_max);
 
+            if (Punch)
+            {
+                return;
+            }
+
             bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
+
+
         }
 
     }
