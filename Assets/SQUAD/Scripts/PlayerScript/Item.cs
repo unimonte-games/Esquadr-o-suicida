@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
@@ -19,14 +20,36 @@ public class Item : MonoBehaviour
 
     WeaponList WL;
     public Outline O;
-    
 
+    public Text FirePlant;
+    public Text TechPlant;
+    public Text Mana;
+    public Text Frame;
+    public Text Range;
+    public Text gold;
+
+    public GameObject OnGold;
+    
     bool Set;
 
     private void Awake()
     {
-        WL = FindObjectOfType<WeaponList>();
-        
+        WL = FindObjectOfType<WeaponList>(); 
+    }
+
+    private void Start()
+    {
+        FirePlant.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Fire_Plant;
+        TechPlant.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Fire_Tech;
+        Mana.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Mana;
+        Frame.text = "" + WL.Weapon[ID].GetComponent<Weapon>().FrameRate;
+        Range.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Range;
+
+        if (isBuy)
+        {
+            gold.text = "" + Value;
+            OnGold.SetActive(true);
+        }
     }
 
     private void FixedUpdate()

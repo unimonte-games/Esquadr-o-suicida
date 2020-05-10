@@ -113,7 +113,7 @@ MonoBehaviour:
   P2_ref: {fileID: 0}
   Atual: {fileID: 0}
   speed: 35
-  MaxCount: 30
+  MaxCount: 120
   h: {fileID: 8015641924192059079}
 --- !u!114 &8015641924192059079
 MonoBehaviour:
@@ -127,10 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edecdee0266f8ec4fac0cf28050792f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 30
+  time: 120
   PlayerDestroy: 0
   Hit_Plant: 2
   Hit_Tech: 2
+  DontDestroy: 1
 --- !u!1 &4207770706345503451
 GameObject:
   m_ObjectHideFlags: 0

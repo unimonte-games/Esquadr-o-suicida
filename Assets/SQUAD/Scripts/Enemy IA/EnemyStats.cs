@@ -166,7 +166,10 @@ public class EnemyStats : MonoBehaviour
                 hit.transform.parent = transform;
 
                 TakeHit();
-                other.gameObject.SetActive(false);
+                if (!h.DontDestroy)
+                {
+                    other.gameObject.SetActive(false);
+                }
 
             }
             else
@@ -177,13 +180,17 @@ public class EnemyStats : MonoBehaviour
                 hit.transform.parent = transform;
 
                 TakeHit();
-                other.gameObject.SetActive(false);
+                if (!h.DontDestroy)
+                {
+                    other.gameObject.SetActive(false);
+                }
+                
 
             }
 
             if (Life_Atual <= 0)
             {
-
+                TakeHit();
 
                 if (h.PlayerDestroy)
                 {

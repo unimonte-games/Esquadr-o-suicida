@@ -9,6 +9,9 @@ public class OnOutline : MonoBehaviour
     bool P1;
     bool P2;
 
+    public bool IsItem;
+    public GameObject UI_item;
+
     public Outline OutLineObjcet;
 
     private void Start()
@@ -23,6 +26,11 @@ public class OnOutline : MonoBehaviour
         {
             P1 = true;
             OutLineObjcet.ShowLine();
+
+            if (IsItem)
+            {
+                UI_item.SetActive(true);
+            }
             return;
         }
 
@@ -30,6 +38,10 @@ public class OnOutline : MonoBehaviour
         {
             P2 = true;
             OutLineObjcet.ShowLine();
+            if (IsItem)
+            {
+                UI_item.SetActive(true);
+            }
             return;
         }
     }
@@ -41,12 +53,21 @@ public class OnOutline : MonoBehaviour
             OutLineObjcet.DisabledLine();
             P1 = false;
 
+            if (IsItem)
+            {
+                UI_item.SetActive(false);
+            }
         }
 
         if (other.gameObject.name == "Player2" && P2)
         {
             OutLineObjcet.DisabledLine();
             P2 = false;
+
+            if (IsItem)
+            {
+                UI_item.SetActive(false);
+            }
 
         }
     }

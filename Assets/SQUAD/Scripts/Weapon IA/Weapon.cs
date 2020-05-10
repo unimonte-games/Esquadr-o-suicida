@@ -12,8 +12,6 @@ public class Weapon : MonoBehaviour
     public float FrameRate;
     public int Mana;
     public float Range;
-    public int Nivel;
-    public string Name;
 
     public float Force;
 

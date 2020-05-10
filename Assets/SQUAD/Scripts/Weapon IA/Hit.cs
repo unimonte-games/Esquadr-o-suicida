@@ -9,6 +9,8 @@ public class Hit : MonoBehaviour
     public int Hit_Plant;
     public int Hit_Tech;
 
+    public bool DontDestroy;
+
 
     private void Start()
     {
