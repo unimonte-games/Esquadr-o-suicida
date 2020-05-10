@@ -126,8 +126,7 @@ public class EnemyPatrol : MonoBehaviour
             DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
 
         }
-
-       
+  
     }
 
     void WaitToRotation()
