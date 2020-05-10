@@ -9,6 +9,8 @@ public class OnOutline : MonoBehaviour
     bool P1;
     bool P2;
 
+    bool PlayerDiscart;
+
     public bool IsItem;
     public GameObject UI_item;
 
@@ -18,7 +20,16 @@ public class OnOutline : MonoBehaviour
     {
         P1 = false;
         P2 = false;
+        PlayerDiscart = true;
+
+        Invoke("Cancel", 2);
     }
+
+    void Cancel()
+    {
+        PlayerDiscart = false;
+    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -69,6 +80,17 @@ public class OnOutline : MonoBehaviour
                 UI_item.SetActive(false);
             }
 
+        }
+
+        if(PlayerDiscart && other.gameObject.tag == "Player")
+        {
+            OutLineObjcet.DisabledLine();
+            
+            if (IsItem)
+            {
+                PlayerDiscart = false;
+                UI_item.SetActive(false);
+            }
         }
     }
 }

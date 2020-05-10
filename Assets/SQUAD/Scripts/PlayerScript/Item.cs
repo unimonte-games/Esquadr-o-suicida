@@ -29,16 +29,21 @@ public class Item : MonoBehaviour
     public Text gold;
 
     public GameObject OnGold;
-    
+    Vector3 Body;
+
+
     bool Set;
 
     private void Awake()
     {
-        WL = FindObjectOfType<WeaponList>(); 
+        WL = FindObjectOfType<WeaponList>();
+       
     }
 
     private void Start()
     {
+        transform.localRotation = new Quaternion(0, 0, 0, 0);
+
         FirePlant.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Fire_Plant;
         TechPlant.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Fire_Tech;
         Mana.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Mana;
