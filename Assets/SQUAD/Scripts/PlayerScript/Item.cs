@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     public int Value;
  
     public bool isBuy;
+    public bool isTech;
 
     bool inUse1;
     bool inUse2;
@@ -27,8 +28,8 @@ public class Item : MonoBehaviour
     public Text Frame;
     public Text Range;
     public Text gold;
+    public Text Limit;
 
-    public GameObject OnGold;
     Vector3 Body;
 
 
@@ -53,7 +54,13 @@ public class Item : MonoBehaviour
         if (isBuy)
         {
             gold.text = "" + Value;
-            OnGold.SetActive(true);
+            gold.gameObject.SetActive(true);
+        }
+
+        if (isTech)
+        {
+            Limit.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Limit;
+            Limit.gameObject.SetActive(true);
         }
     }
 

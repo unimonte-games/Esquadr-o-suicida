@@ -23,6 +23,9 @@ public class Weapon : MonoBehaviour
     public PlayerUI PUI;
 
     public bool Punch;
+    public bool Tech;
+    public float Limit;
+    public bool DontFire;
 
     private void Awake()
     {
@@ -32,7 +35,7 @@ public class Weapon : MonoBehaviour
     private void FixedUpdate()
     {
         countToShoting += 0.1f;
-        if (Input.GetKeyDown(Gatilho) && countToShoting >= FrameRate && P.ManaBar >= Mana)
+        if (Input.GetKeyDown(Gatilho) && countToShoting >= FrameRate && P.ManaBar >= Mana && !DontFire)
         {
             countToShoting = 0f;
             GameObject bullet = Instantiate(Shot, spawnShot.transform.position, Quaternion.identity) as GameObject;
@@ -43,7 +46,21 @@ public class Weapon : MonoBehaviour
             HitEnemy.time = Range;
             HitEnemy.Hit_Plant = Fire_Plant;
             HitEnemy.Hit_Tech = Fire_Tech;
-            P.ManaBar -= Mana;
+
+            if (Tech)
+            {
+                Limit--;
+                if(Limit <= 0)
+                {
+                    DontFire = true;
+                    Debug.Log("Arma Tecnologica acabou!");
+                }
+            }
+            else
+            {
+                P.ManaBar -= Mana;
+            }
+            
 
             PUI.ChangeMana(P.PlayerType, P.ManaBar, P.ManaBar_max);
 
