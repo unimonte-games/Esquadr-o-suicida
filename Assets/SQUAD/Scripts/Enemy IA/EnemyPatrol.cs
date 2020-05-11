@@ -238,7 +238,11 @@ public class EnemyPatrol : MonoBehaviour
         {
             InSlow = true;
             tempSpeed = speed;
-            speed = 1;
+            speed -= 2;
+            if(speed <= 0)
+            {
+                speed = 1;
+            }
             Invoke("CancelSlow", 3);
         }
         

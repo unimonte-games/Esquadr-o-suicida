@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2750337518045405255}
   - component: {fileID: 697408478703877796}
   - component: {fileID: 568517957556669657}
+  - component: {fileID: 3549267508371061946}
   m_Layer: 0
   m_Name: W24_Fragilizar
   m_TagString: Untagged
@@ -127,10 +128,28 @@ MonoBehaviour:
   Fire_Plant: 1
   Fire_Tech: 1
   FrameRate: 1
-  Mana: 5
-  Range: 0.9
+  Mana: 7
+  Range: 0.7
   Force: 1500
   Gatilho: 0
   spawnShot: {fileID: 4182056526165251841}
   P: {fileID: 0}
   PUI: {fileID: 0}
+  Punch: 0
+  Tech: 0
+  Limit: 0
+  DontFire: 0
+--- !u!114 &3549267508371061946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285497950757324477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4762d90ce6f3d7f45b3b0d4c089da533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  W: {fileID: 568517957556669657}
+  Aumentar: 2
