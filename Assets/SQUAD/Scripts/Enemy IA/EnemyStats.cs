@@ -7,6 +7,7 @@ public class EnemyStats : MonoBehaviour
 {
     public int E_ID; //Id do inimigo
     public bool Type; //True = Tech | False = Plant
+    public bool DontSlow;
 
     public float Life_Atual;
     public float L_Max;
@@ -165,6 +166,11 @@ public class EnemyStats : MonoBehaviour
                 hit.GetComponent<EnemyUIHit>().danoHit = h.Hit_Tech;
                 hit.transform.parent = transform;
 
+                if (h.isSlow && !DontSlow)
+                {
+                    EP.SlowInEnemy();
+                }
+
                 TakeHit();
                 if (!h.DontDestroy)
                 {
@@ -178,6 +184,12 @@ public class EnemyStats : MonoBehaviour
                 GameObject hit = Instantiate(HitDamage, spawnDamage.position, spawnDamage.rotation) as GameObject;
                 hit.GetComponent<EnemyUIHit>().danoHit = h.Hit_Plant;
                 hit.transform.parent = transform;
+
+
+                if (h.isSlow && !DontSlow)
+                {
+                    EP.SlowInEnemy();
+                }
 
                 TakeHit();
                 if (!h.DontDestroy)
@@ -332,5 +344,7 @@ public class EnemyStats : MonoBehaviour
             OnPatrol();
         }
     }
+
+    
 }
 

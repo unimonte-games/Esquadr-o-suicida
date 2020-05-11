@@ -37,7 +37,8 @@ public class EnemyPatrol : MonoBehaviour
     public GameObject Body;
 
     EnemyStats ES;
-
+    int tempSpeed;
+    bool InSlow;
 
     private void Awake()
     {
@@ -229,6 +230,25 @@ public class EnemyPatrol : MonoBehaviour
     public void CafeteiraChangeSpeed()
     {
         speed = Random.Range(5, 6);
+    }
+
+    public void SlowInEnemy()
+    {
+        if (!InSlow)
+        {
+            InSlow = true;
+            tempSpeed = speed;
+            speed = 1;
+            Invoke("CancelSlow", 3);
+        }
+        
+
+    }
+
+    void CancelSlow()
+    {
+        speed = tempSpeed;
+        InSlow = false;
     }
 
 }
