@@ -91,6 +91,7 @@ public class Porta_Default : MonoBehaviour
     void GoToSpawn()
     {
         Debug.Log("Iniciando Wave");
+        RM.StartMusicInRoom();
 
         if (Orda_Wave == false)
         {

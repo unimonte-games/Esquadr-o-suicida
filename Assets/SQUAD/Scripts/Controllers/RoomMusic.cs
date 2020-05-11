@@ -9,6 +9,7 @@ public class RoomMusic : MonoBehaviour
     int randomNumber;
     public int MusicStep_min;
     public int MusicStep_max;
+    int Atual;
 
     void Start()
     {
@@ -21,6 +22,12 @@ public class RoomMusic : MonoBehaviour
 
         }
 
+    }
+
+    public void StartMusicInRoom()
+    {
+        SC.SetGlobalMusic(RoomList[Atual]);
+       
     }
 
 }
