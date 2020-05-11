@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomMusic : MonoBehaviour
 {
     SoundController SC;
-    public AudioSource[] RoomList;
+    public AudioClip[] RoomList;
     int randomNumber;
     public int MusicStep_min;
     public int MusicStep_max;
@@ -14,7 +14,7 @@ public class RoomMusic : MonoBehaviour
     {
         SC = FindObjectOfType<SoundController>();
 
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 5; i++)
         {
             randomNumber = Random.Range(MusicStep_min, MusicStep_max);
             RoomList[i] = SC.AllSounds[randomNumber];

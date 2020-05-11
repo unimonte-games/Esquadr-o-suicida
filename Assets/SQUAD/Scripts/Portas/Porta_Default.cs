@@ -10,6 +10,7 @@ public class Porta_Default : MonoBehaviour
     public Porta_Default P; //referencia dele mesmo para passar para os inimigos que dropam
     public SpawnController SC_spawn; //referencia para o IA Patrol dos inimigos.
     public RoomController RoomControl; //referencia de missao
+    public RoomMusic RM; //referencia da musica
     public BoxCollider triggerPlayers; //BoxCollider do Puzzle
     bool StartingWave; //Colidir pra iniciar a wave
     public Player player1;
@@ -78,6 +79,7 @@ public class Porta_Default : MonoBehaviour
     {
         PUI = FindObjectOfType<PlayerUI>();
         LC = FindObjectOfType<LevelController>();
+        RM = GetComponent<RoomMusic>();
         StartingWave = false;
     }
 
