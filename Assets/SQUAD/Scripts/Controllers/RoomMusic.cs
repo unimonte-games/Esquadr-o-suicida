@@ -6,28 +6,40 @@ public class RoomMusic : MonoBehaviour
 {
     SoundController SC;
     public AudioClip[] RoomList;
-    int randomNumber;
+
+    int n;
     public int MusicStep_min;
     public int MusicStep_max;
     int Atual;
+    public int TimeToNext;
 
     void Start()
     {
         SC = FindObjectOfType<SoundController>();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = MusicStep_min; i < MusicStep_max; i++)
         {
-            randomNumber = Random.Range(MusicStep_min, MusicStep_max);
-            RoomList[i] = SC.AllSounds[randomNumber];
-
+            RoomList[n] = SC.AllSounds[i];
+            n++;
         }
 
     }
 
     public void StartMusicInRoom()
     {
+        InvokeRepeating("ChangeMusic", 0, TimeToNext);
+    }
+
+    public void ChangeMusic()
+    {
         SC.SetGlobalMusic(RoomList[Atual]);
-       
+        Atual++;
+
+        if (Atual >= 5)
+        {
+            Atual = 0;
+            Debug.Log("Voltou a Primeira");
+        }
     }
 
 }
