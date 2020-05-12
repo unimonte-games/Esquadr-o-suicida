@@ -30,7 +30,6 @@ public class OnOutline : MonoBehaviour
         PlayerDiscart = false;
     }
     
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player1" && !P1 && !P2)
@@ -92,6 +91,10 @@ public class OnOutline : MonoBehaviour
                 UI_item.SetActive(false);
             }
         }
+
     }
+
+   
+
 }
 

@@ -9,6 +9,7 @@ public class GetObject : MonoBehaviour
     bool InArea;
     SphereCollider SC;
     public Outline O;
+   
 
     private void Start()
     {
@@ -22,11 +23,16 @@ public class GetObject : MonoBehaviour
         {
             InArea = true;
             P = other.GetComponent<Player>();
+
+            if (!P.UsingItenDinamic)
+            {
+                P.Object = this.gameObject;
+                P.ObjectInArea = true;
+                P.Gobj = Gobj;
+                return;
+            }
             
-            P.Object = this.gameObject;
-            P.ObjectInArea = true;
-            P.Gobj = Gobj;
-            return;
+            
         }
 
         if (other.gameObject.name == "Player2" && !InArea)
@@ -34,10 +40,13 @@ public class GetObject : MonoBehaviour
             InArea = true;
             P = other.GetComponent<Player>();
 
-            P.Object = this.gameObject;
-            P.ObjectInArea = true;
-            P.Gobj = Gobj;
-            return;
+            if (!P.UsingItenDinamic)
+            {
+                P.Object = this.gameObject;
+                P.ObjectInArea = true;
+                P.Gobj = Gobj;
+                return;
+            }
         }
     }
 
@@ -72,6 +81,7 @@ public class GetObject : MonoBehaviour
 
     public void Drop()
     {
+        
         SC.enabled = true;
         O.ShowLine();
     }
