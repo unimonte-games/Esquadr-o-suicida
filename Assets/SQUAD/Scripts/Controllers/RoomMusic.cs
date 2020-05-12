@@ -32,7 +32,7 @@ public class RoomMusic : MonoBehaviour
 
     public void ChangeMusic()
     {
-        SC.SetGlobalMusic(RoomList[Atual]);
+        SC.SetGlobalMusic(RoomList[Atual], this);
         Atual++;
 
         if (Atual >= 5)
@@ -46,8 +46,11 @@ public class RoomMusic : MonoBehaviour
     {
         CancelInvoke("ChangeMusic");
         SC.RoomClean();
-        this.enabled = false;
+    }
 
+    public void Muted ()
+    {
+        CancelInvoke("ChangeMusic");
     }
 
 }

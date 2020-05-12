@@ -11,6 +11,7 @@ public class RoomController : MonoBehaviour
  
     LevelController LC;
     SoundController SC;
+
     public Porta_Default Default;
     public Porta_Color Color;
     public Porta_Double Double;

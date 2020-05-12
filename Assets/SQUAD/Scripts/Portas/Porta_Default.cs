@@ -749,6 +749,7 @@ public class Porta_Default : MonoBehaviour
             StartingWave = true;
             if (Orda_Wave)
             {
+                Debug.Log("Musica Começou");
                 RM.StartMusicInRoom();
                 PUI.StartRoom();
                 InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
