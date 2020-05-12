@@ -9,17 +9,23 @@ public class SoundController : MonoBehaviour
 
     private void Start()
     {
-       
-        
+
     }
 
 
     public void SetGlobalMusic(AudioClip Sound)
     {
+        GlobalMusic.volume = 0.15f;
+
         GlobalMusic.clip = Sound;
         GlobalMusic.Play();
 
         Debug.Log("Iniciando musica.");
+    }
+
+    public void RoomClean()
+    {
+        GlobalMusic.volume = 0.01f;
     }
 
 }

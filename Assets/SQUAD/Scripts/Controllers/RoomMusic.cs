@@ -42,4 +42,12 @@ public class RoomMusic : MonoBehaviour
         }
     }
 
+    public void VolumeOff()
+    {
+        CancelInvoke("ChangeMusic");
+        SC.RoomClean();
+        this.enabled = false;
+
+    }
+
 }

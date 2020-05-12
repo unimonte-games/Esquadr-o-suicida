@@ -10,6 +10,7 @@ public class RoomController : MonoBehaviour
     public int Room_ID;
  
     LevelController LC;
+    SoundController SC;
     public Porta_Default Default;
     public Porta_Color Color;
     public Porta_Double Double;
@@ -41,6 +42,7 @@ public class RoomController : MonoBehaviour
         PUI = FindObjectOfType<PlayerUI>();
         LC = FindObjectOfType<LevelController>();
         mapSystem = FindObjectOfType<MapSystem>();
+        SC = FindObjectOfType<SoundController>();
         
 
         MissionInTheRoom++;
@@ -193,6 +195,8 @@ public class RoomController : MonoBehaviour
 
         if (CompleteMissions == MissionInTheRoom)
         {
+            SC.RoomClean();
+
             Default.enabled = false;
             LC.CompleteRoom[Room_ID] = true;
             mapSystem.RoomExplored[Room_ID] = true;

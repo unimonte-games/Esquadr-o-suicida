@@ -91,7 +91,6 @@ public class Porta_Default : MonoBehaviour
     void GoToSpawn()
     {
         Debug.Log("Iniciando Wave");
-        RM.StartMusicInRoom();
 
         if (Orda_Wave == false)
         {
@@ -360,7 +359,9 @@ public class Porta_Default : MonoBehaviour
         ReWave = true;
         ReWave_Door = TypeDoor;
 
-        if(player1 != null)
+        RM.VolumeOff();
+
+        if (player1 != null)
         {
             player1.PD = this;
         }
@@ -374,11 +375,12 @@ public class Porta_Default : MonoBehaviour
         {
             Debug.Log("Nada Acontece");
             RoomControl.ReWaveContest(ReWave_Door);
+
+            return;
         }
 
         if (Type >= 6 && Type <= 10) //Wave Surpresa
         {
-
             Debug.Log("Suprise Wave");
 
             Normal_Wave = false;
@@ -387,6 +389,8 @@ public class Porta_Default : MonoBehaviour
 
             PUI.SetSurprise();
             Invoke("GoToSpawn", TimerToSpawn);
+            Invoke("ReMusic", 3);
+            return;
         }
 
         if (Type >= 11 && Type <= 15)//Rescue
@@ -454,6 +458,8 @@ public class Porta_Default : MonoBehaviour
 
             PUI.SetRescue();
             Invoke("GoToSpawn", TimerToSpawn);
+            Invoke("ReMusic", 3);
+            return;
 
         }
 
@@ -504,6 +510,8 @@ public class Porta_Default : MonoBehaviour
             }
 
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
+            Invoke("ReMusic", 3);
+            return;
         }
 
         if (Type >= 21 && Type <= 25)//Peace 
@@ -520,6 +528,8 @@ public class Porta_Default : MonoBehaviour
 
             PUI.SetOnPeace();
             InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
+            Invoke("ReMusic", 3);
+            return;
         }
 
         if (Type >= 26 && Type <= 30)//Roulete
@@ -545,10 +555,18 @@ public class Porta_Default : MonoBehaviour
             {
                 PUI.SetRoulette(player2.Selecionar_set, player2.Selecionar_set, this);
             }
-     
+
+            Invoke("ReMusic", 3);
+            return;
+
         }
 
+        
+    }
 
+    void ReMusic()
+    {
+        RM.StartMusicInRoom();
     }
 
     public void StartRoulette(int ID)
@@ -731,11 +749,13 @@ public class Porta_Default : MonoBehaviour
             StartingWave = true;
             if (Orda_Wave)
             {
+                RM.StartMusicInRoom();
                 PUI.StartRoom();
                 InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
             }
             else
             {
+                RM.StartMusicInRoom();
                 PUI.StartRoom();
                 Invoke("GoToSpawn", TimerToSpawn);
             }
