@@ -33,9 +33,23 @@ public class SoundController : MonoBehaviour
 
     public void RoomClean()
     {
-        GlobalMusic.volume = 0.01f;
+        GlobalMusic.volume = 0.05f;
     }
 
+    public void PlayerDead()
+    {
+        GlobalMusic.pitch = 0.4f;
+        Invoke("RePitch", 3f);
+    }
     
+    void RePitch()
+    {
+        GlobalMusic.pitch = 1f;
+    }
+
+    public void AllPlayersDead()
+    {
+        GlobalMusic.volume = 0.02f;
+    }
 
 }

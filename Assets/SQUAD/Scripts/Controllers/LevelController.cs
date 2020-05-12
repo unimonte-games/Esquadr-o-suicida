@@ -20,6 +20,8 @@ public class LevelController : MonoBehaviour
 
     public bool[] CompleteRoom;
 
+    SoundController SC;
+
     private void Awake()
     {
         CT = FindObjectOfType<CameraTarget>();
@@ -27,7 +29,7 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        
+        SC = FindObjectOfType<SoundController>();
     }
 
     public void UpdatePlayers()
@@ -45,6 +47,11 @@ public class LevelController : MonoBehaviour
         if (!CT.enabled)
         {
             CT.enabled = true;
+        }
+
+        if(P1_dead && P2_dead)
+        {
+            SC.AllPlayersDead();
         }
 
         CT.UpdateCamera();

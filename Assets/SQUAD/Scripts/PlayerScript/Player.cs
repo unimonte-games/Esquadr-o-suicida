@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
     public GameObject Life_Hud; 
 
     public GameObject PlayerDead_Tree;
+    SoundController SC;
 
 
     private void Start()
@@ -105,6 +106,7 @@ public class Player : MonoBehaviour
         PUI = FindObjectOfType<PlayerUI>();
         Interface = FindObjectOfType<UI>();
         PL = FindObjectOfType<PlayerLevel>();
+        SC = FindObjectOfType<SoundController>();
 
         UpdateLevel();
 
@@ -489,6 +491,8 @@ public class Player : MonoBehaviour
 
     void PlayerIsDead()
     {
+        SC.PlayerDead();
+
         if (PlayerType)
         {
             LC.P1_inRoom = false;
@@ -551,10 +555,10 @@ public class Player : MonoBehaviour
 
             Debug.Log("Player2 Morreu.");
         }
- 
+
         
         this.gameObject.SetActive(false);
-        LC.UpdatePlayers();
+        LC.UpdatePlayers();  
     }
 
     public void Revive()
