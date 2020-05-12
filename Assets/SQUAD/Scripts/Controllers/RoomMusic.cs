@@ -10,7 +10,8 @@ public class RoomMusic : MonoBehaviour
     int n;
     public int MusicStep_min;
     public int MusicStep_max;
-    int Atual;
+    int Music;
+    int TotalMusic;
     public int TimeToNext;
 
     void Start()
@@ -23,6 +24,8 @@ public class RoomMusic : MonoBehaviour
             n++;
         }
 
+        TotalMusic = MusicStep_max - MusicStep_min;
+
     }
 
     public void StartMusicInRoom()
@@ -32,14 +35,9 @@ public class RoomMusic : MonoBehaviour
 
     public void ChangeMusic()
     {
-        SC.SetGlobalMusic(RoomList[Atual], this);
-        Atual++;
-
-        if (Atual >= 5)
-        {
-            Atual = 0;
-            Debug.Log("Voltou a Primeira");
-        }
+        Music = Random.Range(0, TotalMusic);
+        SC.SetGlobalMusic(RoomList[Music], this);
+        
     }
 
     public void VolumeOff()

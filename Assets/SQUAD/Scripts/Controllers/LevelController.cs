@@ -54,8 +54,11 @@ public class LevelController : MonoBehaviour
             SC.AllPlayersDead();
         }
 
+        if(P1_dead && SoloPlayer || P2_dead && SoloPlayer)
+        {
+            SC.AllPlayersDead();
+        }
+
         CT.UpdateCamera();
     }
-
-
 }
