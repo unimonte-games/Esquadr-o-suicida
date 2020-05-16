@@ -38,10 +38,10 @@ public class Enemy3_Attack : MonoBehaviour
         EH.dano = Dano;
     }
 
-
     private void OnEnable()
     {
         InvokeRepeating("CombatCountDown", 1, TimeToAttack);
+        CancelInvoke("Effect");
     }
 
     private void OnDisable()
@@ -49,8 +49,15 @@ public class Enemy3_Attack : MonoBehaviour
         CancelInvoke("CombatCountDown");
     }
 
-
     void CombatCountDown()
+    {
+        {
+            ES.A_Attack();
+            Invoke("Effect", 1.5f);
+        }
+    }
+
+    void Effect()
     {
         AtkFront.enabled = true;
 

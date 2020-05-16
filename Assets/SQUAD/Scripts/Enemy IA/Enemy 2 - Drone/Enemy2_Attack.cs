@@ -27,19 +27,22 @@ public class Enemy2_Attack : MonoBehaviour
         CancelInvoke("CombatCountDown");
     }
 
-
     void CombatCountDown()
     {
         {
-            
+            ES.A_Attack();
+            Invoke("Effect", 1.5f);
+        }
+    }
+
+    void Effect()
+    {
+        {           
             GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
             bullet1.GetComponent<Rigidbody>().AddForce(Spawn.transform.forward * Force);
             bullet1.GetComponent<EnemyHit>().dano = Dano;
             bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
-
         }
-
-
     }
 
 

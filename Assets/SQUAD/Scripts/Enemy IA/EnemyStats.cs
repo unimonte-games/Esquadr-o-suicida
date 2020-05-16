@@ -367,7 +367,6 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-   
     public void A_Attack()
     {
         Anin.SetTrigger("isAttack");
