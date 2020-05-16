@@ -14,6 +14,9 @@ public class EnemyStats : MonoBehaviour
     public float Life_min;
     public float Life_max;
     public int Experience;
+    public bool isDead;
+    public GameObject EE;
+    public GameObject EX;
 
     public Image life_barInterface;
     public GameObject Life_bar;
@@ -31,12 +34,10 @@ public class EnemyStats : MonoBehaviour
     public bool Player1_inArea;
     public bool Player2_inArea;
 
-
     public bool InTarget;
     public LevelController LC;
     public Porta_Default P_default;
     public GameObject EnergyCoin;
-
 
     [Range(30, 100)]
     public int Gold_rare;
@@ -56,6 +57,10 @@ public class EnemyStats : MonoBehaviour
 
     public float SizeLife;
     bool S;
+
+    public Animator Anin;
+    public Rigidbody rb;
+    public int TimeToDestroyThis;
 
     private void Start()
     {
@@ -92,6 +97,7 @@ public class EnemyStats : MonoBehaviour
     private void Awake()
     {
         EP = GetComponent<EnemyPatrol>();
+        rb = GetComponent<Rigidbody>();
 
         Body.SetActive(false);
         BodyEffect.SetActive(true);
@@ -155,7 +161,7 @@ public class EnemyStats : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Hit")
+        if (other.gameObject.tag == "Hit" && !isDead)
         {
             Hit h = other.GetComponent<Hit>();
 
@@ -203,6 +209,15 @@ public class EnemyStats : MonoBehaviour
             if (Life_Atual <= 0)
             {
                 TakeHit();
+
+                isDead = true;
+
+                EP.enabled = false;
+                EE.SetActive(false);
+                EX.SetActive(false);
+
+                AttackArea.SetActive(false);
+                rb.constraints = RigidbodyConstraints.FreezeAll;
 
                 if (h.PlayerDestroy)
                 {
@@ -264,6 +279,8 @@ public class EnemyStats : MonoBehaviour
 
     void Dead()
     {
+        A_Die();
+
         center.x = RoomSize.transform.position.x;
         center.y = RoomSize.transform.position.y;
         center.z = RoomSize.transform.position.z;
@@ -281,7 +298,13 @@ public class EnemyStats : MonoBehaviour
             }
         }
 
-        Debug.Log("Derrotado");
+        this.enabled = false;
+        Invoke("DestroyThis", TimeToDestroyThis);
+        
+    }
+
+    void DestroyThis()
+    {
         this.gameObject.SetActive(false);
     }
 
@@ -307,12 +330,11 @@ public class EnemyStats : MonoBehaviour
         EP.moveLocal = PlayerTarget;
         EP.playerTemp = PlayerTarget;
         AttackArea.SetActive(true);
-
     }
 
     public void OnPatrol()
     {
-        
+
         if (InTarget)
         {
             Debug.Log("Player fixo, continuar seguindo.");
@@ -345,6 +367,17 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    
+   
+    public void A_Attack()
+    {
+        Anin.SetTrigger("isAttack");
+    }
+
+    public void A_Die()
+    {
+        Anin.SetTrigger("isDie");
+    }
+
+
 }
 

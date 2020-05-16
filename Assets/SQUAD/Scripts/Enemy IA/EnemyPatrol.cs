@@ -40,13 +40,19 @@ public class EnemyPatrol : MonoBehaviour
     int tempSpeed;
     bool InSlow;
 
+
+    public Animator Anin;
+
     private void Awake()
     {
         ES = GetComponent<EnemyStats>();
+        
     }
 
     void Start()
     {
+        Anin.SetBool("isIddle", false);
+        Anin.SetBool("isWalk", true);
 
         speed = Random.Range(speed_min, speed_max);
         SpawnToMove = SC_inRoom.Acionados;
@@ -57,13 +63,10 @@ public class EnemyPatrol : MonoBehaviour
         startWaitTime = Random.Range(0, 5);
         waitTime = startWaitTime;
 
-       
-
     }
 
     void FixedUpdate()
     {
-
         if (!InLocal)
         {
             Vector3 dirFromMeToTarget = moveLocal.position - transform.position;
@@ -85,7 +88,6 @@ public class EnemyPatrol : MonoBehaviour
         {
             if (waitTime <= 0)
             {
-
                 int nextLocal = Random.Range(0, SpawnToMove);
                 moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
@@ -100,6 +102,10 @@ public class EnemyPatrol : MonoBehaviour
                 InLocal = false;
 
                 ToMove = true;
+
+                Anin.SetBool("isIddle", true);
+                Anin.SetBool("isWalk", false);
+
                 Invoke("WaitToRotation", timeToTurn);
 
             }
@@ -115,6 +121,8 @@ public class EnemyPatrol : MonoBehaviour
             InArea = true;
             ToMove = true;
 
+            Anin.SetBool("isIddle", true);
+            Anin.SetBool("isWalk", false);
 
         }
 
@@ -122,22 +130,35 @@ public class EnemyPatrol : MonoBehaviour
         {
             InArea = false;
             ToMove = false;
+
+            Anin.SetBool("isIddle", false);
+            Anin.SetBool("isWalk", true);
             Body.transform.LookAt(moveLocal);
 
             DistanceToPlayer = Random.Range(Dis_Min, Dis_Max);
 
         }
-  
+
+
     }
 
     void WaitToRotation()
     {
+        
         ToMove = false;
+
+        Anin.SetBool("isIddle", false);
+        Anin.SetBool("isWalk", true);
     }
 
     void WaitToRotationInObj()
     {
+        
         ToMove = false;
+
+        Anin.SetBool("isIddle", false);
+        Anin.SetBool("isWalk", true);
+
         Body.transform.LookAt(moveLocal);
     }
 
@@ -152,6 +173,10 @@ public class EnemyPatrol : MonoBehaviour
             waitTime = startWaitTime;
 
             ToMove = true;
+
+            Anin.SetBool("isIddle", true);
+            Anin.SetBool("isWalk", false);
+
             Invoke("WaitToRotationInObj", 2f);
         }
         else
@@ -168,6 +193,9 @@ public class EnemyPatrol : MonoBehaviour
 
                 ToMove = true;
 
+                Anin.SetBool("isIddle", true);
+                Anin.SetBool("isWalk", false);
+
                 Invoke("WaitToRotationInObj", 2f);
                 return; 
             }
@@ -177,6 +205,9 @@ public class EnemyPatrol : MonoBehaviour
 
             ToMove = true;
 
+            Anin.SetBool("isIddle", true);
+            Anin.SetBool("isWalk", false);
+
             StartCoroutine("ReLocal");
         }
     }
@@ -185,12 +216,18 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (OnAttack)
         {
-            yield return new WaitForSeconds(2f);
 
-            ToMove = false;
+            ToMove = true;
+
+            Anin.SetBool("isIddle", true);
+            Anin.SetBool("isWalk", false);
 
             yield return new WaitForSeconds(1f);
 
+            ToMove = false;
+
+            Anin.SetBool("isIddle", false);
+            Anin.SetBool("isWalk", true);
 
             ES.AttackArea.SetActive(true);
             moveLocal = playerTemp;
@@ -215,13 +252,14 @@ public class EnemyPatrol : MonoBehaviour
         if (!OnAttack)
         {
             ToMove = true;
+            Anin.SetBool("isIddle", true);
+            Anin.SetBool("isWalk", false);
 
             int nextLocal = Random.Range(0, SpawnToMove);
             moveLocal = SC_inRoom.ListSpawn[nextLocal];
 
             startWaitTime = Random.Range(W_min, W_max);
             waitTime = startWaitTime;
-
 
             Invoke("WaitToRotationInObj", timeToRotation);
         }

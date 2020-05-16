@@ -131,8 +131,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962240430066822313}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.23}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5346727272547619231}
@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 4147030059974957607}
   - component: {fileID: 5270295644081927684}
   - component: {fileID: 4125258726231153788}
+  - component: {fileID: 4455420658443638341}
   m_Layer: 20
   m_Name: Enemy2_Drone
   m_TagString: Enemy
@@ -695,6 +696,9 @@ MonoBehaviour:
   Life_min: 7
   Life_max: 12
   Experience: 5
+  isDead: 0
+  EE: {fileID: 1945229452741470186}
+  EX: {fileID: 5104119644015770631}
   life_barInterface: {fileID: 157620479174537249}
   Life_bar: {fileID: 3649215425097244092}
   HitDamage: {fileID: 941708913554131664, guid: ea7868f785998424cb0dc6f721c9c4f0,
@@ -719,6 +723,9 @@ MonoBehaviour:
   EnergyDamage: {fileID: 0}
   Cafeteira: 0
   SizeLife: 0
+  Anin: {fileID: 4455420658443638341}
+  rb: {fileID: 0}
+  TimeToDestroyThis: 12
 --- !u!114 &4147030059974957607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +755,7 @@ MonoBehaviour:
   moveLocal: {fileID: 0}
   playerTemp: {fileID: 0}
   Body: {fileID: 8418745285325519679}
+  Anin: {fileID: 4455420658443638341}
 --- !u!65 &5270295644081927684
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -777,6 +785,25 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!95 &4455420658443638341
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760578850629225780}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2083ba2f618c6ac40859b83da4831d09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5012615540732185053
 GameObject:
   m_ObjectHideFlags: 0

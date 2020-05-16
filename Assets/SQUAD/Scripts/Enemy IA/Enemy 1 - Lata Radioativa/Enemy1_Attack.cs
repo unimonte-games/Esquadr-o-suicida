@@ -34,22 +34,28 @@ public class Enemy1_Attack : MonoBehaviour
     private void OnDisable()
     {
         CancelInvoke("CombatCountDown");
+        CancelInvoke("Effect");
     }
 
 
     void CombatCountDown()
     {
         {
+            ES.A_Attack();
+
             TimeToAttack = Random.Range(3, 10);
 
-            GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
-            bullet1.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
-            bullet1.GetComponent<EnemyHit>().dano = Dano;
-            bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
+            Invoke("Effect", 0.3f);
 
         }
+    }
 
-
+    void Effect()
+    {
+        GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
+        bullet1.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
+        bullet1.GetComponent<EnemyHit>().dano = Dano;
+        bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
     }
 
    
