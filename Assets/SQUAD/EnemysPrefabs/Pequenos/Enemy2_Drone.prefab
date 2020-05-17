@@ -1659,7 +1659,8 @@ PrefabInstance:
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
 --- !u!4 &3742960346414180539 stripped
 Transform:
@@ -1749,6 +1750,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8923911042123419034}
     m_Modifications:
+    - target: {fileID: 3790981651249090961, guid: 1c7ce4d4fcd755640ae74a7a7583cdcf,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790981651249090961, guid: 1c7ce4d4fcd755640ae74a7a7583cdcf,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3790981651263234871, guid: 1c7ce4d4fcd755640ae74a7a7583cdcf,
         type: 3}
       propertyPath: m_LocalPosition.x

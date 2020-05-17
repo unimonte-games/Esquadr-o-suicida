@@ -16,6 +16,8 @@ public class Enemy7_Attack : MonoBehaviour
     public float Force;
     public float TimeToAttack;
 
+    public GameObject BombEffect;
+
 
     private void OnEnable()
     {
@@ -33,8 +35,8 @@ public class Enemy7_Attack : MonoBehaviour
     {
         {
             TimeToAttack = Random.Range(3, 10);
-
-            Invoke("Effect", 0.5f);
+            ES.A_Attack();
+            Invoke("Effect", 1f);
 
         }
     }
@@ -42,17 +44,19 @@ public class Enemy7_Attack : MonoBehaviour
 
     void Effect()
     {
-        {
-            ES.A_Attack();
-            TimeToAttack = Random.Range(3, 5);
 
-            GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
-            bullet1.GetComponent<Rigidbody>().AddForce(Spawn.transform.forward * Force);
-            bullet1.GetComponent<EnemyHit>().dano = Dano;
-            bullet1.GetComponent<EnemyHit>().timeToDestroy = 10;
+        TimeToAttack = Random.Range(3, 10);
 
-            
-        }
+        GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
+        bullet1.GetComponent<Rigidbody>().AddForce(Spawn.transform.forward * Force);
+        bullet1.GetComponent<EnemyHit>().dano = Dano;
+        bullet1.GetComponent<EnemyHit>().timeToDestroy = 10;
+
+    }
+
+    public void Bomb()
+    {
+        Instantiate(BombEffect, Spawn.position, Spawn.rotation);
     }
 
 }

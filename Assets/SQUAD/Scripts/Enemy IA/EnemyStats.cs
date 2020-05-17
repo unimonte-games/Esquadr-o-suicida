@@ -54,6 +54,8 @@ public class EnemyStats : MonoBehaviour
     public GameObject EnergyDamage;
 
     public bool Cafeteira;
+    public bool RoboElite;
+    public Enemy7_Attack E7;
 
     public float SizeLife;
     bool S;
@@ -281,6 +283,7 @@ public class EnemyStats : MonoBehaviour
     {
         A_Die();
 
+
         center.x = RoomSize.transform.position.x;
         center.y = RoomSize.transform.position.y;
         center.z = RoomSize.transform.position.z;
@@ -296,6 +299,12 @@ public class EnemyStats : MonoBehaviour
                 GameObject SpawnP = Instantiate(EnergyCoin, pos, Quaternion.identity);
 
             }
+        }
+
+        if (RoboElite)
+        {
+            Invoke("BombInRobot", 4);
+            return;
         }
 
         this.enabled = false;
@@ -375,6 +384,14 @@ public class EnemyStats : MonoBehaviour
     public void A_Die()
     {
         Anin.SetTrigger("isDie");
+    }
+
+    void BombInRobot()
+    {
+        E7.Bomb();
+
+        this.enabled = false;
+        Invoke("DestroyThis", TimeToDestroyThis);
     }
 
 
