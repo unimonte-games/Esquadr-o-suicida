@@ -32,8 +32,6 @@ public class Enemy7_Attack : MonoBehaviour
     void CombatCountDown()
     {
         {
-            
-
             TimeToAttack = Random.Range(3, 10);
 
             Invoke("Effect", 0.5f);

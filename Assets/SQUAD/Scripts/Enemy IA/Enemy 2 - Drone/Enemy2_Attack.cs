@@ -13,6 +13,7 @@ public class Enemy2_Attack : MonoBehaviour
 
     public GameObject Shot;
     public Transform Spawn;
+    public GameObject Eff;
     public float Force;
     public float TimeToAttack;
 
@@ -31,19 +32,16 @@ public class Enemy2_Attack : MonoBehaviour
     {
         {
             ES.A_Attack();
-            Invoke("Effect", 1.5f);
-        }
-    }
 
-    void Effect()
-    {
-        {           
+            GameObject E = Instantiate(Eff, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
+            E.transform.parent = Spawn;
+
             GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
             bullet1.GetComponent<Rigidbody>().AddForce(Spawn.transform.forward * Force);
             bullet1.GetComponent<EnemyHit>().dano = Dano;
             bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
         }
     }
-
+    
 
 }
