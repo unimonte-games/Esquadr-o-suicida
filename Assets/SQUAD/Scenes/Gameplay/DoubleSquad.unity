@@ -28428,15 +28428,15 @@ MonoBehaviour:
   OnPeace: {fileID: 1213374970}
   TimeToSurviveInPeace: 30
   Normal_Wave: 0
-  Normal_MonstersNumbers: 10
+  Normal_MonstersNumbers: 7
   Multiple_Wave: 1
   Multiple_Min_MonstersNumbers: 3
   Multiple_Max_MonstersNumbers: 10
   Multiple_WaveNumbers: 5
   Orda_Wave: 0
-  Orda_Min_MonstersNumbers: 3
-  Orda_Max_MonstersNumbers: 5
-  Orda_RepeatWave: 5
+  Orda_Min_MonstersNumbers: 5
+  Orda_Max_MonstersNumbers: 12
+  Orda_RepeatWave: 12
   Orda_TimeToSpawn: 3
   Target_Wave: 0
   Target_Min_MonstersNumbers: 1
@@ -28655,16 +28655,16 @@ MonoBehaviour:
   - {fileID: 5529230208870450094, guid: 5ff892666cbfc8e43940ae357fe91d70, type: 3}
   - {fileID: 4760578850629225780, guid: c28dee06193c64e4586eab313f2d8a04, type: 3}
   - {fileID: 4785859164244187072, guid: 752ea4d5fc82c9a47ae9888fa6332abf, type: 3}
+  - {fileID: 4490731581087767792, guid: 1e0dfb858c30f094092887c5b242e55f, type: 3}
   - {fileID: 6343854955946356601, guid: 6d8ea7652ad1b4a4c952b0d93d08347b, type: 3}
   - {fileID: 8010802392234908958, guid: bffc0688cab5f3b459e5a4d9c54b72b7, type: 3}
   - {fileID: 5529230208870450094, guid: 5ff892666cbfc8e43940ae357fe91d70, type: 3}
   - {fileID: 4760578850629225780, guid: c28dee06193c64e4586eab313f2d8a04, type: 3}
   - {fileID: 4785859164244187072, guid: 752ea4d5fc82c9a47ae9888fa6332abf, type: 3}
+  - {fileID: 4490731581087767792, guid: 1e0dfb858c30f094092887c5b242e55f, type: 3}
   - {fileID: 6343854955946356601, guid: 6d8ea7652ad1b4a4c952b0d93d08347b, type: 3}
   - {fileID: 8010802392234908958, guid: bffc0688cab5f3b459e5a4d9c54b72b7, type: 3}
-  - {fileID: 5529230208870450094, guid: 5ff892666cbfc8e43940ae357fe91d70, type: 3}
-  - {fileID: 4760578850629225780, guid: c28dee06193c64e4586eab313f2d8a04, type: 3}
-  - {fileID: 4785859164244187072, guid: 752ea4d5fc82c9a47ae9888fa6332abf, type: 3}
+  - {fileID: 4490731581087767792, guid: 1e0dfb858c30f094092887c5b242e55f, type: 3}
   SpawnControl: {fileID: 1881137190}
   parentSpawn: {fileID: 1157841036}
 --- !u!4 &1285163621
@@ -30873,7 +30873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1388764293
 MonoBehaviour:
   m_ObjectHideFlags: 0

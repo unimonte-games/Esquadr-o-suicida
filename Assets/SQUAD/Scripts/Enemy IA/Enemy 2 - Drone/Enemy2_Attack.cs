@@ -30,7 +30,7 @@ public class Enemy2_Attack : MonoBehaviour
 
     void CombatCountDown()
     {
-        {
+        
             ES.A_Attack();
 
             GameObject E = Instantiate(Eff, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
@@ -40,7 +40,7 @@ public class Enemy2_Attack : MonoBehaviour
             bullet1.GetComponent<Rigidbody>().AddForce(Spawn.transform.forward * Force);
             bullet1.GetComponent<EnemyHit>().dano = Dano;
             bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
-        }
+        
     }
     
 

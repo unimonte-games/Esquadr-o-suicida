@@ -93,11 +93,6 @@ public class EnemyPatrol : MonoBehaviour
 
                 startWaitTime = Random.Range(W_min, W_max);
 
-                if (ES.PlantaCanina)
-                {
-                    startWaitTime = 1f;
-                }
- 
                 waitTime = startWaitTime;
                 InLocal = false;
 
@@ -188,9 +183,6 @@ public class EnemyPatrol : MonoBehaviour
 
             if (ES.PlantaCanina)
             {
-                startWaitTime = 1f;
-                waitTime = startWaitTime;
-
                 ToMove = true;
 
                 Anin.SetBool("isIddle", true);

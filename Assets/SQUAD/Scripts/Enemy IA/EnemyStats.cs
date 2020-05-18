@@ -323,10 +323,7 @@ public class EnemyStats : MonoBehaviour
         {
             EP.OnAttack = true;
             AttackArea.SetActive(true);
-
-            Invoke("OnPatrol", 1);
             return;
-
         }
 
         if (InTarget)
