@@ -11,7 +11,7 @@ public class Enemy6_Attack : MonoBehaviour
 
     public EnemyHit HH;
     public BoxCollider Attack;
-
+    public EnemyStats ES;
     public Transform Target;
 
     private void Awake()
@@ -26,20 +26,24 @@ public class Enemy6_Attack : MonoBehaviour
 
     private void OnEnable()
     {
-        InvokeRepeating("CombatCountDown", 1, 1);
+        InvokeRepeating("CombatCountDown", 1, 2);
     }
 
     private void OnDisable()
     {
         CancelInvoke("CombatCountDown");
-    }
 
+    }
 
     void CombatCountDown()
     {
-        Attack.enabled = true;
-        Invoke("CancelAtk", 1);
+        {
+            ES.A_Attack();
+            Attack.enabled = true;
+            Invoke("CancelAtk", 1);
+        }
     }
+
 
     void CancelAtk()
     {
