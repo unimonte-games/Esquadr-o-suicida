@@ -64,6 +64,9 @@ public class EnemyStats : MonoBehaviour
     public Rigidbody rb;
     public int TimeToDestroyThis;
 
+    BoxCollider BC;
+
+
     private void Start()
     {
         if (InTarget && PlantaCanina)
@@ -88,18 +91,17 @@ public class EnemyStats : MonoBehaviour
 
     void StartEnemy()
     {
-       
+
         BodyEffect.SetActive(false);
         Body.SetActive(true);
-
-        
-        
+   
     }
 
     private void Awake()
     {
         EP = GetComponent<EnemyPatrol>();
         rb = GetComponent<Rigidbody>();
+        BC = GetComponent<BoxCollider>();
 
         Body.SetActive(false);
         BodyEffect.SetActive(true);
@@ -214,9 +216,12 @@ public class EnemyStats : MonoBehaviour
 
                 isDead = true;
 
+                BC.enabled = false;
                 EP.enabled = false;
                 EE.SetActive(false);
                 EX.SetActive(false);
+
+                
 
                 AttackArea.SetActive(false);
                 rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -340,7 +345,6 @@ public class EnemyStats : MonoBehaviour
 
     public void OnPatrol()
     {
-
         if (InTarget)
         {
             Debug.Log("Player fixo, continuar seguindo.");
@@ -376,6 +380,11 @@ public class EnemyStats : MonoBehaviour
     public void A_Attack()
     {
         Anin.SetTrigger("isAttack");
+    }
+
+    public void A_AttackExtra()
+    {
+        Anin.SetTrigger("isAttackExtra");
     }
 
     public void A_Die()

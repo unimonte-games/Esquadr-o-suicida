@@ -51,9 +51,8 @@ public class EnemyPatrol : MonoBehaviour
 
     void Start()
     {
-        Anin.SetBool("isIddle", false);
         Anin.SetBool("isWalk", true);
-
+       
         speed = Random.Range(speed_min, speed_max);
         SpawnToMove = SC_inRoom.Acionados;
 
