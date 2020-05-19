@@ -731,6 +731,10 @@ MonoBehaviour:
   Anin: {fileID: 4455420658443638341}
   rb: {fileID: 0}
   TimeToDestroyThis: 4
+  IE: {fileID: 0}
+  OnImpact: 1
+  ImpactTime: 0
+  ImpactID: 0
 --- !u!114 &4147030059974957607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,7 +1753,8 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.106202126
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114324878773532104, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
 --- !u!4 &6673989590713171897 stripped
 Transform:

@@ -115,9 +115,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2224781302673706255}
   - component: {fileID: 2224781302673706256}
-  - component: {fileID: 2224781302673706257}
   - component: {fileID: 2224781302673706254}
   - component: {fileID: 3024349074825012311}
+  - component: {fileID: 1128053459}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -183,14 +183,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2224781302673706257
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224781302673706258}
-  m_Enabled: 1
 --- !u!114 &2224781302673706254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +220,7 @@ MonoBehaviour:
   lineIntensity: 0.5
   fillAmount: 0.2
   lineColor0: {r: 0, g: 0, b: 0, a: 1}
-  lineColor1: {r: 1, g: 0, b: 0, a: 1}
+  lineColor1: {r: 0.9290123, g: 0, b: 1, a: 1}
   lineColor2: {r: 0, g: 0, b: 1, a: 1}
   additiveRendering: 0
   backfaceCulling: 1
@@ -242,3 +234,22 @@ MonoBehaviour:
   outlineShaderMaterial: {fileID: 0}
   renderTexture: {fileID: 0}
   extraRenderTexture: {fileID: 0}
+--- !u!95 &1128053459
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224781302673706258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de8c588c2de6dda49b9cecff87d13d59, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

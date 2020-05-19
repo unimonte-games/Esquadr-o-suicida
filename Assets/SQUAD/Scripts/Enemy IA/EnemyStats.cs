@@ -65,10 +65,14 @@ public class EnemyStats : MonoBehaviour
     public int TimeToDestroyThis;
 
     BoxCollider BC;
-
+    public ImpactEffect IE;
+    public bool OnImpact;
+    public float ImpactTime;
+    public int ImpactID;
 
     private void Start()
     {
+        
         if (InTarget && PlantaCanina)
         {
             InTarget = false;
@@ -86,6 +90,11 @@ public class EnemyStats : MonoBehaviour
             SizeLife = Life_Atual / 2;
         }
 
+        if (OnImpact)
+        {
+            IE = FindObjectOfType<ImpactEffect>();
+        }
+
         Invoke("StartEnemy", 1);
     }
 
@@ -101,7 +110,7 @@ public class EnemyStats : MonoBehaviour
     {
         EP = GetComponent<EnemyPatrol>();
         rb = GetComponent<Rigidbody>();
-        BC = GetComponent<BoxCollider>();
+        BC = GetComponent<BoxCollider>(); 
 
         Body.SetActive(false);
         BodyEffect.SetActive(true);
@@ -213,6 +222,10 @@ public class EnemyStats : MonoBehaviour
             if (Life_Atual <= 0)
             {
                 TakeHit();
+                if (OnImpact)
+                {
+                    IE.Impact(ImpactTime, ImpactID);
+                }
 
                 isDead = true;
 
@@ -220,8 +233,6 @@ public class EnemyStats : MonoBehaviour
                 EP.enabled = false;
                 EE.SetActive(false);
                 EX.SetActive(false);
-
-                
 
                 AttackArea.SetActive(false);
                 rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -287,7 +298,6 @@ public class EnemyStats : MonoBehaviour
     void Dead()
     {
         A_Die();
-
 
         center.x = RoomSize.transform.position.x;
         center.y = RoomSize.transform.position.y;

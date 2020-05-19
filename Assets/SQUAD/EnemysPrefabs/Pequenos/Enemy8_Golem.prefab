@@ -194,6 +194,10 @@ MonoBehaviour:
   Anin: {fileID: 3619307255598414542}
   rb: {fileID: 0}
   TimeToDestroyThis: 25
+  IE: {fileID: 0}
+  OnImpact: 0
+  ImpactTime: 0
+  ImpactID: 0
 --- !u!114 &9166036780709744511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1837,7 +1841,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5001713055463833917, guid: 98b8cdc2b06621d4da1b4f1a69665b58, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98b8cdc2b06621d4da1b4f1a69665b58, type: 3}
 --- !u!1001 &5667220489223170823
 PrefabInstance:
