@@ -18,7 +18,7 @@ public class GosmaEffect : MonoBehaviour
     {
         if(other.gameObject.layer == 18)
         {
-           GameObject gosma =  Instantiate(GosmaArea, new Vector3 (transform.position.x, 0, transform.position.z), transform.rotation) as GameObject;
+           GameObject gosma =  Instantiate(GosmaArea, new Vector3 (transform.position.x, -0.85f, transform.position.z), transform.rotation) as GameObject;
             gosma.GetComponent<EnemyHit>().dano = dano;
             gosma.GetComponent<EnemyHit>().timeToDestroy = 5;
 

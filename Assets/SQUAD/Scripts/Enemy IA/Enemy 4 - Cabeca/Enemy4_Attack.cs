@@ -53,6 +53,7 @@ public class Enemy4_Attack : MonoBehaviour
     void CombatCountDown()
     {
         AtkFront.enabled = true;
+        ES.A_Attack();
 
         countToAttacks++;
         if (countToAttacks >= EffectTime)

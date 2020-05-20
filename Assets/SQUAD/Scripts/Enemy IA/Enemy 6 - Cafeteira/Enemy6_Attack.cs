@@ -37,11 +37,11 @@ public class Enemy6_Attack : MonoBehaviour
 
     void CombatCountDown()
     {
-        {
+        
             ES.A_Attack();
             Attack.enabled = true;
             Invoke("CancelAtk", 1);
-        }
+        
     }
 
 
