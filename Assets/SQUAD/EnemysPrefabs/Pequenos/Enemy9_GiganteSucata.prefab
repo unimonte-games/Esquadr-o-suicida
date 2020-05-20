@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c127d086f8f0b40ac6e4647ab2f40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  E_ID: 8
+  E_ID: 9
   Type: 1
   DontSlow: 1
   Life_Atual: 0
@@ -389,6 +389,9 @@ MonoBehaviour:
   Life_min: 15
   Life_max: 21
   Experience: 21
+  isDead: 0
+  EE: {fileID: 0}
+  EX: {fileID: 0}
   life_barInterface: {fileID: 6834643597928611822}
   Life_bar: {fileID: 7949676609485984371}
   HitDamage: {fileID: 941708913554131664, guid: ea7868f785998424cb0dc6f721c9c4f0,
@@ -412,7 +415,16 @@ MonoBehaviour:
   PlantaCanina: 0
   EnergyDamage: {fileID: 0}
   Cafeteira: 0
+  RoboElite: 0
+  E7: {fileID: 0}
   SizeLife: 0
+  Anin: {fileID: 0}
+  rb: {fileID: 0}
+  TimeToDestroyThis: 0
+  IE: {fileID: 0}
+  OnImpact: 0
+  ImpactTime: 0
+  ImpactID: 0
 --- !u!114 &7312516517768484328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +454,7 @@ MonoBehaviour:
   moveLocal: {fileID: 0}
   playerTemp: {fileID: 0}
   Body: {fileID: 2892180546026910960}
+  Anin: {fileID: 0}
 --- !u!1 &2892180546026910960
 GameObject:
   m_ObjectHideFlags: 0

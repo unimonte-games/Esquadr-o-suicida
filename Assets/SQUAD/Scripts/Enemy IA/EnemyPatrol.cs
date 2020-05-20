@@ -78,8 +78,9 @@ public class EnemyPatrol : MonoBehaviour
 
         if (!ToMove)
         {
-            
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(moveLocal.position.x, 0, moveLocal.position.z), speed * Time.deltaTime); 
+            Vector3 move = moveLocal.position;
+            move.y = 0f;
+            transform.position = Vector3.MoveTowards(transform.position, move, speed * Time.deltaTime); 
 
         }
 
