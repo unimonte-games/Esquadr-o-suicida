@@ -159,9 +159,11 @@ public class ConnectorRoom : MonoBehaviour
     void NextRoom()
     {
         ref1.transform.position = CR.Origem1.transform.position;
+        ref1.transform.position = new Vector3(ref1.transform.position.x, 0);
         if (!LC.SoloPlayer) //se n for solo, envia os dois
         {
             ref2.transform.position = CR.Origem2.transform.position;
+            ref2.transform.position = new Vector3(ref1.transform.position.x, 0);
         }
 
         Go = false;
