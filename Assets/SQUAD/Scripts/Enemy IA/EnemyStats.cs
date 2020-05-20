@@ -70,6 +70,7 @@ public class EnemyStats : MonoBehaviour
     public float ImpactTime;
     public int ImpactID;
 
+
     private void Start()
     {
         
@@ -93,7 +94,10 @@ public class EnemyStats : MonoBehaviour
         if (OnImpact)
         {
             IE = FindObjectOfType<ImpactEffect>();
+
         }
+
+
 
         Invoke("StartEnemy", 1);
     }

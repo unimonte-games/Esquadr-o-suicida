@@ -195,9 +195,11 @@ MonoBehaviour:
   rb: {fileID: 0}
   TimeToDestroyThis: 25
   IE: {fileID: 0}
-  OnImpact: 0
-  ImpactTime: 0
-  ImpactID: 0
+  OnImpact: 1
+  ImpactTime: 3.1
+  ImpactID: 2
+  Golem: 1
+  EG: {fileID: 6117158694696657492}
 --- !u!114 &9166036780709744511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +295,8 @@ MonoBehaviour:
   Target: {fileID: 0}
   Area: {fileID: 5895828628687703038}
   ES: {fileID: 1742247678978069506}
+  IE: {fileID: 0}
+  time: 2
   TimeToAttack: 6
 --- !u!135 &6303523128170958374
 SphereCollider:
@@ -1489,7 +1493,7 @@ PrefabInstance:
     - target: {fileID: 3790981651263234871, guid: 1c7ce4d4fcd755640ae74a7a7583cdcf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.61
+      value: 0.685
       objectReference: {fileID: 0}
     - target: {fileID: 3790981651263234871, guid: 1c7ce4d4fcd755640ae74a7a7583cdcf,
         type: 3}

@@ -13,6 +13,7 @@ public class Enemy8_Golem : MonoBehaviour
     public GameObject Area;
 
     public EnemyStats ES;
+ 
 
     public float TimeToAttack;
     
@@ -48,7 +49,7 @@ public class Enemy8_Golem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && OnAttack)
         {
             ES.A_AttackExtra();
         }

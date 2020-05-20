@@ -22,12 +22,12 @@ public class ImpactEffect : MonoBehaviour
 
         if (Imp == 1)
         {
-
+            Anin.SetTrigger("Impact2");
         }
 
         if (Imp == 2)
         {
-
+            Anin.SetTrigger("Impact3");
         }
 
 
