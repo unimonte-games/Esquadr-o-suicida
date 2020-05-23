@@ -46,19 +46,19 @@ pessoas continuam vivendo por lá normalmente, tudo fica mais insano depois de d
 - [x] Sprint 12 : Game Editor, Texturizaçao, Item IA 1, Enemy IA 1 ao 5, Interface 3, Sons de Itens 2, Book 1.
 - [x] Sprint 13 : Soundtrack, LD 1, Item IA 2, Enemy IA 6 ao 10, Menu 1, Sons de Itens 3, Enemy 9 ao 13, Book 2.
 - [x] Sprint 14 : Legendas, LD 2, Animation 1, Item IA 3, Enemy IA Boss, Menu 2, Sons Geral 1,  Character 1, Wiki 2.
-- [ ] Sprint 15 : Cutscene, Animation 2, Item IA 4, Character 2, Menu 3, Sons Geral 2, Global Teste, Book 3 e Wiki 3.
-- [ ] Reuniao Geral 3
-- [ ] Versao Beta
+- [x] Sprint 15 : Cutscene, Animation 2, Item IA 4, Character 2, Menu 3, Sons Geral 2, Global Teste, Book 3 e Wiki 3.
+- [x] Reuniao Geral 3
+- [x] Versao Beta
 
 
 
 **Fase 4 - Polimento e Finalização** 
 
-- [ ] Sprint 16 : [...] 
-- [ ] Sprint 17 : [...]
-- [ ] Sprint 18 : [...]
-- [ ] Sprint 19 : [...]
-- [ ] Sprint 20 : [...]
+- [ ] Sprint 16 : Game Editor, Interface V2, Soundtrack 2, Level Design 1, Character Animations, Character Abilitys, Menu.
+- [ ] Sprint 17 : Itens List 1, Level Design 2, Voice System, Controller, Som Geral, Modelagem Ambiente, Boss Fight 1.
+- [ ] Sprint 18 : Itens List 2, Enemy Elite, Progressao, GameCntroller, Cutscene, Boss Fight 2 e Boss Final.
+- [ ] Sprint 19 : Testing Global 1.
+- [ ] Sprint 20 : Testing Global 2.
 - [ ] Reuniao Geral 4
 - [ ] Versao Final
 
