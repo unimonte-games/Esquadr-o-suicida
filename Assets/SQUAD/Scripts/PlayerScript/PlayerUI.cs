@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class PlayerUI : MonoBehaviour
 {
     public GameObject Player1_On;
     public GameObject Player1_Off;
 
-    public Text P1_Life;
-    public Text P1_LifeMax;
+    public TextMeshProUGUI P1_Life;
+    public TextMeshProUGUI P1_LifeMax;
     public Image P1_LifeUI;
     public GameObject WarningUI_1;
 
-    public Text P1_Mana;
-    public Text P1_ManaMax;
+    public TextMeshProUGUI P1_Mana;
+    public TextMeshProUGUI P1_ManaMax;
     public Image P1_ManaUI;
 
-    public Text P1_Nv;
+    public TextMeshProUGUI P1_Nv;
     public Image P1_NvUI;
 
     public Image P1_Skill_1;
     public Image P1_Skill_2;
 
-    public Text P1_Gold;
+    public TextMeshProUGUI P1_Gold;
 
     public Image P1_Weapon1;
     public Image P1_Weapon2;
