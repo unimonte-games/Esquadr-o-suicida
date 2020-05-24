@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Weapon : MonoBehaviour
     public float FrameRate;
     public int Mana;
     public float Range;
+    public string Name;
+    public int Rarity;
 
     public float Force;
 

@@ -348,8 +348,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(Dropar_set) && ObjectInArea && GetObj)
         {
-            GameObject temp = GameObject.Find("Objetos");
-            Object.transform.parent = temp.transform;
+            Vector3 posObj = Object.transform.position;
+            posObj.y = 0.5f;
+
+            Object.transform.parent = null;
 
             Gobj.Drop();
 

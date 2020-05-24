@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Item : MonoBehaviour
 {
@@ -22,16 +23,19 @@ public class Item : MonoBehaviour
     WeaponList WL;
     public Outline O;
 
-    public Text FirePlant;
-    public Text TechPlant;
-    public Text Mana;
-    public Text Frame;
-    public Text Range;
-    public Text gold;
-    public Text Limit;
+    public TextMeshProUGUI FirePlant;
+    public TextMeshProUGUI TechPlant;
+    public TextMeshProUGUI Mana;
+    public TextMeshProUGUI Frame;
+    public TextMeshProUGUI Range;
+    public GameObject GoldSet;
+    public TextMeshProUGUI gold;
+    public GameObject LimitSet;
+    public TextMeshProUGUI Limit;
+    public TextMeshProUGUI[] NameList;
+    public GameObject[] NameListSet;
 
     Vector3 Body;
-
 
     bool Set;
 
@@ -45,22 +49,27 @@ public class Item : MonoBehaviour
     {
         transform.localRotation = new Quaternion(0, 0, 0, 0);
 
-        FirePlant.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Fire_Plant;
-        TechPlant.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Fire_Tech;
-        Mana.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Mana;
-        Frame.text = "" + WL.Weapon[ID].GetComponent<Weapon>().FrameRate;
-        Range.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Range;
+        Weapon W = WL.Weapon[ID].GetComponent<Weapon>();
+
+        FirePlant.text = "" + W.Fire_Plant;
+        TechPlant.text = "" + W.Fire_Tech;
+        Mana.text = "" + W.Mana;
+        Frame.text = "" + W.FrameRate;
+        Range.text = "" + W.Range;
+
+        NameListSet[W.Rarity].SetActive(true);
+        NameList[W.Rarity].text = "" + W.Name;
 
         if (isBuy)
         {
             gold.text = "" + Value;
-            gold.gameObject.SetActive(true);
+            GoldSet.gameObject.SetActive(true);
         }
 
         if (isTech)
         {
-            Limit.text = "" + WL.Weapon[ID].GetComponent<Weapon>().Limit;
-            Limit.gameObject.SetActive(true);
+            Limit.text = "" + W.Limit;
+            LimitSet.gameObject.SetActive(true);
         }
     }
 
