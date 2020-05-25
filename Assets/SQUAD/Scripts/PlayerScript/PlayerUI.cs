@@ -406,11 +406,13 @@ public class PlayerUI : MonoBehaviour
         P_wave.SetActive(false);
 
         roomClean.SetActive(true);
-        Invoke("CancelRoomClean",3);
+        Invoke("CancelRoomClean",2);
     }
 
-    
-
-    
+    public void RoomCleanSet()
+    {
+        roomClean.SetActive(true);
+        Invoke("CancelRoomClean", 2);
+    }
 
 }

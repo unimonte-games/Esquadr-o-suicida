@@ -105,6 +105,8 @@ public class RoomController : MonoBehaviour
         {
             DefaultComplete = true;
             CompleteMissions++;
+
+            PUI.RoomCleanSet();
             RoomClean();
 
             for (int i = 0; i < 4; i++)
@@ -117,29 +119,33 @@ public class RoomController : MonoBehaviour
 
         if (Complete == 1 && DefaultComplete == false)
         {
-           ColorComplete = true;
-           CompleteMissions++;
-           RoomClean();
-           return;
+            ColorComplete = true;
+            CompleteMissions++;
+
+            PUI.RoomCleanSet();
+            RoomClean();
+            return;
         }
-        else if(Complete == 1 && DefaultComplete)
+        else if (Complete == 1 && DefaultComplete)
         {
-            int Type = Random.Range(0,30); 
+            int Type = Random.Range(0, 30);
             Default.PlayerPunition(Type, 1);
             return;
-                
+
         }
 
         if (Complete == 2 && DefaultComplete == false)
         {
-           DoubleComplete = true;
-           CompleteMissions++;
-           RoomClean();
-           return;
+            DoubleComplete = true;
+            CompleteMissions++;
+
+            PUI.RoomCleanSet();
+            RoomClean();
+            return;
         }
         else if (Complete == 2 && DefaultComplete)
         {
-            int Type = Random.Range(0, 30); 
+            int Type = Random.Range(0, 30);
             Default.PlayerPunition(Type, 2);
             return;
         }
@@ -148,12 +154,14 @@ public class RoomController : MonoBehaviour
         {
             TimerComplete = true;
             CompleteMissions++;
+
+            PUI.RoomCleanSet();
             RoomClean();
             return;
         }
         else if (Complete == 3 && DefaultComplete)
         {
-            int Type = Random.Range(0, 30); 
+            int Type = Random.Range(0, 30);
             Default.PlayerPunition(Type, 3);
             return;
         }
