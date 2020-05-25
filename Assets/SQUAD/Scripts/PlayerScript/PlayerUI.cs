@@ -105,13 +105,18 @@ public class PlayerUI : MonoBehaviour
     {
         if (Player)
         {
+            if(Life > LifeMax)
+            {
+                Life = LifeMax;
+            }
+
             P1_Life.text = ""+ Life;
             P1_LifeMax.text = "" + LifeMax;
 
             float LifeCal = Life / LifeMax;
             P1_LifeUI.fillAmount = LifeCal;
 
-            Invoke("SetDamage1", 1f);
+            Invoke("SetDamage1", 0.75f);
 
            if(Life <= Size)
             {
@@ -138,7 +143,7 @@ public class PlayerUI : MonoBehaviour
             float LifeCal = Life / LifeMax;
             P2_LifeUI.fillAmount = LifeCal;
 
-            Invoke("SetDamage2", 1f);
+            Invoke("SetDamage2", 0.75f);
 
             if (Life < Size)
             {
