@@ -13,6 +13,7 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI P1_Life;
     public TextMeshProUGUI P1_LifeMax;
     public Image P1_LifeUI;
+    public Image P1_LifeDamage;
     public GameObject WarningUI_1;
 
     public TextMeshProUGUI P1_Mana;
@@ -36,6 +37,7 @@ public class PlayerUI : MonoBehaviour
     public Text P2_Life;
     public Text P2_LifeMax;
     public Image P2_LifeUI;
+    public Image P2_LifeDamage;
     public GameObject WarningUI_2;
 
     public Text P2_Mana;
@@ -109,6 +111,8 @@ public class PlayerUI : MonoBehaviour
             float LifeCal = Life / LifeMax;
             P1_LifeUI.fillAmount = LifeCal;
 
+            Invoke("SetDamage1", 1f);
+
            if(Life <= Size)
             {
                 WarningUI_1.SetActive(true);
@@ -134,6 +138,8 @@ public class PlayerUI : MonoBehaviour
             float LifeCal = Life / LifeMax;
             P2_LifeUI.fillAmount = LifeCal;
 
+            Invoke("SetDamage2", 1f);
+
             if (Life < Size)
             {
                 WarningUI_2.SetActive(true);
@@ -150,6 +156,16 @@ public class PlayerUI : MonoBehaviour
 
             }
         }
+    }
+
+    void SetDamage1()
+    {
+        P1_LifeDamage.fillAmount = P1_LifeUI.fillAmount;
+    }
+
+    void SetDamage2()
+    {
+        P2_LifeDamage.fillAmount = P2_LifeUI.fillAmount;
     }
 
     public void ChangeMana(bool Player, float Mana, float ManaMax)

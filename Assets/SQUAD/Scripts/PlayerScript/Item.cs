@@ -80,6 +80,17 @@ public class Item : MonoBehaviour
             if (inUse1 && Input.GetKeyDown(GetItem))
             {
                 Set = true;
+
+                if (!isBuy)
+                {
+                    playerWeapon.GetWeapon(ID);
+                    O.DisabledLine();
+                    this.gameObject.SetActive(false);
+
+                    Debug.Log("Player 1 pegou um item!");
+                    return;
+                }
+
                 if (isBuy && player.Gold >= Value)
                 {
                     player.Gold -= Value;
@@ -92,18 +103,27 @@ public class Item : MonoBehaviour
                     Debug.Log("Player 1 comprou um item!");
                     return;
                 }
+                else
+                {
+                    Debug.Log("P1 - Energia Insuficiente!");
+                }
 
-                playerWeapon.GetWeapon(ID);
-                O.DisabledLine();
-                this.gameObject.SetActive(false);
-
-                Debug.Log("Player 1 pegou um item!");
-                return;
             }
 
             if (inUse2 && Input.GetKeyDown(GetItem))
             {
                 Set = true;
+
+                if (!isBuy)
+                {
+                    playerWeapon.GetWeapon(ID);
+                    O.DisabledLine();
+                    this.gameObject.SetActive(false);
+
+                    Debug.Log("Player 2 pegou um item!");
+                    return;
+                }
+
                 if (isBuy && player.Gold >= Value)
                 {
                     player.Gold -= Value;
@@ -116,13 +136,12 @@ public class Item : MonoBehaviour
                     this.gameObject.SetActive(false);
                     return;
                 }
+                else
+                {
+                    Debug.Log("P2 - Energia Insuficiente!");
+                }
 
-                playerWeapon.GetWeapon(ID);
-                O.DisabledLine();
-                this.gameObject.SetActive(false);
-
-                Debug.Log("Player 2 pegou um item!");
-                return;
+                
             }
         }
     }
