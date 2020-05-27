@@ -34,7 +34,7 @@ public class BearTrapOrBonus : MonoBehaviour
 
             if(!BD.P1 && BD.P2)//O Player 2 já se aproximou
             {
-                BD.Gatilho = true;
+                BD.AutoTrap();
             }
             
         }
@@ -62,7 +62,7 @@ public class BearTrapOrBonus : MonoBehaviour
 
             if (BD.P1 && !BD.P2)//O Player 1 já se aproximou
             {
-                BD.Gatilho = true;
+                BD.AutoTrap();
             }
 
         }
