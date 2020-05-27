@@ -34,23 +34,23 @@ public class PlayerUI : MonoBehaviour
     public GameObject Player2_On;
     public GameObject Player2_Off;
 
-    public Text P2_Life;
-    public Text P2_LifeMax;
+    public TextMeshProUGUI P2_Life;
+    public TextMeshProUGUI P2_LifeMax;
     public Image P2_LifeUI;
     public Image P2_LifeDamage;
     public GameObject WarningUI_2;
 
-    public Text P2_Mana;
-    public Text P2_ManaMax;
+    public TextMeshProUGUI P2_Mana;
+    public TextMeshProUGUI P2_ManaMax;
     public Image P2_ManaUI;
 
-    public Text P2_Nv;
+    public TextMeshProUGUI P2_Nv;
     public Image P2_NvUI;
 
     public Image P2_Skill_1;
     public Image P2_Skill_2;
 
-    public Text P2_Gold;
+    public TextMeshProUGUI P2_Gold;
 
     public Image P2_Weapon1;
     public Image P2_Weapon2;

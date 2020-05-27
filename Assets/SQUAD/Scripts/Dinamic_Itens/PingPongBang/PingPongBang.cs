@@ -18,6 +18,7 @@ public class PingPongBang : MonoBehaviour
     public Ball BallScript;
 
     public BoxCollider BC;
+    public GameObject Altar;
 
     void FixedUpdate()
     {
@@ -50,6 +51,7 @@ public class PingPongBang : MonoBehaviour
             
             BC.enabled = false;
 
+            Altar.SetActive(false);
             Debug.Log("Ping Pong Bang!");
         }
 
