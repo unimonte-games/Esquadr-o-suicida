@@ -17,6 +17,7 @@ public class SpawnController : MonoBehaviour
     public int Acionados;
 
     public GameObject RoomController;
+    public bool Baloon;
 
     void Start()
     {
@@ -50,12 +51,19 @@ public class SpawnController : MonoBehaviour
 
     void RoomControl_Start()
     {
+        if (Baloon)
+        {
+            Debug.Log("Iniciando Baloes...");
+            RoomController.SetActive(true);
+            DestroySpawn();
+            return;
+
+        }
         Debug.Log("Iniciando sala...");
         RoomController.SetActive(true);
         RoomController.GetComponent<Porta_Default>().SC_spawn = SC_;
 
         DestroySpawn();
-
 
     }
 

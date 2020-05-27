@@ -567,6 +567,11 @@ public class Player : MonoBehaviour
         
         UpdateLevel();
     }
+
+    public void SetPositionZero()
+    {
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+    }
     
 
 

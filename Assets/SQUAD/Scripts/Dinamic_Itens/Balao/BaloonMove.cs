@@ -62,7 +62,7 @@ public class BaloonMove : MonoBehaviour
                 P1_ready = true;
 
                 P1_walk.enabled = false;
-                P1_ref.GetComponent<Rigidbody>().useGravity = false;
+                
                 P1_ref.GetComponent<CapsuleCollider>().enabled = false;
                 P1.Gatilho = P1_Accept;
                 P1_ref.transform.position = P1_Baloon.transform.position;
@@ -83,7 +83,7 @@ public class BaloonMove : MonoBehaviour
                 P2_ready = true;
 
                 P2_walk.enabled = false;
-                P2_ref.GetComponent<Rigidbody>().useGravity = false;
+                
                 P2_ref.GetComponent<CapsuleCollider>().enabled = false;
                 P2.Gatilho = P2_Accept;
                 P2_ref.transform.position = P2_Baloon.transform.position;
@@ -103,7 +103,7 @@ public class BaloonMove : MonoBehaviour
                 P1_ready = true;
 
                 P1_walk.enabled = false;
-                P1_ref.GetComponent<Rigidbody>().useGravity = false;
+                
                 P1_ref.GetComponent<CapsuleCollider>().enabled = false;
                 P1.Gatilho = P1_Accept;
                 P1_ref.transform.position = P1_Baloon.transform.position;
@@ -120,7 +120,7 @@ public class BaloonMove : MonoBehaviour
                 P2_ready = true;
 
                 P2_walk.enabled = false;
-                P2_ref.GetComponent<Rigidbody>().useGravity = false;
+                
                 P2_ref.GetComponent<CapsuleCollider>().enabled = false;
                 P2.Gatilho = P2_Accept;
                 P2_ref.transform.position = P2_Baloon.transform.position;
@@ -133,14 +133,12 @@ public class BaloonMove : MonoBehaviour
             if (P1_ready && Input.GetKeyDown(P1_Drop))
             {
                 P1_ready = false;
-
                 P1_walk.enabled = true;
-                P1_ref.GetComponent<Rigidbody>().useGravity = true;
+                
+
                 P1_ref.GetComponent<CapsuleCollider>().enabled = true;
-
-                P1_ref.transform.parent = P1_OriginalParent.transform;
+                P1_ref.transform.parent = P1_OriginalParent.transform;               
                 P1_ref.transform.localRotation = Quaternion.identity;
-
                 P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 if (P1_using)
@@ -148,25 +146,26 @@ public class BaloonMove : MonoBehaviour
                     P1.gameObject.SetActive(false);
                 }
 
+                P1_ref.GetComponent<Player>().SetPositionZero();
+
             }
 
             if (P2_ready && Input.GetKeyDown(P2_Drop))
             {
                 P2_ready = false;
-
                 P2_walk.enabled = true;
-                P2_ref.GetComponent<Rigidbody>().useGravity = true;
-                P2_ref.GetComponent<CapsuleCollider>().enabled = true;
 
+                P2_ref.GetComponent<CapsuleCollider>().enabled = true;
                 P2_ref.transform.parent = P2_OriginalParent.transform;
                 P2_ref.transform.localRotation = Quaternion.identity;
-
                 P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
 
                 if (P2_using)
                 {
                     P2.gameObject.SetActive(false);
                 }
+
+                P2_ref.GetComponent<Player>().SetPositionZero();
             }
 
             if (P1_ready && P2_ready && !Go && !LC.SoloPlayer)
@@ -237,41 +236,40 @@ public class BaloonMove : MonoBehaviour
         if (P1_ready)
         {
             P1_ready = false;
-
             P1_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
-
             P1_walk.enabled = true;
-            P1_ref.GetComponent<Rigidbody>().useGravity = true;
             P1_ref.GetComponent<CapsuleCollider>().enabled = true;
 
             Player P1_ = P1_ref.GetComponent<Player>();
             P1_.UsingItenDinamic = false;
             P1_.playerWeapon.EnabledItem();
 
+           
             P1_ref.transform.parent = P1_OriginalParent.transform;
             P1_ref.transform.localRotation = Quaternion.identity;
             P1.gameObject.SetActive(false);
+
+            P1_ref.GetComponent<Player>().SetPositionZero();
         }
 
         if (P2_ready)
         {
 
             P2_ready = false;
-
             P2_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
-
             P2_walk.enabled = true;
-            P2_ref.GetComponent<Rigidbody>().useGravity = true;
             P2_ref.GetComponent<CapsuleCollider>().enabled = true;
-
 
             Player P2_ = P2_ref.GetComponent<Player>();
             P2_.UsingItenDinamic = false;
             P2_.playerWeapon.EnabledItem();
 
             P2_ref.transform.parent = P2_OriginalParent.transform;
+            
             P2_ref.transform.localRotation = Quaternion.identity;
             P2.gameObject.SetActive(false);
+
+            P2_ref.GetComponent<Player>().SetPositionZero();
         }
 
         P1_using = false;

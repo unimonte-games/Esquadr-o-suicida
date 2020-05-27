@@ -36,6 +36,10 @@ public class CarrinhoMetralhadora : MonoBehaviour
     public CarrinhoAssault CA;
     LevelController LC;
 
+    public Transform Look_A;
+    public Transform Look_M;
+
+
     public int timeToCancel;
 
     private void Start()
@@ -68,6 +72,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player temp1 = Player_Assault.GetComponent<Player>();
                     UpdateControllers1_Assault(temp1);
                     CA.PlayerThis = temp1.PlayerType;
+                    
 
                     Moviment = true;
                     Player_Moviment = P1_ref;
@@ -81,6 +86,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
                     P1ready = true;
                     P2ready = true;
+
+                    temp1.SetPositionZero();
 
                     Debug.Log("Player 1 é o Controller e o Assault!");
                     return;
@@ -102,6 +109,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player temp = Player_Assault.GetComponent<Player>();
                     UpdateControllers1_Assault(temp);
 
+
                     Debug.Log("Player 1 é o Assault!");
                     return;
 
@@ -119,7 +127,9 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     
                     Player temp = Player_Moviment.GetComponent<Player>();
                     UpdateControllers1_Moviment(temp);
-                    
+
+                    temp.SetPositionZero();
+
                     Debug.Log("Player 1 é o Controller!");
                     return;
 
@@ -161,6 +171,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     P1ready = true;
                     P2ready = true;
 
+                    temp1.SetPositionZero();
+
                     Debug.Log("Player 2 é o Controller e o Assault!");
                     return;
 
@@ -199,6 +211,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player temp = Player_Moviment.GetComponent<Player>();
                     UpdateControllers2_Moviment(temp);
 
+                    temp.SetPositionZero();
+
                     Debug.Log("Player 2 é o Controller!");
                     return;
 
@@ -226,7 +240,6 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
         if(P1ready && P2ready && !Atived)
         {
-
             Atived = true;
             Invoke("CancelCarrinho", timeToCancel);
 
@@ -235,6 +248,12 @@ public class CarrinhoMetralhadora : MonoBehaviour
         if(!Assault && !Moviment)
         {
             Atived = false;
+        }
+
+        if (Atived)
+        {
+            Player_Assault.transform.LookAt(Look_A);
+            Player_Moviment.transform.LookAt(Look_M);
         }
 
     }
@@ -285,8 +304,11 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
                 Player_Assault.GetComponent<PlayerMovement>().enabled = true;
                 Player_Assault.transform.parent = P1_OriginalParent.transform;
-                P1_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
+
+                Player temp = P1_ref.GetComponent<Player>();
+                temp.UsingItenDinamic = false;
+                temp.playerWeapon.EnabledItem();
+                temp.SetPositionZero();
 
                 Player_Assault = null;
                 P1ready = false;
@@ -300,8 +322,11 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
                 Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
                 Player_Moviment.transform.parent = P1_OriginalParent.transform;
-                P1_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
+
+                Player temp = P1_ref.GetComponent<Player>();
+                temp.UsingItenDinamic = false;
+                temp.playerWeapon.EnabledItem();
+                temp.SetPositionZero();
 
                 Player_Moviment = null;
                 P1ready = false;
@@ -316,8 +341,11 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
             Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
             Player_Moviment.transform.parent = P1_OriginalParent.transform;
-            P1_ref.GetComponent<Player>().UsingItenDinamic = false;
-            P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
+
+            Player temp2 = P1_ref.GetComponent<Player>();
+            temp2.UsingItenDinamic = false;
+            temp2.playerWeapon.EnabledItem();
+            temp2.SetPositionZero();
 
             Player_Assault = null;
             P1ready = false;
@@ -350,8 +378,11 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
                 Player_Assault.GetComponent<PlayerMovement>().enabled = true;
                 Player_Assault.transform.parent = P2_OriginalParent.transform;
-                P2_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
+
+                Player temp2 = P2_ref.GetComponent<Player>();
+                temp2.UsingItenDinamic = false;
+                temp2.playerWeapon.EnabledItem();
+                temp2.SetPositionZero();
 
                 Player_Assault = null;
                 P2ready = false;
@@ -365,8 +396,11 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
                 Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
                 Player_Moviment.transform.parent = P2_OriginalParent.transform;
-                P2_ref.GetComponent<Player>().UsingItenDinamic = false;
-                P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
+
+                Player temp2 = P2_ref.GetComponent<Player>();
+                temp2.UsingItenDinamic = false;
+                temp2.playerWeapon.EnabledItem();
+                temp2.SetPositionZero();
 
                 Player_Moviment = null;
                 P2ready = false;
@@ -381,8 +415,11 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
             Player_Moviment.GetComponent<PlayerMovement>().enabled = true;
             Player_Moviment.transform.parent = P2_OriginalParent.transform;
-            P2_ref.GetComponent<Player>().UsingItenDinamic = false;
-            P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
+
+            Player temp2 = P2_ref.GetComponent<Player>();
+            temp2.UsingItenDinamic = false;
+            temp2.playerWeapon.EnabledItem();
+            temp2.SetPositionZero();
 
             Player_Assault = null;
             P1ready = false;

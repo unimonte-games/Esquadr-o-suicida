@@ -19,6 +19,7 @@ public class CarrinhoController : MonoBehaviour
         if (CM.P1ready && CM.P2ready)
         {
 
+
             if (Input.GetKey(Moviment_Up))
             {
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
