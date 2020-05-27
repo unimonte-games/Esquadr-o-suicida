@@ -109,6 +109,11 @@ public class ArchController : MonoBehaviour
 
         if (P1_Points > P2_Points)
         {
+            P1.Gold += 500;
+            P1.ManaBar += 75;
+            P1.SetGold();
+            P1.SetDamage();
+
             Debug.Log("Player1 Venceu!");
             this.gameObject.SetActive(false);
             return;
@@ -116,6 +121,11 @@ public class ArchController : MonoBehaviour
 
         if (P1_Points < P2_Points)
         {
+            P2.Gold += 500;
+            P2.ManaBar += 75;
+            P2.SetGold();
+            P2.SetDamage();
+
             Debug.Log("Player2 Venceu!");
             this.gameObject.SetActive(false);
             return;
@@ -123,6 +133,12 @@ public class ArchController : MonoBehaviour
 
         if(P1_Points == P2_Points)
         {
+            P1.ManaBar += 10;
+            P2.ManaBar += 10;
+
+            P1.SetDamage();
+            P2.SetDamage();
+
             Debug.Log("Empate");
             this.gameObject.SetActive(false);
             return;
