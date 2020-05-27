@@ -18,6 +18,7 @@ public class SpawnController : MonoBehaviour
 
     public GameObject RoomController;
     public bool Baloon;
+    public bool Patins;
 
     void Start()
     {
@@ -59,6 +60,14 @@ public class SpawnController : MonoBehaviour
             return;
 
         }
+
+        if (Patins)
+        {
+            Debug.Log("Iniciando Patins Racer...");
+            DestroySpawn();
+            return;
+        }
+
         Debug.Log("Iniciando sala...");
         RoomController.SetActive(true);
         RoomController.GetComponent<Porta_Default>().SC_spawn = SC_;
