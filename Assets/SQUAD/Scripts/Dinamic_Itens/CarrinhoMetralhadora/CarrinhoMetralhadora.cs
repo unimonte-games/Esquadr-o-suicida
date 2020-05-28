@@ -88,7 +88,10 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     P2ready = true;
 
                     temp1.SetPositionZero();
+                    temp1.SetIconCar(true, 2);
+                    temp1.EnabledOrDisabledGroundColor(false);
 
+                    
                     Debug.Log("Player 1 é o Controller e o Assault!");
                     return;
 
@@ -109,7 +112,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player temp = Player_Assault.GetComponent<Player>();
                     UpdateControllers1_Assault(temp);
 
-
+                    temp.SetIconCar(true, 0);
+                    temp.EnabledOrDisabledGroundColor(false);
                     Debug.Log("Player 1 é o Assault!");
                     return;
 
@@ -129,7 +133,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     UpdateControllers1_Moviment(temp);
 
                     temp.SetPositionZero();
-
+                    temp.SetIconCar(true, 1);
+                    temp.EnabledOrDisabledGroundColor(false);
                     Debug.Log("Player 1 é o Controller!");
                     return;
 
@@ -172,7 +177,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     P2ready = true;
 
                     temp1.SetPositionZero();
-
+                    temp1.SetIconCar(true, 2);
+                    temp1.EnabledOrDisabledGroundColor(false);
                     Debug.Log("Player 2 é o Controller e o Assault!");
                     return;
 
@@ -192,6 +198,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     Player temp = Player_Assault.GetComponent<Player>();
                     UpdateControllers2_Assault(temp);
 
+                    temp.SetIconCar(true, 0);
+                    temp.EnabledOrDisabledGroundColor(false);
                     Debug.Log("Player 2 é o Assault!");
                     return;
 
@@ -212,7 +220,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     UpdateControllers2_Moviment(temp);
 
                     temp.SetPositionZero();
-
+                    temp.SetIconCar(true, 1);
+                    temp.EnabledOrDisabledGroundColor(false);
                     Debug.Log("Player 2 é o Controller!");
                     return;
 
@@ -252,8 +261,17 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
         if (Atived)
         {
-            Player_Assault.transform.LookAt(Look_A);
-            Player_Moviment.transform.LookAt(Look_M);
+            if(Assault)
+            {
+                Player_Assault.transform.LookAt(Look_A);
+            }
+
+            if (Moviment)
+            {
+                Player_Moviment.transform.LookAt(Look_M);
+            }
+            
+            
         }
 
     }
@@ -309,6 +327,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 temp.UsingItenDinamic = false;
                 temp.playerWeapon.EnabledItem();
                 temp.SetPositionZero();
+                temp.SetIconCar(false, 0);
+                temp.EnabledOrDisabledGroundColor(true);
 
                 Player_Assault = null;
                 P1ready = false;
@@ -327,6 +347,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 temp.UsingItenDinamic = false;
                 temp.playerWeapon.EnabledItem();
                 temp.SetPositionZero();
+                temp.SetIconCar(false, 0);
+                temp.EnabledOrDisabledGroundColor(true);
 
                 Player_Moviment = null;
                 P1ready = false;
@@ -346,6 +368,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
             temp2.UsingItenDinamic = false;
             temp2.playerWeapon.EnabledItem();
             temp2.SetPositionZero();
+            temp2.SetIconCar(false, 0);
+            temp2.EnabledOrDisabledGroundColor(true);
 
             Player_Assault = null;
             P1ready = false;
@@ -383,6 +407,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 temp2.UsingItenDinamic = false;
                 temp2.playerWeapon.EnabledItem();
                 temp2.SetPositionZero();
+                temp2.SetIconCar(false, 0);
+                temp2.EnabledOrDisabledGroundColor(true);
 
                 Player_Assault = null;
                 P2ready = false;
@@ -401,6 +427,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
                 temp2.UsingItenDinamic = false;
                 temp2.playerWeapon.EnabledItem();
                 temp2.SetPositionZero();
+                temp2.SetIconCar(false, 0);
+                temp2.EnabledOrDisabledGroundColor(true);
 
                 Player_Moviment = null;
                 P2ready = false;
@@ -420,6 +448,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
             temp2.UsingItenDinamic = false;
             temp2.playerWeapon.EnabledItem();
             temp2.SetPositionZero();
+            temp2.SetIconCar(false, 0);
+            temp2.EnabledOrDisabledGroundColor(true);
 
             Player_Assault = null;
             P1ready = false;

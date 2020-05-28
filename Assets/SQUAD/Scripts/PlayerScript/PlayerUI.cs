@@ -33,6 +33,9 @@ public class PlayerUI : MonoBehaviour
 
     public Image P1_Color;
     public Image P1_Baloon;
+    public GameObject P1_Controller;
+    public GameObject P1_Assault;
+    public GameObject P1_CA;
 
     public GameObject Player2_On;
     public GameObject Player2_Off;
@@ -60,6 +63,10 @@ public class PlayerUI : MonoBehaviour
 
     public Image P2_Color;
     public Image P2_Baloon;
+    public GameObject P2_Controller;
+    public GameObject P2_Assault;
+    public GameObject P2_CA;
+
 
     public GameObject S_wave;
 
@@ -313,6 +320,66 @@ public class PlayerUI : MonoBehaviour
             else
             {
                 P2_Baloon.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void SetIconCar (bool Player, int Type, bool On)
+    {
+        if (On)
+        {
+            if (Player)
+            {
+                if(Type == 0)
+                {
+                    P1_Assault.SetActive(true);
+                    return;
+                }
+
+                if (Type == 1)
+                {
+                    P1_Controller.SetActive(true);
+                    return;
+                }
+
+                if (Type == 2)
+                {
+                    P1_CA.SetActive(true);
+                }
+            }
+            else
+            {
+                if (Type == 0)
+                {
+                    P2_Assault.SetActive(true);
+                    return;
+                }
+
+                if (Type == 1)
+                {
+                    P2_Controller.SetActive(true);
+                    return;
+                }
+
+                if (Type == 2)
+                {
+                    P2_CA.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            if (Player)
+            {
+                P1_Assault.SetActive(false);
+                P1_Controller.SetActive(false);
+                P1_CA.SetActive(false);
+            }
+            else
+            {
+                P2_Assault.SetActive(false);
+                P2_Controller.SetActive(false);
+                P2_CA.SetActive(false);
             }
         }
     }

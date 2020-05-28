@@ -94,6 +94,7 @@ public class Player : MonoBehaviour
     LevelController LC;
     UI Interface;
 
+    public GameObject GC;
     public GameObject[] GroundColor;
 
     public GameObject Life_Hud; 
@@ -606,6 +607,23 @@ public class Player : MonoBehaviour
         }
 
 
+    }
+
+    public void SetIconCar (bool On, int Type)
+    {
+        PUI.SetIconCar(PlayerType, Type, On);
+    }
+
+    public void EnabledOrDisabledGroundColor (bool On)
+    {
+        if (On)
+        {
+            GC.SetActive(true);
+        }
+        else
+        {
+            GC.SetActive(false);
+        }
     }
 
 
