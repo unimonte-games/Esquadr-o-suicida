@@ -54,7 +54,7 @@ pessoas continuam vivendo por lá normalmente, tudo fica mais insano depois de d
 
 **Fase 4 - Polimento e Finalização** 
 
-- [ ] Sprint 16 : Game Editor, Interface V2, Soundtrack 2, Level Design 1, Character Animations, Character Abilitys, Menu.
+- [x] Sprint 16 : Game Editor, Interface V2, Soundtrack 2, Level Design 1, Character Animations, Character Abilitys, Menu.
 - [ ] Sprint 17 : Itens List 1, Level Design 2, Voice System, Controller, Som Geral, Modelagem Ambiente, Boss Fight 1.
 - [ ] Sprint 18 : Itens List 2, Enemy Elite, Progressao, GameCntroller, Cutscene, Boss Fight 2 e Boss Final.
 - [ ] Sprint 19 : Testing Global 1.
