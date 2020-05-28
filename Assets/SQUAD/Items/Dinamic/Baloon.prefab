@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555227631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -50.347878, y: -0.4713036, z: 10.39452}
+  m_LocalPosition: {x: -0.3, y: -0.4713036, z: -0}
   m_LocalScale: {x: 7.4700108, y: 0.33190426, z: 8.590512}
   m_Children: []
   m_Father: {fileID: 5003356036564147984}
@@ -668,7 +668,7 @@ MonoBehaviour:
   P2: {fileID: 5003356036748713175}
   P1_Baloon: {fileID: 858758514}
   P2_Baloon: {fileID: 1555227632}
-  timeBaloon: 5
+  timeBaloon: 35
 --- !u!114 &4254456283314711080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,10 +786,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   SceneTransformList: {fileID: 4336962135900508354}
-  Qtd: 15
+  Qtd: 75
   Acionados: 0
   RoomController: {fileID: 7647601048667046849}
   Baloon: 1
+  Patins: 0
 --- !u!1 &5604165002841506029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 2915765155071260416, guid: 8e69345c536eca74a839de6702f14a10,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2915765155071260417, guid: 8e69345c536eca74a839de6702f14a10,
         type: 3}

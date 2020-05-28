@@ -96,9 +96,6 @@ public class Player : MonoBehaviour
 
     public GameObject[] GroundColor;
 
-    public SpriteRenderer BaloonSprite;
-    public Sprite[] BaloonColor;
-
     public GameObject Life_Hud; 
 
     public GameObject PlayerDead_Tree;
@@ -595,5 +592,22 @@ public class Player : MonoBehaviour
             PUI.SetColorInterface(PlayerType, LC.Player2Color);
         }
     }
+
+    public void SetColorBaloon(bool On)
+    {
+
+        if (PlayerType)
+        {
+            PUI.SetColorBaloon(PlayerType, LC.Player1Color, On);
+        }
+        else
+        {
+            PUI.SetColorBaloon(PlayerType, LC.Player2Color, On);
+        }
+
+
+    }
+
+
 }
 

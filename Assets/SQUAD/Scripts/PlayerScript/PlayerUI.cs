@@ -32,6 +32,7 @@ public class PlayerUI : MonoBehaviour
     public Image P1_Weapon2;
 
     public Image P1_Color;
+    public Image P1_Baloon;
 
     public GameObject Player2_On;
     public GameObject Player2_Off;
@@ -58,6 +59,7 @@ public class PlayerUI : MonoBehaviour
     public Image P2_Weapon2;
 
     public Image P2_Color;
+    public Image P2_Baloon;
 
     public GameObject S_wave;
 
@@ -94,7 +96,8 @@ public class PlayerUI : MonoBehaviour
     public GameObject roomClean;
     public GameObject startRoom;
 
-    public Sprite[] PlayerColor;
+    public Sprite[] GroundColor;
+    public Sprite[] BaloonColor;
 
     WeaponList WL;
 
@@ -278,11 +281,39 @@ public class PlayerUI : MonoBehaviour
     {
         if (Player)
         {
-            P1_Color.sprite = PlayerColor[Color];
+            P1_Color.sprite = GroundColor[Color];
         }
         else
         {
-            P2_Color.sprite = PlayerColor[Color];
+            P2_Color.sprite = GroundColor[Color];
+        }
+    }
+
+    public void SetColorBaloon(bool Player, int Color, bool On)
+    {
+        if (On)
+        {
+            if (Player)
+            {
+                P1_Baloon.gameObject.SetActive(true);
+                P1_Baloon.sprite = BaloonColor[Color];
+            }
+            else
+            {
+                P2_Baloon.gameObject.SetActive(true);
+                P2_Baloon.sprite = BaloonColor[Color];
+            }
+        }
+        else
+        {
+            if (Player)
+            {
+                P1_Baloon.gameObject.SetActive(false);
+            }
+            else
+            {
+                P2_Baloon.gameObject.SetActive(false);
+            }
         }
     }
 

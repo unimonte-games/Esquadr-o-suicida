@@ -45,6 +45,5 @@ public class EnemyEnter : MonoBehaviour
             Debug.Log("Ele é o alvo, ataque!");
         }
 
-       
     }
 }

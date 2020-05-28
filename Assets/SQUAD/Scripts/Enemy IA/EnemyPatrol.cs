@@ -80,8 +80,8 @@ public class EnemyPatrol : MonoBehaviour
         {
             Vector3 move = moveLocal.position;
             move.y = 0f;
-            transform.position = Vector3.MoveTowards(transform.position, move, speed * Time.deltaTime); 
-
+            transform.position = Vector3.MoveTowards(transform.position, move, speed * Time.deltaTime);
+           
         }
 
         if (Vector3.Distance(transform.position, moveLocal.position) < 2f && !OnAttack)

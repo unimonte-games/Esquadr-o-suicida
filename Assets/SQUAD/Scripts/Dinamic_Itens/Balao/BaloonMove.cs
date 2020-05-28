@@ -39,6 +39,8 @@ public class BaloonMove : MonoBehaviour
     public int timeBaloon;
     LevelController LC;
 
+    
+
     private void Awake()
     {
         LC = FindObjectOfType<LevelController>();
@@ -71,6 +73,7 @@ public class BaloonMove : MonoBehaviour
                 
 
                 Go = true;
+                
 
                 P1.StartBaloon();
                 Invoke("StartBaloon", 2);
@@ -91,9 +94,11 @@ public class BaloonMove : MonoBehaviour
                 P2_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
                 Go = true;
+                
 
                 P2.StartBaloon();
                 Invoke("StartBaloon", 2);
+                
 
                 Debug.Log("Baloon Solo Player 2");
             }
@@ -110,9 +115,8 @@ public class BaloonMove : MonoBehaviour
                 P1_ref.transform.parent = P1_Baloon;
                 P1_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
-
-
-                Debug.Log("Baloon Solo no Player 1");
+                
+                Debug.Log("Baloon no Player 1");
             }
 
             if (P2_inArea && Input.GetKeyDown(P2_Accept) && !P2_ready && !P2_using && !LC.SoloPlayer)
@@ -127,7 +131,8 @@ public class BaloonMove : MonoBehaviour
                 P2_ref.transform.parent = P2_Baloon;
                 P2_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
-                Debug.Log("Baloon Solo no Player 2");
+                
+                Debug.Log("Baloon no Player 2");
             }
 
             if (P1_ready && Input.GetKeyDown(P1_Drop))
@@ -198,6 +203,8 @@ public class BaloonMove : MonoBehaviour
             P2_.UsingItenDinamic = true;
             P2_.playerWeapon.DisabledItem();
 
+            P1_ref.GetComponent<Player>().SetColorBaloon(true);
+            P2_ref.GetComponent<Player>().SetColorBaloon(true);
 
             Invoke("DropPlayers", timeBaloon);
             Debug.Log("Baloon Iniciado!");
@@ -212,6 +219,8 @@ public class BaloonMove : MonoBehaviour
                 P1_.UsingItenDinamic = true;
                 P1_.playerWeapon.DisabledItem();
 
+                P1_ref.GetComponent<Player>().SetColorBaloon(true);
+
                 Invoke("DropPlayers", timeBaloon);
                 Debug.Log("Baloon Iniciado, apenas P1!");
             }
@@ -223,6 +232,8 @@ public class BaloonMove : MonoBehaviour
                 Player P2_ = P2_ref.GetComponent<Player>();
                 P2_.UsingItenDinamic = true;
                 P2_.playerWeapon.DisabledItem();
+
+                P2_ref.GetComponent<Player>().SetColorBaloon(true);
 
                 Invoke("DropPlayers", timeBaloon);
                 Debug.Log("Baloon Iniciado, apenas P2!");
@@ -249,6 +260,8 @@ public class BaloonMove : MonoBehaviour
             P1_ref.transform.localRotation = Quaternion.identity;
             P1.gameObject.SetActive(false);
 
+            P1_ref.GetComponent<Player>().SetColorBaloon(false);
+
             P1_ref.GetComponent<Player>().SetPositionZero();
         }
 
@@ -268,6 +281,8 @@ public class BaloonMove : MonoBehaviour
             
             P2_ref.transform.localRotation = Quaternion.identity;
             P2.gameObject.SetActive(false);
+
+            P2_ref.GetComponent<Player>().SetColorBaloon(false);
 
             P2_ref.GetComponent<Player>().SetPositionZero();
         }
