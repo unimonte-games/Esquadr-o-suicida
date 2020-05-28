@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PingPongBang : MonoBehaviour
 {
+
+    public Player P1_ref;
+    public Player P2_ref;
+
     KeyCode P1;
     KeyCode P2;
 
@@ -65,7 +69,9 @@ public class PingPongBang : MonoBehaviour
             {
                 BallScript.P1_ref = other.GetComponent<Transform>();
                 P1 = other.GetComponent<Player>().Accept;
+                P1_ref = other.GetComponent<Player>();
                 P1_inArea = true;
+                
                 BallScript.p1 = P1;
                 return;
             }
@@ -77,6 +83,7 @@ public class PingPongBang : MonoBehaviour
             {
                 BallScript.P2_ref = other.GetComponent<Transform>();
                 P2 = other.GetComponent<Player>().Accept;
+                P2_ref = other.GetComponent<Player>();
                 P2_inArea = true;
                 BallScript.p2 = P2;
                 return;

@@ -36,6 +36,7 @@ public class PlayerUI : MonoBehaviour
     public GameObject P1_Controller;
     public GameObject P1_Assault;
     public GameObject P1_CA;
+    public GameObject P1_PPB;
 
     public GameObject Player2_On;
     public GameObject Player2_Off;
@@ -66,6 +67,7 @@ public class PlayerUI : MonoBehaviour
     public GameObject P2_Controller;
     public GameObject P2_Assault;
     public GameObject P2_CA;
+    public GameObject P2_PPB;
 
 
     public GameObject S_wave;
@@ -380,6 +382,32 @@ public class PlayerUI : MonoBehaviour
                 P2_Assault.SetActive(false);
                 P2_Controller.SetActive(false);
                 P2_CA.SetActive(false);
+            }
+        }
+    }
+
+    public void SetIconPPB (bool Player, bool On)
+    {
+        if (On)
+        {
+            if (Player)
+            {
+                P1_PPB.SetActive(true);
+            }
+            else
+            {
+                P2_PPB.SetActive(true);
+            }
+        }
+        else
+        {
+            if (Player)
+            {
+                P1_PPB.SetActive(false);
+            }
+            else
+            {
+                P2_PPB.SetActive(false);
             }
         }
     }

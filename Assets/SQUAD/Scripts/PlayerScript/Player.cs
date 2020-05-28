@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
     public GameObject GC;
     public GameObject[] GroundColor;
 
+
     public GameObject Life_Hud; 
 
     public GameObject PlayerDead_Tree;
@@ -626,6 +627,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetPPB (bool On)
+    {
+        PUI.SetIconPPB(PlayerType, On);
+    }
 
 }
 

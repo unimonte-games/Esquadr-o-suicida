@@ -15,7 +15,8 @@ public class Ball : MonoBehaviour
     public float speed = 5;
     public int MaxCount;
 
-   
+
+
     public Hit h;
   
 
@@ -23,11 +24,15 @@ public class Ball : MonoBehaviour
     {
         Invoke("CancelThis", MaxCount);
 
-        P1_ref.GetComponent<Player>().playerWeapon.DisabledItem();
-        P2_ref.GetComponent<Player>().playerWeapon.DisabledItem();
 
-        P1_ref.GetComponent<Player>().UsingItenDinamic = true;
-        P2_ref.GetComponent<Player>().UsingItenDinamic = true;
+        PPB.P1_ref.playerWeapon.DisabledItem();
+        PPB.P2_ref.playerWeapon.DisabledItem();
+
+        PPB.P1_ref.UsingItenDinamic = true;
+        PPB.P2_ref.UsingItenDinamic = true;
+
+        PPB.P1_ref.SetPPB(true);
+        PPB.P2_ref.SetPPB(true);
     }
 
     void FixedUpdate()
@@ -57,12 +62,15 @@ public class Ball : MonoBehaviour
 
     public void CancelThis()
     {
-        
-        P1_ref.GetComponent<Player>().UsingItenDinamic = false;
-        P2_ref.GetComponent<Player>().UsingItenDinamic = false;
 
-        P1_ref.GetComponent<Player>().playerWeapon.EnabledItem();
-        P2_ref.GetComponent<Player>().playerWeapon.EnabledItem();
+        PPB.P1_ref.UsingItenDinamic = false;
+        PPB.P2_ref.UsingItenDinamic = false;
+
+        PPB.P1_ref.playerWeapon.EnabledItem();
+        PPB.P2_ref.playerWeapon.EnabledItem();
+
+        PPB.P1_ref.SetPPB(false);
+        PPB.P2_ref.SetPPB(false);
 
         PPB.gameObject.SetActive(false);
     }
