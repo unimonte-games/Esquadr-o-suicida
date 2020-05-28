@@ -313,13 +313,23 @@ public class PlayerLevel : MonoBehaviour
 
         if (Player.Level == 25)
         {
+            //Player.L_max = 0f;
+            //Player.LifeBar_max = 500;
+            //Player.ManaBar_max = 500;
+            //Player.TimeToIncrement = 0.5f;
+            //Player.ValueToIncrement = 5f;
+
+            //Player.LifeBar += 35;
+
             Player.L_max = 0f;
             Player.LifeBar_max = 500;
             Player.ManaBar_max = 500;
-            Player.TimeToIncrement = 0.5f;
+            Player.TimeToIncrement = 1f;
             Player.ValueToIncrement = 5f;
-
-            Player.LifeBar += 35;
+            PlayerMovement.speed = 8.5f;
+            PlayerMovement.downSpeed = 8f;
+            PlayerMovement.TurnSpeed = 135f;
+            Player.Size = 15; 
 
         }
 
