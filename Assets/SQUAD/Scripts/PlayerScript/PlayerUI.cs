@@ -31,6 +31,8 @@ public class PlayerUI : MonoBehaviour
     public Image P1_Weapon1;
     public Image P1_Weapon2;
 
+    public Image P1_Color;
+
     public GameObject Player2_On;
     public GameObject Player2_Off;
 
@@ -54,6 +56,8 @@ public class PlayerUI : MonoBehaviour
 
     public Image P2_Weapon1;
     public Image P2_Weapon2;
+
+    public Image P2_Color;
 
     public GameObject S_wave;
 
@@ -89,6 +93,8 @@ public class PlayerUI : MonoBehaviour
 
     public GameObject roomClean;
     public GameObject startRoom;
+
+    public Sprite[] PlayerColor;
 
     WeaponList WL;
 
@@ -268,6 +274,18 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    public void SetColorInterface (bool Player, int Color)
+    {
+        if (Player)
+        {
+            P1_Color.sprite = PlayerColor[Color];
+        }
+        else
+        {
+            P2_Color.sprite = PlayerColor[Color];
+        }
+    }
+
     public void SetSurprise()
     {
         S_wave.SetActive(true);
@@ -414,5 +432,7 @@ public class PlayerUI : MonoBehaviour
         roomClean.SetActive(true);
         Invoke("CancelRoomClean", 2);
     }
+
+
 
 }

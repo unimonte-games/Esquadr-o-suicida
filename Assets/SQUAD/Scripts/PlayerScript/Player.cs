@@ -94,6 +94,11 @@ public class Player : MonoBehaviour
     LevelController LC;
     UI Interface;
 
+    public GameObject[] GroundColor;
+
+    public SpriteRenderer BaloonSprite;
+    public Sprite[] BaloonColor;
+
     public GameObject Life_Hud; 
 
     public GameObject PlayerDead_Tree;
@@ -114,6 +119,8 @@ public class Player : MonoBehaviour
         PUI.ChangeGold(PlayerType, Gold);
         PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max, LifeSize);
 
+        
+
         if (PlayerType)
         {
             LC.P1_inRoom = true;
@@ -121,7 +128,8 @@ public class Player : MonoBehaviour
             UpdateController();
 
             Interface.P1 = MapaGatilho;
-            
+            SetColorGround();
+
 
         }
         else
@@ -131,7 +139,8 @@ public class Player : MonoBehaviour
             UpdateController();
 
             Interface.P2 = MapaGatilho;
-            
+            SetColorGround();
+
 
         }
 
@@ -572,14 +581,19 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
-    
 
-
+    public void SetColorGround()
+    {
+        if (PlayerType)
+        {
+            GroundColor[LC.Player1Color].SetActive(true);
+            PUI.SetColorInterface(PlayerType, LC.Player1Color);
+        }
+        else
+        {
+            GroundColor[LC.Player2Color].SetActive(true);
+            PUI.SetColorInterface(PlayerType, LC.Player2Color);
+        }
+    }
 }
-   
-
-
-     
-    
-   
 

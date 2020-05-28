@@ -20,6 +20,12 @@ public class LevelController : MonoBehaviour
 
     public bool[] CompleteRoom;
 
+    public int Player1Color;
+    public int Player2Color;
+
+    public bool P1_RGB;
+    public bool P2_RGB;
+
     SoundController SC;
 
     private void Awake()
