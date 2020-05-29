@@ -39,6 +39,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
     public Transform Look_A;
     public Transform Look_M;
 
+    public SphereCollider Box;
 
     public int timeToCancel;
 
@@ -522,7 +523,9 @@ public class CarrinhoMetralhadora : MonoBehaviour
         DropPlayer1();
         DropPlayer2();
 
-        CC.gameObject.SetActive(false);
+        Box.enabled = false;
+        CC.Anin.Play("CarShop");
+        
         Debug.Log("Carrinho encerrou");
 
     }

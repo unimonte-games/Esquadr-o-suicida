@@ -14,11 +14,12 @@ public class CarrinhoController : MonoBehaviour
     public float downSpeed = 3f;
     public CarrinhoMetralhadora CM;
 
+    public Animation Anin;
+
     private void FixedUpdate()
     {
         if (CM.P1ready && CM.P2ready)
         {
-
 
             if (Input.GetKey(Moviment_Up))
             {

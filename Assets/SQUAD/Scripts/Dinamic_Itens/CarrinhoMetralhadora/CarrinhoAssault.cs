@@ -12,6 +12,7 @@ public class CarrinhoAssault : MonoBehaviour
 
     public Transform spawn;
     public GameObject shotingPrefab;
+    public GameObject shotingEffec;
     float countToShoting;
     public float frameRate;
     public float Force;
@@ -28,11 +29,16 @@ public class CarrinhoAssault : MonoBehaviour
             if (Input.GetKeyDown(Assault_Gatilho) && countToShoting >= frameRate)
             {
                 countToShoting = 0f;
+
+                GameObject effect = Instantiate(shotingPrefab, spawn.transform.position, Quaternion.identity) as GameObject;
+                effect.transform.parent = spawn;
                 GameObject bullet = Instantiate(shotingPrefab, spawn.transform.position, Quaternion.identity) as GameObject;
                 bullet.GetComponent<Hit>().PlayerDestroy = PlayerThis;
                 bullet.GetComponent<Hit>().Hit_Plant = 1;
                 bullet.GetComponent<Hit>().Hit_Tech = 1;
                 bullet.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
+
+                
 
             }
 
