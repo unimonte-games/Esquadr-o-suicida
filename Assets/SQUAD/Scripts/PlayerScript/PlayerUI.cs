@@ -37,6 +37,10 @@ public class PlayerUI : MonoBehaviour
     public GameObject P1_Assault;
     public GameObject P1_CA;
     public GameObject P1_PPB;
+    public Image P1_Arco;
+    public TextMeshProUGUI P1_ArchPoints;
+    public GameObject[] P1_Arco_Vencedor;
+    public Animation P1_ArcoWinner;
 
     public GameObject Player2_On;
     public GameObject Player2_Off;
@@ -68,6 +72,10 @@ public class PlayerUI : MonoBehaviour
     public GameObject P2_Assault;
     public GameObject P2_CA;
     public GameObject P2_PPB;
+    public Image P2_Arco;
+    public TextMeshProUGUI P2_ArchPoints;
+    public GameObject[] P2_Arco_Vencedor;
+    public Animation P2_ArcoWinner;
 
 
     public GameObject S_wave;
@@ -107,6 +115,7 @@ public class PlayerUI : MonoBehaviour
 
     public Sprite[] GroundColor;
     public Sprite[] BaloonColor;
+    public Sprite[] ArcoBattle;
 
     WeaponList WL;
 
@@ -409,6 +418,81 @@ public class PlayerUI : MonoBehaviour
             {
                 P2_PPB.SetActive(false);
             }
+        }
+    }
+
+    public void SetColorArchBattle(bool Player, int Color, bool On)
+    {
+        if (On)
+        {
+            if (Player)
+            {
+                P1_Arco.gameObject.SetActive(true);
+                P1_Arco.sprite = ArcoBattle[Color];
+            }
+            else
+            {
+                P2_Arco.gameObject.SetActive(true);
+                P2_Arco.sprite = ArcoBattle[Color];
+            }
+        }
+        else
+        {
+            if (Player)
+            {
+                P1_Arco.gameObject.SetActive(false);
+            }
+            else
+            {
+                P2_Arco.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void SetPointsArch (bool Player, int Points)
+    {
+        if (Player)
+        {
+            P1_ArchPoints.text = "" + Points;
+        }
+        else
+        {
+            P2_ArchPoints.text = "" + Points;
+        }
+    }
+
+    public void SetArchWinner(int Win)
+    {
+        P1_ArcoWinner.Play("ArchAnin");
+        P2_ArcoWinner.Play("ArchAnin");
+
+        if (Win == 0)
+        {
+            P1_Arco_Vencedor[0].SetActive(true);
+            P2_Arco_Vencedor[1].SetActive(true);
+        }
+
+        if (Win == 1)
+        {
+            P1_Arco_Vencedor[1].SetActive(true);
+            P2_Arco_Vencedor[0].SetActive(true);
+        }
+
+        if (Win == 2)
+        {
+            P1_Arco_Vencedor[2].SetActive(true);
+            P2_Arco_Vencedor[2].SetActive(true);
+        }
+
+        Invoke("ArchCancel", 3);
+    }
+
+    void ArchCancel()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            P1_Arco_Vencedor[i].SetActive(false);
+            P2_Arco_Vencedor[i].SetActive(false);
         }
     }
 

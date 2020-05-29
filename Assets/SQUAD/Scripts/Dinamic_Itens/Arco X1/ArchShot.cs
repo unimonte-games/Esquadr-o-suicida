@@ -15,14 +15,14 @@ public class ArchShot : MonoBehaviour
 
         if(ID == 1 && other.gameObject.name == "Player2")
         {
-            AC.P1_Points++;
+            AC.SetPoints(true);
             this.gameObject.SetActive(false);
             return;
         }
 
         if (ID == 2 && other.gameObject.name == "Player1")
         {
-            AC.P2_Points++;
+            AC.SetPoints(false);
             this.gameObject.SetActive(false);
             return;
         }

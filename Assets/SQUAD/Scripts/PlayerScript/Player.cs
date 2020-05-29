@@ -632,5 +632,37 @@ public class Player : MonoBehaviour
         PUI.SetIconPPB(PlayerType, On);
     }
 
+    public void SetColorArch(bool On)
+    {
+
+        if (PlayerType)
+        {
+            PUI.SetColorArchBattle(PlayerType, LC.Player1Color, On);
+        }
+        else
+        {
+            PUI.SetColorArchBattle(PlayerType, LC.Player2Color, On);
+        }
+
+
+    }
+
+    public void SetPointsArch(bool On, int SetPoints)
+    {
+        if (PlayerType)
+        {
+            PUI.SetPointsArch(PlayerType, SetPoints);
+        }
+        else
+        {
+            PUI.SetPointsArch(PlayerType, SetPoints);
+        }
+    }
+
+    public void SetWinnerArch (int w)
+    {
+        PUI.SetArchWinner(w);
+    }
+
 }
 

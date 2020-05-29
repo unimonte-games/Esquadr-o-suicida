@@ -25,7 +25,12 @@ public class ArchController : MonoBehaviour
     public GameObject Arch1_ref;
     public GameObject Arch2_ref;
 
+    Player player1;
+    Player player2;
+
     public ArchController ACScript;
+
+    public int TimeToWin;
 
     private void FixedUpdate()
     {
@@ -55,10 +60,12 @@ public class ArchController : MonoBehaviour
             Player P1 = P1_ref.GetComponent<Player>();
             P1.UsingItenDinamic = true;
             P1.playerWeapon.DisabledItem();
+            P1.SetColorArch(true);
 
             Player P2 = P2_ref.GetComponent<Player>();
             P2.UsingItenDinamic = true;
             P2.playerWeapon.DisabledItem();
+            P2.SetColorArch(true);
 
             StartPlayerVersusPlayer();
             Debug.Log("Player vs Player!");
@@ -89,8 +96,23 @@ public class ArchController : MonoBehaviour
         temp2.AC = ACScript;
         temp2.P = P2_ref.GetComponent<Player>().PD;
 
-        Invoke("CancelArch",35);
+        Invoke("CancelArch",TimeToWin);
 
+    }
+
+    public void SetPoints(bool player) 
+    {
+        if (player)
+        {
+            P1_Points++;
+            player1.SetPointsArch(true, P1_Points);
+           
+        }
+        else
+        {
+            P2_Points++;
+            player2.SetPointsArch(false, P2_Points);
+        }
     }
 
     void CancelArch()
@@ -101,21 +123,24 @@ public class ArchController : MonoBehaviour
         Player P1 = P1_ref.GetComponent<Player>();
         P1.UsingItenDinamic = false;
         P1.playerWeapon.EnabledItem();
+        P1.SetColorArch(false);
 
         Player P2 = P2_ref.GetComponent<Player>();
         P2.UsingItenDinamic = false;
         P2.playerWeapon.EnabledItem();
-
+        P2.SetColorArch(false);
 
         if (P1_Points > P2_Points)
         {
             P1.Gold += 500;
             P1.ManaBar += 75;
             P1.SetGold();
-            P1.SetDamage();
+            P1.SetMana();
 
+            P1.SetWinnerArch(0);
+            Invoke("Cancel", 4);
             Debug.Log("Player1 Venceu!");
-            this.gameObject.SetActive(false);
+            
             return;
         }
 
@@ -124,10 +149,12 @@ public class ArchController : MonoBehaviour
             P2.Gold += 500;
             P2.ManaBar += 75;
             P2.SetGold();
-            P2.SetDamage();
+            P2.SetMana();
 
+            P2.SetWinnerArch(1);
+            Invoke("Cancel", 4);
             Debug.Log("Player2 Venceu!");
-            this.gameObject.SetActive(false);
+            
             return;
         }
 
@@ -136,16 +163,21 @@ public class ArchController : MonoBehaviour
             P1.ManaBar += 10;
             P2.ManaBar += 10;
 
-            P1.SetDamage();
-            P2.SetDamage();
+            P1.SetMana();
+            P2.SetMana();
 
+            P1.SetWinnerArch(2);
+            Invoke("Cancel", 4);
             Debug.Log("Empate");
-            this.gameObject.SetActive(false);
+            
             return;
         }
 
-       
+    }
 
+    void Cancel()
+    {
+        this.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -157,6 +189,7 @@ public class ArchController : MonoBehaviour
                 P1_ref = other.transform;
                 P1 = other.GetComponent<Player>().Gatilho;
                 P1_inArea = true;
+                player1 = other.GetComponent<Player>();
                 
                 return;
             }
@@ -169,7 +202,8 @@ public class ArchController : MonoBehaviour
                 P2_ref = other.transform;
                 P2 = other.GetComponent<Player>().Gatilho;
                 P2_inArea = true;
-                
+                player2 = other.GetComponent<Player>();
+
                 return;
             }
         }
