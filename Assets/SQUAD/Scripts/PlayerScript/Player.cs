@@ -664,5 +664,26 @@ public class Player : MonoBehaviour
         PUI.SetArchWinner(w);
     }
 
+    public void SetPatins(bool On)
+    {
+        PUI.SetPatinsRacer(PlayerType, On, false);
+    }
+
+    public void SetPatinsRacer ()
+    {
+        PUI.SetPatinsRacer(PlayerType, true, true);
+    }
+
+    public void SetPointsPatins(int SetPoints)
+    {
+        PUI.SetPointsPatinsRacer(PlayerType, SetPoints);
+    }
+
+    public void SetWinnerPatins(int w)
+    {
+        PUI.SetPatinsRacerWinner(w);
+    }
+
+
 }
 

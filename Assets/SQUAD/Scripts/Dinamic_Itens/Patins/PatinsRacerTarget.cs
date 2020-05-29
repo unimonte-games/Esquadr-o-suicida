@@ -17,7 +17,7 @@ public class PatinsRacerTarget : MonoBehaviour
         if(other.gameObject.name == "Player1" && !On)
         {
             On = true;
-            PJ.P1_Placar++;
+            PJ.SetPointsPlayer(0);
             PJ.ChangeTarget();
             this.gameObject.SetActive(false);
             return;
@@ -26,7 +26,7 @@ public class PatinsRacerTarget : MonoBehaviour
         if (other.gameObject.name == "Player2" && !On)
         {
             On = true;
-            PJ.P2_Placar++;
+            PJ.SetPointsPlayer(1);
             PJ.ChangeTarget();
             this.gameObject.SetActive(false);
             return;

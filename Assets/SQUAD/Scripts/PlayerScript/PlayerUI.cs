@@ -37,10 +37,17 @@ public class PlayerUI : MonoBehaviour
     public GameObject P1_Assault;
     public GameObject P1_CA;
     public GameObject P1_PPB;
+
     public Image P1_Arco;
     public TextMeshProUGUI P1_ArchPoints;
     public GameObject[] P1_Arco_Vencedor;
     public Animation P1_ArcoWinner;
+
+    public GameObject P1_Patins;
+    public GameObject P1_PatinsRacer;
+    public TextMeshProUGUI P1_PatinsPoints;
+    public GameObject[] P1_Patins_Vencedor;
+    public Animation P1_PatinsWinner;
 
     public GameObject Player2_On;
     public GameObject Player2_Off;
@@ -72,10 +79,17 @@ public class PlayerUI : MonoBehaviour
     public GameObject P2_Assault;
     public GameObject P2_CA;
     public GameObject P2_PPB;
+
     public Image P2_Arco;
     public TextMeshProUGUI P2_ArchPoints;
     public GameObject[] P2_Arco_Vencedor;
     public Animation P2_ArcoWinner;
+
+    public GameObject P2_Patins;
+    public GameObject P2_PatinsRacer;
+    public TextMeshProUGUI P2_PatinsPoints;
+    public GameObject[] P2_Patins_Vencedor;
+    public Animation P2_PatinsWinner;
 
 
     public GameObject S_wave;
@@ -116,6 +130,8 @@ public class PlayerUI : MonoBehaviour
     public Sprite[] GroundColor;
     public Sprite[] BaloonColor;
     public Sprite[] ArcoBattle;
+    
+ 
 
     WeaponList WL;
 
@@ -493,6 +509,82 @@ public class PlayerUI : MonoBehaviour
         {
             P1_Arco_Vencedor[i].SetActive(false);
             P2_Arco_Vencedor[i].SetActive(false);
+        }
+    }
+
+    public void SetPatinsRacer(bool Player, bool On, bool StartRacer)
+    {
+        if (On)
+        {
+            if (Player)
+            {
+                P1_Patins.gameObject.SetActive(true);
+            }
+            else
+            {
+                P2_Patins.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            P1_Patins.gameObject.SetActive(false);
+            P2_Patins.gameObject.SetActive(false);
+        }
+
+        if (StartRacer)
+        {
+            P1_PatinsRacer.SetActive(true);
+            P2_PatinsRacer.SetActive(true);
+        }
+    }
+
+    public void SetPointsPatinsRacer(bool Player, int Points)
+    {
+        if (Player)
+        {
+            P1_PatinsPoints.text = "" + Points;
+        }
+        else
+        {
+            P2_PatinsPoints.text = "" + Points;
+        }
+    }
+
+    public void SetPatinsRacerWinner(int Win)
+    {
+        P1_PatinsWinner.Play("ArchAnin");
+        P2_PatinsWinner.Play("ArchAnin");
+
+        P1_PatinsRacer.SetActive(false);
+        P2_PatinsRacer.SetActive(false);
+
+        if (Win == 0)
+        {
+            P1_Patins_Vencedor[0].SetActive(true);
+            P2_Patins_Vencedor[1].SetActive(true);
+        }
+
+        if (Win == 1)
+        {
+            P1_Patins_Vencedor[1].SetActive(true);
+            P2_Patins_Vencedor[0].SetActive(true);
+        }
+
+        if (Win == 2)
+        {
+            P1_Patins_Vencedor[2].SetActive(true);
+            P2_Patins_Vencedor[2].SetActive(true);
+        }
+
+        Invoke("PatinsCancel", 3);
+    }
+
+    void PatinsCancel()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            P1_Patins_Vencedor[i].SetActive(false);
+            P2_Patins_Vencedor[i].SetActive(false);
         }
     }
 

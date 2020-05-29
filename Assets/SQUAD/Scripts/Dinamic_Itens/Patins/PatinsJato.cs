@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PatinsJato : MonoBehaviour
 {
-
     bool P1_inArea;
     bool P2_inArea;
 
@@ -39,7 +38,8 @@ public class PatinsJato : MonoBehaviour
         {
             P1_ready = true;
             P1_ref.speed += 6;
-            
+
+            P1_Player.SetPatins(true);
 
             Debug.Log("Patins Ativado no Player 1");
             Invoke("CancelP1", timeToCancel);
@@ -50,14 +50,16 @@ public class PatinsJato : MonoBehaviour
             P2_ready = true;
             P2_ref.speed += 6;
 
+            P2_Player.SetPatins(true);
 
             Debug.Log("Patins Ativado no Player 2");
             Invoke("CancelP2", timeToCancel);
         }
 
-        if(P1_ready && P2_ready && !OnRacer)
+        if (P1_ready && P2_ready && !OnRacer)
         {
             OnRacer = true;
+            P1_Player.SetPatinsRacer();
             Invoke("StartRacer", 3);
         }
 
@@ -72,15 +74,15 @@ public class PatinsJato : MonoBehaviour
 
     void CancelRacer()
     {
-        if(P1_Placar > P2_Placar)
+        if (P1_Placar > P2_Placar)
         {
             P1_Player.LifeBar += 150;
             P1_Player.SetDamage();
             P1_ref.speed = tempSpeed1;
 
+            P1_Player.SetPatins(false);
+            P1_Player.SetWinnerPatins(0);
             Debug.Log("Player 1 Venceu!");
-            this.gameObject.SetActive(false);
-            return;
 
         }
 
@@ -90,52 +92,39 @@ public class PatinsJato : MonoBehaviour
             P2_Player.SetDamage();
             P2_ref.speed = tempSpeed2;
 
+            P2_Player.SetPatins(false);
+            P2_Player.SetWinnerPatins(1);
             Debug.Log("Player 2 Venceu!");
-            this.gameObject.SetActive(false);
-            return;
         }
 
-        if(P1_Placar == P2_Placar)
+        if (P1_Placar == P2_Placar)
         {
             P1_Player.LifeBar += 25;
             P1_Player.SetDamage();
             P1_ref.speed = tempSpeed1;
+            P1_Player.SetPatins(false);
 
             P2_Player.LifeBar += 25;
             P2_Player.SetDamage();
             P2_ref.speed = tempSpeed2;
+            P2_Player.SetPatins(false);
 
+            P1_Player.SetWinnerPatins(2);
             Debug.Log("Empate!");
-            this.gameObject.SetActive(false);
-            return;
+
         }
 
-        
+        Cancel();
     }
 
-    void CancelP1()
+    void Cancel()
     {
-        if (!OnRacer)
-        {
-            Debug.Log("Patins Player 1, cancelado");
-            P1_ref.speed = tempSpeed1;
-        }
-       
-    }
-
-    void CancelP2()
-    {
-        if (!OnRacer)
-        {
-            Debug.Log("Patins Player 2, cancelado");
-            P2_ref.speed = tempSpeed2;
-        }
-        
+        this.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player1" && !P1_inArea)
+        if (other.gameObject.name == "Player1" && !P1_inArea)
         {
             if (!other.GetComponent<Player>().UsingItenDinamic)
             {
@@ -145,7 +134,7 @@ public class PatinsJato : MonoBehaviour
                 P1 = other.GetComponent<Player>().Accept;
 
                 tempSpeed1 = P1_ref.speed;
-                
+
             }
         }
 
@@ -184,6 +173,48 @@ public class PatinsJato : MonoBehaviour
         GameObject racer = Instantiate(RacerTarget, SC.ListSpawn[tempIndex].position, SC.ListSpawn[tempIndex].rotation) as GameObject;
         racer.transform.parent = SC.SceneTransformList.transform;
         racer.GetComponent<PatinsRacerTarget>().PJ = this;
-        
+
     }
+
+    public void SetPointsPlayer(int P)
+    {
+        if (P == 0)
+        {
+            P1_Placar++;
+            P1_Player.SetPointsPatins(P1_Placar);
+        }
+
+        if (P == 1)
+        {
+            P2_Placar++;
+            P2_Player.SetPointsPatins(P2_Placar);
+        }
+    }
+
+    void CancelP1()
+    {
+        if (!OnRacer)
+        {
+            Debug.Log("Patins Player 1, cancelado");
+            P1_ref.speed = tempSpeed1;
+            P1_Player.SetPatins(false);
+
+            Cancel();
+        }
+
+    }
+
+    void CancelP2()
+    {
+        if (!OnRacer)
+        {
+            Debug.Log("Patins Player 2, cancelado");
+            P2_ref.speed = tempSpeed2;
+            P2_Player.SetPatins(false);
+
+            Cancel();
+        }
+
+    }
+
 }
