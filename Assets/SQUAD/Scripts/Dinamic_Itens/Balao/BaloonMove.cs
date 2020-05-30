@@ -39,7 +39,12 @@ public class BaloonMove : MonoBehaviour
     public int timeBaloon;
     LevelController LC;
 
-    
+    public MeshRenderer[] Baloon1;
+    public MeshRenderer[] Baloon2; 
+
+    public Material[] AllBaloon;
+
+    public Animation AninBaloon;
 
     private void Awake()
     {
@@ -51,6 +56,12 @@ public class BaloonMove : MonoBehaviour
     {
         P1_OriginalParent = GameObject.Find("Player1_Original");
         P2_OriginalParent = GameObject.Find("Player2_Original");
+
+        for (int i = 0; i < 5; i++)
+        {
+            Baloon1[i].material = AllBaloon[LC.Player1Color];
+            Baloon2[i].material = AllBaloon[LC.Player2Color];
+        }
  
     }
 
@@ -76,6 +87,8 @@ public class BaloonMove : MonoBehaviour
                 
 
                 P1.StartBaloon();
+                AninBaloon.Play("BaloonStart");
+
                 Invoke("StartBaloon", 2);
 
                 Debug.Log("Baloon Solo Player 1");
@@ -97,6 +110,7 @@ public class BaloonMove : MonoBehaviour
                 
 
                 P2.StartBaloon();
+                AninBaloon.Play("BaloonStart2");
                 Invoke("StartBaloon", 2);
                 
 
@@ -180,6 +194,8 @@ public class BaloonMove : MonoBehaviour
                 P1.StartBaloon();
                 P2.StartBaloon();
 
+                AninBaloon.Play("BaloonDuo");
+
                 Invoke("StartBaloon", 2);
             }
         }
@@ -243,6 +259,7 @@ public class BaloonMove : MonoBehaviour
 
     public void DropPlayers()
     {
+        AninBaloon.Play("BaloonEndDuo");
 
         if (P1_ready)
         {
@@ -258,7 +275,7 @@ public class BaloonMove : MonoBehaviour
            
             P1_ref.transform.parent = P1_OriginalParent.transform;
             P1_ref.transform.localRotation = Quaternion.identity;
-            P1.gameObject.SetActive(false);
+            
 
             P1_ref.GetComponent<Player>().SetColorBaloon(false);
 
@@ -267,7 +284,6 @@ public class BaloonMove : MonoBehaviour
 
         if (P2_ready)
         {
-
             P2_ready = false;
             P2_ref.transform.localRotation = Quaternion.Euler(0, 0, 0);
             P2_walk.enabled = true;
@@ -280,7 +296,7 @@ public class BaloonMove : MonoBehaviour
             P2_ref.transform.parent = P2_OriginalParent.transform;
             
             P2_ref.transform.localRotation = Quaternion.identity;
-            P2.gameObject.SetActive(false);
+            
 
             P2_ref.GetComponent<Player>().SetColorBaloon(false);
 
@@ -290,10 +306,17 @@ public class BaloonMove : MonoBehaviour
         P1_using = false;
         P2_using = false;
 
-        this.gameObject.SetActive(false);
+        Invoke("Cancel", 3);
 
         Debug.Log("Baloon Encerrado.");
 
+    }
+
+    void Cancel()
+    {
+        P1.gameObject.SetActive(false);
+        P2.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
