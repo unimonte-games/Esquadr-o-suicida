@@ -130,7 +130,7 @@ public class RoomController : MonoBehaviour
         {
             PUI.Mission_SetDoor(true);
 
-            int Type = Random.Range(0, 30);
+            int Type = Random.Range(16, 20);
             Default.PlayerPunition(Type, 1);
             return;
 

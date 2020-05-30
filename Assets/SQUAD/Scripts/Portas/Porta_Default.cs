@@ -484,7 +484,7 @@ public class Porta_Default : MonoBehaviour
                     OnPlayer = player1.transform;
                     Debug.Log("Player 1 é o Alvo!");
 
-                    PUI.SetProtect(1);
+                    PUI.SetProtect(1,LC.Player1Color);
                 }
 
                 if (LC.P2_inRoom)
@@ -492,25 +492,25 @@ public class Porta_Default : MonoBehaviour
                     OnPlayer = player2.transform;
                     Debug.Log("Player 2 é o Alvo!");
 
-                    PUI.SetProtect(2);
+                    PUI.SetProtect(2, LC.Player2Color);
                 }
             }
             else
             {
-                int SelectPlayer = Random.Range(1, 10);
-                if (SelectPlayer <= 5)
+                int SelectPlayer = Random.Range(1, 100);
+                if (SelectPlayer <= 50)
                 {
                     OnPlayer = player1.transform;
                     Debug.Log("Player 1 é o Alvo!");
 
-                    PUI.SetProtect(1);
+                    PUI.SetProtect(1, LC.Player1Color);
                 }
-                if (SelectPlayer >= 6)
+                if (SelectPlayer >= 51)
                 {
                     OnPlayer = player2.transform;
                     Debug.Log("Player 2 é o Alvo!");
 
-                    PUI.SetProtect(2);
+                    PUI.SetProtect(2, LC.Player2Color);
                 }
             }
 

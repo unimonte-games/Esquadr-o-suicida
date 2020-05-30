@@ -149,6 +149,10 @@ public class PlayerUI : MonoBehaviour
     public GameObject M_FinalKey_Complete;
     public GameObject M_EncerrarNivel_Complete;
 
+    public Sprite[] ProtectColors;
+    public Image ProtectIcon;
+
+
     WeaponList WL;
 
     private void Awake()
@@ -703,15 +707,17 @@ public class PlayerUI : MonoBehaviour
         
     }
 
-    public void SetProtect(int Player)
+    public void SetProtect(int Player, int Color)
     {
         if(Player == 1)
         {
             P1_target.SetActive(true);
+            ProtectIcon.sprite = ProtectColors[Color];
         }
         if(Player == 2)
         {
             P2_target.SetActive(true);
+            ProtectIcon.sprite = ProtectColors[Color];
         }
 
         P_wave.SetActive(true);
