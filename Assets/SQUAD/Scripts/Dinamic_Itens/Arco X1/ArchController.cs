@@ -36,6 +36,8 @@ public class ArchController : MonoBehaviour
     public int TimeToWin;
     public GameObject[] ArchColors;
 
+    public GameObject Interface;
+
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
@@ -70,6 +72,8 @@ public class ArchController : MonoBehaviour
         {
             StartX1 = true;
 
+            Interface.SetActive(false);
+
             Player P1 = P1_ref.GetComponent<Player>();
             P1.UsingItenDinamic = true;
             P1.playerWeapon.DisabledItem();
@@ -87,6 +91,7 @@ public class ArchController : MonoBehaviour
 
     void StartPlayerVersusPlayer()
     {
+
         GameObject A_1 = Instantiate(Arch1, P1_ref.position, P1_ref.rotation);
         A_1.transform.parent = P1_ref.transform;
         Arch1_ref = A_1;

@@ -10,6 +10,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
 
     GameObject P1_ref;
     GameObject P2_ref;
+    public GameObject Interface;
 
     KeyCode P1;
     KeyCode P2;
@@ -92,7 +93,6 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     temp1.SetIconCar(true, 2);
                     temp1.EnabledOrDisabledGroundColor(false);
 
-                    
                     Debug.Log("Player 1 é o Controller e o Assault!");
                     return;
 
@@ -180,6 +180,7 @@ public class CarrinhoMetralhadora : MonoBehaviour
                     temp1.SetPositionZero();
                     temp1.SetIconCar(true, 2);
                     temp1.EnabledOrDisabledGroundColor(false);
+
                     Debug.Log("Player 2 é o Controller e o Assault!");
                     return;
 
@@ -251,6 +252,8 @@ public class CarrinhoMetralhadora : MonoBehaviour
         if(P1ready && P2ready && !Atived)
         {
             Atived = true;
+            Interface.SetActive(false);
+
             Invoke("CancelCarrinho", timeToCancel);
 
         }

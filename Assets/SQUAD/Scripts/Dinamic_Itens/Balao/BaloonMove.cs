@@ -45,6 +45,7 @@ public class BaloonMove : MonoBehaviour
     public Material[] AllBaloon;
 
     public Animation AninBaloon;
+    public GameObject Interface;
 
     private void Awake()
     {
@@ -89,6 +90,7 @@ public class BaloonMove : MonoBehaviour
                 P1.StartBaloon();
                 AninBaloon.Play("BaloonStart");
 
+                Interface.SetActive(false);
                 Invoke("StartBaloon", 2);
 
                 Debug.Log("Baloon Solo Player 1");
@@ -111,6 +113,8 @@ public class BaloonMove : MonoBehaviour
 
                 P2.StartBaloon();
                 AninBaloon.Play("BaloonStart2");
+
+                Interface.SetActive(false);
                 Invoke("StartBaloon", 2);
                 
 
@@ -195,6 +199,7 @@ public class BaloonMove : MonoBehaviour
                 P2.StartBaloon();
 
                 AninBaloon.Play("BaloonDuo");
+                Interface.SetActive(false);
 
                 Invoke("StartBaloon", 2);
             }
@@ -205,6 +210,7 @@ public class BaloonMove : MonoBehaviour
 
     void StartBaloon()
     {
+       
 
         if (!LC.SoloPlayer)
         {

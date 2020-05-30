@@ -18942,8 +18942,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5.9693866, y: 7.1571407, z: 3}
+  m_Center: {x: -0.14846826, y: 0.24744892, z: 0}
 --- !u!114 &4207770706345503450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18956,11 +18956,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e2550aa236bd24f89f71a20a7ed00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1_ref: {fileID: 0}
+  P2_ref: {fileID: 0}
   StartPong: 0
   Ball: {fileID: 4207770705765049234}
   BallScript: {fileID: 4207770705765049245}
   BC: {fileID: 4207770706345503461}
   Altar: {fileID: 7533064343632970579}
+  Interface: {fileID: 0}
 --- !u!1 &7533064342724015681
 GameObject:
   m_ObjectHideFlags: 0

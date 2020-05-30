@@ -33,6 +33,7 @@ public class PatinsJato : MonoBehaviour
     public int timeToCancelRacer;
 
     public Animation Anin;
+    public GameObject Interface;
 
     private void FixedUpdate()
     {
@@ -63,6 +64,8 @@ public class PatinsJato : MonoBehaviour
         if (P1_ready && P2_ready && !OnRacer)
         {
             OnRacer = true;
+            Interface.SetActive(false);
+
             P1_Player.SetPatinsRacer();
             Invoke("StartRacer", 3);
         }

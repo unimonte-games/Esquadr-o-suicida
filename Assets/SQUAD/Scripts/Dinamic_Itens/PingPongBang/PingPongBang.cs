@@ -11,6 +11,9 @@ public class PingPongBang : MonoBehaviour
     KeyCode P1;
     KeyCode P2;
 
+    KeyCode P1_Fire;
+    KeyCode P2_Fire;
+
     bool P1_inArea;
     bool P2_inArea;
 
@@ -23,6 +26,8 @@ public class PingPongBang : MonoBehaviour
 
     public BoxCollider BC;
     public GameObject Altar;
+
+    public GameObject Interface;
 
     void FixedUpdate()
     {
@@ -54,7 +59,7 @@ public class PingPongBang : MonoBehaviour
             Ball.SetActive(true);
             
             BC.enabled = false;
-
+            Interface.SetActive(true);
             Altar.SetActive(false);
             Debug.Log("Ping Pong Bang!");
         }
@@ -68,7 +73,7 @@ public class PingPongBang : MonoBehaviour
             if (!other.GetComponent<Player>().UsingItenDinamic)
             {
                 BallScript.P1_ref = other.GetComponent<Transform>();
-                P1 = other.GetComponent<Player>().Accept;
+                P1 = other.GetComponent<Player>().Gatilho;
                 P1_ref = other.GetComponent<Player>();
                 P1_inArea = true;
                 
@@ -82,7 +87,7 @@ public class PingPongBang : MonoBehaviour
             if (!other.GetComponent<Player>().UsingItenDinamic)
             {
                 BallScript.P2_ref = other.GetComponent<Transform>();
-                P2 = other.GetComponent<Player>().Accept;
+                P2 = other.GetComponent<Player>().Gatilho;
                 P2_ref = other.GetComponent<Player>();
                 P2_inArea = true;
                 BallScript.p2 = P2;
