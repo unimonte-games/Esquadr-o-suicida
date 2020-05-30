@@ -130,8 +130,24 @@ public class PlayerUI : MonoBehaviour
     public Sprite[] GroundColor;
     public Sprite[] BaloonColor;
     public Sprite[] ArcoBattle;
-    
- 
+
+    public GameObject M_Door;
+    public Animation AM_Door;
+    public GameObject M_Wave;
+    public Animation AM_Wave;
+    public GameObject M_Surprise;
+    public Animation AM_Surprise;
+
+    public GameObject M_Door_Complete;
+    public GameObject M_Wave_Complete;
+    public GameObject M_Surprise_Complete;
+
+    public GameObject M_FinalDoor;
+    public GameObject M_FinalKey;
+
+    public GameObject M_FinalDoor_Complete;
+    public GameObject M_FinalKey_Complete;
+    public GameObject M_EncerrarNivel_Complete;
 
     WeaponList WL;
 
@@ -733,6 +749,75 @@ public class PlayerUI : MonoBehaviour
     {
         roomClean.SetActive(true);
         Invoke("CancelRoomClean", 2);
+    }
+
+    public void Mission_SetDoor(bool Complete)
+    {
+        if (Complete)
+        {
+            M_Door_Complete.SetActive(true);
+            
+        }
+        else
+        {
+            M_Door.SetActive(true);
+            AM_Door.Play("DoorAnin");
+        }
+    }
+
+    public void Mission_SetWave(bool Complete)
+    {
+        if (Complete)
+        {
+            M_Wave_Complete.SetActive(true);
+        }
+        else
+        {
+            M_Wave.SetActive(true);
+            AM_Wave.Play("WaveAnin");
+        }
+    }
+
+    public void Mission_SetSurprise(bool Complete)
+    {
+        if (Complete)
+        {
+            M_Surprise_Complete.SetActive(true);
+        }
+        else
+        {
+            M_Surprise.SetActive(true);
+            AM_Surprise.Play("SurpriseAnin");
+        }
+    }
+
+    public void Mission_FoundDoorFinal(bool Complete)
+    {
+        if (Complete)
+        {
+            M_FinalDoor_Complete.SetActive(true);
+        }
+        else
+        {
+            M_FinalDoor.SetActive(true);
+        }
+    }
+
+    public void Mission_FoundKeyFinal(bool Complete)
+    {
+        if (Complete)
+        {
+            M_FinalKey_Complete.SetActive(true);
+        }
+        else
+        {
+            M_FinalKey.SetActive(true);
+        }
+    }
+
+    public void Mission_WinLevel()
+    {
+        M_EncerrarNivel_Complete.SetActive(true);
     }
 
 

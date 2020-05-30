@@ -106,7 +106,7 @@ public class RoomController : MonoBehaviour
             DefaultComplete = true;
             CompleteMissions++;
 
-            PUI.RoomCleanSet();
+            
             RoomClean();
 
             for (int i = 0; i < 4; i++)
@@ -121,13 +121,15 @@ public class RoomController : MonoBehaviour
         {
             ColorComplete = true;
             CompleteMissions++;
+            PUI.Mission_SetDoor(true);
 
-            PUI.RoomCleanSet();
             RoomClean();
             return;
         }
         else if (Complete == 1 && DefaultComplete)
         {
+            PUI.Mission_SetDoor(true);
+
             int Type = Random.Range(0, 30);
             Default.PlayerPunition(Type, 1);
             return;
@@ -138,13 +140,15 @@ public class RoomController : MonoBehaviour
         {
             DoubleComplete = true;
             CompleteMissions++;
+            PUI.Mission_SetDoor(true);
 
-            PUI.RoomCleanSet();
             RoomClean();
             return;
         }
         else if (Complete == 2 && DefaultComplete)
         {
+            PUI.Mission_SetDoor(true);
+
             int Type = Random.Range(0, 30);
             Default.PlayerPunition(Type, 2);
             return;
@@ -154,13 +158,15 @@ public class RoomController : MonoBehaviour
         {
             TimerComplete = true;
             CompleteMissions++;
+            PUI.Mission_SetDoor(true);
 
-            PUI.RoomCleanSet();
             RoomClean();
             return;
         }
         else if (Complete == 3 && DefaultComplete)
         {
+            PUI.Mission_SetDoor(true);
+
             int Type = Random.Range(0, 30);
             Default.PlayerPunition(Type, 3);
             return;
@@ -194,6 +200,7 @@ public class RoomController : MonoBehaviour
             CompleteMissions++;
         }
 
+        PUI.Mission_SetSurprise(true);
         PUI.CancelAllSurpriseWaves();
         RoomClean();
 
@@ -205,6 +212,9 @@ public class RoomController : MonoBehaviour
         if (CompleteMissions == MissionInTheRoom)
         {
             SC.RoomClean();
+
+            PUI.RoomCleanSet();
+            PUI.Mission_SetDoor(true);
 
             Default.enabled = false;
             LC.CompleteRoom[Room_ID] = true;

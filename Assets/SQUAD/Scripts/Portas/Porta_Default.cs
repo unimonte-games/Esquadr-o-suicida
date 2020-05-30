@@ -270,7 +270,6 @@ public class Porta_Default : MonoBehaviour
                     return;
                 }
 
-
             }
 
             if (AtualWave == WaveNumbers)
@@ -304,6 +303,7 @@ public class Porta_Default : MonoBehaviour
                 Debug.Log("Complete Waves");
                 CancelInvoke("OrdaRepeatWave");
 
+                PUI.Mission_SetWave(true);
                 RoomControl.CompleteRoom(0);
                 return;
             }
@@ -382,6 +382,7 @@ public class Porta_Default : MonoBehaviour
         if (Type >= 6 && Type <= 10) //Wave Surpresa
         {
             Debug.Log("Suprise Wave");
+            PUI.Mission_SetSurprise(false);
 
             Normal_Wave = false;
             Orda_Wave = false;
@@ -396,6 +397,8 @@ public class Porta_Default : MonoBehaviour
         if (Type >= 11 && Type <= 15)//Rescue
         {
             Debug.Log("Rescue!");
+            PUI.Mission_SetSurprise(false);
+
             Rescue = true;
 
             if (LC.SoloPlayer)
@@ -466,6 +469,8 @@ public class Porta_Default : MonoBehaviour
         if (Type >= 16 && Type <= 20)//Protect/Target
         {
             Debug.Log("Protect! Target Wave.");
+            PUI.Mission_SetSurprise(false);
+
             Protect = true;
 
             Normal_Wave = false;
@@ -517,6 +522,8 @@ public class Porta_Default : MonoBehaviour
         if (Type >= 21 && Type <= 25)//Peace 
         {
             Debug.Log("Peace Wave!");
+            PUI.Mission_SetSurprise(false);
+
             Peace = true;
 
             Normal_Wave = false;
@@ -535,6 +542,8 @@ public class Porta_Default : MonoBehaviour
         if (Type >= 26 && Type <= 30)//Roulete
         {
             Debug.Log("All Enemys!");
+            PUI.Mission_SetSurprise(false);
+
             AllTargetEnemy = true;
 
             Normal_Wave = false;
@@ -561,7 +570,6 @@ public class Porta_Default : MonoBehaviour
 
         }
 
-        
     }
 
     void ReMusic()
@@ -752,18 +760,29 @@ public class Porta_Default : MonoBehaviour
                 Debug.Log("Musica Começou");
                 RM.StartMusicInRoom();
                 PUI.StartRoom();
+
+                Invoke("SetMissions", 2);
                 InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
             }
             else
             {
                 RM.StartMusicInRoom();
                 PUI.StartRoom();
+
+                Invoke("SetMissions", 2);
                 Invoke("GoToSpawn", TimerToSpawn);
             }
 
             triggerPlayers.enabled = false;
 
         }
+    }
+
+    void SetMissions()
+    {
+        PUI.Mission_SetDoor(false);
+        PUI.Mission_SetWave(false);
+
     }
 
 }
