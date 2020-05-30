@@ -18,6 +18,8 @@ public class Porta_Default : MonoBehaviour
     public int ReWave_Door;
     public bool ReWave;
     public bool Rescue;
+    public GameObject Raiz;
+    GameObject SetRaiz;
     public bool Protect;
     public Transform OnPlayer; //referencia do jogador escolhido
     public bool Peace;
@@ -406,12 +408,19 @@ public class Porta_Default : MonoBehaviour
                 if (LC.P1_inRoom)
                 {
                     player1.playerMovement.ToMove = true;
+                    player1.playerWeapon.enabled = false;
+
+                    GameObject R = Instantiate(Raiz, player1.Rescue_Object.position, player1.Rescue_Object.rotation) as GameObject;
+                   
+                    player1.SA = R.GetComponent<SurpriseAttack>();
+                    player2.SA = R.GetComponent<SurpriseAttack>();
+                    SetRaiz = R;
+
                     player1.SA.Player1 = true;
                     player1.SA.PD = P;
-                    player1.playerWeapon.enabled = false;
+                    
                     player1.SA.SetSoloPlayer(player1.Gatilho);
-
-                    player1.Rescue_Object.SetActive(true);
+                    R.transform.parent = player1.Rescue_Object;
                     Debug.Log("Player 1 foi sequestrado!");
 
                 }
@@ -419,12 +428,20 @@ public class Porta_Default : MonoBehaviour
                 if (LC.P2_inRoom)
                 {
                     player2.playerMovement.ToMove = true;
+                    player2.playerWeapon.enabled = false;
+
+                    GameObject R = Instantiate(Raiz, player2.Rescue_Object.position, player2.Rescue_Object.rotation) as GameObject;
+                    
+                    player1.SA = R.GetComponent<SurpriseAttack>();
+                    player2.SA = R.GetComponent<SurpriseAttack>();
+                    SetRaiz = R;
+
                     player2.SA.Player2 = true;
                     player2.SA.PD = P;
-                    player2.playerWeapon.enabled = false;
+                    
                     player2.SA.SetSoloPlayer(player2.Gatilho);
 
-                    player2.Rescue_Object.SetActive(true);
+                    R.transform.parent = player2.Rescue_Object;
                     Debug.Log("Player 2 foi sequestrado!");
                 }
 
@@ -432,25 +449,39 @@ public class Porta_Default : MonoBehaviour
             else
             {
 
-                int SelectPlayer = Random.Range(1, 10);
-                if (SelectPlayer <= 5)
+                int SelectPlayer = Random.Range(1, 100);
+                if (SelectPlayer <= 50)
                 {
                     player1.playerMovement.ToMove = true;
-                    player1.SA.Player1 = true;
-                    player1.SA.PD = P;
                     player1.playerWeapon.enabled = false;
 
-                    player1.Rescue_Object.SetActive(true);
+                    GameObject R = Instantiate(Raiz, player1.Rescue_Object.position, player1.Rescue_Object.rotation) as GameObject;
+                    
+                    player1.SA = R.GetComponent<SurpriseAttack>();
+                    player2.SA = R.GetComponent<SurpriseAttack>();
+                    SetRaiz = R;
+
+                    player1.SA.Player1 = true;
+                    player1.SA.PD = P;
+
+                    R.transform.parent = player1.Rescue_Object;
                     Debug.Log("Player 1 foi sequestrado!");
                 }
-                if (SelectPlayer >= 6)
+                if (SelectPlayer >= 51)
                 {
                     player2.playerMovement.ToMove = true;
-                    player2.SA.Player2 = true;
-                    player2.SA.PD = P;
                     player2.playerWeapon.enabled = false;
 
-                    player2.Rescue_Object.SetActive(true);
+                    GameObject R = Instantiate(Raiz, player2.Rescue_Object.position, player2.Rescue_Object.rotation) as GameObject;
+                    
+                    player1.SA = R.GetComponent<SurpriseAttack>();
+                    player2.SA = R.GetComponent<SurpriseAttack>();
+                    SetRaiz = R;
+
+                    player2.SA.Player2 = true;
+                    player2.SA.PD = P;
+
+                    R.transform.parent = player2.Rescue_Object;
                     Debug.Log("Player 2 foi sequestrado!");
                 }
             }
@@ -723,14 +754,14 @@ public class Porta_Default : MonoBehaviour
         {
             player1.playerMovement.ToMove = false;
             player1.playerWeapon.enabled = true;
-            player1.Rescue_Object.SetActive(false);
+            RescueSetRaiz();
         }
 
         if(player2 != null)
         {
             player2.playerMovement.ToMove = false;
             player2.playerWeapon.enabled = true;
-            player2.Rescue_Object.SetActive(false);
+            RescueSetRaiz();
         }
         
         AtualWave = 0;
@@ -746,6 +777,11 @@ public class Porta_Default : MonoBehaviour
         RoomControl.ReWaveContest(ReWave_Door);
         Debug.Log("Rescue Complete!");
 
+    }
+
+    public void RescueSetRaiz()
+    {
+        SetRaiz.transform.parent = null;
     }
 
     private void OnTriggerEnter(Collider other)

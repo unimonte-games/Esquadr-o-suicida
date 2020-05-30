@@ -6,7 +6,7 @@ public class SurpriseAttack : MonoBehaviour
 {
     public bool Player1;
     public bool Player2;
-    public float LifeMax = 50;
+    public float LifeMax = 100;
 
     public bool Solo;
     public KeyCode PlayerSolo;
@@ -17,6 +17,7 @@ public class SurpriseAttack : MonoBehaviour
     PlayerUI PUI;
 
     float tempFrame;
+    bool isDead;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class SurpriseAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Solo)
+        if (Solo && !isDead)
         {
             tempFrame += Time.deltaTime;
             if (Input.GetKeyDown(PlayerSolo) && tempFrame > 1f)
@@ -37,7 +38,10 @@ public class SurpriseAttack : MonoBehaviour
                 PUI.SetRescueDamage(LifeMax);
                 if (LifeMax <= 0)
                 {
+                    isDead = true;
                     PD.RescueComplete();
+                    this.gameObject.SetActive(false);
+                    
                 }
             }
         }
@@ -45,21 +49,23 @@ public class SurpriseAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Hit")
+        if(other.gameObject.tag == "Hit" && !isDead)
         {
-            other.gameObject.SetActive(false);
 
-            LifeMax -= 1;
+            Hit h = other.GetComponent<Hit>();
+            LifeMax -= h.Hit_Plant;
             PUI.SetRescueDamage(LifeMax);
             if (LifeMax <= 0)
             {
+                isDead = true;
                 PD.RescueComplete();
-            } 
+                this.gameObject.SetActive(false);
+            }
 
-            
+            other.gameObject.SetActive(false);
+
         }
     }
-
 
     public void SetSoloPlayer(KeyCode Gatilho)
     {

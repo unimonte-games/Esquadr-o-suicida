@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     public bool Controller1;
     public bool Controller2;
 
-    public GameObject Rescue_Object;
+    public Transform Rescue_Object;
     public SurpriseAttack SA;
 
     public GameObject WarningFX;
@@ -510,6 +510,7 @@ public class Player : MonoBehaviour
             {
                 if (PD.player2 != null)
                 {
+                    PD.RescueSetRaiz();
                     PD.player2.SA.SetSoloPlayer(PD.player2.Gatilho);
                 }
             }
@@ -541,6 +542,7 @@ public class Player : MonoBehaviour
             {
                 if (PD.player1 != null)
                 {
+                    PD.RescueSetRaiz();
                     PD.player1.SA.SetSoloPlayer(PD.player1.Gatilho);
                 }
             }

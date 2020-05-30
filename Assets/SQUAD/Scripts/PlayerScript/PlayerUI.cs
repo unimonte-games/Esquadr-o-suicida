@@ -620,7 +620,7 @@ public class PlayerUI : MonoBehaviour
 
     public void SetRescueDamage (float Life)
     {
-        float Rescue_cal = Life / 25;
+        float Rescue_cal = Life / 100;
         Rescue_bar.fillAmount = Rescue_cal; 
     }
 
