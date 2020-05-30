@@ -756,7 +756,8 @@ public class PlayerUI : MonoBehaviour
         if (Complete)
         {
             M_Door_Complete.SetActive(true);
-            
+            AM_Door.Play("DoorComplete");
+
         }
         else
         {
@@ -770,6 +771,7 @@ public class PlayerUI : MonoBehaviour
         if (Complete)
         {
             M_Wave_Complete.SetActive(true);
+            AM_Wave.Play("WaveComplete");
         }
         else
         {
@@ -783,6 +785,7 @@ public class PlayerUI : MonoBehaviour
         if (Complete)
         {
             M_Surprise_Complete.SetActive(true);
+            AM_Surprise.Play("SurpriseComplete");
         }
         else
         {
