@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
     public SurpriseAttack SA;
 
     public GameObject WarningFX;
+    public GameObject TargetRacerFX;
 
     public PlayerMovement playerMovement;
     public PlayerWeapon playerWeapon;
@@ -667,6 +668,7 @@ public class Player : MonoBehaviour
     public void SetPatins(bool On)
     {
         PUI.SetPatinsRacer(PlayerType, On, false);
+       
     }
 
     public void SetPatinsRacer ()
@@ -684,6 +686,18 @@ public class Player : MonoBehaviour
         PUI.SetPatinsRacerWinner(w);
     }
 
+    public void SetRacerEffect(bool Atived)
+    {
+        if (Atived)
+        {
+            TargetRacerFX.SetActive(true);
+        }
+        else
+        {
+            TargetRacerFX.SetActive(false);
+        }
+       
+    }
 
 }
 

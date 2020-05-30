@@ -32,6 +32,8 @@ public class PatinsJato : MonoBehaviour
     public int timeToCancel;
     public int timeToCancelRacer;
 
+    public Animation Anin;
+
     private void FixedUpdate()
     {
         if (P1_inArea && Input.GetKeyDown(P1) && !P1_ready)
@@ -40,6 +42,7 @@ public class PatinsJato : MonoBehaviour
             P1_ref.speed += 6;
 
             P1_Player.SetPatins(true);
+            P1_Player.SetRacerEffect(true);
 
             Debug.Log("Patins Ativado no Player 1");
             Invoke("CancelP1", timeToCancel);
@@ -51,6 +54,7 @@ public class PatinsJato : MonoBehaviour
             P2_ref.speed += 6;
 
             P2_Player.SetPatins(true);
+            P2_Player.SetRacerEffect(true);
 
             Debug.Log("Patins Ativado no Player 2");
             Invoke("CancelP2", timeToCancel);
@@ -67,6 +71,7 @@ public class PatinsJato : MonoBehaviour
 
     void StartRacer()
     {
+        Anin.Play("PatinsStart");
         ChangeTarget();
         Invoke("CancelRacer", timeToCancelRacer);
         Debug.Log("Start Racer!");
@@ -74,6 +79,10 @@ public class PatinsJato : MonoBehaviour
 
     void CancelRacer()
     {
+
+        P1_Player.SetRacerEffect(false);
+        P2_Player.SetRacerEffect(false);
+
         if (P1_Placar > P2_Placar)
         {
             P1_Player.LifeBar += 150;
@@ -197,9 +206,12 @@ public class PatinsJato : MonoBehaviour
         {
             Debug.Log("Patins Player 1, cancelado");
             P1_ref.speed = tempSpeed1;
-            P1_Player.SetPatins(false);
 
-            Cancel();
+            Anin.Play("PatinsStart");
+            P1_Player.SetRacerEffect(false);
+
+
+            Invoke("Cancel", 2);
         }
 
     }
@@ -212,7 +224,10 @@ public class PatinsJato : MonoBehaviour
             P2_ref.speed = tempSpeed2;
             P2_Player.SetPatins(false);
 
-            Cancel();
+            Anin.Play("PatinsStart");
+            P2_Player.SetRacerEffect(false);
+
+            Invoke("Cancel", 2);
         }
 
     }
