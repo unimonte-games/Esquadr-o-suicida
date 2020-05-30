@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ArchController : MonoBehaviour
 {
-    public GameObject Arch;
+    public GameObject Arch1;
+    public GameObject Arch2;
 
     public KeyCode P1;
     public KeyCode P2;
@@ -29,8 +30,16 @@ public class ArchController : MonoBehaviour
     Player player2;
 
     public ArchController ACScript;
+    LevelController LC;
+    public Animation Anin;
 
     public int TimeToWin;
+    public GameObject[] ArchColors;
+
+    private void Start()
+    {
+        LC = FindObjectOfType<LevelController>();
+    }
 
     private void FixedUpdate()
     {
@@ -39,6 +48,8 @@ public class ArchController : MonoBehaviour
             if (Input.GetKeyDown(P1))
             {
                 P1_ready = true;
+
+                Arch1 = ArchColors[LC.Player1Color];
                 Debug.Log("Player 1 Pronto!");
 
             }
@@ -49,6 +60,8 @@ public class ArchController : MonoBehaviour
             if (Input.GetKeyDown(P2))
             {
                 P2_ready = true;
+
+                Arch2 = ArchColors[LC.Player2Color];
                 Debug.Log("Player 2 Pronto!");
             }
         }
@@ -74,23 +87,23 @@ public class ArchController : MonoBehaviour
 
     void StartPlayerVersusPlayer()
     {
-        GameObject Arch1 = Instantiate(Arch, P1_ref.position, P1_ref.rotation);
-        Arch1.transform.parent = P1_ref.transform;
-        Arch1_ref = Arch1;
+        GameObject A_1 = Instantiate(Arch1, P1_ref.position, P1_ref.rotation);
+        A_1.transform.parent = P1_ref.transform;
+        Arch1_ref = A_1;
 
-        ArchX1 temp1 = Arch1.GetComponent<ArchX1>();
+        ArchX1 temp1 = A_1.GetComponent<ArchX1>();
         temp1.Gatilho = P1;
         temp1.PlayerArch = 1;
         temp1.AC = ACScript;
         temp1.P = P1_ref.GetComponent<Player>().PD;
 
 
-        GameObject Arch2 = Instantiate(Arch, P2_ref.position, P2_ref.rotation);
-        Arch2.transform.parent = P2_ref.transform;
-        Arch2_ref = Arch2;
+        GameObject A_2 = Instantiate(Arch2, P2_ref.position, P2_ref.rotation);
+        A_2.transform.parent = P2_ref.transform;
+        Arch2_ref = A_2;
         
 
-        ArchX1 temp2 = Arch2.GetComponent<ArchX1>();
+        ArchX1 temp2 = A_2.GetComponent<ArchX1>();
         temp2.Gatilho = P2;
         temp2.PlayerArch = 2;
         temp2.AC = ACScript;
@@ -117,6 +130,9 @@ public class ArchController : MonoBehaviour
 
     void CancelArch()
     {
+
+        Anin.Play("ArchWin");
+
         Arch1_ref.SetActive(false);
         Arch2_ref.SetActive(false);
 
