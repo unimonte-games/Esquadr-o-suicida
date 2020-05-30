@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7203547955620330016}
   - component: {fileID: 7203547955620330017}
   - component: {fileID: 7203547955620330012}
-  - component: {fileID: -864219796348274539}
   m_Layer: 25
   m_Name: O_BauMadeira 1
   m_TagString: Obj
@@ -75,22 +74,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3357394, y: 2.9575348, z: 1.0000002}
   m_Center: {x: -0.037304334, y: 1.4653587, z: -0.00000009217213}
---- !u!54 &-864219796348274539
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7203547955620330023}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
 --- !u!1 &7203547956398159948
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7205440617010055735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01030853, y: -0.02, z: -0.0023084816}
+  m_LocalPosition: {x: -0.01030853, y: -1.01, z: -0.0023084816}
   m_LocalScale: {x: 1.6700845, y: 1.6700845, z: 1.6700845}
   m_Children:
   - {fileID: 7203135425111962635}

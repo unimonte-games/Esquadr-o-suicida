@@ -81,7 +81,8 @@ public class GetObject : MonoBehaviour
 
     public void Drop()
     {
-        
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+
         SC.enabled = true;
         O.ShowLine();
     }
