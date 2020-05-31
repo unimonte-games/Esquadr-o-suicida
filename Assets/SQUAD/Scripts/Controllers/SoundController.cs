@@ -39,12 +39,13 @@ public class SoundController : MonoBehaviour
     public void PlayerDead()
     {
         GlobalMusic.pitch = 0.4f;
-        Invoke("RePitch", 3f);
+        Invoke("RePitch", 4f);
     }
     
     void RePitch()
     {
         GlobalMusic.pitch = 1f;
+        GlobalMusic.volume = 0.15f;
     }
 
     public void AllPlayersDead()

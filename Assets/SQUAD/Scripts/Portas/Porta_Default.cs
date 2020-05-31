@@ -73,6 +73,13 @@ public class Porta_Default : MonoBehaviour
     public SpawnController SpawnControl;
     public Transform parentSpawn; //Lugar que vao dropar
 
+    public GameObject[] M_Level_0;
+    public GameObject[] M_Level_1;
+    public GameObject[] M_Level_2;
+    public GameObject[] M_Level_3;
+    public GameObject[] M_Level_4;
+    public GameObject[] M_Level_5;
+
     LevelController LC;
 
     PlayerUI PUI;
@@ -83,6 +90,63 @@ public class Porta_Default : MonoBehaviour
         LC = FindObjectOfType<LevelController>();
         RM = GetComponent<RoomMusic>();
         StartingWave = false;
+
+        if(LC.Level == 0)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MonstersPrefab[i] = M_Level_0[i];
+            }
+            return;
+        }
+
+        if (LC.Level == 1)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MonstersPrefab[i] = M_Level_1[i];
+            }
+            return;
+        }
+
+        if (LC.Level == 2)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MonstersPrefab[i] = M_Level_2[i];
+            }
+            return;
+        }
+
+        if (LC.Level == 3)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MonstersPrefab[i] = M_Level_3[i];
+            }
+            return;
+        }
+
+        if (LC.Level == 4)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MonstersPrefab[i] = M_Level_4[i];
+            }
+            return;
+        }
+
+        if (LC.Level == 5)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MonstersPrefab[i] = M_Level_5[i];
+            }
+            return;
+        }
+
+
+
     }
 
     private void Start()
@@ -157,20 +221,20 @@ public class Porta_Default : MonoBehaviour
                 {
                     if(player1 != null)
                     {
-                        ID_Player1Target = Random.Range(0, 12);
+                        ID_Player1Target = Random.Range(0, 9);
                         P1_Total = Random.Range(1, 7);
                     }
 
                     if (player2 != null)
                     {
-                        ID_Player2Target = Random.Range(0, 12);
+                        ID_Player2Target = Random.Range(0, 9);
                         P2_Total = Random.Range(1, 7);
                     }
                 }
                 else
                 {
-                    ID_Player1Target = Random.Range(0, 12);
-                    ID_Player2Target = Random.Range(0, 12);
+                    ID_Player1Target = Random.Range(0, 9);
+                    ID_Player2Target = Random.Range(0, 9);
 
                     P1_Total = Random.Range(1, 7);
                     P2_Total = Random.Range(1, 7);
@@ -202,7 +266,7 @@ public class Porta_Default : MonoBehaviour
         {
             int RandomLocalNumber = SpawnControl.Acionados - 1;
             int randomLocal = Random.Range(0, RandomLocalNumber);
-            int randomMonster = Random.Range(0, 12);
+            int randomMonster = Random.Range(0, 9);
 
             if (AllTargetEnemy)
             {
@@ -581,20 +645,12 @@ public class Porta_Default : MonoBehaviour
             Orda_Wave = false;
             Multiple_Wave = true;
 
-            if(player1 != null && player2 != null)
-            {
-                PUI.SetRoulette(player1.Selecionar_set, player2.Selecionar_set, this);
-            }
+            int EnemyChoice = Random.Range(0, 9);
+            int SetEnemyIcon = MonstersPrefab[EnemyChoice].GetComponent<EnemyStats>().E_ID;
 
-            if (player1 != null && player2 == null)
-            {
-                PUI.SetRoulette(player1.Selecionar_set, player1.Selecionar_set, this);
-            }
-
-            if (player1 == null && player2 != null)
-            {
-                PUI.SetRoulette(player2.Selecionar_set, player2.Selecionar_set, this);
-            }
+            PUI.SetRoulette(SetEnemyIcon);
+            EnemyIDforTarget = EnemyChoice;
+            Invoke("GoToSpawn", TimerToSpawn);
 
             Invoke("ReMusic", 3);
             return;
@@ -606,12 +662,6 @@ public class Porta_Default : MonoBehaviour
     void ReMusic()
     {
         RM.StartMusicInRoom();
-    }
-
-    public void StartRoulette(int ID)
-    {
-        EnemyIDforTarget = ID;
-        Invoke("GoToSpawn", TimerToSpawn);
     }
 
     void PeaceOtherSpawn()

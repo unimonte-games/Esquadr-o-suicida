@@ -102,24 +102,8 @@ public class PlayerUI : MonoBehaviour
     public GameObject RL_wave;
     public Sprite[] AllMonsters;
 
-    public GameObject E1;
-    public GameObject E2;
-    public GameObject E3;
-
-    public Image Escolha1;
-    public Image Escolha2;
-    public Image Escolha3;
-
-    public int value1;
-    public int value2;
-    public int value3;
-
-    public Decision D;
-    public Image suaEscolha;
-    public GameObject sE;
-    Porta_Default P;
-    int YourEscolha;
-
+    public Image RL_EnemyDecision;
+   
     public GameObject P_wave;
     public GameObject P1_target;
     public GameObject P2_target;
@@ -154,10 +138,12 @@ public class PlayerUI : MonoBehaviour
 
 
     WeaponList WL;
+    LevelController LC;
 
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
+        LC = FindObjectOfType<LevelController>();
     }
     private void Start()
     {
@@ -629,82 +615,10 @@ public class PlayerUI : MonoBehaviour
         O_wave.SetActive(true);
     }
 
-    public void SetRoulette(KeyCode P1, KeyCode P2, Porta_Default PD)
+    public void SetRoulette(int ID)
     {
-        P = PD;
-
-        value1 = Random.Range(0, 12);
-        value2 = Random.Range(0, 12);
-        value3 = Random.Range(0, 12);
-
-        int R_player = Random.Range(0, 1);
-        if(R_player == 0)
-        {
-            D.Selecionar = P1;
-        }
-        if(R_player == 1)
-        {
-            D.Selecionar = P2;
-        }
-
-        Escolha1.sprite = AllMonsters[value1];
-        Escolha2.sprite = AllMonsters[value2];
-        Escolha3.sprite = AllMonsters[value3];
-
+        RL_EnemyDecision.sprite = AllMonsters[ID];
         RL_wave.SetActive(true);
-
-    }
-
-    public void SetRoulleteDecision(int ID)
-    {
-
-        if(ID == 0)
-        {
-            suaEscolha.sprite = Escolha1.sprite;
-        }
-
-
-        if (ID == 1)
-        {
-            suaEscolha.sprite = Escolha2.sprite;
-        }
-
-
-        if (ID == 2)
-        {
-            suaEscolha.sprite = Escolha3.sprite;
-        }
-        
-        YourEscolha = ID;
-
-        Invoke("StartingWaveRoulette", 2);
-        StartCoroutine("SetDecisionVisuals");
-    }
-
-    IEnumerator SetDecisionVisuals()
-    {
-        yield return new WaitForSeconds(0.5f);
-        E1.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        E2.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        E3.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        E1.SetActive(false);
-        E2.SetActive(false);
-        E3.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        RL_wave.SetActive(false);
-        sE.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-        sE.SetActive(false);
-
-    }
-
-    void StartingWaveRoulette ()
-    {
-        P.StartRoulette(YourEscolha);
-        
     }
 
     public void SetProtect(int Player, int Color)
@@ -744,8 +658,8 @@ public class PlayerUI : MonoBehaviour
         S_wave.SetActive(false);
         R_wave.SetActive(false);
         O_wave.SetActive(false);
-        sE.SetActive(false);
         P_wave.SetActive(false);
+        RL_wave.SetActive(false);
 
         roomClean.SetActive(true);
         Invoke("CancelRoomClean",2);
