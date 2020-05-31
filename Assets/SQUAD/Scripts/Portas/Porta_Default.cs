@@ -81,8 +81,8 @@ public class Porta_Default : MonoBehaviour
     public GameObject[] M_Level_5;
 
     LevelController LC;
-
     PlayerUI PUI;
+    public DoorEnabled GetDoorEnabled;
 
     private void Awake()
     {
@@ -893,6 +893,11 @@ public class Porta_Default : MonoBehaviour
         PUI.Mission_SetDoor(false);
         PUI.Mission_SetWave(false);
 
+    }
+
+    public void SetDoorComplete()
+    {
+        GetDoorEnabled.SetCompleteDoor();
     }
 
 }

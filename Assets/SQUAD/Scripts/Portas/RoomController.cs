@@ -212,6 +212,7 @@ public class RoomController : MonoBehaviour
         if (CompleteMissions == MissionInTheRoom)
         {
             SC.RoomClean();
+            Default.SetDoorComplete();
 
             PUI.RoomCleanSet();
             PUI.Mission_SetDoor(true);
