@@ -59,7 +59,7 @@ public class Porta_Default : MonoBehaviour
     [Range(2, 12)]
     public float target_RepeatWave; //Quantas vezes os blocos vao ser spanwnados 
     public float Target_TimeToSpawn = 7; //Tempo do proximo bloco de inimigos
-    int ID_Player1Target, Player1_enemyCount, P1_Total, ID_Player2Target, Player2_enemyCount, P2_Total, CountTarget, CountAllEnemy1, CountAllEnemy2;
+    int ID_Player1Target, Player1_enemyCount, P1_TargetElement, P2_TargetElement, P1_Total, ID_Player2Target, Player2_enemyCount, P2_Total, CountTarget, CountAllEnemy1, CountAllEnemy2;
     bool TargetFinish, ChoiceEnemys, Player1_Finish, Player2_Finish;
     public GameObject[] TargetAllEnemy1, TargetAllEnemy2;
 
@@ -219,26 +219,30 @@ public class Porta_Default : MonoBehaviour
 
                 if (LC.SoloPlayer)
                 {
-                    if(player1 != null)
+                    if(LC.P1_inRoom)
                     {
                         ID_Player1Target = Random.Range(0, 9);
+                        P1_TargetElement = ID_Player1Target;
                         int ID_Icon1 = MonstersPrefab[ID_Player1Target].GetComponent<EnemyStats>().E_ID;
                         ID_Player1Target = ID_Icon1;
 
-                        P1_Total = Random.Range(2, 5);
+                        P1_Total = Random.Range(3, 10);
 
                         PUI.SetTargetWave(true, true, ID_Icon1, 0, P1_Total,0);
+                        Debug.Log("Target Solo Player 1");
                     }
 
-                    if (player2 != null)
+                    if (LC.P2_inRoom)
                     {
                         ID_Player2Target = Random.Range(0, 9);
+                        P2_TargetElement = ID_Player2Target;
                         int ID_Icon2 = MonstersPrefab[ID_Player2Target].GetComponent<EnemyStats>().E_ID;
                         ID_Player2Target = ID_Icon2;
 
-                        P2_Total = Random.Range(2, 5);
+                        P2_Total = Random.Range(3, 10);
 
                         PUI.SetTargetWave(true, false, 0, ID_Icon2,0,P2_Total);
+                        Debug.Log("Target Solo Player 2");
                     }
                 }
                 else
@@ -246,14 +250,17 @@ public class Porta_Default : MonoBehaviour
                     ID_Player1Target = Random.Range(0, 9);
                     ID_Player2Target = Random.Range(0, 9);
 
+                    P1_TargetElement = ID_Player1Target;
+                    P2_TargetElement = ID_Player2Target;
+
                     int ID_Icon1 = MonstersPrefab[ID_Player1Target].GetComponent<EnemyStats>().E_ID;
                     int ID_Icon2 = MonstersPrefab[ID_Player2Target].GetComponent<EnemyStats>().E_ID;
 
                     ID_Player1Target = ID_Icon1;
                     ID_Player2Target = ID_Icon2;
 
-                    P1_Total = Random.Range(2, 5);
-                    P2_Total = Random.Range(2, 5);
+                    P1_Total = Random.Range(3, 10);
+                    P2_Total = Random.Range(3, 10);
 
                     PUI.SetTargetWave(false, true, ID_Icon1, ID_Icon2, P1_Total,P2_Total);
                 }
@@ -741,7 +748,7 @@ public class Porta_Default : MonoBehaviour
         int RandomLocalNumber = SpawnControl.Acionados - 1;
         int randomLocal = Random.Range(0, RandomLocalNumber);
 
-        GameObject Enemy1 = Instantiate(MonstersPrefab[ID_Player1Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
+        GameObject Enemy1 = Instantiate(MonstersPrefab[P1_TargetElement], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
         Enemy1.GetComponent<EnemyStats>().P_default = P;
         Enemy1.GetComponent<EnemyPatrol>().SC_inRoom = SC_spawn;
         Enemy1.transform.parent = parentSpawn;
@@ -751,7 +758,7 @@ public class Porta_Default : MonoBehaviour
 
         randomLocal = Random.Range(0, RandomLocalNumber);
 
-        GameObject Enemy2 = Instantiate(MonstersPrefab[ID_Player2Target], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
+        GameObject Enemy2 = Instantiate(MonstersPrefab[P2_TargetElement], SpawnControl.ListSpawn[randomLocal].position, SpawnControl.ListSpawn[randomLocal].rotation);
         Enemy2.GetComponent<EnemyStats>().P_default = P;
         Enemy2.GetComponent<EnemyPatrol>().SC_inRoom = SC_spawn;
         Enemy2.transform.parent = parentSpawn;
@@ -776,13 +783,27 @@ public class Porta_Default : MonoBehaviour
             return;
         }
 
-        if (LC.SoloPlayer && Player1_Finish || Player2_Finish)
+        if (LC.SoloPlayer)
         {
-            Debug.Log("Target concluido sozinho!");
-            TargetFinish = true;
-            CancelInvoke("OrdaRepeatWave");
-            CancelInvoke("GoToSpawn");
-            TargetDestroyAllEnemies();
+            if (Player1_Finish && !LC.P1_dead)
+            {
+                Debug.Log("P1 - Target concluido sozinho!");
+                TargetFinish = true;
+                CancelInvoke("OrdaRepeatWave");
+                CancelInvoke("GoToSpawn");
+                TargetDestroyAllEnemies();
+                return;
+            }
+
+            if (Player2_Finish && !LC.P2_dead)
+            {
+                Debug.Log("P2 - Target concluido sozinho!");
+                TargetFinish = true;
+                CancelInvoke("OrdaRepeatWave");
+                CancelInvoke("GoToSpawn");
+                TargetDestroyAllEnemies();
+                return;
+            }
         }
     }
 
