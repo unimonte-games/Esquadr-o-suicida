@@ -222,13 +222,23 @@ public class Porta_Default : MonoBehaviour
                     if(player1 != null)
                     {
                         ID_Player1Target = Random.Range(0, 9);
-                        P1_Total = Random.Range(1, 7);
+                        int ID_Icon1 = MonstersPrefab[ID_Player1Target].GetComponent<EnemyStats>().E_ID;
+                        ID_Player1Target = ID_Icon1;
+
+                        P1_Total = Random.Range(2, 5);
+
+                        PUI.SetTargetWave(true, true, ID_Icon1, 0, P1_Total,0);
                     }
 
                     if (player2 != null)
                     {
                         ID_Player2Target = Random.Range(0, 9);
-                        P2_Total = Random.Range(1, 7);
+                        int ID_Icon2 = MonstersPrefab[ID_Player2Target].GetComponent<EnemyStats>().E_ID;
+                        ID_Player2Target = ID_Icon2;
+
+                        P2_Total = Random.Range(2, 5);
+
+                        PUI.SetTargetWave(true, false, 0, ID_Icon2,0,P2_Total);
                     }
                 }
                 else
@@ -236,8 +246,16 @@ public class Porta_Default : MonoBehaviour
                     ID_Player1Target = Random.Range(0, 9);
                     ID_Player2Target = Random.Range(0, 9);
 
-                    P1_Total = Random.Range(1, 7);
-                    P2_Total = Random.Range(1, 7);
+                    int ID_Icon1 = MonstersPrefab[ID_Player1Target].GetComponent<EnemyStats>().E_ID;
+                    int ID_Icon2 = MonstersPrefab[ID_Player2Target].GetComponent<EnemyStats>().E_ID;
+
+                    ID_Player1Target = ID_Icon1;
+                    ID_Player2Target = ID_Icon2;
+
+                    P1_Total = Random.Range(2, 5);
+                    P2_Total = Random.Range(2, 5);
+
+                    PUI.SetTargetWave(false, true, ID_Icon1, ID_Icon2, P1_Total,P2_Total);
                 }
                
             }
@@ -391,9 +409,11 @@ public class Porta_Default : MonoBehaviour
             if (PlayerToDestroy == 1 && EnemyID == ID_Player1Target && !Player1_Finish)//Player1
             {
                 Player1_enemyCount++;
+                PUI.SetTargetPoints(true, Player1_enemyCount);
                 if(Player1_enemyCount >= P1_Total)
                 {
                     Debug.Log("P1 Finalizou!");
+                    PUI.SetTargetwinner(true);
                     Player1_Finish = true;
                     TargetFinished();
                 }
@@ -402,9 +422,11 @@ public class Porta_Default : MonoBehaviour
             if (PlayerToDestroy == 2 && EnemyID == ID_Player2Target && !Player2_Finish)//Player2
             {
                 Player2_enemyCount++;
+                PUI.SetTargetPoints(false, Player2_enemyCount);
                 if (Player2_enemyCount >= P2_Total)
                 {
                     Debug.Log("P2 Finalizou!");
+                    PUI.SetTargetwinner(false);
                     Player2_Finish = true;
                     TargetFinished();
                 }
@@ -756,7 +778,7 @@ public class Porta_Default : MonoBehaviour
 
         if (LC.SoloPlayer && Player1_Finish || Player2_Finish)
         {
-            Debug.Log("Target concluido!");
+            Debug.Log("Target concluido sozinho!");
             TargetFinish = true;
             CancelInvoke("OrdaRepeatWave");
             CancelInvoke("GoToSpawn");
@@ -792,6 +814,8 @@ public class Porta_Default : MonoBehaviour
         MonstersNumbers = 0;
 
         Debug.Log("Complete Waves");
+        PUI.Mission_SetWave(true);
+
         RoomControl.CompleteRoom(0);
 
     }

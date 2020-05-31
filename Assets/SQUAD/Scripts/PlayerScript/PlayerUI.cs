@@ -73,6 +73,17 @@ public class PlayerUI : MonoBehaviour
     public Image P2_Weapon1;
     public Image P2_Weapon2;
 
+    public GameObject TargetObj1;
+    public Image TargetChoice1;
+    public TextMeshProUGUI TPoints_1;
+    public TextMeshProUGUI TPoints_1_Max;
+
+    public GameObject TargetObj2;
+    public Image TargetChoice2;
+    public TextMeshProUGUI TPoints_2;
+    public TextMeshProUGUI TPoints_2_Max;
+
+
     public Image P2_Color;
     public Image P2_Baloon;
     public GameObject P2_Controller;
@@ -90,7 +101,6 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI P2_PatinsPoints;
     public GameObject[] P2_Patins_Vencedor;
     public Animation P2_PatinsWinner;
-
 
     public GameObject S_wave;
 
@@ -635,6 +645,62 @@ public class PlayerUI : MonoBehaviour
         }
 
         P_wave.SetActive(true);
+    }
+
+    public void SetTargetWave(bool Solo, bool Player, int P1, int P2, int P1_Max, int P2_Max)
+    {
+        if (Solo)
+        {
+            if (Player)
+            {
+                TargetChoice1.sprite = AllMonsters[P1];
+                TPoints_1_Max.text = "" + P1_Max;
+
+                TargetObj1.SetActive(true);
+            }
+            else
+            {
+                TargetChoice2.sprite = AllMonsters[P2];
+                TPoints_2_Max.text = "" + P2_Max;
+
+                TargetObj2.SetActive(true);
+            }
+        }
+        else
+        {
+            TargetChoice1.sprite = AllMonsters[P1];
+            TargetChoice2.sprite = AllMonsters[P2];
+
+            TPoints_1_Max.text = "" + P1_Max;
+            TPoints_2_Max.text = "" + P2_Max;
+
+            TargetObj1.SetActive(true);
+            TargetObj2.SetActive(true);
+        }
+    }
+
+    public void SetTargetPoints(bool Player, int Points)
+    {
+        if (Player)
+        {
+            TPoints_1.text = "" + Points;
+        }
+        else
+        {
+            TPoints_2.text = "" + Points;
+        }
+    }
+
+    public void SetTargetwinner(bool Player)
+    {
+        if (Player)
+        {
+            TargetObj1.SetActive(false);
+        }
+        else
+        {
+            TargetObj2.SetActive(false);
+        }
     }
 
     void CancelRoomClean()
