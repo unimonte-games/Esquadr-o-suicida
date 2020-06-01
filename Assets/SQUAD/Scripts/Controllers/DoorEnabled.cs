@@ -12,6 +12,7 @@ public class DoorEnabled : MonoBehaviour
     private void Start()
     {
         PD.GetDoorEnabled = this;
+
     }
 
     public void SetCompleteDoor()
@@ -21,6 +22,6 @@ public class DoorEnabled : MonoBehaviour
             Doors[i].SetActive(false);
             Complete[i].SetActive(true);
         }
-        
+
     }
 }

@@ -14,9 +14,28 @@ public class Door : MonoBehaviour
     public int KeysToOpen;
     int CountToSell;
 
+    public GameObject Keys1;
+    public GameObject Keys2;
+    public GameObject Keys3;
+
     private void Start()
     {
         CR.CompleteKeyOpenFirst = true;
+
+        if(KeysToOpen == 1)
+        {
+            Keys1.SetActive(true);
+        }
+
+        if (KeysToOpen == 2)
+        {
+            Keys2.SetActive(true);
+        }
+
+        if (KeysToOpen == 3)
+        {
+            Keys3.SetActive(true);
+        }
     }
 
     private void FixedUpdate()
@@ -76,7 +95,10 @@ public class Door : MonoBehaviour
 
             CR.CompleteKeyOpenFirst = false;
             Debug.Log("Porta Liberada!");
-           
+
+            this.gameObject.SetActive(false);
+
+
 
         }
 
