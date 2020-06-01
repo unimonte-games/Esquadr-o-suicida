@@ -57,6 +57,9 @@ public class EnemyStats : MonoBehaviour
     public bool RoboElite;
     public Enemy7_Attack E7;
 
+    public bool Golem;
+    public GameObject[] ItemSecreto;
+
     public float SizeLife;
     bool S;
 
@@ -324,6 +327,17 @@ public class EnemyStats : MonoBehaviour
         {
             Invoke("BombInRobot", 4);
             return;
+        }
+
+        if (Golem)
+        {
+            int Rare = Random.Range(0, 100);
+            if (Rare > 95)
+            {
+                int IS = Random.Range(0, 4);
+                Instantiate(ItemSecreto[IS], transform.position, transform.rotation);
+                Debug.Log("Item Secreto!");
+            }
         }
 
         this.enabled = false;
