@@ -7,6 +7,12 @@ public class KeyDoor : MonoBehaviour
     public int KeyID;
     Player P;
     ///bool PlayerDiscart; 
+    ///
+
+    private void Start()
+    {
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
 
 
     private void OnTriggerEnter(Collider other)

@@ -7,6 +7,11 @@ public class KeyFinal : MonoBehaviour
     public int KeyID;
     Player P;
 
+    private void Start()
+    {
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Player1")

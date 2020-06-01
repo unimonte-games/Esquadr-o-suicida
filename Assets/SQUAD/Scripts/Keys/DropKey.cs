@@ -29,7 +29,7 @@ public class DropKey : MonoBehaviour
     IEnumerator DropHability()
     {
         Debug.Log("Discarte.");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(60);
         BC.enabled = false;
 
         DefeseAtived.GetComponent<DropKeyHabiity>().DK = DK;
