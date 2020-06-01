@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     public Sprite[] KeyUIList;
 
     public int SelectCount;
-    public int BeforeNumber;
+    public int BeforeNumbe;
     public bool SelectKey;
     public bool DropKey;
     public Transform DropKeySpawn;
@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
     public GameObject PlayerDead_Tree;
     SoundController SC;
 
+    float TimeToclick = 1;
 
     private void Start()
     {
@@ -222,74 +223,90 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-        
+       
         if (Disabled)
         {
-            CountToDisable += 0.01f;
-            if (CountToDisable >= 2f)
+            CountToDisable += Time.deltaTime;
+            if (CountToDisable >= 3f)
             {
 
                 KeyInterface.SetActive(false);
 
-                for (int i = 0; i <= QtdUI; i++)
-                {
-                    KeyInterface_Selection[i].SetActive(false);
-                }
+                KeyInterface_Selection[0].SetActive(false);
+                KeyInterface_Selection[1].SetActive(false);
+                KeyInterface_Selection[2].SetActive(false);
 
                 SelectCount = 0;
-                BeforeNumber = QtdUI;
+                //BeforeNumber = QtdUI;
 
                 CountToDisable = 0;
                 Disabled = false;
                 IsKey = false;
+                TimeToclick = 1;
+
 
 
             }
         }
 
+        if (IsKey)
+        {
+            TimeToclick += Time.deltaTime;
+        }
+        
         if (Input.GetKeyDown(Selecionar_set) && Keys_Quantidade >= 1 && !isDrop && !ObjectInArea) //Passar pro lado
         {
             IsKey = true;
-
-            if (Keys_Quantidade == 1)
+            if (TimeToclick > 0.5f)
             {
-                QtdUI = 0;
+                TimeToclick = 0f;
+                Debug.Log("SelectCount: " + SelectCount);
+
+                if (Keys_Quantidade == 1)
+                {
+                    QtdUI = 0;
+                }
+
+                if (Keys_Quantidade == 2)
+                {
+                    QtdUI = 1;
+                }
+
+                if (Keys_Quantidade == 3)
+                {
+                    QtdUI = 2;
+                }
+
+                CountToDisable = 0;
+                Disabled = true;
+
+                KeyInterface.SetActive(true);
+
+                KeyInterface_Selection[0].SetActive(false);
+                KeyInterface_Selection[1].SetActive(false);
+                KeyInterface_Selection[2].SetActive(false);
+
+                KeyInterface_Selection[SelectCount].SetActive(true);
+                AtualKey = SelectCount;
+
+                //BeforeNumber = SelectCount;
+
+
+                if (SelectCount == QtdUI)
+                {
+                    //BeforeNumber = QtdUI;
+                    SelectCount = 0;
+
+                    return;
+                }
+
+                SelectCount++;
+
             }
-
-            if (Keys_Quantidade == 2)
-            {
-                QtdUI = 1;
-            }
-
-            if (Keys_Quantidade == 3)
-            {
-                QtdUI = 2;
-            }
-
-            CountToDisable = 0;
-            Disabled = true;
-
-            KeyInterface.SetActive(true);
-
-            KeyInterface_Selection[BeforeNumber].SetActive(false);
-            KeyInterface_Selection[SelectCount].SetActive(true);
-            AtualKey = SelectCount;
-
-            BeforeNumber = SelectCount;
-
-            if (SelectCount == QtdUI)
-            {
-                BeforeNumber = QtdUI;
-                SelectCount = 0;
-                return;
-            }
-
-            SelectCount++;
 
         }
 
-        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && !isDrop && !ObjectInArea) //Passar pro lado
+        if (Input.GetKeyDown(Dropar_set) && Keys_Quantidade >= 1 && Disabled && !isDrop && !ObjectInArea) //Drop
         {
             isDrop = true;
 
