@@ -34,6 +34,8 @@ public class RoomController : MonoBehaviour
     public GameObject[] C_Double;
     public GameObject[] C_Timer;
 
+    public GameObject BauC;
+
     public MapSystem mapSystem;
     PlayerUI PUI;
   
@@ -247,10 +249,13 @@ public class RoomController : MonoBehaviour
             }
 
 
-            
+            Invoke("OnBauController", 3);
             Debug.Log("Room Clean!");
         }
     }
 
-
+    void OnBauController()
+    {
+        BauC.SetActive(true);
+    }
 }

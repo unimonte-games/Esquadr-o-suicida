@@ -314,6 +314,7 @@ MonoBehaviour:
   Key3: {fileID: 9215308857709974310}
   numberLevels: 05000000070000000a0000000c0000000e000000
   OpenAnin: {fileID: 9196265177190451157}
+  isCard: 0
 --- !u!1 &1194789742039627005
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194789742039627004}
   - component: {fileID: 9196265177190451157}
+  - component: {fileID: 6317651582063054919}
   m_Layer: 0
   m_Name: BauEpico
   m_TagString: Untagged
@@ -366,6 +368,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &6317651582063054919
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194789742039627005}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8729734, y: 0.5938139, z: 2.0606003}
+  m_Center: {x: -0.056414843, y: -0.6995444, z: 0.033848763}
 --- !u!1 &1727865260994533687
 GameObject:
   m_ObjectHideFlags: 0

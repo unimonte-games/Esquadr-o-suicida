@@ -10526,6 +10526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5708304977706033906}
   - component: {fileID: 5708304977706033904}
+  - component: {fileID: 4815277776385079465}
   m_Layer: 0
   m_Name: Weapon Kit
   m_TagString: Untagged
@@ -10568,6 +10569,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &4815277776385079465
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708304977706033907}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5415826, y: 0.88717175, z: 1.6544123}
+  m_Center: {x: -0.20309353, y: -0.5528655, z: 0.32720613}
 --- !u!1 &5708304977917076083
 GameObject:
   m_ObjectHideFlags: 0

@@ -10581,6 +10581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8851064747528594079}
   - component: {fileID: 4235841776418081835}
+  - component: {fileID: 3214883149507805047}
   m_Layer: 0
   m_Name: BauComum
   m_TagString: Untagged
@@ -10623,6 +10624,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &3214883149507805047
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851064747528594078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8729734, y: 0.5938139, z: 2.0606003}
+  m_Center: {x: -0.056414843, y: -0.6995444, z: 0.033848763}
 --- !u!1 &8851064747789443614
 GameObject:
   m_ObjectHideFlags: 0
@@ -10717,6 +10731,7 @@ MonoBehaviour:
   Key3: {fileID: 8477500136892799877}
   numberLevels: 0a0000000f00000013000000130000001300000000000000
   OpenAnin: {fileID: 4235841776418081835}
+  isCard: 0
 --- !u!1001 &8851064747570095301
 PrefabInstance:
   m_ObjectHideFlags: 0

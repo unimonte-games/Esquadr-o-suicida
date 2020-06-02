@@ -10231,6 +10231,7 @@ MonoBehaviour:
   Key3: {fileID: 2375150355105597791}
   numberLevels: 05000000070000000a0000000a0000000a000000
   OpenAnin: {fileID: 3877210291585885924}
+  isCard: 0
 --- !u!1 &6735056775311004331
 GameObject:
   m_ObjectHideFlags: 0
@@ -10241,6 +10242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6735056775311004330}
   - component: {fileID: 3877210291585885924}
+  - component: {fileID: 5410049479677077552}
   m_Layer: 0
   m_Name: BauLendario
   m_TagString: Untagged
@@ -10283,6 +10285,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &5410049479677077552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735056775311004331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8729734, y: 0.5938139, z: 2.0606003}
+  m_Center: {x: -0.056414843, y: -0.6995444, z: 0.033848763}
 --- !u!1 &6735056775909626211
 GameObject:
   m_ObjectHideFlags: 0
