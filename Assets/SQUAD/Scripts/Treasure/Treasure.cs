@@ -11,6 +11,9 @@ public class Treasure : MonoBehaviour
     public int GoldToOpen;
     public bool Key;
 
+    public int GoldRandomMin;
+    public int GoldRandomMax;
+
     public int ID;
 
     public int MaxListDrop;
@@ -19,6 +22,29 @@ public class Treasure : MonoBehaviour
     public Transform SpawnToDrop;
 
     int CountToSell;
+
+    LevelController LC;
+
+    private void Start()
+    {
+        LC = FindObjectOfType<LevelController>();
+
+        int KeyOn = Random.Range(0, 100);
+        if(KeyOn <= 50)
+        {
+            Key = true;
+            int KeyQtd = Random.Range(1, 3);
+            KeysToOpen = KeyQtd;
+                
+        }
+        if(KeyOn >= 51)
+        {
+            Key = false;
+            int GoldQtd = Random.Range(GoldRandomMin, GoldRandomMax);
+            GoldToOpen = GoldQtd;
+        }
+        
+    }
 
 
     private void FixedUpdate()
@@ -99,7 +125,36 @@ public class Treasure : MonoBehaviour
 
     void DropItem()
     {
-        ListNumberToDrop = Random.Range(0, MaxListDrop);
+        if (LC.Level == 0)
+        {
+            ListNumberToDrop = Random.Range(0, 10);
+        }
+
+        if (LC.Level == 1)
+        {
+            ListNumberToDrop = Random.Range(0, 15);
+        }
+
+        if (LC.Level == 2)
+        {
+            ListNumberToDrop = Random.Range(0, 17);
+        }
+
+        if (LC.Level == 3)
+        {
+            ListNumberToDrop = Random.Range(0, 19);
+        }
+
+        if (LC.Level == 4)
+        {
+            ListNumberToDrop = Random.Range(0, 19);
+        }
+
+        if (LC.Level == 5)
+        {
+            ListNumberToDrop = Random.Range(0, 19);
+        }
+
         Instantiate(ListToDrop[ListNumberToDrop], SpawnToDrop.position, SpawnToDrop.rotation);
     }
 

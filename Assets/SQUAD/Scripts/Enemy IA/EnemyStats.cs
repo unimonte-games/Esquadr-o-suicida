@@ -332,7 +332,7 @@ public class EnemyStats : MonoBehaviour
         if (Golem)
         {
             int Rare = Random.Range(0, 100);
-            if (Rare > 95)
+            if (Rare > 90)
             {
                 int IS = Random.Range(0, 4);
                 Instantiate(ItemSecreto[IS], transform.position, transform.rotation);
