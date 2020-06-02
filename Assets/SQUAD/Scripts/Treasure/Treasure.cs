@@ -36,11 +36,36 @@ public class Treasure : MonoBehaviour
     int CountToSell;
 
     LevelController LC;
+    public bool isCard;
 
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
         UI.SetActive(true);
+
+        if (isCard)
+        {
+            Key = true;
+            int KeyQtd = Random.Range(1, 3);
+            KeysToOpen = KeyQtd;
+
+            if (KeysToOpen == 1)
+            {
+                Key1.SetActive(true);
+            }
+
+            if (KeysToOpen == 2)
+            {
+                Key2.SetActive(true);
+            }
+
+            if (KeysToOpen == 3)
+            {
+                Key3.SetActive(true);
+            }
+
+            return;
+        }
 
         int KeyOn = Random.Range(0, 100);
         if(KeyOn <= 50)
