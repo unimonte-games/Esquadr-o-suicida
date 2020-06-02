@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Treasure : MonoBehaviour
 {
@@ -21,6 +22,17 @@ public class Treasure : MonoBehaviour
     public GameObject[] ListToDrop;
     public Transform SpawnToDrop;
 
+    public GameObject UI;
+
+    public GameObject Energy;
+    public TextMeshProUGUI Value;
+    public GameObject Key1;
+    public GameObject Key2;
+    public GameObject Key3;
+
+    public int[] numberLevels;
+    public Animation OpenAnin;
+
     int CountToSell;
 
     LevelController LC;
@@ -28,6 +40,7 @@ public class Treasure : MonoBehaviour
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
+        UI.SetActive(true);
 
         int KeyOn = Random.Range(0, 100);
         if(KeyOn <= 50)
@@ -35,13 +48,32 @@ public class Treasure : MonoBehaviour
             Key = true;
             int KeyQtd = Random.Range(1, 3);
             KeysToOpen = KeyQtd;
-                
+
+            if(KeysToOpen == 1)
+            {
+                Key1.SetActive(true);
+            }
+
+            if (KeysToOpen == 2)
+            {
+                Key2.SetActive(true);
+            }
+
+            if (KeysToOpen == 3)
+            {
+                Key3.SetActive(true);
+            }
+
         }
         if(KeyOn >= 51)
         {
             Key = false;
             int GoldQtd = Random.Range(GoldRandomMin, GoldRandomMax);
             GoldToOpen = GoldQtd;
+
+            Value.text = "" + GoldToOpen;
+            Energy.SetActive(true);
+
         }
         
     }
@@ -125,37 +157,41 @@ public class Treasure : MonoBehaviour
 
     void DropItem()
     {
+        UI.SetActive(false);
+        OpenAnin.Play();
+
         if (LC.Level == 0)
         {
-            ListNumberToDrop = Random.Range(0, 10);
+            ListNumberToDrop = Random.Range(0, numberLevels[0]);
         }
 
         if (LC.Level == 1)
         {
-            ListNumberToDrop = Random.Range(0, 15);
+            ListNumberToDrop = Random.Range(0, numberLevels[1]);
         }
 
         if (LC.Level == 2)
         {
-            ListNumberToDrop = Random.Range(0, 17);
+            ListNumberToDrop = Random.Range(0, numberLevels[2]);
         }
 
         if (LC.Level == 3)
         {
-            ListNumberToDrop = Random.Range(0, 19);
+            ListNumberToDrop = Random.Range(0, numberLevels[3]);
         }
 
         if (LC.Level == 4)
         {
-            ListNumberToDrop = Random.Range(0, 19);
+            ListNumberToDrop = Random.Range(0, numberLevels[4]);
         }
 
         if (LC.Level == 5)
         {
-            ListNumberToDrop = Random.Range(0, 19);
+            ListNumberToDrop = Random.Range(0, numberLevels[5]);
         }
 
-        Instantiate(ListToDrop[ListNumberToDrop], SpawnToDrop.position, SpawnToDrop.rotation);
+        GameObject Item = Instantiate(ListToDrop[ListNumberToDrop], SpawnToDrop.position, SpawnToDrop.rotation) as GameObject;
+        Item.transform.parent = SpawnToDrop;
     }
 
 
