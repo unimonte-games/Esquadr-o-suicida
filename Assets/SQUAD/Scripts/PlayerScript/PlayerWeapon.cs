@@ -25,6 +25,8 @@ public class PlayerWeapon : MonoBehaviour
     public PlayerUI PUI;
     float countToChange;
 
+    public Animator Anin;
+
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -35,6 +37,8 @@ public class PlayerWeapon : MonoBehaviour
         
         Discart = WL.transform;
         CheckMax();
+
+        
     }
 
     private void FixedUpdate()

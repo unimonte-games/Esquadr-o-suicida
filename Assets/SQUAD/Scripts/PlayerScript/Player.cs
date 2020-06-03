@@ -97,10 +97,15 @@ public class Player : MonoBehaviour
 
     public GameObject GC;
     public GameObject[] GroundColor;
+    public GameObject ExtraUI;
 
+    public GameObject Life_Hud;
 
-    public GameObject Life_Hud; 
+    public Rigidbody rb;
+    public CapsuleCollider CapsuleC;
+    public GameObject weapons;
 
+    public Animator Anin;
     public GameObject PlayerDead_Tree;
     SoundController SC;
 
@@ -516,8 +521,20 @@ public class Player : MonoBehaviour
 
     void PlayerIsDead()
     {
-        SC.PlayerDead();
+        playerMovement.enabled = false;
+        playerWeapon.enabled = false;
+        weapons.SetActive(false);
 
+        SC.PlayerDead();
+        Anin.SetTrigger("isDie");
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        CapsuleC.enabled = false;
+
+        GC.SetActive(false);
+        ExtraUI.SetActive(false);
+        
+        
+        
         if (PlayerType)
         {
             LC.P1_inRoom = false;
@@ -582,9 +599,6 @@ public class Player : MonoBehaviour
 
             Debug.Log("Player2 Morreu.");
         }
-
-        
-        this.gameObject.SetActive(false);
         LC.UpdatePlayers();  
     }
 

@@ -37,53 +37,145 @@ public class PlayerMovement : MonoBehaviour
     bool Rotete_Turn;
     float TimeTurn;
 
+    bool isTurn;
+
+    public Animator Anin;
+
+    private void Start()
+    {
+        Anin.SetInteger("WeaponState", 1);
+        Anin.SetBool("isIddle", true);
+        Anin.SetBool("isTurn", true);
+    }
+
     void FixedUpdate()
     {
         if (!ToMove)
         {
-            if (Input.GetKey(Up))
+            if (Input.GetKey(Up)) //Walk
             {
+                Anin.SetBool("isWalk", true);
+
+                Anin.SetBool("isIddle", false);
+                Anin.SetBool("isWalkBack", false);
+                Anin.SetBool("isTurn", false);
+                isTurn = false;
+
                 transform.Translate(Vector3.forward * speed * Time.deltaTime );
 
                 if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
                 {
                     EsquivaInUsing = true;
                     Esquiva_Forward = true;
-
                 }
 
-            } else if (Input.GetKey(Down))
+
+            }
+
+            if (Input.GetKey(Down))//Walk Back
             {
+                Anin.SetBool("isWalkBack", true);
+
+                Anin.SetBool("isIddle", false);
+                Anin.SetBool("isWalk", false);
+                Anin.SetBool("isTurn", false);
+                isTurn = false;
+
                 transform.Translate(-Vector3.forward * downSpeed * Time.deltaTime);
 
             }
 
+
+            if (Input.GetKeyUp(Up) || Input.GetKeyUp(Down)) //Iddle
+            {
+                Anin.SetBool("isIddle", true);
+
+                Anin.SetBool("isWalkBack", false);
+                Anin.SetBool("isWalk", false);
+                Anin.SetBool("isTurn", false);
+                isTurn = true;
+            }
+
+            if (Input.GetKeyUp(Left) && isTurn || Input.GetKeyUp(Right) && isTurn) //Iddle dps de girar parado
+            {
+                Anin.SetBool("isIddle", true);
+
+                Anin.SetBool("isWalkBack", false);
+                Anin.SetBool("isWalk", false);
+                Anin.SetBool("isTurn", false);
+                isTurn = true;
+            }
+
+            if (isTurn)
+            {
+                if (Input.GetKey(Right))
+                {
+
+                    Anin.SetBool("isTurn", true);
+
+                    Anin.SetBool("isIddle", false);
+                    Anin.SetBool("isWalkBack", false);
+                    Anin.SetBool("isWalk", false);
+
+
+                    transform.Rotate(Vector3.up, TurnSpeed * Time.deltaTime);
+
+                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
+                    {
+                        Esquiva_Right = true;
+                        EsquivaInUsing = true;
+                    }
+
+
+                }
+                else if (Input.GetKey(Left))
+                {
+
+                    Anin.SetBool("isTurn", true);
+
+                    Anin.SetBool("isIddle", false);
+                    Anin.SetBool("isWalkBack", false);
+                    Anin.SetBool("isWalk", false);
+
+
+                    transform.Rotate(Vector3.up, -TurnSpeed * Time.deltaTime);
+
+                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
+                    {
+                        Esquiva_Left = true;
+                        EsquivaInUsing = true;
+                    }
+                }
+            }
+            else
+            {
+                if (Input.GetKey(Right))
+                {
+                    transform.Rotate(Vector3.up, TurnSpeed * Time.deltaTime);
+
+                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
+                    {
+                        Esquiva_Right = true;
+                        EsquivaInUsing = true;
+                    }
+
+
+                }
+                else if (Input.GetKey(Left))
+                {
+                    transform.Rotate(Vector3.up, -TurnSpeed * Time.deltaTime);
+
+                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
+                    {
+                        Esquiva_Left = true;
+                        EsquivaInUsing = true;
+                    }
+                }
+            }
+
             if (Input.GetKeyDown(Turn))
             {
-                    Rotete_Turn = true;
-            }
-
-            if (Input.GetKey(Right))
-            {
-                transform.Rotate(Vector3.up, TurnSpeed * Time.deltaTime);
-
-                if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
-                {
-                    Esquiva_Right = true;
-                    EsquivaInUsing = true;
-                }
-
-
-            }
-            else if (Input.GetKey(Left))
-            {
-                transform.Rotate(Vector3.up, -TurnSpeed * Time.deltaTime);
-
-                if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
-                {
-                    Esquiva_Left = true;
-                    EsquivaInUsing = true;
-                }
+                Rotete_Turn = true;
             }
 
             if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
@@ -173,4 +265,8 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+   
+
+
+   
 }
