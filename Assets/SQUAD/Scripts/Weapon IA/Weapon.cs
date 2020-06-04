@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
     public bool DontFire;
 
     bool FirstSet;
+    public AudioSource Gatilho_Sound;
 
     private void Awake()
     {
@@ -84,6 +85,7 @@ public class Weapon : MonoBehaviour
             
             countToShoting = 0f;
 
+            Gatilho_Sound.Play();
             Anin.Play();
             GameObject bullet = Instantiate(Shot, spawnShot.transform.position, Quaternion.identity) as GameObject;
 
