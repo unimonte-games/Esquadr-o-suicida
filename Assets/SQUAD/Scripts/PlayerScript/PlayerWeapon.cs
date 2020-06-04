@@ -152,11 +152,12 @@ public class PlayerWeapon : MonoBehaviour
         ID_AtualWeapon = Type;
        
         GameObject WeaponSet = Instantiate(ItemWeaponList[Type], LocalToSpawn.position, LocalToSpawn.rotation);
-        WeaponSet.gameObject.GetComponent<Weapon>().P = P;
         WeaponSet.transform.parent = ItemParent[Type].transform;
+        WeaponSet.transform.position = ItemParent[Type].transform.position;
         WeaponSet.gameObject.GetComponent<Weapon>().Gatilho = Gatilho;
-        
- 
+        WeaponSet.gameObject.GetComponent<Weapon>().P = P;
+
+
 
         ItemWeaponList[Type] = WeaponSet;
 

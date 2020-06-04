@@ -28,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
     KeyCode Turn;
 
     bool Esquiva_Forward;
-    bool Esquiva_Right;
-    bool Esquiva_Left;
 
     bool EsquivaInUsing;
     float time_Esquiva;
@@ -39,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isTurn;
 
+    float timeToClik = 5;
     public Animator Anin;
 
     private void Start()
@@ -53,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         if (!ToMove)
         {
 
-            if (Input.GetKey(Up)) //Walk
+            if (Input.GetKey(Up) && !EsquivaInUsing) //Walk
             {
                 Anin.SetBool("isWalk", true);
 
@@ -64,16 +63,9 @@ public class PlayerMovement : MonoBehaviour
 
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-                if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
-                {
-                    EsquivaInUsing = true;
-                    Esquiva_Forward = true;
-                }
-
-
             }
 
-            if (Input.GetKey(Down))//Walk Back
+            if (Input.GetKey(Down) && !EsquivaInUsing)//Walk Back
             {
                 Anin.SetBool("isWalkBack", true);
 
@@ -120,14 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
 
                     transform.Rotate(Vector3.up, TurnSpeed * Time.deltaTime);
-
-                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
-                    {
-                        Esquiva_Right = true;
-                        EsquivaInUsing = true;
-                    }
-
-
+                    
                 }
                 else if (Input.GetKey(Left))
                 {
@@ -141,11 +126,6 @@ public class PlayerMovement : MonoBehaviour
 
                     transform.Rotate(Vector3.up, -TurnSpeed * Time.deltaTime);
 
-                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
-                    {
-                        Esquiva_Left = true;
-                        EsquivaInUsing = true;
-                    }
                 }
             }
             else
@@ -154,86 +134,45 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.Rotate(Vector3.up, TurnSpeed * Time.deltaTime);
 
-                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
-                    {
-                        Esquiva_Right = true;
-                        EsquivaInUsing = true;
-                    }
-
-
                 }
                 else if (Input.GetKey(Left))
                 {
                     transform.Rotate(Vector3.up, -TurnSpeed * Time.deltaTime);
 
-                    if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
-                    {
-                        Esquiva_Left = true;
-                        EsquivaInUsing = true;
-                    }
                 }
             }
 
-            if (Input.GetKeyDown(Turn))
+            if (Input.GetKeyDown(Turn) && !EsquivaInUsing)
             {
                 Rotete_Turn = true;
             }
 
-            if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
+            if (EsquivaInUsing)
             {
-                int randomEsquiva = Random.Range(0, 2);
-                if(randomEsquiva == 0)
-                {
-                    Esquiva_Forward = true;
-                    EsquivaInUsing = true;
-                }
-                if (randomEsquiva == 1)
-                {
-                    Esquiva_Right = true;
-                    EsquivaInUsing = true;
-                }
+                timeToClik += Time.deltaTime;
+            }
 
-                if (randomEsquiva == 2)
-                {
-                    Esquiva_Left = true;
-                    EsquivaInUsing = true;
-                }
+            if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing && timeToClik > 3) 
+            {
+                EsquivaInUsing = true;
+                Anin.SetTrigger("isEsquiva");
+
+                timeToClik = 0;
+                Esquiva_Forward = true;
 
             }
 
             if (Esquiva_Forward)
             {
-                transform.Translate(Vector3.forward * 15 * Time.deltaTime);
-                time_Esquiva += 0.1f;
-                if (time_Esquiva >= 2f)
+                transform.Translate(Vector3.forward * 10 * Time.deltaTime);
+                time_Esquiva += Time.deltaTime;
+                if (time_Esquiva >= 1.2f)
                 {
                     Esquiva_Forward = false;
                     time_Esquiva = 0f;
                     EsquivaInUsing = false;
-                }
-            }
 
-            if (Esquiva_Right)
-            {
-                transform.Translate(Vector3.right * 15 * Time.deltaTime);
-                time_Esquiva += 0.1f;
-                if (time_Esquiva >= 2f)
-                {
-                    Esquiva_Right = false;
-                    time_Esquiva = 0f;
-                    EsquivaInUsing = false;
-                }
-            }
-
-            if (Esquiva_Left)
-            {
-                transform.Translate(Vector3.left * 15 * Time.deltaTime);
-                time_Esquiva += 0.1f;
-                if (time_Esquiva >= 2f)
-                {
-                    Esquiva_Left = false;
-                    time_Esquiva = 0f;
-                    EsquivaInUsing = false;
+                    timeToClik = 5;
                 }
             }
 

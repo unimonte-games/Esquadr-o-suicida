@@ -77,6 +77,7 @@ public class Weapon : MonoBehaviour
 
     private void FixedUpdate()
     {
+       
         countToShoting += 0.1f;
         if (Input.GetKeyDown(Gatilho) && countToShoting >= FrameRate && P.ManaBar >= Mana && !DontFire)
         {
