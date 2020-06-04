@@ -43,15 +43,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Anin.SetInteger("WeaponState", 1);
+        Anin.SetInteger("WeaponState", 2);
         Anin.SetBool("isIddle", true);
-        Anin.SetBool("isTurn", true);
+        
     }
 
     void FixedUpdate()
     {
         if (!ToMove)
         {
+
             if (Input.GetKey(Up)) //Walk
             {
                 Anin.SetBool("isWalk", true);
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 Anin.SetBool("isTurn", false);
                 isTurn = false;
 
-                transform.Translate(Vector3.forward * speed * Time.deltaTime );
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
                 if (Input.GetKeyDown(Esquiva) && !EsquivaInUsing)
                 {
@@ -264,9 +265,5 @@ public class PlayerMovement : MonoBehaviour
         Turn = P.Turn;
 
     }
-
-   
-
-
    
 }

@@ -311,19 +311,18 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    public void ChangeWeapon (bool Player, int wIcon)
+    public void ChangeWeapon (bool Player, int wIcon, int wIcon2)
     {
         if (Player)
         {
-            P1_Weapon2.sprite = P1_Weapon1.sprite;
             P1_Weapon1.sprite = WL.wIcon[wIcon];
-           
+            P1_Weapon2.sprite = WL.wIcon[wIcon2];
 
         }
         else
         {
-            P2_Weapon2.sprite = P2_Weapon1.sprite;
             P2_Weapon1.sprite = WL.wIcon[wIcon];
+            P2_Weapon2.sprite = WL.wIcon[wIcon2];
         }
     }
 

@@ -35,14 +35,26 @@ public class Item : MonoBehaviour
     public TextMeshProUGUI[] NameList;
     public GameObject[] NameListSet;
 
+    SphereCollider S;
+
     Vector3 Body;
 
     bool Set;
-
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
-       
+        S = GetComponent<SphereCollider>();
+    }
+
+    private void OnEnable()
+    {
+        S.enabled = false;
+        Invoke("SetBox", 3);
+    }
+
+    void SetBox()
+    {
+        S.enabled = true;
     }
 
     private void Start()
@@ -75,73 +87,68 @@ public class Item : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!Set)
+
+        if (inUse1 && Input.GetKeyDown(GetItem) && !Set)
         {
-            if (inUse1 && Input.GetKeyDown(GetItem))
+            Debug.Log("Weapon");
+            Set = true;
+            if (!isBuy)
             {
-                Set = true;
+                playerWeapon.GetWeapon(ID);
+                O.DisabledLine();
+                this.gameObject.SetActive(false);
 
-                if (!isBuy)
-                {
-                    playerWeapon.GetWeapon(ID);
-                    O.DisabledLine();
-                    this.gameObject.SetActive(false);
-
-                    Debug.Log("Player 1 pegou um item!");
-                    return;
-                }
-
-                if (isBuy && player.Gold >= Value)
-                {
-                    player.Gold -= Value;
-                    player.SetGold();
-                    playerWeapon.GetWeapon(ID);
-                    O.DisabledLine();
-                    this.gameObject.SetActive(false);
-
-
-                    Debug.Log("Player 1 comprou um item!");
-                    return;
-                }
-                else
-                {
-                    Debug.Log("P1 - Energia Insuficiente!");
-                }
-
+                Debug.Log("Player 1 pegou um item!");
+                return;
             }
 
-            if (inUse2 && Input.GetKeyDown(GetItem))
+            if (isBuy && player.Gold >= Value)
             {
-                Set = true;
+                player.Gold -= Value;
+                player.SetGold();
+                playerWeapon.GetWeapon(ID);
+                O.DisabledLine();
+                this.gameObject.SetActive(false);
 
-                if (!isBuy)
-                {
-                    playerWeapon.GetWeapon(ID);
-                    O.DisabledLine();
-                    this.gameObject.SetActive(false);
 
-                    Debug.Log("Player 2 pegou um item!");
-                    return;
-                }
+                Debug.Log("Player 1 comprou um item!");
+                return;
+            }
+            else
+            {
+                Debug.Log("P1 - Energia Insuficiente!");
+            }
 
-                if (isBuy && player.Gold >= Value)
-                {
-                    player.Gold -= Value;
-                    player.SetGold();
-                    playerWeapon.GetWeapon(ID);
+        }
 
-                    Debug.Log("Player 2 comprou um item!");
+        if (inUse2 && Input.GetKeyDown(GetItem) && !Set)
+        {
+            Set = true;
+            if (!isBuy)
+            {
+                playerWeapon.GetWeapon(ID);
+                O.DisabledLine();
+                this.gameObject.SetActive(false);
 
-                    O.DisabledLine();
-                    this.gameObject.SetActive(false);
-                    return;
-                }
-                else
-                {
-                    Debug.Log("P2 - Energia Insuficiente!");
-                }
+                Debug.Log("Player 2 pegou um item!");
+                return;
+            }
 
-                
+            if (isBuy && player.Gold >= Value)
+            {
+                player.Gold -= Value;
+                player.SetGold();
+                playerWeapon.GetWeapon(ID);
+
+                Debug.Log("Player 2 comprou um item!");
+
+                O.DisabledLine();
+                this.gameObject.SetActive(false);
+                return;
+            }
+            else
+            {
+                Debug.Log("P2 - Energia Insuficiente!");
             }
         }
     }

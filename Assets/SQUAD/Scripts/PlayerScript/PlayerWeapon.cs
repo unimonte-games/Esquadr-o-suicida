@@ -25,8 +25,6 @@ public class PlayerWeapon : MonoBehaviour
     public PlayerUI PUI;
     float countToChange;
 
-    public Animator Anin;
-
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -37,17 +35,16 @@ public class PlayerWeapon : MonoBehaviour
         
         Discart = WL.transform;
         CheckMax();
-
         
     }
 
     private void FixedUpdate()
     {
         countToChange += Time.deltaTime;
-        if (Input.GetKeyDown(Switch) && ID_AtualWeapon >= 1 && countToChange >= 1f && MaxItens == 2)
+        if (Input.GetKeyDown(Switch) && ID_AtualWeapon >= 1 && countToChange > 2f && MaxItens == 2)
         {
             countToChange = 0f;
-
+            
             if (MaxItens > 2)
             {
                 MaxItens = 2;
@@ -71,10 +68,8 @@ public class PlayerWeapon : MonoBehaviour
 
     public void UpdateGatilhos()
     {
-        
         Gatilho = P.Gatilho;
         Switch = P.Dropar_set;
-
     }
 
     public void GetWeapon(int ID)
@@ -157,9 +152,11 @@ public class PlayerWeapon : MonoBehaviour
         ID_AtualWeapon = Type;
        
         GameObject WeaponSet = Instantiate(ItemWeaponList[Type], LocalToSpawn.position, LocalToSpawn.rotation);
+        WeaponSet.gameObject.GetComponent<Weapon>().P = P;
         WeaponSet.transform.parent = ItemParent[Type].transform;
         WeaponSet.gameObject.GetComponent<Weapon>().Gatilho = Gatilho;
-        WeaponSet.gameObject.GetComponent<Weapon>().P = P;
+        
+ 
 
         ItemWeaponList[Type] = WeaponSet;
 
@@ -233,9 +230,23 @@ public class PlayerWeapon : MonoBehaviour
 
     void SetWeaponIcon()
     {
-        int ID = ID_Weapons[ID_AtualWeapon];
-        PUI.ChangeWeapon(P.PlayerType, ID);
-    }
+        if(ID_AtualWeapon == 1)
+        {
+            PUI.ChangeWeapon(P.PlayerType, ID_Weapons[1], ID_Weapons[2]);
+            return;
+        }
 
+        if (ID_AtualWeapon == 2)
+        {
+            PUI.ChangeWeapon(P.PlayerType, ID_Weapons[2], ID_Weapons[1]);
+            return;
+        }
+
+        if (ID_AtualWeapon == 0)
+        {
+            PUI.ChangeWeapon(P.PlayerType, ID_Weapons[0], ID_Weapons[0]);
+            return;
+        }
+    }
 
 }

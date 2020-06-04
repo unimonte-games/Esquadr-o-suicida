@@ -39,6 +39,7 @@ public class W_Default : MonoBehaviour
         countToShoting += 0.1f;
         if (Input.GetKeyDown(Gatilho) && countToShoting >= FrameRate && P.ManaBar >= Mana)
         {
+            
             countToShoting = 0f;
             GameObject bullet = Instantiate(Shot, spawnShot.transform.position, Quaternion.identity) as GameObject;
             Hit HitEnemy = bullet.GetComponent<Hit>();

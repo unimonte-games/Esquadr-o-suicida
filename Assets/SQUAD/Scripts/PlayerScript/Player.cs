@@ -533,8 +533,6 @@ public class Player : MonoBehaviour
         GC.SetActive(false);
         ExtraUI.SetActive(false);
         
-        
-        
         if (PlayerType)
         {
             LC.P1_inRoom = false;
