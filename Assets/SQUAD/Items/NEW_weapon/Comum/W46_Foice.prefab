@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4260106817914546562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4709764551749581439}
+  - component: {fileID: 5085815101471987850}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4709764551749581439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260106817914546562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7352091396314821898}
+  m_Father: {fileID: 3724428760889631195}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.24296284, y: 0, z: 0}
+--- !u!111 &5085815101471987850
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260106817914546562}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d70835e7e45cf824bb8f17756aef9fab, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d70835e7e45cf824bb8f17756aef9fab, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!1 &4988484056163298549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3724428760889631195}
+  - component: {fileID: 3748998919868562262}
+  m_Layer: 0
+  m_Name: W46_Foice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3724428760889631195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988484056163298549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7929585733711447722}
+  - {fileID: 4709764551749581439}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3748998919868562262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988484056163298549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0797fdd44166624a8e5e3768baadb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponID: 46
+  WeaponState: 0
+  Shot: {fileID: 7726331053998816311, guid: a7406a703bd62db438ed5ecce488a26a, type: 3}
+  Fire_Plant: 2
+  Fire_Tech: 2
+  FrameRate: 4
+  Mana: 2
+  Range: 0.2
+  Name: Foice
+  Rarity: 0
+  Force: 1000
+  Gatilho: 0
+  spawnShot: {fileID: 0}
+  P: {fileID: 0}
+  Anin: {fileID: 5085815101471987850}
+  PUI: {fileID: 0}
+  Punch: 1
+  Tech: 0
+  Limit: 0
+  DontFire: 0
+--- !u!1 &6869602629550687481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7929585733711447722}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7929585733711447722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869602629550687481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3724428760889631195}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2312193384013996111
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4709764551749581439}
+    m_Modifications:
+    - target: {fileID: 3962253868529430451, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_Name
+      value: Foice
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea5dea2238819064fbd25fb19945836b, type: 3}
+--- !u!4 &7352091396314821898 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2312193384013996111}
+  m_PrefabAsset: {fileID: 0}
