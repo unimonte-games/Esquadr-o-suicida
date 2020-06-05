@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
         {
             P.Anin.SetInteger("WeaponState", WeaponState);
             P.Anin.SetBool("Change", true);
-            Invoke("SetChange", 0.25f);
+            Invoke("SetChange", 0.75f);
         }
     }
 
@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
     {
         P.Anin.SetInteger("WeaponState", WeaponState);
         P.Anin.SetBool("Change", true);
-        Invoke("SetChange", 0.5f);
+        Invoke("SetChange", 0.75f);
 
         if (!FirstSet)
         {

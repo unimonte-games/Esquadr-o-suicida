@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Anin.SetInteger("WeaponState", 2);
+        Anin.SetInteger("WeaponState", 1);
         Anin.SetBool("isIddle", true);
         
     }
