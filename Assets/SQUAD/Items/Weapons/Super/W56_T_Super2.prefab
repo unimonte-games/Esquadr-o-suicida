@@ -56,6 +56,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -93,7 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 56
-  Shot: {fileID: 7571846407197800152, guid: 0c738c7a6a4d4f14c9405859316ed310, type: 3}
+  WeaponState: 0
+  Shot: {fileID: 1039331360570466695, guid: 7a8ad2ab72f66824aaa0ee755bcaff31, type: 3}
   Fire_Plant: 1
   Fire_Tech: 1
   FrameRate: 0.3
@@ -105,11 +107,13 @@ MonoBehaviour:
   Gatilho: 0
   spawnShot: {fileID: 5306309723547247556}
   P: {fileID: 0}
+  Anin: {fileID: 0}
   PUI: {fileID: 0}
   Punch: 0
   Tech: 1
   Limit: 2000
   DontFire: 0
+  Gatilho_Sound: {fileID: 0}
 --- !u!1 &5464295798648173789
 GameObject:
   m_ObjectHideFlags: 0
