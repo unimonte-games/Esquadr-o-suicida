@@ -112,6 +112,7 @@ public class Player : MonoBehaviour
     float TimeToclick = 1;
 
     public AudioSource[] KeySound;
+    public AudioSource LevelUP_Sound;
 
     private void Start()
     {
@@ -522,6 +523,7 @@ public class Player : MonoBehaviour
 
     public void UpdateLevel()
     {
+        LevelUP_Sound.Play();
         PL.ChangeYourStats(this, playerMovement);
     }
 
