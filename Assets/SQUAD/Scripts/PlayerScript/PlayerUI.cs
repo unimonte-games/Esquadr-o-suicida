@@ -150,6 +150,8 @@ public class PlayerUI : MonoBehaviour
     WeaponList WL;
     LevelController LC;
 
+    public AudioSource[] SetMissionsSound;
+
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -742,12 +744,14 @@ public class PlayerUI : MonoBehaviour
         {
             M_Door_Complete.SetActive(true);
             AM_Door.Play("DoorComplete");
+            SetMissionsSound[3].Play();
 
         }
         else
         {
             M_Door.SetActive(true);
             AM_Door.Play("DoorAnin");
+            SetMissionsSound[0].Play();
         }
     }
 
@@ -757,11 +761,13 @@ public class PlayerUI : MonoBehaviour
         {
             M_Wave_Complete.SetActive(true);
             AM_Wave.Play("WaveComplete");
+            SetMissionsSound[4].Play();
         }
         else
         {
             M_Wave.SetActive(true);
             AM_Wave.Play("WaveAnin");
+            SetMissionsSound[1].Play();
         }
     }
 
@@ -771,11 +777,13 @@ public class PlayerUI : MonoBehaviour
         {
             M_Surprise_Complete.SetActive(true);
             AM_Surprise.Play("SurpriseComplete");
+            SetMissionsSound[4].Play();
         }
         else
         {
             M_Surprise.SetActive(true);
             AM_Surprise.Play("SurpriseAnin");
+            SetMissionsSound[2].Play();
         }
     }
 
