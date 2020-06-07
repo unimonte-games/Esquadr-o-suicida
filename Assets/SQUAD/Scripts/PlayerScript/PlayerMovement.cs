@@ -64,6 +64,15 @@ public class PlayerMovement : MonoBehaviour
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
             }
+            else if (Input.GetKeyUp(Up))//Iddle
+            {
+                Anin.SetBool("isIddle", true);
+
+                Anin.SetBool("isWalkBack", false);
+                Anin.SetBool("isWalk", false);
+                Anin.SetBool("isTurn", false);
+                isTurn = true;
+            }
 
             if (Input.GetKey(Down) && !EsquivaInUsing)//Walk Back
             {
@@ -76,10 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
                 transform.Translate(-Vector3.forward * downSpeed * Time.deltaTime);
 
-            }
-
-
-            if (Input.GetKeyUp(Up) || Input.GetKeyUp(Down)) //Iddle
+            }else if (Input.GetKeyUp(Down)) //Iddle
             {
                 Anin.SetBool("isIddle", true);
 
@@ -88,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
                 Anin.SetBool("isTurn", false);
                 isTurn = true;
             }
+
 
             if (Input.GetKeyUp(Left) && isTurn || Input.GetKeyUp(Right) && isTurn) //Iddle dps de girar parado
             {
@@ -187,6 +194,15 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
+        }
+        else
+        {
+            Anin.SetBool("isIddle", true);
+
+            Anin.SetBool("isWalkBack", false);
+            Anin.SetBool("isWalk", false);
+            Anin.SetBool("isTurn", false);
+            isTurn = true;
         }
         
     }
