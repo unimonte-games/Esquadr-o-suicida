@@ -127,6 +127,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -205,10 +206,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a270ed8337032024bb64fa903c8e3742, type: 2}
+  - {fileID: 2100000, guid: 9f2e0ef86a9b336459bfcc48ee6cc565, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -283,6 +285,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -361,6 +364,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -439,6 +443,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -517,6 +522,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -600,7 +606,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5599879191310851722}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.69, y: -0.95, z: -0.76}
   m_LocalScale: {x: 6.343518, y: 1, z: 4.1893654}
   m_Children:
@@ -634,6 +640,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -748,17 +755,17 @@ PrefabInstance:
     - target: {fileID: 4664132422423844809, guid: 67a5086d05718dd4798c5753fdf3a30d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6173
+      value: 1.8663644
       objectReference: {fileID: 0}
     - target: {fileID: 4664132422423844809, guid: 67a5086d05718dd4798c5753fdf3a30d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6173
+      value: 1.8663644
       objectReference: {fileID: 0}
     - target: {fileID: 4664132422423844809, guid: 67a5086d05718dd4798c5753fdf3a30d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6172999
+      value: 1.8663641
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67a5086d05718dd4798c5753fdf3a30d, type: 3}
@@ -1054,6 +1061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom_B_01
       objectReference: {fileID: 0}
+    - target: {fileID: 180352, guid: 64d5316cc2ec52e4dac47f07ef7791c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441326, guid: 64d5316cc2ec52e4dac47f07ef7791c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.947523
@@ -1129,6 +1140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fllower_A_08
       objectReference: {fileID: 0}
+    - target: {fileID: 191122, guid: 17c6ca175b4aadc458a04dd37daa772a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 423674, guid: 17c6ca175b4aadc458a04dd37daa772a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.050847203
@@ -1203,6 +1218,10 @@ PrefabInstance:
     - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_Name
       value: Fllower_A_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 464830, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1288,7 +1307,7 @@ PrefabInstance:
     - target: {fileID: 2693426073808246673, guid: f53bab4cfc9f0234dbe04c87bd402747,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2693426073808246673, guid: f53bab4cfc9f0234dbe04c87bd402747,
         type: 3}
@@ -1369,6 +1388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fllower_B_01
       objectReference: {fileID: 0}
+    - target: {fileID: 130364, guid: b05c25d12ca0fe24e9b0c4dc55d4100c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 413818, guid: b05c25d12ca0fe24e9b0c4dc55d4100c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.052477
@@ -1443,6 +1466,10 @@ PrefabInstance:
     - target: {fileID: 120792, guid: 82aff9a2be76668498b842e0d6abe371, type: 3}
       propertyPath: m_Name
       value: Mushroom_B_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 120792, guid: 82aff9a2be76668498b842e0d6abe371, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 486822, guid: 82aff9a2be76668498b842e0d6abe371, type: 3}
       propertyPath: m_LocalPosition.x

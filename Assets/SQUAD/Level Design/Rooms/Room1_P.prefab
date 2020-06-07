@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2295833527846071460}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.69, y: -0.95, z: -0.76}
   m_LocalScale: {x: 6.343514, y: 1, z: 4.1893635}
   m_Children:
@@ -88,6 +88,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -166,6 +167,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -244,6 +246,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -391,6 +394,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -469,6 +473,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1047,17 +1052,17 @@ PrefabInstance:
     - target: {fileID: 1535289714496042152, guid: 2f46f89164d330f45b998e0fa6ecb1d7,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.2124002
+      value: 2.55311
       objectReference: {fileID: 0}
     - target: {fileID: 1535289714496042152, guid: 2f46f89164d330f45b998e0fa6ecb1d7,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.2124
+      value: 2.5531096
       objectReference: {fileID: 0}
     - target: {fileID: 1535289714496042152, guid: 2f46f89164d330f45b998e0fa6ecb1d7,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.2124002
+      value: 2.55311
       objectReference: {fileID: 0}
     - target: {fileID: 2906702450840348046, guid: 2f46f89164d330f45b998e0fa6ecb1d7,
         type: 3}
@@ -1187,6 +1192,10 @@ PrefabInstance:
     - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_Name
       value: Fllower_A_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 464830, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1337,6 +1346,10 @@ PrefabInstance:
     - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_Name
       value: Fllower_A_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 464830, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1502,6 +1515,10 @@ PrefabInstance:
     - target: {fileID: 191122, guid: 17c6ca175b4aadc458a04dd37daa772a, type: 3}
       propertyPath: m_Name
       value: Fllower_A_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 191122, guid: 17c6ca175b4aadc458a04dd37daa772a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 423674, guid: 17c6ca175b4aadc458a04dd37daa772a, type: 3}
       propertyPath: m_LocalPosition.x

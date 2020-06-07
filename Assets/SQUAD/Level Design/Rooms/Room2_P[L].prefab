@@ -126,6 +126,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -204,6 +205,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -316,6 +318,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -394,6 +397,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -443,7 +447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6434604866386672277}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.1, y: -0.95, z: -0.76}
   m_LocalScale: {x: 6.343518, y: 1, z: 4.1893654}
   m_Children:
@@ -477,6 +481,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -555,6 +560,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -633,6 +639,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1093,6 +1100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fllower_B_01
       objectReference: {fileID: 0}
+    - target: {fileID: 130364, guid: b05c25d12ca0fe24e9b0c4dc55d4100c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 413818, guid: b05c25d12ca0fe24e9b0c4dc55d4100c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.19672
@@ -1167,6 +1178,10 @@ PrefabInstance:
     - target: {fileID: 130364, guid: b05c25d12ca0fe24e9b0c4dc55d4100c, type: 3}
       propertyPath: m_Name
       value: Fllower_B_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 130364, guid: b05c25d12ca0fe24e9b0c4dc55d4100c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 413818, guid: b05c25d12ca0fe24e9b0c4dc55d4100c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1380,6 +1395,10 @@ PrefabInstance:
     - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_Name
       value: Fllower_A_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 154696, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 464830, guid: bb1a6ef5a890dd8489e9d9bed4c86c0a, type: 3}
       propertyPath: m_LocalPosition.x
