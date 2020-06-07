@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
 
     public AudioSource[] KeySound;
     public AudioSource LevelUP_Sound;
+    public AudioSource Energy_Sound;
 
     private void Start()
     {
@@ -526,6 +527,11 @@ public class Player : MonoBehaviour
     {
         
         PL.ChangeYourStats(this, playerMovement);
+    }
+
+    public void SetEnergy()
+    {
+        Energy_Sound.Play();
     }
 
     void CancelFX()

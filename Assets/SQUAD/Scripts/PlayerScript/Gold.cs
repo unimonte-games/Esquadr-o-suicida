@@ -27,6 +27,7 @@ public class Gold : MonoBehaviour
 
             P.Gold += gold;
             P.SetGold();
+            P.SetEnergy();
             MS.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
@@ -37,6 +38,7 @@ public class Gold : MonoBehaviour
 
             P.Gold += gold;
             P.SetGold();
+            P.SetEnergy();
             MS.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
