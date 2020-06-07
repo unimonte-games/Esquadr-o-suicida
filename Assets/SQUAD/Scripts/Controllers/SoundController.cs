@@ -25,7 +25,7 @@ public class SoundController : MonoBehaviour
 
         RM_atual = room;
 
-        GlobalMusic.volume = 0.15f;
+        GlobalMusic.volume = 0.1f;
         GlobalMusic.clip = Sound;
         GlobalMusic.Play();
 
@@ -45,7 +45,7 @@ public class SoundController : MonoBehaviour
     void RePitch()
     {
         GlobalMusic.pitch = 1f;
-        GlobalMusic.volume = 0.15f;
+        GlobalMusic.volume = 0.1f;
     }
 
     public void AllPlayersDead()

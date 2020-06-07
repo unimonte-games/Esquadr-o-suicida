@@ -25,6 +25,8 @@ public class PlayerWeapon : MonoBehaviour
     public PlayerUI PUI;
     float countToChange;
 
+    public AudioSource[] WeaponSound;
+
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -62,6 +64,7 @@ public class PlayerWeapon : MonoBehaviour
             }
 
             ItemParent[ID_AtualWeapon].gameObject.SetActive(true);
+            WeaponSound[1].Play();
             SetWeaponIcon();
         }
     }
@@ -171,6 +174,7 @@ public class PlayerWeapon : MonoBehaviour
 
         SetWeaponIcon();
 
+        WeaponSound[0].Play();
         Debug.Log("Weapon Update");
         return;
        
