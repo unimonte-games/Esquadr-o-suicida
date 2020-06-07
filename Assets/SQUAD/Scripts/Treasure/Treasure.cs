@@ -38,6 +38,8 @@ public class Treasure : MonoBehaviour
     LevelController LC;
     public bool isCard;
 
+    public AudioSource Sound;
+
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
@@ -158,8 +160,8 @@ public class Treasure : MonoBehaviour
                 P.Keys_Quantidade -= KeysToOpen;
                 P.KeyID[ID] -= KeysToOpen;
 
-                
 
+                Sound.Play();
                 Debug.Log("Abriu Comum com Key.");
                 DropItem();
 
