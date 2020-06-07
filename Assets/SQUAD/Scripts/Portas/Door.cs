@@ -18,11 +18,15 @@ public class Door : MonoBehaviour
     public GameObject Keys2;
     public GameObject Keys3;
 
+    public GameObject Interface;
+    public AudioSource[] DoorSound;
+
     private void Start()
     {
         CR.CompleteKeyOpenFirst = true;
+        Interface.SetActive(false);
 
-        if(KeysToOpen == 1)
+        if (KeysToOpen == 1)
         {
             Keys1.SetActive(true);
         }
@@ -36,6 +40,7 @@ public class Door : MonoBehaviour
         {
             Keys3.SetActive(true);
         }
+
     }
 
     private void FixedUpdate()
@@ -58,6 +63,7 @@ public class Door : MonoBehaviour
     {
         if (P.Keys_Quantidade >= KeysToOpen && P.KeyID[ID] >= KeysToOpen)
         {
+           
 
             for (int i = 0; i <= 2; i++)
             {
@@ -96,12 +102,17 @@ public class Door : MonoBehaviour
             CR.CompleteKeyOpenFirst = false;
             Debug.Log("Porta Liberada!");
 
-            this.gameObject.SetActive(false);
-
+            DoorSound[1].Play();
+            Invoke("CancelKeys", 1);
 
 
         }
 
+    }
+
+    void CancelKeys()
+    {
+        this.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,6 +123,9 @@ public class Door : MonoBehaviour
 
             Player1 = true;
             Player2 = false;
+
+            DoorSound[0].Play();
+            Interface.SetActive(true);
         }
 
         if (other.gameObject.name == "Player2" && !Player1)
@@ -120,22 +134,29 @@ public class Door : MonoBehaviour
 
             Player2 = true;
             Player1 = false;
+
+            DoorSound[0].Play();
+            Interface.SetActive(true);
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Player1")
+        if (other.gameObject.name == "Player1" && Player1)
         {
             Player1 = false;
             PlayerOpenThis = false;
+
+            Interface.SetActive(false);
         }
 
-        if (other.gameObject.name == "Player2")
+        if (other.gameObject.name == "Player2" && Player2)
         {
             Player2 = false;
             PlayerOpenThis = false;
+
+            Interface.SetActive(false);
         }
     }
 
