@@ -111,6 +111,8 @@ public class Player : MonoBehaviour
 
     float TimeToclick = 1;
 
+    public AudioSource[] KeySound;
+
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
@@ -294,6 +296,8 @@ public class Player : MonoBehaviour
                 KeyInterface_Selection[SelectCount].SetActive(true);
                 AtualKey = SelectCount;
 
+                KeySound[2].Play();
+
                 //BeforeNumber = SelectCount;
 
 
@@ -406,13 +410,20 @@ public class Player : MonoBehaviour
 
     }
 
+    public void SetNewKey()
+    {
+        KeySound[0].Play();
+    }
+
     public void SetDropKey()
     {
+
+        KeySound[1].Play();
+
         CountToDisable = 0;
         Disabled = false;
 
         KeyInterface.SetActive(false);
-
 
         for (int i = 0; i <= 2; i++)
         {

@@ -37,7 +37,8 @@ public class KeyFinal : MonoBehaviour
             P.KeyID[KeyID]++;
             P.Keys_Quantidade++;
 
-           
+            P.SetNewKey();
+
             this.gameObject.SetActive(false);
         }
         else

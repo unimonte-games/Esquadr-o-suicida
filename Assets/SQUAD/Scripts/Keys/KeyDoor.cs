@@ -42,6 +42,7 @@ public class KeyDoor : MonoBehaviour
             P.Keys_Quantidade++;
             P.KeyID[KeyID]++;
 
+            P.SetNewKey();
             
             this.gameObject.SetActive(false);
            
