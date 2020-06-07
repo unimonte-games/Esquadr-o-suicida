@@ -39,11 +39,14 @@ public class Treasure : MonoBehaviour
     public bool isCard;
 
     public AudioSource Sound;
+    public AudioSource GetItemSound;
 
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
         UI.SetActive(true);
+
+        Sound.Play();
 
         if (isCard)
         {
@@ -161,7 +164,7 @@ public class Treasure : MonoBehaviour
                 P.KeyID[ID] -= KeysToOpen;
 
 
-                Sound.Play();
+                GetItemSound.Play();
                 Debug.Log("Abriu Comum com Key.");
                 DropItem();
 
@@ -175,8 +178,9 @@ public class Treasure : MonoBehaviour
             P.Gold -= GoldToOpen;
             P.SetGold();
             Atived = true;
-            Debug.Log("Abriu Comum com Ouro.");
 
+            GetItemSound.Play();
+            Debug.Log("Abriu Comum com Ouro.");
             DropItem();
 
         }
