@@ -514,6 +514,7 @@ public class Player : MonoBehaviour
             LevelFX.SetActive(true);
             Invoke("CancelFX", 3);
 
+            LevelUP_Sound.Play();
             UpdateLevel();
             return;
         }
@@ -523,7 +524,7 @@ public class Player : MonoBehaviour
 
     public void UpdateLevel()
     {
-        LevelUP_Sound.Play();
+        
         PL.ChangeYourStats(this, playerMovement);
     }
 

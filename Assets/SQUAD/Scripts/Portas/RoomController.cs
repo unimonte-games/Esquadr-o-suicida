@@ -38,7 +38,8 @@ public class RoomController : MonoBehaviour
 
     public MapSystem mapSystem;
     PlayerUI PUI;
-  
+
+    public AudioSource RoomClean_DoorSound;
 
     void Start()
     {
@@ -215,6 +216,7 @@ public class RoomController : MonoBehaviour
         {
             SC.RoomClean();
             Default.SetDoorComplete();
+            RoomClean_DoorSound.Play();
 
             PUI.RoomCleanSet();
             PUI.Mission_SetDoor(true);
