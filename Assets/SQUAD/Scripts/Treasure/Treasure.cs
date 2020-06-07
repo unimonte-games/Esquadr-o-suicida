@@ -46,7 +46,7 @@ public class Treasure : MonoBehaviour
         LC = FindObjectOfType<LevelController>();
         UI.SetActive(true);
 
-        Sound.Play();
+        
 
         if (isCard)
         {
@@ -69,6 +69,7 @@ public class Treasure : MonoBehaviour
                 Key3.SetActive(true);
             }
 
+            Sound.Play();
             return;
         }
 
@@ -94,6 +95,8 @@ public class Treasure : MonoBehaviour
                 Key3.SetActive(true);
             }
 
+            Sound.Play();
+
         }
         if(KeyOn >= 51)
         {
@@ -104,6 +107,7 @@ public class Treasure : MonoBehaviour
             Value.text = "" + GoldToOpen;
             Energy.SetActive(true);
 
+            Sound.Play();
         }
         
     }
@@ -163,8 +167,6 @@ public class Treasure : MonoBehaviour
                 P.Keys_Quantidade -= KeysToOpen;
                 P.KeyID[ID] -= KeysToOpen;
 
-
-                GetItemSound.Play();
                 Debug.Log("Abriu Comum com Key.");
                 DropItem();
 
@@ -179,7 +181,6 @@ public class Treasure : MonoBehaviour
             P.SetGold();
             Atived = true;
 
-            GetItemSound.Play();
             Debug.Log("Abriu Comum com Ouro.");
             DropItem();
 
@@ -223,6 +224,8 @@ public class Treasure : MonoBehaviour
 
         GameObject Item = Instantiate(ListToDrop[ListNumberToDrop], SpawnToDrop.position, SpawnToDrop.rotation) as GameObject;
         Item.transform.parent = SpawnToDrop;
+
+        GetItemSound.Play();
     }
 
 
