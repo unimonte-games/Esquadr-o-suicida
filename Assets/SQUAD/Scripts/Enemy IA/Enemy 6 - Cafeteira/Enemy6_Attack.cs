@@ -14,6 +14,8 @@ public class Enemy6_Attack : MonoBehaviour
     public EnemyStats ES;
     public Transform Target;
 
+    public AudioSource AtkSound;
+
     private void Awake()
     {
         Dano = Random.Range(dano_min, dano_max);
@@ -37,11 +39,12 @@ public class Enemy6_Attack : MonoBehaviour
 
     void CombatCountDown()
     {
-        
-            ES.A_Attack();
-            Attack.enabled = true;
-            Invoke("CancelAtk", 1);
-        
+
+        ES.A_Attack();
+        AtkSound.Play();
+        Attack.enabled = true;
+        Invoke("CancelAtk", 1);
+
     }
 
 
