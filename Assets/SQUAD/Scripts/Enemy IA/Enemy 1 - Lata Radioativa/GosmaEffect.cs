@@ -8,22 +8,37 @@ public class GosmaEffect : MonoBehaviour
     public int dano;
     public GameObject GosmaArea;
 
+    public AudioSource AtkSound;
+    public bool isSound;
+    bool isTrigger;
 
     void Start()
     {
         dano = GetComponent<EnemyHit>().dano;
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 18)
+        if(other.gameObject.layer == 18 && !isTrigger)
         {
-           GameObject gosma =  Instantiate(GosmaArea, new Vector3 (transform.position.x, -0.85f, transform.position.z), transform.rotation) as GameObject;
+            isTrigger = true;
+            GameObject gosma = Instantiate(GosmaArea, new Vector3(transform.position.x, -0.88f, transform.position.z), transform.rotation) as GameObject;
             gosma.GetComponent<EnemyHit>().dano = dano;
             gosma.GetComponent<EnemyHit>().timeToDestroy = 5;
 
-            this.gameObject.SetActive(false);
+            if (isSound)
+            {
+                AtkSound.Play();
+            }
+
+            Invoke("Cancel", 0.5f);
         }
+    }
+
+    void Cancel()
+    {
+        this.gameObject.SetActive(true);
     }
 
 }

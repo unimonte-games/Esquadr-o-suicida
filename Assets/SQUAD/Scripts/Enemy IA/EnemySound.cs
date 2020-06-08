@@ -8,6 +8,9 @@ public class EnemySound : MonoBehaviour
     bool Player1;
     bool Player2;
 
+    public bool Lata;
+    public Enemy1_Attack EA;
+
     private void Start()
     {
         Sound.enabled = false;
@@ -19,12 +22,22 @@ public class EnemySound : MonoBehaviour
         {
             Sound.enabled = true;
             Player1 = true;
+
+            if (Lata)
+            {
+                EA.isSoundInGosma = true;
+            }
         }
 
         if (other.gameObject.name == "Player2" && !Player2)
         {
             Sound.enabled = true;
             Player2 = true;
+
+            if (Lata)
+            {
+                EA.isSoundInGosma = true;
+            }
         }
     }
 
@@ -35,12 +48,22 @@ public class EnemySound : MonoBehaviour
         {
             Sound.enabled = false;
             Player1 = false;
+
+            if (Lata)
+            {
+                EA.isSoundInGosma = false;
+            }
         }
 
         if (other.gameObject.name == "Player2" && Player2)
         {
             Sound.enabled = false;
             Player2 = false;
+
+            if (Lata)
+            {
+                EA.isSoundInGosma = false;
+            }
         }
     }
 }

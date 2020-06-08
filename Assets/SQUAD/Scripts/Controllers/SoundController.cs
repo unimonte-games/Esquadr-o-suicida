@@ -9,9 +9,18 @@ public class SoundController : MonoBehaviour
 
     public RoomMusic RM_atual;
 
+    public bool Muted;
+
     private void Start()
     {
-
+        if (Muted)
+        {
+            GlobalMusic.enabled = false;
+        }
+        else
+        {
+            GlobalMusic.enabled = true;
+        }
     }
 
 

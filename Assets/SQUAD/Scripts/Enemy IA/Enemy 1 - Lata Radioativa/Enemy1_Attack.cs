@@ -20,6 +20,9 @@ public class Enemy1_Attack : MonoBehaviour
     public float Force;
     public int TimeToAttack;
 
+    public AudioSource AtkSound;
+    public bool isSoundInGosma;
+
     private void Awake()
     {
         Dano = Random.Range(dano_min, dano_max);
@@ -45,6 +48,7 @@ public class Enemy1_Attack : MonoBehaviour
 
             TimeToAttack = Random.Range(3, 10);
 
+            AtkSound.Play();
             Invoke("Effect", 0.3f);
 
         }
@@ -56,6 +60,7 @@ public class Enemy1_Attack : MonoBehaviour
         bullet1.GetComponent<Rigidbody>().AddForce(transform.forward * Force);
         bullet1.GetComponent<EnemyHit>().dano = Dano;
         bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
+        bullet1.GetComponent<GosmaEffect>().isSound = isSoundInGosma;
     }
 
    
