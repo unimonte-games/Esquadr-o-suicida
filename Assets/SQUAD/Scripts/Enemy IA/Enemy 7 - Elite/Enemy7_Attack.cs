@@ -18,6 +18,8 @@ public class Enemy7_Attack : MonoBehaviour
 
     public GameObject BombEffect;
 
+    public AudioSource AtkSound;
+
 
     private void OnEnable()
     {
@@ -45,6 +47,7 @@ public class Enemy7_Attack : MonoBehaviour
     void Effect()
     {
 
+        AtkSound.Play();
         TimeToAttack = Random.Range(3, 10);
 
         GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;

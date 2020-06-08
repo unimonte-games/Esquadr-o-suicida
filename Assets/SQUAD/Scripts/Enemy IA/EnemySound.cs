@@ -20,6 +20,9 @@ public class EnemySound : MonoBehaviour
     {
         if(other.gameObject.name == "Player1" && !Player1)
         {
+            CancelInvoke("CancelSound");
+
+            Sound.volume = 0.03f;
             Sound.enabled = true;
             Player1 = true;
 
@@ -31,6 +34,9 @@ public class EnemySound : MonoBehaviour
 
         if (other.gameObject.name == "Player2" && !Player2)
         {
+            CancelInvoke("CancelSound");
+
+            Sound.volume = 0.03f;
             Sound.enabled = true;
             Player2 = true;
 
@@ -46,7 +52,8 @@ public class EnemySound : MonoBehaviour
     {
         if (other.gameObject.name == "Player1" && Player1)
         {
-            Sound.enabled = false;
+            Sound.volume = 0.01f;
+            Invoke("CancelSound", 3);
             Player1 = false;
 
             if (Lata)
@@ -57,7 +64,9 @@ public class EnemySound : MonoBehaviour
 
         if (other.gameObject.name == "Player2" && Player2)
         {
-            Sound.enabled = false;
+
+            Sound.volume = 0.01f;
+            Invoke("CancelSound", 3);
             Player2 = false;
 
             if (Lata)
@@ -65,5 +74,11 @@ public class EnemySound : MonoBehaviour
                 EA.isSoundInGosma = false;
             }
         }
+    }
+
+
+    void CancelSound()
+    {
+        Sound.enabled = false;
     }
 }
