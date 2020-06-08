@@ -24,6 +24,8 @@ public class Enemy3_Attack : MonoBehaviour
     public bool OnSlow;
 
     public BoxCollider AtkFront;
+    public AudioSource AtkSound;
+    
 
     private void Awake()
     {
@@ -51,10 +53,10 @@ public class Enemy3_Attack : MonoBehaviour
 
     void CombatCountDown()
     {
-        {
-            ES.A_Attack();
-            Invoke("Effect", 1.5f);
-        }
+
+        ES.A_Attack();
+        Invoke("Effect", 1.5f);
+
     }
 
     void Effect()
@@ -73,6 +75,7 @@ public class Enemy3_Attack : MonoBehaviour
 
         TimeToAttack = Random.Range(2, 5);
 
+        AtkSound.Play();
         Invoke("CancelAtk",2);
     }
 
@@ -82,6 +85,7 @@ public class Enemy3_Attack : MonoBehaviour
         OnSlow = false;
     }
 
+  
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player" && OnSlow)

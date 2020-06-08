@@ -25,6 +25,7 @@ public class Enemy4_Attack : MonoBehaviour
 
     public BoxCollider AtkFront;
     public AudioSource AtkSound;
+  
 
     private void Awake()
     {
