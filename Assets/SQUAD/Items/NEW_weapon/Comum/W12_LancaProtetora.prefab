@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728054488695189321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.01, z: 2.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7022363930024357615}
@@ -55,8 +55,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5815952691347890960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.39}
+  m_LocalScale: {x: 0.5394203, y: 0.5394203, z: 0.5394203}
   m_Children:
   - {fileID: 6462732169406089493}
   m_Father: {fileID: 7022363930024357615}
@@ -127,16 +127,16 @@ MonoBehaviour:
   weaponID: 12
   WeaponState: 2
   Shot: {fileID: 2523460557391359712, guid: 35729ace605ab3e40aea38e468f8bcfe, type: 3}
-  Fire_Plant: 5
-  Fire_Tech: 4
-  FrameRate: 5
-  Mana: 1
+  Fire_Plant: 3
+  Fire_Tech: 3
+  FrameRate: 0.9
+  Mana: 4
   Range: 1
   Name: Protetora
   Rarity: 0
   Force: 1500
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 1467372935525168461}
   P: {fileID: 0}
   Anin: {fileID: 8789803507702351796}
   PUI: {fileID: 0}
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 87fa8352f71c57b448b3dc05876773c2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

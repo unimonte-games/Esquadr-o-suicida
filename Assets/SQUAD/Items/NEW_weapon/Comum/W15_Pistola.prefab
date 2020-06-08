@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2715802222491788702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.09, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8929524054758351417}
@@ -81,14 +81,14 @@ MonoBehaviour:
   Shot: {fileID: 5152593444442253464, guid: 526a948e1db52624c9be84e8a8216a84, type: 3}
   Fire_Plant: 2
   Fire_Tech: 2
-  FrameRate: 1
+  FrameRate: 0.3
   Mana: 1
   Range: 0.5
   Name: Pistola V2
   Rarity: 0
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 7157517999726942314}
   P: {fileID: 0}
   Anin: {fileID: 416835603906774109}
   PUI: {fileID: 0}
@@ -109,13 +109,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2b4be4eeef76663448f571ab6ab585e7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -219,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 8186383694230520096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3184539, y: 0.3184539, z: 0.3184539}
   m_Children:
   - {fileID: 1597951058582037104}
   m_Father: {fileID: 8929524054758351417}
@@ -261,12 +261,12 @@ PrefabInstance:
     - target: {fileID: 4905698755565704857, guid: 8757517e34fcec64fbef2ff46a6837e5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 4905698755565704857, guid: 8757517e34fcec64fbef2ff46a6837e5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: 4905698755565704857, guid: 8757517e34fcec64fbef2ff46a6837e5,
         type: 3}

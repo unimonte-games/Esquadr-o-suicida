@@ -48,17 +48,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponID: 9
   WeaponState: 2
-  Shot: {fileID: 2058894437066598365, guid: ed486295d6c941b47a5eeb1b273d1c43, type: 3}
-  Fire_Plant: 5
-  Fire_Tech: 5
-  FrameRate: 2
-  Mana: 2
-  Range: 0.75
+  Shot: {fileID: 4435320984722351662, guid: c3821a9db14379d4aaebeb48bcddafa8, type: 3}
+  Fire_Plant: 7
+  Fire_Tech: 3
+  FrameRate: 1
+  Mana: 4
+  Range: 0.5
   Name: Esvaziar
   Rarity: 0
   Force: 2000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 4256158441263054536}
   P: {fileID: 0}
   Anin: {fileID: 2059477438527618531}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a0980226072983546adadc640a72cd26, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 6855731112401109481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.89767, y: 0.89767, z: 0.89767}
   m_Children:
   - {fileID: 2042433375404674553}
   m_Father: {fileID: 5175441549398323406}
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9110730500726368093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: -0.016, z: 0.938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5175441549398323406}

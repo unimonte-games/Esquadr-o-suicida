@@ -51,14 +51,14 @@ MonoBehaviour:
   Shot: {fileID: 5334730298246452598, guid: 73db84a4d39510141b13a60400080f76, type: 3}
   Fire_Plant: 5
   Fire_Tech: 3
-  FrameRate: 3
-  Mana: 2
+  FrameRate: 2
+  Mana: 3
   Range: 1
   Name: Taco Toxico
   Rarity: 0
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 2589285989019744432}
   P: {fileID: 0}
   Anin: {fileID: 5065362608922143825}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a5540c6107de50f47bc17f979537754c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -218,8 +218,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7385612203952280391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0}
+  m_LocalScale: {x: 0.66271, y: 0.66271, z: 0.66271}
   m_Children:
   - {fileID: 5771106568041455607}
   m_Father: {fileID: 8381631863346100800}

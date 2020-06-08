@@ -98,15 +98,15 @@ MonoBehaviour:
   WeaponState: 3
   Shot: {fileID: 7726331053998816311, guid: a7406a703bd62db438ed5ecce488a26a, type: 3}
   Fire_Plant: 2
-  Fire_Tech: 2
-  FrameRate: 4
+  Fire_Tech: 3
+  FrameRate: 2
   Mana: 2
   Range: 0.2
   Name: Foice
   Rarity: 0
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 7929585733711447722}
   P: {fileID: 0}
   Anin: {fileID: 5085815101471987850}
   PUI: {fileID: 0}
@@ -127,13 +127,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d36cbf40432a1b14fb3e06dcebfedd24, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5048939312325154117, guid: ea5dea2238819064fbd25fb19945836b,
         type: 3}

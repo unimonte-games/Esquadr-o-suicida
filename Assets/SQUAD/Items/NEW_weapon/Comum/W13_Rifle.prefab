@@ -49,16 +49,16 @@ MonoBehaviour:
   weaponID: 13
   WeaponState: 2
   Shot: {fileID: 8045567642398569800, guid: 386efd10c8799014ea40787864612995, type: 3}
-  Fire_Plant: 1
+  Fire_Plant: 2
   Fire_Tech: 1
-  FrameRate: 0.5
+  FrameRate: 0.3
   Mana: 2
   Range: 0.5
   Name: Furador
   Rarity: 0
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 6184022181067431073}
   P: {fileID: 0}
   Anin: {fileID: 3536906513710996841}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e3a6d8b283e7c574d9445a36b0dfeee8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5258549515443076410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.24, z: 1.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 760080508502828165}
@@ -219,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 5853683385008583094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.56841, y: 0.56841, z: 0.56841}
   m_Children:
   - {fileID: 7010833047730600129}
   m_Father: {fileID: 760080508502828165}

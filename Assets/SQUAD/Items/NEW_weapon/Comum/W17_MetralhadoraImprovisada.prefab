@@ -49,16 +49,16 @@ MonoBehaviour:
   weaponID: 17
   WeaponState: 1
   Shot: {fileID: 5152593444442253464, guid: 526a948e1db52624c9be84e8a8216a84, type: 3}
-  Fire_Plant: 1
-  Fire_Tech: 1
-  FrameRate: 0.4
-  Mana: 1
+  Fire_Plant: 2
+  Fire_Tech: 2
+  FrameRate: 0.3
+  Mana: 3
   Range: 0.5
   Name: Metralha
   Rarity: 0
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 9200873751316105731}
   P: {fileID: 0}
   Anin: {fileID: 6971044787220462703}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 92a54dfe1244ebe429fff4d49fc2cb63, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 4653901943714491608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.53958, y: 0.53958, z: 0.53958}
   m_Children:
   - {fileID: 7886060185568348868}
   m_Father: {fileID: 244834092494414967}
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4811560803535844989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: -0.01, z: 0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 244834092494414967}

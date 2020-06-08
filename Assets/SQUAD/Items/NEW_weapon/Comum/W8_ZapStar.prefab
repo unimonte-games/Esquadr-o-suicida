@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2104113817141302492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8217, y: 0.8217, z: 0.8217}
   m_Children:
   - {fileID: 3940226133729492165}
   m_Father: {fileID: 6454333707263750813}
@@ -72,7 +72,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104523537957971703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.41, z: 0.938}
+  m_LocalPosition: {x: 0, y: -0.006, z: 0.759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6454333707263750813}
@@ -127,9 +127,9 @@ MonoBehaviour:
   weaponID: 8
   WeaponState: 1
   Shot: {fileID: 1929434666456823991, guid: dcf808609e506bf43bf046706d1a69b4, type: 3}
-  Fire_Plant: 3
-  Fire_Tech: 3
-  FrameRate: 1
+  Fire_Plant: 2
+  Fire_Tech: 2
+  FrameRate: 0.75
   Mana: 1
   Range: 0.75
   Name: Zap Star
@@ -157,7 +157,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c6bac025d4a82d146bef73a7c48bc9f9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0

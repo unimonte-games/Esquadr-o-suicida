@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096600920943346502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.2, z: 1.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7901145444724592447}
@@ -55,8 +55,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3253198771582715418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.42}
+  m_LocalScale: {x: 0.56261, y: 0.56261, z: 0.56261}
   m_Children:
   - {fileID: 4305691029673192476}
   m_Father: {fileID: 7901145444724592447}
@@ -128,7 +128,7 @@ MonoBehaviour:
   WeaponState: 2
   Shot: {fileID: 9090716603026920035, guid: 8add47e9913071e4eb8752f67605aacd, type: 3}
   Fire_Plant: 4
-  Fire_Tech: 4
+  Fire_Tech: 3
   FrameRate: 1
   Mana: 2
   Range: 0.7
@@ -136,7 +136,7 @@ MonoBehaviour:
   Rarity: 0
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 8631881368430683394}
   P: {fileID: 0}
   Anin: {fileID: 4698380514399474181}
   PUI: {fileID: 0}
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bda2f3df2bcb5d549a1d6fc83c923bbd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
