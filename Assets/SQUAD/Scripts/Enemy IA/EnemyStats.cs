@@ -74,7 +74,6 @@ public class EnemyStats : MonoBehaviour
     public float ImpactTime;
     public int ImpactID;
 
-
     private void Start()
     {
         
@@ -418,6 +417,7 @@ public class EnemyStats : MonoBehaviour
 
     public void A_Die()
     {
+        
         Anin.SetTrigger("isDie");
     }
 
