@@ -127,16 +127,16 @@ MonoBehaviour:
   weaponID: 45
   WeaponState: 3
   Shot: {fileID: 7571846407197800152, guid: 48a3f432bf89a4844acf0ca3a81f8f99, type: 3}
-  Fire_Plant: 4
+  Fire_Plant: 6
   Fire_Tech: 6
-  FrameRate: 8
-  Mana: 4
+  FrameRate: 0.5
+  Mana: 6
   Range: 0.2
   Name: Taco Serras
   Rarity: 1
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 241008426791690390}
   P: {fileID: 0}
   Anin: {fileID: 2053459997969867035}
   PUI: {fileID: 0}
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4171c744eaed3cf48b4a344f388a2bf0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 2661998463041628189, guid: 21b66a531a0ab2e468dca6319a82f988,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 2661998463041628189, guid: 21b66a531a0ab2e468dca6319a82f988,
         type: 3}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661998463041628189, guid: 21b66a531a0ab2e468dca6319a82f988,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7481638
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661998463041628189, guid: 21b66a531a0ab2e468dca6319a82f988,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7481638
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661998463041628189, guid: 21b66a531a0ab2e468dca6319a82f988,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7481638
       objectReference: {fileID: 0}
     - target: {fileID: 4605415315911537934, guid: 21b66a531a0ab2e468dca6319a82f988,
         type: 3}

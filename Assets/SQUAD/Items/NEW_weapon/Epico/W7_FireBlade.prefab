@@ -50,15 +50,15 @@ MonoBehaviour:
   WeaponState: 1
   Shot: {fileID: 7600860893548072833, guid: f3a4df4fedd72b049a4b069955006e33, type: 3}
   Fire_Plant: 7
-  Fire_Tech: 3
-  FrameRate: 6
-  Mana: 5
+  Fire_Tech: 4
+  FrameRate: 0.9
+  Mana: 7
   Range: 0.75
   Name: Espada de Fogo
   Rarity: 1
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 2119863705853545140}
   P: {fileID: 0}
   Anin: {fileID: 7705359066687849151}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5dfeb6f7b849d114c96e7dac0be6a471, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7694852308752408993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: -0.03, z: 2.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8067176940913912349}
@@ -261,27 +261,27 @@ PrefabInstance:
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.30454782
       objectReference: {fileID: 0}
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.42767015
       objectReference: {fileID: 0}
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.49368453
       objectReference: {fileID: 0}
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.6932708
       objectReference: {fileID: 0}
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
@@ -291,17 +291,32 @@ PrefabInstance:
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 57.622
       objectReference: {fileID: 0}
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 33.08
       objectReference: {fileID: 0}
     - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -52.357002
+      objectReference: {fileID: 0}
+    - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3060734
+      objectReference: {fileID: 0}
+    - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3060734
+      objectReference: {fileID: 0}
+    - target: {fileID: 501584759315284768, guid: 814d4d0599db32140b3714e9f4353998,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3060734
       objectReference: {fileID: 0}
     - target: {fileID: 3507923089015583027, guid: 814d4d0599db32140b3714e9f4353998,
         type: 3}

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235932039682428912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.34, z: 1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2056275803527648530}
@@ -129,14 +129,14 @@ MonoBehaviour:
   Shot: {fileID: 2768837369158763956, guid: b9f0b30a575509e419b935c316187082, type: 3}
   Fire_Plant: 1
   Fire_Tech: 1
-  FrameRate: 1
+  FrameRate: 0.9
   Mana: 7
   Range: 0.7
   Name: Fragilizar
   Rarity: 1
   Force: 1500
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 1830370861481135121}
   P: {fileID: 0}
   Anin: {fileID: 3858421365306090704}
   PUI: {fileID: 0}
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: baae791006f1a6b46a24f262e692ebc0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 891307376969860549, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.431
       objectReference: {fileID: 0}
     - target: {fileID: 891307376969860549, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
         type: 3}
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 891307376969860549, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 891307376969860549, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
         type: 3}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 891307376969860549, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7494009
+      objectReference: {fileID: 0}
+    - target: {fileID: 891307376969860549, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7494009
+      objectReference: {fileID: 0}
+    - target: {fileID: 891307376969860549, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7494009
       objectReference: {fileID: 0}
     - target: {fileID: 6363272967594882326, guid: 01df1a352cf0bbe4f8fb4a7a752ce8ab,
         type: 3}

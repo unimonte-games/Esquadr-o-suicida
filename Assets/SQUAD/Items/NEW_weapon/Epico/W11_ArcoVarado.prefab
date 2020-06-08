@@ -51,14 +51,14 @@ MonoBehaviour:
   Shot: {fileID: 7980776210203901819, guid: 4868a527c46d4774980be869bfd9710f, type: 3}
   Fire_Plant: 5
   Fire_Tech: 12
-  FrameRate: 12
-  Mana: 7
+  FrameRate: 0.9
+  Mana: 10
   Range: 0.8
   Name: Arco Varado
   Rarity: 1
   Force: 1500
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 3747307983925391787}
   P: {fileID: 0}
   Anin: {fileID: 8562722854182818196}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 506d588748a2b0c4aa726563e0c0956a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.07
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3198323830798493002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8221013396514078412}
@@ -261,12 +261,12 @@ PrefabInstance:
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
@@ -276,17 +276,17 @@ PrefabInstance:
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
@@ -301,12 +301,27 @@ PrefabInstance:
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9009442
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.693034
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078171854901407891, guid: f382caef9df14e346a368d459ce3b644,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.693034
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f382caef9df14e346a368d459ce3b644, type: 3}

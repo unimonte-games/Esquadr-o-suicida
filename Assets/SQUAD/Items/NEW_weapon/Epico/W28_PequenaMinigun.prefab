@@ -49,16 +49,16 @@ MonoBehaviour:
   weaponID: 28
   WeaponState: 2
   Shot: {fileID: 6877318822576737694, guid: b96113df6a96f7b4aa5c25f716ed6d78, type: 3}
-  Fire_Plant: 2
-  Fire_Tech: 2
+  Fire_Plant: 3
+  Fire_Tech: 3
   FrameRate: 0.5
-  Mana: 2
+  Mana: 5
   Range: 0.6
   Name: Pequena Minigun
   Rarity: 1
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 7436784426176154068}
   P: {fileID: 0}
   Anin: {fileID: 3970243304960972530}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 933171d8902c9814ea14aa7721f47291, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2518845860417220634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.19, z: 2.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5371254869919856063}
@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 2284731536493476822, guid: b6bac54c6cf45624394658b483fec399,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2284731536493476822, guid: b6bac54c6cf45624394658b483fec399,
         type: 3}
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 2284731536493476822, guid: b6bac54c6cf45624394658b483fec399,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.47
       objectReference: {fileID: 0}
     - target: {fileID: 2284731536493476822, guid: b6bac54c6cf45624394658b483fec399,
         type: 3}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284731536493476822, guid: b6bac54c6cf45624394658b483fec399,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61513
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284731536493476822, guid: b6bac54c6cf45624394658b483fec399,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.61513
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284731536493476822, guid: b6bac54c6cf45624394658b483fec399,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61513
       objectReference: {fileID: 0}
     - target: {fileID: 4665654862643022236, guid: b6bac54c6cf45624394658b483fec399,
         type: 3}

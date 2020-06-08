@@ -49,16 +49,16 @@ MonoBehaviour:
   weaponID: 27
   WeaponState: 2
   Shot: {fileID: 1716396779861600914, guid: 8f046a3f4bf6f0145b4dd860ed6e1d01, type: 3}
-  Fire_Plant: 7
-  Fire_Tech: 1
-  FrameRate: 5
-  Mana: 5
+  Fire_Plant: 9
+  Fire_Tech: 5
+  FrameRate: 1
+  Mana: 8
   Range: 5
   Name: Atordoar
   Rarity: 1
   Force: 750
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 2082337604833579378}
   P: {fileID: 0}
   Anin: {fileID: 6321283127769552043}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6c1170c1daeca5f49905e377ddecae5e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7302813701732192325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: -0, z: 1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8428016923306292525}
@@ -261,12 +261,12 @@ PrefabInstance:
     - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}
@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}
@@ -291,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6807478
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6807478
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135351281308077608, guid: 9fca701c36511374294ebc8861b37997,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6807478
       objectReference: {fileID: 0}
     - target: {fileID: 7391436532435313153, guid: 9fca701c36511374294ebc8861b37997,
         type: 3}

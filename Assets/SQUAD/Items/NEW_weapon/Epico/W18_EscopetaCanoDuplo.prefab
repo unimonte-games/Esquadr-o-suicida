@@ -51,14 +51,14 @@ MonoBehaviour:
   Shot: {fileID: 424987067645736760, guid: 3dee093444c8fc34cba29e86897763ce, type: 3}
   Fire_Plant: 8
   Fire_Tech: 9
-  FrameRate: 10
-  Mana: 6
+  FrameRate: 0.7
+  Mana: 7
   Range: 0.5
   Name: Cano Duplo
   Rarity: 1
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 70538558417236355}
   P: {fileID: 0}
   Anin: {fileID: 945561565615478746}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1d0277a1d6c1c7042a3e993fb29fbdd5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5682463918669668282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1070484061936144626}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158402906606824383, guid: 11d34e748a5636144a658aec0c968bbf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158402906606824383, guid: 11d34e748a5636144a658aec0c968bbf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158402906606824383, guid: 11d34e748a5636144a658aec0c968bbf,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.843
       objectReference: {fileID: 0}
     - target: {fileID: 7437194026881297166, guid: 11d34e748a5636144a658aec0c968bbf,
         type: 3}

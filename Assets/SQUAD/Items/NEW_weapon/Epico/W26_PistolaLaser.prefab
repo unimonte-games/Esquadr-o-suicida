@@ -51,14 +51,14 @@ MonoBehaviour:
   Shot: {fileID: 5193505480959320580, guid: baed224328466544d92c98238b0c1cff, type: 3}
   Fire_Plant: 5
   Fire_Tech: 5
-  FrameRate: 3
+  FrameRate: 0.5
   Mana: 5
-  Range: 0.5
+  Range: 0.9
   Name: Pistola Energica
   Rarity: 1
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 4054269040599265088}
   P: {fileID: 0}
   Anin: {fileID: 7715933242180609305}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9b09a06cffb357541a6246ef7950aa18, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5669149249665033589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2565742220934732663}
@@ -261,12 +261,12 @@ PrefabInstance:
     - target: {fileID: 3708486602221748386, guid: 6f929980c1d509a4c9fa20e7901a0b7e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3708486602221748386, guid: 6f929980c1d509a4c9fa20e7901a0b7e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3708486602221748386, guid: 6f929980c1d509a4c9fa20e7901a0b7e,
         type: 3}
@@ -307,6 +307,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708486602221748386, guid: 6f929980c1d509a4c9fa20e7901a0b7e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5695059
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708486602221748386, guid: 6f929980c1d509a4c9fa20e7901a0b7e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5695059
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708486602221748386, guid: 6f929980c1d509a4c9fa20e7901a0b7e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5695059
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f929980c1d509a4c9fa20e7901a0b7e, type: 3}

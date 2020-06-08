@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2928489720802286553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7552456099005682389}
@@ -81,14 +81,14 @@ MonoBehaviour:
   Shot: {fileID: 8148885304652197787, guid: 1e50544e1782386479099cc572ef7ca5, type: 3}
   Fire_Plant: 3
   Fire_Tech: 6
-  FrameRate: 1
-  Mana: 4
+  FrameRate: 0.7
+  Mana: 5
   Range: 5
   Name: Diga X
   Rarity: 1
   Force: 1200
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 362747549747161902}
   P: {fileID: 0}
   Anin: {fileID: 7617862233772152927}
   PUI: {fileID: 0}
@@ -109,13 +109,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: be86235a629719f46be58122ef54bd1c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.856
       objectReference: {fileID: 0}
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
@@ -266,22 +266,22 @@ PrefabInstance:
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.71455914
       objectReference: {fileID: 0}
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.699575
       objectReference: {fileID: 0}
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
@@ -296,12 +296,27 @@ PrefabInstance:
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 91.214005
       objectReference: {fileID: 0}
     - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4245615
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4245615
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667814683416138802, guid: e8fff01ed9515f6479ad4ee8122ad40e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4245615
       objectReference: {fileID: 0}
     - target: {fileID: 8913059618780414957, guid: e8fff01ed9515f6479ad4ee8122ad40e,
         type: 3}

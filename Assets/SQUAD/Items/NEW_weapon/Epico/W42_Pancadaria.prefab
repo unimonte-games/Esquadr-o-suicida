@@ -51,14 +51,14 @@ MonoBehaviour:
   Shot: {fileID: 2558796506469756474, guid: 130db31687400b74185731f82366e2d5, type: 3}
   Fire_Plant: 4
   Fire_Tech: 4
-  FrameRate: 6
+  FrameRate: 0.9
   Mana: 2
   Range: 1
   Name: Pancadaria
   Rarity: 1
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 8352318886874473745}
   P: {fileID: 0}
   Anin: {fileID: 7664493712006674935}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 66e1814275ff6a24e948959b51ea246a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4978950036175845580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.41, z: 0.938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7013857165814340782}
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 3385984227838581544, guid: f19fe3983b674cc4d8e873993ddd3887,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 3385984227838581544, guid: f19fe3983b674cc4d8e873993ddd3887,
         type: 3}
@@ -307,6 +307,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385984227838581544, guid: f19fe3983b674cc4d8e873993ddd3887,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.39367336
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385984227838581544, guid: f19fe3983b674cc4d8e873993ddd3887,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39367336
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385984227838581544, guid: f19fe3983b674cc4d8e873993ddd3887,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.39367336
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19fe3983b674cc4d8e873993ddd3887, type: 3}
