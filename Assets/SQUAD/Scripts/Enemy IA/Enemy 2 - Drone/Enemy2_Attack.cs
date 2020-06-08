@@ -16,8 +16,8 @@ public class Enemy2_Attack : MonoBehaviour
     public GameObject Eff;
     public float Force;
     public float TimeToAttack;
+    public AudioSource AtkSound;
 
-  
     private void OnEnable()
     {
         InvokeRepeating("CombatCountDown", 1, TimeToAttack);
@@ -30,17 +30,17 @@ public class Enemy2_Attack : MonoBehaviour
 
     void CombatCountDown()
     {
-        
-            ES.A_Attack();
 
-            GameObject E = Instantiate(Eff, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
-            E.transform.parent = Spawn;
+        ES.A_Attack();
+        AtkSound.Play();
+        GameObject E = Instantiate(Eff, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
+        E.transform.parent = Spawn;
 
-            GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
-            bullet1.GetComponent<Rigidbody>().AddForce(Spawn.transform.forward * Force);
-            bullet1.GetComponent<EnemyHit>().dano = Dano;
-            bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
-        
+        GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
+        bullet1.GetComponent<Rigidbody>().AddForce(Spawn.transform.forward * Force);
+        bullet1.GetComponent<EnemyHit>().dano = Dano;
+        bullet1.GetComponent<EnemyHit>().timeToDestroy = 2;
+
     }
     
 
