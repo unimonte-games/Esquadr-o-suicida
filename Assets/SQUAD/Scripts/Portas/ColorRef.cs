@@ -7,11 +7,21 @@ public class ColorRef : MonoBehaviour
     public Porta_Color P;
     public bool ColorPlayer; //true = Player 1, false = Player 2
 
+    public GameObject[] Colors;
+
     LevelController LC;
 
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
+        if (ColorPlayer)
+        {
+            Colors[LC.Player1Color].SetActive(true);
+        }
+        else
+        {
+            Colors[LC.Player2Color].SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

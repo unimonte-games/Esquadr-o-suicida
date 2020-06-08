@@ -24,6 +24,7 @@ public class Enemy4_Attack : MonoBehaviour
     public bool OnStun;
 
     public BoxCollider AtkFront;
+    public AudioSource AtkSound;
 
     private void Awake()
     {
@@ -62,11 +63,12 @@ public class Enemy4_Attack : MonoBehaviour
             EffectTime = Random.Range(0, 5);
 
             OnStun = true;
-            Debug.Log("Stun Aplicado!");
         }
 
         TimeToAttack = Random.Range(2, 5);
 
+
+        AtkSound.Play();
         Invoke("CancelAtk", 2);
     }
 
