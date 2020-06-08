@@ -5,11 +5,13 @@ using UnityEngine;
 public class GolemArea : MonoBehaviour
 {
    
-    public Animation AreaShot;
+    
+    public AudioSource AtkSound;
 
     private void OnEnable()
     {
-        AreaShot.Play("AreaGolem");
+        
+        AtkSound.Play();
     }
 
     

@@ -13,7 +13,6 @@ public class Enemy8_Golem : MonoBehaviour
     public GameObject Area;
 
     public EnemyStats ES;
- 
 
     public float TimeToAttack;
     
@@ -30,7 +29,6 @@ public class Enemy8_Golem : MonoBehaviour
 
     void CombatCountDown()
     {
-
         TimeToAttack = Random.Range(15,20);
         if (!OnAttack)
         {
@@ -38,7 +36,6 @@ public class Enemy8_Golem : MonoBehaviour
             ES.A_Attack();
             Invoke("Cancel", 10);
         }
-
 
     }
 

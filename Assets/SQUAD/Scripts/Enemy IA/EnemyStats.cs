@@ -60,6 +60,7 @@ public class EnemyStats : MonoBehaviour
     public bool Golem;
     public GameObject[] ItemSecreto;
 
+
     public float SizeLife;
     bool S;
 
