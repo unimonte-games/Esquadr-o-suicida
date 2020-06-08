@@ -97,8 +97,8 @@ MonoBehaviour:
   weaponID: 55
   WeaponState: 2
   Shot: {fileID: 5544687200898085074, guid: f0fbce930f1f7ae42be3b83ec6a2b502, type: 3}
-  Fire_Plant: 6
-  Fire_Tech: 7
+  Fire_Plant: 12
+  Fire_Tech: 9
   FrameRate: 0.5
   Mana: 0
   Range: 1
@@ -106,13 +106,13 @@ MonoBehaviour:
   Rarity: 5
   Force: 1700
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 9064909754379109421}
   P: {fileID: 0}
   Anin: {fileID: 3028972571632901249}
   PUI: {fileID: 0}
   Punch: 0
   Tech: 1
-  Limit: 200
+  Limit: 100
   DontFire: 0
   Gatilho_Sound: {fileID: 2394588309397309637}
 --- !u!82 &2394588309397309637
@@ -126,14 +126,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2ed80a9b7a29ada4c9407252a3aa4ebe, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7517826828898506304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.359, z: 1.829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 637716182880351855}
@@ -266,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 8562873584280047751, guid: 92569eb5bdbd8f94f942d54a3dbbd219,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.104
       objectReference: {fileID: 0}
     - target: {fileID: 8562873584280047751, guid: 92569eb5bdbd8f94f942d54a3dbbd219,
         type: 3}
@@ -307,6 +307,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562873584280047751, guid: 92569eb5bdbd8f94f942d54a3dbbd219,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.721033
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562873584280047751, guid: 92569eb5bdbd8f94f942d54a3dbbd219,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.721033
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562873584280047751, guid: 92569eb5bdbd8f94f942d54a3dbbd219,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.721033
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92569eb5bdbd8f94f942d54a3dbbd219, type: 3}

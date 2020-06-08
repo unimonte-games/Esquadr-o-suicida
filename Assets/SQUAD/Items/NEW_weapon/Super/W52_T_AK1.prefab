@@ -49,8 +49,8 @@ MonoBehaviour:
   weaponID: 52
   WeaponState: 1
   Shot: {fileID: 2519993067281481500, guid: 28487fef6d8db6e43a31a335557b23d9, type: 3}
-  Fire_Plant: 1
-  Fire_Tech: 2
+  Fire_Plant: 3
+  Fire_Tech: 4
   FrameRate: 0.4
   Mana: 0
   Range: 0.9
@@ -58,13 +58,13 @@ MonoBehaviour:
   Rarity: 5
   Force: 1500
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 7862064732304982347}
   P: {fileID: 0}
   Anin: {fileID: 6732011047433475885}
   PUI: {fileID: 0}
   Punch: 0
   Tech: 1
-  Limit: 750
+  Limit: 125
   DontFire: 0
   Gatilho_Sound: {fileID: 1851260088317216646}
 --- !u!82 &1851260088317216646
@@ -78,14 +78,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a396caea6df63fd4198329c082d3601f, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7813913944414303609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.098, z: 0.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7788560948616259300}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681085215815011805, guid: fb739c59058d0634aa6b9da1bf0ce851,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.7320824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681085215815011805, guid: fb739c59058d0634aa6b9da1bf0ce851,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.7320824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681085215815011805, guid: fb739c59058d0634aa6b9da1bf0ce851,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.7320824
       objectReference: {fileID: 0}
     - target: {fileID: 3681085215815438845, guid: fb739c59058d0634aa6b9da1bf0ce851,
         type: 3}

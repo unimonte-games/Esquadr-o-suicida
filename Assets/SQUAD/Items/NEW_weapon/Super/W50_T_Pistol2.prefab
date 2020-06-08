@@ -97,22 +97,22 @@ MonoBehaviour:
   weaponID: 50
   WeaponState: 1
   Shot: {fileID: 116725567806203418, guid: f74d222f5a91c5545b7b54eda9acf929, type: 3}
-  Fire_Plant: 2
-  Fire_Tech: 3
-  FrameRate: 1
+  Fire_Plant: 6
+  Fire_Tech: 5
+  FrameRate: 0.3
   Mana: 0
   Range: 0.5
   Name: P-33F
   Rarity: 5
   Force: 1500
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 611799713295993381}
   P: {fileID: 0}
   Anin: {fileID: 8256479072247624580}
   PUI: {fileID: 0}
   Punch: 0
   Tech: 1
-  Limit: 150
+  Limit: 100
   DontFire: 0
   Gatilho_Sound: {fileID: 4081117085744053549}
 --- !u!82 &4081117085744053549
@@ -126,14 +126,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9dd947c7570eb3a4289a655738243f68, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4248262802394394929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.228, z: 0.608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6093028867648304337}
@@ -307,6 +307,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556154564074111945, guid: c8a3dba81f43c3e4fa11ad5a03be954a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.570818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556154564074111945, guid: c8a3dba81f43c3e4fa11ad5a03be954a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.570818
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556154564074111945, guid: c8a3dba81f43c3e4fa11ad5a03be954a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.570818
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8a3dba81f43c3e4fa11ad5a03be954a, type: 3}

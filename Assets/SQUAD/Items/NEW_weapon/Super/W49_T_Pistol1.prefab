@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2324486481158938380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.263, z: 0.851}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2324486482701254597}
@@ -127,22 +127,22 @@ MonoBehaviour:
   weaponID: 49
   WeaponState: 1
   Shot: {fileID: 569828620334855524, guid: 360df71f4593dc546929400731ed79ec, type: 3}
-  Fire_Plant: 1
-  Fire_Tech: 1
-  FrameRate: 1
+  Fire_Plant: 5
+  Fire_Tech: 7
+  FrameRate: 0.5
   Mana: 0
   Range: 0.5
   Name: P-27A
   Rarity: 5
   Force: 1500
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 2324486481158938381}
   P: {fileID: 0}
   Anin: {fileID: 2324486481780451347}
   PUI: {fileID: 0}
   Punch: 0
   Tech: 1
-  Limit: 100
+  Limit: 75
   DontFire: 0
   Gatilho_Sound: {fileID: 1456516412078286485}
 --- !u!82 &1456516412078286485
@@ -156,14 +156,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9dd947c7570eb3a4289a655738243f68, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146089481597091337, guid: 1116fd1315d843942bedb5a0bc7af4c8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.512817
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146089481597091337, guid: 1116fd1315d843942bedb5a0bc7af4c8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.512817
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146089481597091337, guid: 1116fd1315d843942bedb5a0bc7af4c8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.512817
       objectReference: {fileID: 0}
     - target: {fileID: 6146089481597116969, guid: 1116fd1315d843942bedb5a0bc7af4c8,
         type: 3}
