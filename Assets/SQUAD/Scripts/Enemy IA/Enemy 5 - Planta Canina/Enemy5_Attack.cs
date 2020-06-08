@@ -17,6 +17,8 @@ public class Enemy5_Attack : MonoBehaviour
     public Transform Spawn;
     public int TimeToDestroy;
 
+    public AudioSource AtkSound;
+
     private void Awake()
     {
         Dano = Random.Range(dano_min, dano_max);
@@ -26,6 +28,7 @@ public class Enemy5_Attack : MonoBehaviour
     private void OnEnable()
     {
         ES.A_Attack();
+        AtkSound.Play();
 
         Invoke("Effect", 1);
 
@@ -38,6 +41,8 @@ public class Enemy5_Attack : MonoBehaviour
 
     void Effect()
     {
+        
+
         GameObject bullet1 = Instantiate(Shot, Spawn.position, Quaternion.identity) as GameObject;
         bullet1.GetComponent<EnemyHit>().dano = Dano;
         bullet1.GetComponent<EnemyHit>().timeToDestroy = TimeToDestroy;

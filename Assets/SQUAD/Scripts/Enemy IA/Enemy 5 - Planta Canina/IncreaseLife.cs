@@ -8,6 +8,13 @@ public class IncreaseLife : MonoBehaviour
     public int LifeAdd;
     bool Add;
 
+    public AudioSource AtkSound;
+
+    private void OnEnable()
+    {
+        AtkSound.Play();
+    }
+
     private void Start()
     {
         Add = false;
