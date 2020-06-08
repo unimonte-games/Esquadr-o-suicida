@@ -137,7 +137,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335941486380849260}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.509348, y: 5.104718, z: 2.214228}
@@ -191,7 +191,10 @@ MonoBehaviour:
   RoboElite: 0
   E7: {fileID: 0}
   Golem: 1
-  ItemSecreto: []
+  ItemSecreto:
+  - {fileID: 1702425150937519222, guid: 6e1eaccb6e73e2148965d3fd68f52ad2, type: 3}
+  - {fileID: 5352377246139370415, guid: 2a4b32e5830bff446bdef10bfe9c60e3, type: 3}
+  - {fileID: 7357198564361017166, guid: 4976a40df1abe9d40bf8e476526acfe6, type: 3}
   SizeLife: 0
   Anin: {fileID: 3619307255598414542}
   rb: {fileID: 0}
