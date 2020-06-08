@@ -48,17 +48,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponID: 30
   WeaponState: 2
-  Shot: {fileID: 8461089254022334363, guid: f4024c174317c804b999f581ccf20903, type: 3}
-  Fire_Plant: 3
-  Fire_Tech: 3
-  FrameRate: 7
-  Mana: 7
+  Shot: {fileID: 2169506667674744952, guid: db0477b1b86c8144fa9087c16e9e8bb9, type: 3}
+  Fire_Plant: 5
+  Fire_Tech: 7
+  FrameRate: 0.9
+  Mana: 12
   Range: 0.8
   Name: Imperador
   Rarity: 2
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 4472938982446021476}
   P: {fileID: 0}
   Anin: {fileID: 7151159899409877437}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 98a1bcde9be8d7f49932e4434156e9d2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6784933934236614118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.05, z: 1.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5681954067306013149}
@@ -266,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 9134629108452777109, guid: db317cfbaf6b05d4ab2f4b5283bdb514,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 9134629108452777109, guid: db317cfbaf6b05d4ab2f4b5283bdb514,
         type: 3}
@@ -307,6 +307,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134629108452777109, guid: db317cfbaf6b05d4ab2f4b5283bdb514,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.70006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134629108452777109, guid: db317cfbaf6b05d4ab2f4b5283bdb514,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.70006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134629108452777109, guid: db317cfbaf6b05d4ab2f4b5283bdb514,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.70006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db317cfbaf6b05d4ab2f4b5283bdb514, type: 3}

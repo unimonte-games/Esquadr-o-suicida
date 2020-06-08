@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149106423536384836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.03, z: 2.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2293449155250936898}
@@ -79,16 +79,16 @@ MonoBehaviour:
   weaponID: 3
   WeaponState: 2
   Shot: {fileID: 8045567642398569800, guid: 386efd10c8799014ea40787864612995, type: 3}
-  Fire_Plant: 1
-  Fire_Tech: 1
+  Fire_Plant: 3
+  Fire_Tech: 3
   FrameRate: 0.5
-  Mana: 2
+  Mana: 7
   Range: 1.25
   Name: Bruce
   Rarity: 2
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 6076180267476899922}
   P: {fileID: 0}
   Anin: {fileID: 3452373267698933921}
   PUI: {fileID: 0}
@@ -109,13 +109,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a9abcf452c3bce94ab2c810867bf6641, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -261,27 +261,27 @@ PrefabInstance:
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.5565652
       objectReference: {fileID: 0}
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.43615955
       objectReference: {fileID: 0}
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.43615955
       objectReference: {fileID: 0}
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5565652
       objectReference: {fileID: 0}
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
@@ -291,17 +291,32 @@ PrefabInstance:
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 166.169
       objectReference: {fileID: 0}
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.69649
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.69649
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045050877710402252, guid: 2f991e4eb98205344a239ad0024f807d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.69649
       objectReference: {fileID: 0}
     - target: {fileID: 5291759560269268488, guid: 2f991e4eb98205344a239ad0024f807d,
         type: 3}

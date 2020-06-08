@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4491874306173084040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.01, z: 2.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1649563535681973495}
@@ -79,16 +79,16 @@ MonoBehaviour:
   weaponID: 3
   WeaponState: 1
   Shot: {fileID: 3858667349212939923, guid: 5ecdbf326e48c9a43b7b5f5a08fe02f9, type: 3}
-  Fire_Plant: 10
+  Fire_Plant: 11
   Fire_Tech: 10
-  FrameRate: 7
-  Mana: 10
+  FrameRate: 1
+  Mana: 15
   Range: 7
   Name: Cetro da Floresta
   Rarity: 2
   Force: 500
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 708656037870426316}
   P: {fileID: 0}
   Anin: {fileID: 4249259940785711779}
   PUI: {fileID: 0}
@@ -109,13 +109,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 23b4393dbd6cdc84aaed266f4321f62b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -266,22 +266,22 @@ PrefabInstance:
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.53611076
       objectReference: {fileID: 0}
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.46106973
       objectReference: {fileID: 0}
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.46106973
       objectReference: {fileID: 0}
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.53611076
       objectReference: {fileID: 0}
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
@@ -291,17 +291,32 @@ PrefabInstance:
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 8.607
       objectReference: {fileID: 0}
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90.00001
       objectReference: {fileID: 0}
     - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.48529127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.48529127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103579719178430114, guid: 8750817df14b17f4d87490983f0c32e3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.48529127
       objectReference: {fileID: 0}
     - target: {fileID: 7337610087340227623, guid: 8750817df14b17f4d87490983f0c32e3,
         type: 3}

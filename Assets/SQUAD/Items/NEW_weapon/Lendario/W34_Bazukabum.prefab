@@ -72,7 +72,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948065964962976641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.19, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4121266738570347777}
@@ -125,18 +125,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 34
-  WeaponState: 2
-  Shot: {fileID: 8439504177526392155, guid: ad5d549a9a435d9488c4c2f20d1cd797, type: 3}
+  WeaponState: 1
+  Shot: {fileID: 4306691006851308301, guid: 4617e096553ae3f4f9ea488ffd3a9064, type: 3}
   Fire_Plant: 15
   Fire_Tech: 21
-  FrameRate: 15
-  Mana: 15
+  FrameRate: 1.1
+  Mana: 25
   Range: 1
   Name: Bazukabum
   Rarity: 2
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 1926459276420297291}
   P: {fileID: 0}
   Anin: {fileID: 6084671914517239258}
   PUI: {fileID: 0}
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8a5b0ca2d8d396b4e9cd32feb269fad7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 6478973613480278426, guid: f6f21553d86a5ea41ae065440f075531,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 6478973613480278426, guid: f6f21553d86a5ea41ae065440f075531,
         type: 3}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478973613480278426, guid: f6f21553d86a5ea41ae065440f075531,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.39187735
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478973613480278426, guid: f6f21553d86a5ea41ae065440f075531,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39187735
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478973613480278426, guid: f6f21553d86a5ea41ae065440f075531,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.39187735
       objectReference: {fileID: 0}
     - target: {fileID: 8433712003472357892, guid: f6f21553d86a5ea41ae065440f075531,
         type: 3}

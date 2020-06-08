@@ -127,16 +127,16 @@ MonoBehaviour:
   weaponID: 47
   WeaponState: 3
   Shot: {fileID: 4038469381232261025, guid: 58bcccb312fdb4d4099867f599fa7239, type: 3}
-  Fire_Plant: 7
-  Fire_Tech: 7
-  FrameRate: 10
-  Mana: 10
+  Fire_Plant: 12
+  Fire_Tech: 15
+  FrameRate: 1
+  Mana: 17
   Range: 3
   Name: Martelo Terremoto
   Rarity: 2
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 7667769253887325034}
   P: {fileID: 0}
   Anin: {fileID: 4556539731564040672}
   PUI: {fileID: 0}
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 412ee975470fde342a4b5e37bae65bb9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -271,22 +271,22 @@ PrefabInstance:
     - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7239744
       objectReference: {fileID: 0}
     - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.68982685
       objectReference: {fileID: 0}
     - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
         type: 3}
@@ -301,12 +301,27 @@ PrefabInstance:
     - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 92.767006
       objectReference: {fileID: 0}
     - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8827894
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8827894
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762454794181805353, guid: 2c9776115fb63d44bbe98d72321c0ebd,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8827894
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c9776115fb63d44bbe98d72321c0ebd, type: 3}

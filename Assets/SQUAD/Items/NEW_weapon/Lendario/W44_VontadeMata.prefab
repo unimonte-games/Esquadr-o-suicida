@@ -127,16 +127,16 @@ MonoBehaviour:
   weaponID: 44
   WeaponState: 3
   Shot: {fileID: 9030934137008114152, guid: a75b2d50eb7e6624cb53a34c1918c81d, type: 3}
-  Fire_Plant: 5
-  Fire_Tech: 4
-  FrameRate: 2
-  Mana: 3
+  Fire_Plant: 9
+  Fire_Tech: 8
+  FrameRate: 0.9
+  Mana: 9
   Range: 5
   Name: Vontade da Mata
   Rarity: 2
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 8540528915593564972}
   P: {fileID: 0}
   Anin: {fileID: 7012472397361026838}
   PUI: {fileID: 0}
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3127503594990424da03970a9ed55087, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 8070640103191382355, guid: 28cdc796d3eb4df49b8b680c43370d13,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 8070640103191382355, guid: 28cdc796d3eb4df49b8b680c43370d13,
         type: 3}
@@ -302,6 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070640103191382355, guid: 28cdc796d3eb4df49b8b680c43370d13,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7894447
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070640103191382355, guid: 28cdc796d3eb4df49b8b680c43370d13,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7894447
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070640103191382355, guid: 28cdc796d3eb4df49b8b680c43370d13,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7894447
       objectReference: {fileID: 0}
     - target: {fileID: 9199598525751441921, guid: 28cdc796d3eb4df49b8b680c43370d13,
         type: 3}

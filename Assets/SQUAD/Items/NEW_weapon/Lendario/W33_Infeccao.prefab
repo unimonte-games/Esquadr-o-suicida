@@ -48,17 +48,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponID: 33
   WeaponState: 2
-  Shot: {fileID: 7041464101709348154, guid: 9814c56a3849be5458be36a4286483bc, type: 3}
-  Fire_Plant: 7
-  Fire_Tech: 7
-  FrameRate: 1
+  Shot: {fileID: 104628878477824850, guid: 9ca2ee8de35d9974aa4012d7ef4c3702, type: 3}
+  Fire_Plant: 9
+  Fire_Tech: 5
+  FrameRate: 0.5
   Mana: 12
   Range: 2
   Name: "Infec\xE7ao"
   Rarity: 2
   Force: 1000
   Gatilho: 0
-  spawnShot: {fileID: 0}
+  spawnShot: {fileID: 2833648897149269066}
   P: {fileID: 0}
   Anin: {fileID: 5952072863034432896}
   PUI: {fileID: 0}
@@ -79,13 +79,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d8349d9d0204a03438c32280d15912c9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -226,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2833648897149269066
 Transform:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8207072513268566320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0.938}
+  m_LocalPosition: {x: 0, y: 0.21, z: 1.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5258383789678936625}
@@ -261,12 +261,12 @@ PrefabInstance:
     - target: {fileID: 7563570716759403874, guid: 9022406ec903f2346ba07351c42a65d3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 7563570716759403874, guid: 9022406ec903f2346ba07351c42a65d3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 7563570716759403874, guid: 9022406ec903f2346ba07351c42a65d3,
         type: 3}
@@ -307,6 +307,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563570716759403874, guid: 9022406ec903f2346ba07351c42a65d3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.50364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563570716759403874, guid: 9022406ec903f2346ba07351c42a65d3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.50364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563570716759403874, guid: 9022406ec903f2346ba07351c42a65d3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.50364
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9022406ec903f2346ba07351c42a65d3, type: 3}
