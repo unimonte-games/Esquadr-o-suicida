@@ -30,10 +30,12 @@ public class W_Default : MonoBehaviour
         PUI = FindObjectOfType<PlayerUI>();
     }
 
-    void Start()
+    private void OnEnable()
     {
         Gatilho = P.Gatilho;
     }
+
+    
     private void FixedUpdate()
     {
         countToShoting += 0.1f;
