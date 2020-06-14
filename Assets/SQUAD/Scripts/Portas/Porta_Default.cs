@@ -504,9 +504,9 @@ public class Porta_Default : MonoBehaviour
                     player1.playerWeapon.enabled = false;
 
                     GameObject R = Instantiate(Raiz, player1.Rescue_Object.position, player1.Rescue_Object.rotation) as GameObject;
-                   
                     player1.SA = R.GetComponent<SurpriseAttack>();
-                    player2.SA = R.GetComponent<SurpriseAttack>();
+
+                    
                     SetRaiz = R;
 
                     player1.SA.Player1 = true;
@@ -524,8 +524,6 @@ public class Porta_Default : MonoBehaviour
                     player2.playerWeapon.enabled = false;
 
                     GameObject R = Instantiate(Raiz, player2.Rescue_Object.position, player2.Rescue_Object.rotation) as GameObject;
-                    
-                    player1.SA = R.GetComponent<SurpriseAttack>();
                     player2.SA = R.GetComponent<SurpriseAttack>();
                     SetRaiz = R;
 

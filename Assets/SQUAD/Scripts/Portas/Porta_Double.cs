@@ -22,6 +22,8 @@ public class Porta_Double : MonoBehaviour
 
     LevelController LC;
 
+    public GameObject DoubleColor;
+
     void Start()
     {
         LC = FindObjectOfType<LevelController>();
@@ -62,6 +64,8 @@ public class Porta_Double : MonoBehaviour
                         IsOpen = true;
                         Door.SetActive(false);
                         cameraTarget.targets[2] = cameraTarget.targets[1];
+
+                        DoubleColor.SetActive(false);
                         RoomControl.CompleteRoom(2);
 
                     }  

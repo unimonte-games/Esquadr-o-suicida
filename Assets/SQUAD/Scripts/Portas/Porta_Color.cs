@@ -23,7 +23,7 @@ public class Porta_Color : MonoBehaviour
     public bool P1_ColorA, P2_ColorB, LastChance, IsOpen;
     float timeToAdd, timeToCancel;
 
-    
+    public GameObject ColorArea;
     void Start()
     {
    
@@ -58,6 +58,9 @@ public class Porta_Color : MonoBehaviour
                         IsOpen = true;
                         Door.SetActive(false);
                         cameraTarget.targets[2] = cameraTarget.targets[1];
+
+                        ColorArea.SetActive(false);
+
                         RoomControl.CompleteRoom(1);
 
 
