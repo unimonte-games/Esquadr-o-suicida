@@ -550,6 +550,8 @@ public class Player : MonoBehaviour
             LC.P1_inRoom = false;
             LC.P1_dead = true;
 
+            DUB_Ed.SetDerrota();
+
             if (PD.Rescue)
             {
                 if (PD.player2 != null)
@@ -584,6 +586,8 @@ public class Player : MonoBehaviour
         {
             LC.P2_inRoom = false;
             LC.P2_dead = true;
+
+            DUB_Nix.SetDerrota();
 
             if (PD.Rescue)
             {

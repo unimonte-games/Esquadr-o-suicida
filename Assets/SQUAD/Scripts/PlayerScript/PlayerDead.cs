@@ -27,14 +27,12 @@ public class PlayerDead : MonoBehaviour
 
         if (other.gameObject.name == "Player1" && P2_dead && !isVoice)
         {
-            DUB_ED.SetAmigoMorto();
-            isVoice = true;
+            Invoke("DUB", 5);
         }
 
         if (other.gameObject.name == "Player2" && P1_dead && !isVoice)
         {
-            DUB_NIX.SetAmigoMorto();
-            isVoice = true;
+            Invoke("DUB", 5);
         }
 
 
@@ -42,5 +40,19 @@ public class PlayerDead : MonoBehaviour
     void Cancel()
     {
         SC.enabled = false;
+    }
+
+    void DUB()
+    {
+        isVoice = true;
+        if (P2_dead)
+        {
+            DUB_ED.SetAmigoMorto();
+        }
+        
+        if(P1_dead)
+        {
+            DUB_NIX.SetAmigoMorto();
+        }
     }
 }

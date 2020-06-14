@@ -61,4 +61,21 @@ public class DUBSystemNix : MonoBehaviour
 
     }
 
+    public void SetDerrota()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 25)
+            {
+                int V_Audio = Random.Range(0, 4);
+                SetVoice(Derrotado[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+
+    }
+
 }
