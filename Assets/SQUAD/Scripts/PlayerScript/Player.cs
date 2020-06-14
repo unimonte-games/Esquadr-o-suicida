@@ -399,17 +399,6 @@ public class Player : MonoBehaviour
             Debug.Log("Soltou Objeto");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4) && PlayerType)
-        {
-            Invoke("PlayerIsDead", 3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5) && !PlayerType)
-        {
-            Invoke("PlayerIsDead", 3);
-        }
-
-        
-
     }
 
     public void SetNewKey()

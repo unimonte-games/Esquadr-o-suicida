@@ -17,7 +17,7 @@ public class UI : MonoBehaviour
         {
             MapAtived = true;
             Map.SetActive(true);
-            Invoke("CancelAuto", 1);
+            Invoke("CancelAuto", 3);
 
         }
     }

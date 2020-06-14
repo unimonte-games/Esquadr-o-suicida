@@ -253,11 +253,23 @@ public class RoomController : MonoBehaviour
 
             Invoke("OnBauController", 3);
             Debug.Log("Room Clean!");
+
+            Invoke("CancelMissions", 5);
+
+            
         }
     }
 
     void OnBauController()
     {
         BauC.SetActive(true);
+
     }
+
+    void CancelMissions()
+    {
+        PUI.CancelRoomCleanInterface();
+    }
+
+    
 }

@@ -24,7 +24,7 @@ public class ConnectorRoom : MonoBehaviour
     bool P2_inArea;
 
     LevelController LC;
-
+    PlayerUI PUI;
 
     private void Awake()
     {
@@ -33,6 +33,7 @@ public class ConnectorRoom : MonoBehaviour
 
     private void Start()
     {
+        PUI = FindObjectOfType<PlayerUI>();
         ThisBox = GetComponent<BoxCollider>();
         Invoke("CancelThis",1);
     }
@@ -48,7 +49,9 @@ public class ConnectorRoom : MonoBehaviour
         if (Input.GetKeyDown(First) && !Next && P1_inArea && P2_inArea)
         {
             Next = true;
-            Invoke("NextRoom", 1);
+
+            PUI.NextRoomUI();
+            Invoke("NextRoom",1);
         }
 
         if (CompleteKeyOpenFirst)

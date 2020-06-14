@@ -119,7 +119,6 @@ public class PlayerUI : MonoBehaviour
     public GameObject P2_target;
 
     public GameObject roomClean;
-    public GameObject startRoom;
 
     public Sprite[] GroundColor;
     public Sprite[] BaloonColor;
@@ -146,6 +145,9 @@ public class PlayerUI : MonoBehaviour
     public Sprite[] ProtectColors;
     public Image ProtectIcon;
 
+    public Animation MapChangeRoom;
+
+    public GameObject[] LevelUI;
 
     WeaponList WL;
     LevelController LC;
@@ -157,9 +159,11 @@ public class PlayerUI : MonoBehaviour
         WL = FindObjectOfType<WeaponList>();
         LC = FindObjectOfType<LevelController>();
     }
+
     private void Start()
     {
-        
+        MapChangeRoom.Play("NewRoom");
+        LevelUI[LC.Level].SetActive(true); 
     }
 
     public void ChangeLife(bool Player, float Life, float LifeMax, float Size)
@@ -709,17 +713,6 @@ public class PlayerUI : MonoBehaviour
         roomClean.SetActive(false);
     }
 
-    void CancelStartRoom()
-    {
-        startRoom.SetActive(false);
-    }
-
-    public void StartRoom()
-    {
-        startRoom.SetActive(true);
-        Invoke("CancelStartRoom", 2);
-    }
-
     public void CancelAllSurpriseWaves()
     {
         S_wave.SetActive(false);
@@ -816,6 +809,29 @@ public class PlayerUI : MonoBehaviour
         M_EncerrarNivel_Complete.SetActive(true);
     }
 
+    public void CancelRoomCleanInterface()
+    {
+        AM_Door.Play("DoorCancel");
+        AM_Wave.Play("WaveCancel");
+        AM_Surprise.Play("SurpresaCancel");
+
+        Invoke("GlobalMissions",1);
+
+    }
+
+    public void GlobalMissions()
+    {
+        M_Wave_Complete.SetActive(false);
+        M_Door_Complete.SetActive(false);
+        M_Surprise_Complete.SetActive(false);
+
+        
+    }
+
+    public void NextRoomUI()
+    {
+        MapChangeRoom.Play();
+    }
 
 
 }

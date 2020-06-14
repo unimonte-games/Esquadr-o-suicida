@@ -890,7 +890,7 @@ public class Porta_Default : MonoBehaviour
             {
                 Debug.Log("Musica Começou");
                 RM.StartMusicInRoom();
-                PUI.StartRoom();
+                
 
                 Invoke("SetMissions", 2);
                 InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
@@ -898,7 +898,7 @@ public class Porta_Default : MonoBehaviour
             else
             {
                 RM.StartMusicInRoom();
-                PUI.StartRoom();
+                
 
                 Invoke("SetMissions", 2);
                 Invoke("GoToSpawn", TimerToSpawn);
