@@ -160,8 +160,6 @@ public class PlayerWeapon : MonoBehaviour
         WeaponSet.gameObject.GetComponent<Weapon>().Gatilho = Gatilho;
         WeaponSet.gameObject.GetComponent<Weapon>().P = P;
 
-
-
         ItemWeaponList[Type] = WeaponSet;
 
         for (int i = 0; i < 3; i++)

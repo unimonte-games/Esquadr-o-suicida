@@ -115,6 +115,9 @@ public class Player : MonoBehaviour
     public AudioSource LevelUP_Sound;
     public AudioSource Energy_Sound;
 
+    public DUBSystemEd DUB_Ed;
+    public DUBSystemNix DUB_Nix;
+
     private void Start()
     {
         LC = FindObjectOfType<LevelController>();
@@ -122,14 +125,14 @@ public class Player : MonoBehaviour
         Interface = FindObjectOfType<UI>();
         PL = FindObjectOfType<PlayerLevel>();
         SC = FindObjectOfType<SoundController>();
+        DUB_Ed = FindObjectOfType<DUBSystemEd>();
+        DUB_Nix = FindObjectOfType<DUBSystemNix>();
 
         UpdateLevel();
 
         PUI.ChangeMana(PlayerType, ManaBar, ManaBar_max);
         PUI.ChangeGold(PlayerType, Gold);
         PUI.ChangeLife(PlayerType, LifeBar, LifeBar_max, LifeSize);
-
-        
 
         if (PlayerType)
         {
@@ -572,6 +575,9 @@ public class Player : MonoBehaviour
             GameObject Dead = Instantiate(PlayerDead_Tree, transform.position, transform.rotation) as GameObject;
             Dead.GetComponent<PlayerDead>().P1_dead = true;
 
+            Dead.GetComponent<PlayerDead>().DUB_NIX = DUB_Nix;
+
+
             Debug.Log("Player1 Morreu.");
         }
         else
@@ -603,6 +609,8 @@ public class Player : MonoBehaviour
 
             GameObject Dead = Instantiate(PlayerDead_Tree, transform.position, transform.rotation) as GameObject;
             Dead.GetComponent<PlayerDead>().P2_dead = true;
+            
+            Dead.GetComponent<PlayerDead>().DUB_ED = DUB_Ed;
 
             Debug.Log("Player2 Morreu.");
         }

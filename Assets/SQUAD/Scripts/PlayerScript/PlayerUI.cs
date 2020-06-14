@@ -149,6 +149,9 @@ public class PlayerUI : MonoBehaviour
 
     public GameObject[] LevelUI;
 
+    public Animation VoiceIconEd;
+    public Animation VoiceIconNix;
+
     WeaponList WL;
     LevelController LC;
 
@@ -831,6 +834,18 @@ public class PlayerUI : MonoBehaviour
     public void NextRoomUI()
     {
         MapChangeRoom.Play();
+    }
+
+    public void SetVoiceIcons(bool Player)
+    {
+        if (Player)
+        {
+            VoiceIconEd.Play();
+        }
+        else
+        {
+            VoiceIconNix.Play();
+        }
     }
 
 
