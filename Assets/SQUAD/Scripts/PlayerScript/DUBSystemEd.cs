@@ -21,6 +21,7 @@ public class DUBSystemEd : MonoBehaviour
     public AudioClip[] Sequestrado;
 
     public bool IsVoice;
+    int DestroyEnemy;
 
     PlayerUI PUI;
 
@@ -186,6 +187,48 @@ public class DUBSystemEd : MonoBehaviour
 
                 Invoke("CancelVoice", 3);
             }
+        }
+    }
+
+    public void SetDestroyEnemy()
+    {
+        DestroyEnemy++;
+
+        if (!IsVoice)
+        {
+
+            if(DestroyEnemy >= 3 && DestroyEnemy <= 5)
+            {
+                int S = Random.Range(0, 100);
+                if (S > 45)
+                {
+                    int V_Audio = Random.Range(0, 8);
+                    SetVoice(D_Poucos[V_Audio]);
+                    IsVoice = true;
+
+                    Invoke("CancelVoice", 3);
+                }
+            }
+
+
+            if (DestroyEnemy >= 6 && DestroyEnemy <= 10)
+            {
+                int S = Random.Range(0, 100);
+                if (S > 65)
+                {
+                    int V_Audio = Random.Range(0, 4);
+                    SetVoice(D_Muitos[V_Audio]);
+                    IsVoice = true;
+
+                    Invoke("CancelVoice", 3);
+                }
+            }
+
+            if (DestroyEnemy > 10)
+            {
+                DestroyEnemy = 0;
+            }
+
         }
     }
 }

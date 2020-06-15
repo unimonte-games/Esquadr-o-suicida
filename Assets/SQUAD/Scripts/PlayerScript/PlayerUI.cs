@@ -160,6 +160,10 @@ public class PlayerUI : MonoBehaviour
     DUBSystemEd DUB_Ed;
     DUBSystemNix DUB_Nix;
 
+    bool isWarning1;
+    bool isWarning2;
+
+
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -195,7 +199,13 @@ public class PlayerUI : MonoBehaviour
            if(Life <= Size)
             {
                 WarningUI_1.SetActive(true);
-                DUB_Ed.SetPoucaVida();
+
+                if (!isWarning1)
+                {
+                    DUB_Ed.SetPoucaVida();
+                    isWarning1 = true;
+                    Invoke("CancelIsWarning1", 25);
+                }
 
             }
             else
@@ -224,7 +234,13 @@ public class PlayerUI : MonoBehaviour
             if (Life < Size)
             {
                 WarningUI_2.SetActive(true);
-                DUB_Nix.SetPoucaVida();
+
+                if (!isWarning2)
+                {
+                    DUB_Nix.SetPoucaVida();
+                    isWarning2 = true;
+                    Invoke("CancelIsWarning2", 25);
+                }
             }
             else
             {
@@ -238,6 +254,16 @@ public class PlayerUI : MonoBehaviour
 
             }
         }
+    }
+
+    void CancelIsWarning1()
+    {
+        isWarning1 = false;
+    }
+
+    void CancelIsWarning2()
+    {
+        isWarning2 = false;
     }
 
     void SetDamage1()

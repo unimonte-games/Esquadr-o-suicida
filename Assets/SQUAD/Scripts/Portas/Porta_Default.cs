@@ -446,6 +446,16 @@ public class Porta_Default : MonoBehaviour
             }
         }
 
+        if(PlayerToDestroy == 1)
+        {
+            DUB_Ed.SetDestroyEnemy();
+        }
+
+        if (PlayerToDestroy == 2)
+        {
+            DUB_Nix.SetDestroyEnemy();
+        }
+
         MonstersDestroy++;
         WaveUpdate();
     }
