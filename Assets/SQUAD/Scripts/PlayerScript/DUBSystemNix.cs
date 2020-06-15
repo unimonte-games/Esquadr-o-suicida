@@ -30,7 +30,6 @@ public class DUBSystemNix : MonoBehaviour
         PUI = FindObjectOfType<PlayerUI>();
     }
 
-
     public void SetVoice(AudioClip PlayerVoice)
     {
         PUI.SetVoiceIcons(false);

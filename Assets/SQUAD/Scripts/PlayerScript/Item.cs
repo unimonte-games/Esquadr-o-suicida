@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
 {
     public int ID;
     public int Value;
+    public int Rare;
  
     public bool isBuy;
     public bool isTech;
@@ -94,6 +95,16 @@ public class Item : MonoBehaviour
             Set = true;
             if (!isBuy)
             {
+                if(Rare == 1)//Epic
+                {
+                    player.SetEpicVoice();
+                }
+
+                if (Rare == 2)//Legend
+                {
+                    player.SetLegendVoice();
+                }
+
                 playerWeapon.GetWeapon(ID);
                 O.DisabledLine();
                 this.gameObject.SetActive(false);
@@ -104,12 +115,21 @@ public class Item : MonoBehaviour
 
             if (isBuy && player.Gold >= Value)
             {
+                if (Rare == 1)//Epic
+                {
+                    player.SetEpicVoice();
+                }
+
+                if (Rare == 2)//Legend
+                {
+                    player.SetLegendVoice();
+                }
+
                 player.Gold -= Value;
                 player.SetGold();
                 playerWeapon.GetWeapon(ID);
                 O.DisabledLine();
                 this.gameObject.SetActive(false);
-
 
                 Debug.Log("Player 1 comprou um item!");
                 return;
@@ -126,6 +146,16 @@ public class Item : MonoBehaviour
             Set = true;
             if (!isBuy)
             {
+                if (Rare == 1)//Epic
+                {
+                    player.SetEpicVoice();
+                }
+
+                if (Rare == 2)//Legend
+                {
+                    player.SetLegendVoice();
+                }
+
                 playerWeapon.GetWeapon(ID);
                 O.DisabledLine();
                 this.gameObject.SetActive(false);
@@ -136,6 +166,16 @@ public class Item : MonoBehaviour
 
             if (isBuy && player.Gold >= Value)
             {
+                if (Rare == 1)//Epic
+                {
+                    player.SetEpicVoice();
+                }
+
+                if (Rare == 2)//Legend
+                {
+                    player.SetLegendVoice();
+                }
+
                 player.Gold -= Value;
                 player.SetGold();
                 playerWeapon.GetWeapon(ID);
