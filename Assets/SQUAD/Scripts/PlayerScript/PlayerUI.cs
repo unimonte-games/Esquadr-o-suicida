@@ -157,6 +157,9 @@ public class PlayerUI : MonoBehaviour
 
     public AudioSource[] SetMissionsSound;
 
+    DUBSystemEd DUB_Ed;
+    DUBSystemNix DUB_Nix;
+
     private void Awake()
     {
         WL = FindObjectOfType<WeaponList>();
@@ -166,7 +169,10 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         MapChangeRoom.Play("NewRoom");
-        LevelUI[LC.Level].SetActive(true); 
+        LevelUI[LC.Level].SetActive(true);
+
+        DUB_Ed = FindObjectOfType<DUBSystemEd>();
+        DUB_Nix = FindObjectOfType<DUBSystemNix>();
     }
 
     public void ChangeLife(bool Player, float Life, float LifeMax, float Size)
@@ -189,6 +195,8 @@ public class PlayerUI : MonoBehaviour
            if(Life <= Size)
             {
                 WarningUI_1.SetActive(true);
+                DUB_Ed.SetPoucaVida();
+
             }
             else
             {
@@ -216,6 +224,7 @@ public class PlayerUI : MonoBehaviour
             if (Life < Size)
             {
                 WarningUI_2.SetActive(true);
+                DUB_Nix.SetPoucaVida();
             }
             else
             {

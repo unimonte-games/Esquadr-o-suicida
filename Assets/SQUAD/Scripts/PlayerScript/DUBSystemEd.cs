@@ -156,4 +156,20 @@ public class DUBSystemEd : MonoBehaviour
             }
         }
     }
+
+    public void SetPoucaVida()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 25)
+            {
+                int V_Audio = Random.Range(0, 2);
+                SetVoice(SemVida[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+    }
 }
