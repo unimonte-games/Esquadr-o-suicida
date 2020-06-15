@@ -412,12 +412,12 @@ public class Player : MonoBehaviour
 
     public void SetEpicVoice()
     {
-
+        Invoke("EpicVoice", 2);
     }
 
     public void SetLegendVoice()
     {
-
+        Invoke("LegendVoice", 2);
     }
 
     void KeyVoice()
@@ -431,6 +431,31 @@ public class Player : MonoBehaviour
             DUB_Nix.SetNewKey();
         }
 
+    }
+
+    void EpicVoice()
+    {
+        if (PlayerType)
+        {
+            DUB_Ed.SetItemEpic();
+        }
+        else
+        {
+            DUB_Nix.SetItemEpic();
+        }
+
+    }
+
+    void LegendVoice()
+    {
+        if (PlayerType)
+        {
+            DUB_Ed.SetItemLegend();
+        }
+        else
+        {
+            DUB_Nix.SetItemLegend();
+        }
     }
 
     public void SetDropKey()

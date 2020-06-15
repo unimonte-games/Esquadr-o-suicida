@@ -39,6 +39,7 @@ public class KeyLegendary : MonoBehaviour
             P.KeyID[KeyID]++;
 
             P.SetNewKey();
+            P.SetLegendVoice();
 
             this.gameObject.SetActive(false);
         }

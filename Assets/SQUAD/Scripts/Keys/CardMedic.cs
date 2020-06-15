@@ -38,6 +38,7 @@ public class CardMedic : MonoBehaviour
             P.KeyID[KeyID]++;
 
             P.SetNewKey();
+            P.SetEpicVoice();
 
             this.gameObject.SetActive(false);
         }

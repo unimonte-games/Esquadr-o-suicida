@@ -38,6 +38,7 @@ public class CardWeapon : MonoBehaviour
             P.KeyID[KeyID]++;
 
             P.SetNewKey();
+            P.SetLegendVoice();
 
             this.gameObject.SetActive(false);
         }
