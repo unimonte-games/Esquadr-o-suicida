@@ -42,7 +42,7 @@ public class SoundController : MonoBehaviour
 
     public void RoomClean()
     {
-        GlobalMusic.volume = 0.01f;
+        GlobalMusic.volume = 0.03f;
     }
 
     public void PlayerDead()

@@ -39,6 +39,9 @@ public class RoomController : MonoBehaviour
     public MapSystem mapSystem;
     PlayerUI PUI;
 
+    DUBSystemEd DUB_Ed;
+    DUBSystemNix DUB_Nix;
+
     public AudioSource RoomClean_DoorSound;
 
     void Start()
@@ -47,6 +50,8 @@ public class RoomController : MonoBehaviour
         LC = FindObjectOfType<LevelController>();
         mapSystem = FindObjectOfType<MapSystem>();
         SC = FindObjectOfType<SoundController>();
+        DUB_Ed = FindObjectOfType<DUBSystemEd>();
+        DUB_Nix = FindObjectOfType<DUBSystemNix>();
         
 
         MissionInTheRoom++;
@@ -256,7 +261,19 @@ public class RoomController : MonoBehaviour
 
             Invoke("CancelMissions", 5);
 
-            
+            if (LC.P1_inRoom)
+            {
+
+                Invoke("VoiceComplete1", 1);
+
+            }
+
+            if (LC.P2_inRoom)
+            {
+
+                Invoke("VoiceComplete2", 5);
+
+            }
         }
     }
 
@@ -271,5 +288,15 @@ public class RoomController : MonoBehaviour
         PUI.CancelRoomCleanInterface();
     }
 
-    
+    void VoiceComplete1()
+    {
+        DUB_Ed.SetRoomClean();
+    }
+
+    void VoiceComplete2()
+    {
+        DUB_Nix.SetRoomClean();
+    }
+
+
 }

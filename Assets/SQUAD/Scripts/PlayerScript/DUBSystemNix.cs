@@ -95,4 +95,21 @@ public class DUBSystemNix : MonoBehaviour
 
     }
 
+    public void SetRoomClean()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 50)
+            {
+                int V_Audio = Random.Range(0, 4);
+                SetVoice(LimparSala[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+
+    }
+
 }
