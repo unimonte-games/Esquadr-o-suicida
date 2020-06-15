@@ -175,4 +175,20 @@ public class DUBSystemNix : MonoBehaviour
         }
     }
 
+    public void SetSequestro()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 10)
+            {
+                int V_Audio = Random.Range(0, 2);
+                SetVoice(Sequestrado[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+    }
+
 }

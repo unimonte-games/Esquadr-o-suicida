@@ -563,6 +563,8 @@ public class Porta_Default : MonoBehaviour
 
                     R.transform.parent = player1.Rescue_Object;
                     Debug.Log("Player 1 foi sequestrado!");
+
+                    DUB_Ed.SetSequestro();
                 }
                 if (SelectPlayer >= 51)
                 {
@@ -580,6 +582,8 @@ public class Porta_Default : MonoBehaviour
 
                     R.transform.parent = player2.Rescue_Object;
                     Debug.Log("Player 2 foi sequestrado!");
+
+                    DUB_Nix.SetSequestro();
                 }
             }
 
