@@ -112,4 +112,52 @@ public class DUBSystemNix : MonoBehaviour
 
     }
 
+    public void SetNewKey()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 50)
+            {
+                int V_Audio = Random.Range(0, 4);
+                SetVoice(PegouChave[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+    }
+
+    public void SetItemEpic()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 25)
+            {
+                int V_Audio = Random.Range(0, 4);
+                SetVoice(ItemEpico[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+    }
+
+    public void SetItemLegend()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 25)
+            {
+                int V_Audio = Random.Range(0, 4);
+                SetVoice(ItemLendario[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+    }
+
 }

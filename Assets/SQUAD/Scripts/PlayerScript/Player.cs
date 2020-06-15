@@ -407,6 +407,30 @@ public class Player : MonoBehaviour
     public void SetNewKey()
     {
         KeySound[0].Play();
+        Invoke("KeyVoice", 2);
+    }
+
+    public void SetEpicVoice()
+    {
+
+    }
+
+    public void SetLegendVoice()
+    {
+
+    }
+
+    void KeyVoice()
+    {
+        if (PlayerType)
+        {
+            DUB_Ed.SetNewKey();
+        }
+        else
+        {
+            DUB_Nix.SetNewKey();
+        }
+
     }
 
     public void SetDropKey()
