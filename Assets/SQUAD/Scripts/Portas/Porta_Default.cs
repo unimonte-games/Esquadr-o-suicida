@@ -84,11 +84,17 @@ public class Porta_Default : MonoBehaviour
     PlayerUI PUI;
     public DoorEnabled GetDoorEnabled;
 
+    DUBSystemEd DUB_Ed;
+    DUBSystemNix DUB_Nix;
+
     private void Awake()
     {
         PUI = FindObjectOfType<PlayerUI>();
         LC = FindObjectOfType<LevelController>();
         RM = GetComponent<RoomMusic>();
+        DUB_Ed = FindObjectOfType<DUBSystemEd>();
+        DUB_Nix = FindObjectOfType<DUBSystemNix>();
+
         StartingWave = false;
 
         if(LC.Level == 0)
@@ -888,10 +894,10 @@ public class Porta_Default : MonoBehaviour
             {
                 Debug.Log("Musica Começou");
                 RM.StartMusicInRoom();
-                
 
                 Invoke("SetMissions", 2);
                 InvokeRepeating("OrdaRepeatWave", Orda_TimeToSpawn, Orda_RepeatWave);
+
             }
             else
             {
@@ -904,7 +910,28 @@ public class Porta_Default : MonoBehaviour
 
             triggerPlayers.enabled = false;
 
+            if (LC.P1_inRoom)
+            {
+                Invoke("DUB_ed_Start", 5);
+            }
+
+
+            if (LC.P2_inRoom)
+            {
+                Invoke("DUB_nix_Start", 1);
+            }
+
         }
+    }
+
+    void DUB_ed_Start()
+    {
+        DUB_Ed.SetInicio();
+    }
+
+    void DUB_nix_Start()
+    {
+        DUB_Nix.SetInicio();
     }
 
     void SetMissions()

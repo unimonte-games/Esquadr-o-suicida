@@ -63,10 +63,27 @@ public class DUBSystemEd : MonoBehaviour
         if (!IsVoice)
         {
             int S = Random.Range(0, 100);
-            if (S > 25)
+            if (S > 10)
             {
                 int V_Audio = Random.Range(0, 4);
                 SetVoice(Derrotado[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+
+    }
+
+    public void SetInicio()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 30)
+            {
+                int V_Audio = Random.Range(0, 8);
+                SetVoice(IniciarSala[V_Audio]);
                 IsVoice = true;
 
                 Invoke("CancelVoice", 3);

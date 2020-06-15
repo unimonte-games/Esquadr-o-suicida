@@ -66,10 +66,27 @@ public class DUBSystemNix : MonoBehaviour
         if (!IsVoice)
         {
             int S = Random.Range(0, 100);
-            if (S > 25)
+            if (S > 10)
             {
                 int V_Audio = Random.Range(0, 4);
                 SetVoice(Derrotado[V_Audio]);
+                IsVoice = true;
+
+                Invoke("CancelVoice", 3);
+            }
+        }
+
+    }
+
+    public void SetInicio()
+    {
+        if (!IsVoice)
+        {
+            int S = Random.Range(0, 100);
+            if (S > 25)
+            {
+                int V_Audio = Random.Range(0, 11);
+                SetVoice(IniciarSala[V_Audio]);
                 IsVoice = true;
 
                 Invoke("CancelVoice", 3);
